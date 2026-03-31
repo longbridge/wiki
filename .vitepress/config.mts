@@ -49,6 +49,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'Longbridge Wiki',
   description: 'Longbridge Securities Knowledge Base',
+  base: '/wiki/',
   srcDir: './docs',
   srcExclude: ['**/node_modules/**'],
 
