@@ -10,7 +10,7 @@
       <a
         v-for="card in cards"
         :key="card.link"
-        :href="card.link"
+        :href="withBase(card.link)"
         class="home-card"
       >
         <div class="card-icon">{{ card.icon }}</div>
@@ -24,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+
 const cards = [
   {
     icon: '🏦',
