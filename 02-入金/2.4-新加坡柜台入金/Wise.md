@@ -1,0 +1,45 @@
+# Wise
+
+## 介绍
+
+Wise（原名 TransferWise）是一家提供国际汇款和货币转换服务的金融科技公司。通过 Wise 平台可以较低的费用和更优惠的汇率完成国际转账，将资金转入长桥新加坡账户。
+
+官网操作指引：https://support.longbridge.sg/topics/Deposit/bgot76?locale=zh-CN
+
+## 支持币种
+
+<!--mcp:get_deposit_config(region="SG", method="Wise", field="currencies")-->
+> 美元（USD）、新加坡元（SGD）
+
+## 到账时间
+
+<!--mcp:get_deposit_config(region="SG", method="Wise", field="arrival_time")-->
+> 约 5 分钟至 3 个工作日，具体取决于入金币种。
+
+## 手续费
+
+<!--mcp:get_fee_rate(product="deposit", method="Wise", region="SG")-->
+> 长桥不收取费用。Wise 平台可能收取汇款手续费，以 Wise 实际收取为准。
+
+## 收款账户信息
+
+| 字段 | 内容 |
+|------|------|
+| 账户持有人 | LONG BRIDGE SEC |
+| 银行账号 | 0725885663 |
+| 银行名称 | DBS BANK LTD |
+| SWIFT/BIC | DBSSSGSGXXX |
+| 汇款备注 | 填写证券账户号（如 SG10039100），**必填** |
+
+## 操作流程
+
+1. 长桥 App - 资产 - 全部功能 - 存入资金 - 选择币种（USD 或 SGD）- Wise，查看收款信息
+2. 在 Wise App 或网页端完成汇款操作
+3. 汇款后在 Wise App 截图，需包含您的 Wise 账号及汇款至 Long Bridge 的交易记录页面
+4. 返回长桥 App 上传汇款凭证
+
+## 注意事项
+
+- 首次通过 Wise 入金后，可以入金但不能通过 Wise 出金
+- 第三方汇款（非本人账户）会被拒绝，如有退回资金产生的手续费由客户自行承担
+- 转账账户名必须与长桥证券账户名同名

@@ -1,0 +1,26 @@
+{
+  "name": "wiki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longbridge/wiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/longbridge/wiki/issues"
+  },
+  "homepage": "https://github.com/longbridge/wiki#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
