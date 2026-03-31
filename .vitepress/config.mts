@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import { readdirSync, statSync } from 'fs'
 import { join } from 'path'
 
-const docsRoot = join(__dirname, '..')
+const docsRoot = join(__dirname, '../docs')
 
 function getSidebarItems(dir: string, base: string) {
   const entries = readdirSync(dir).sort()
@@ -16,12 +16,12 @@ function getSidebarItems(dir: string, base: string) {
       const children = getSidebarItems(fullPath, `${base}/${entry}`)
       if (children.length > 0) {
         items.push({
-          text: entry.replace(/^\d+-/, ''),
+          text: entry,
           collapsed: true,
           items: children,
         })
       }
-    } else if (entry.endsWith('.md') && entry.toLowerCase() !== 'readme.md') {
+    } else if (entry.endsWith('.md') && !['readme.md', 'index.md'].includes(entry.toLowerCase())) {
       const name = entry.replace(/\.md$/, '')
       items.push({
         text: name,
@@ -35,11 +35,11 @@ function getSidebarItems(dir: string, base: string) {
 
 function buildSidebar() {
   const topDirs = readdirSync(docsRoot)
-    .filter(e => statSync(join(docsRoot, e)).isDirectory() && /^\d+/.test(e))
+    .filter(e => statSync(join(docsRoot, e)).isDirectory() && !e.startsWith('.'))
     .sort()
 
   return topDirs.map(dir => ({
-    text: dir.replace(/^\d+-/, ''),
+    text: dir,
     collapsed: true,
     items: getSidebarItems(join(docsRoot, dir), `/${dir}`),
   }))
@@ -47,10 +47,10 @@ function buildSidebar() {
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: '长桥客服知识库',
-  description: '长桥证券客服知识库',
-  srcDir: '.',
-  srcExclude: ['**/node_modules/**', '.vitepress/**'],
+  title: 'Longbridge Wiki',
+  description: 'Longbridge Securities Knowledge Base',
+  srcDir: './docs',
+  srcExclude: ['**/node_modules/**'],
 
   themeConfig: {
     nav: [
