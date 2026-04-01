@@ -11,7 +11,7 @@ sidebar: true
 
 ### 客户端功能
 
-- [LongbridgeAI信息助手](/产品功能/客户端功能/LongbridgeAI信息助手)
+- [LongbridgeAI 信息助手](/产品功能/客户端功能/LongbridgeAI信息助手)
 ### 桌面端功能
 
 - [图表交易](/产品功能/桌面端功能/图表交易)
