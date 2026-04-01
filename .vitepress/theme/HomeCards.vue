@@ -29,9 +29,9 @@ import { withBase } from 'vitepress'
 const cards = [
   {
     icon: '🏦',
-    title: '账户管理',
+    title: '账户相关',
     desc: '开户、销户、账户认证与安全设置',
-    link: '/账户管理/',
+    link: '/账户相关/',
   },
   {
     icon: '💰',
@@ -77,9 +77,9 @@ const cards = [
   },
   {
     icon: '🎯',
-    title: '新股认购 / IPO',
+    title: '新股认购',
     desc: '申购流程、中签规则、暗盘交易',
-    link: '/新股认购IPO/',
+    link: '/新股认购/',
   },
   {
     icon: '💼',
