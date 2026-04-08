@@ -205,6 +205,12 @@ export default defineConfig({
   title: 'Longbridge Wiki',
   description: 'Longbridge Securities Knowledge Base',
   base: '/wiki/',
+  appearance: true,
+  head: [
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap' }],
+  ],
   srcDir: './docs',
   srcExclude: ['**/node_modules/**'],
 

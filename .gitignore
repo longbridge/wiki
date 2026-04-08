@@ -6,3 +6,4 @@ CLAUDE.md
 .DS_Store
 scripts/*
 .playwright-mcp
+graphrag_quickstart
