@@ -102,13 +102,13 @@ const categories = [
   },
   {
     svg: S.quote,
-    title: '行情服务',
-    link: '/行情服务/',
+    title: '行情数据',
+    link: '/行情数据/',
     links: [
-      { text: '行情权限规则', link: '/行情服务/行情权限规则' },
-      { text: '行情数据字段介绍', link: '/行情服务/行情数据字段介绍' },
-      { text: '个股 F10 资料', link: '/行情服务/个股F10资料' },
-      { text: '资金流向', link: '/行情服务/资金流向' },
+      { text: '市场行情', link: '/行情数据/市场行情' },
+      { text: '行情权限规则', link: '/行情数据/行情权限规则' },
+      { text: '个股 F10 资料', link: '/行情数据/个股F10资料' },
+      { text: 'LongbridgeAI 信息助手', link: '/行情数据/LongbridgeAI信息助手' },
     ]
   },
   {
@@ -116,7 +116,7 @@ const categories = [
     title: 'App 功能',
     link: '/App功能/',
     links: [
-      { text: 'LongbridgeAI 信息助手', link: '/App功能/行情与数据/LongbridgeAI信息助手' },
+      { text: '资产概览', link: '/App功能/资产与持仓/资产概览' },
       { text: '图表交易', link: '/股票交易/桌面端工具/图表交易' },
       { text: '市场深度', link: '/股票交易/桌面端工具/市场深度' },
       { text: '桌面端快捷键', link: '/股票交易/桌面端工具/桌面端快捷键' },
@@ -162,28 +162,6 @@ const categories = [
     links: [
       { text: '新股申购', link: '/新股认购/新股申购' },
       { text: '暗盘交易', link: '/新股认购/暗盘交易' },
-    ]
-  },
-  {
-    svg: S.corporate,
-    title: '公司行动',
-    link: '/公司行动/',
-    links: [
-      { text: '派息与特殊派息', link: '/公司行动/派息与特殊派息' },
-      { text: '拆合股', link: '/公司行动/拆合股' },
-      { text: '供股权派发', link: '/公司行动/供股权派发' },
-      { text: '送股与选股派息', link: '/公司行动/送股与选股派息' },
-    ]
-  },
-  {
-    svg: S.transfer,
-    title: '股票转仓',
-    link: '/股票转仓/',
-    links: [
-      { text: '股票转仓（香港）', link: '/股票转仓/香港市场转仓/股票转仓HK' },
-      { text: '各券商转入指引', link: '/股票转仓/香港市场转仓/各券商转入指引' },
-      { text: '股票转仓（新加坡）', link: '/股票转仓/新加坡市场转仓/股票转仓SG' },
-      { text: '转仓常见问题', link: '/股票转仓/转仓常见问题/转仓常见问题' },
     ]
   },
   {
