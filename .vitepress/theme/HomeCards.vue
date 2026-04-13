@@ -34,6 +34,7 @@ import { withBase } from 'vitepress'
 
 
 const S: Record<string, string> = {
+  beginner:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
   account:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.866 3.582-7 8-7s8 3.134 8 7"/></svg>`,
   deposit:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>`,
   withdraw:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="m17 13-5-5-5 5"/><path d="M4 4h16"/></svg>`,
@@ -56,6 +57,16 @@ const S: Record<string, string> = {
 }
 
 const categories = [
+  {
+    svg: S.beginner,
+    title: '新手入门',
+    link: '/新手入门/',
+    links: [
+      { text: '完成首次入金', link: '/新手入门/完成首次入金' },
+      { text: '买入第一只港股', link: '/新手入门/买入第一只港股' },
+      { text: '设置股价提醒', link: '/新手入门/设置股价提醒' },
+    ]
+  },
   {
     svg: S.account,
     title: '账户相关',
@@ -256,9 +267,10 @@ const categories = [
     title: '故障排查',
     link: '/故障排查/',
     links: [
-      { text: 'APP 网络连接排查', link: '/故障排查/APP网络连接排查' },
-      { text: '收不到短信验证码', link: '/故障排查/收不到短信验证码' },
-      { text: '恒生银行可疑账号澄清', link: '/故障排查/恒生银行可疑账号澄清' },
+      { text: '入金未到账怎么办', link: '/故障排查/入金未到账怎么办' },
+      { text: '订单提交失败怎么办', link: '/故障排查/订单提交失败怎么办' },
+      { text: 'App登录失败怎么办', link: '/故障排查/App登录失败怎么办' },
+      { text: '期权行权异常怎么办', link: '/故障排查/期权行权异常怎么办' },
     ]
   },
 ]
