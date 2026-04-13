@@ -44,7 +44,7 @@ DDA（Direct Debit Authorisation）是新加坡银行与长桥证券合作的授
 | ID number verification failed | 长桥注册的身份证号与银行端不一致 |
 | BA3002（Consent not given） | 授权页面条款未完整阅读即取消，需重新操作并完整阅读后提交 |
 
-## 注意事项
+## 出金限制与账户信息一致性
 
 - DDA 不支持出金
 - 银行端证件信息需与长桥开户信息一致
