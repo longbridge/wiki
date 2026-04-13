@@ -1,4 +1,9 @@
-# FOK / IOC 订单（SG）
+---
+layout: doc
+sidebar: true
+---
+
+# FOK与IOC订单
 
 以下两种订单类型适用于长桥新加坡柜台。
 

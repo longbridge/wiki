@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# Wise 国际汇款（SG）
+# Wise国际汇款
 
 Wise（原名 TransferWise）是国际汇款和货币转换服务平台，可以较低费用完成国际转账，将资金转入长桥新加坡账户。
 

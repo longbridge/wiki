@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# PayNow 即时转账（SG）
+# PayNow即时转账
 
 PayNow 是新加坡的实时电子转账服务，支持通过手机号码、身份证/FIN 号码、UEN 或二维码进行即时资金转账。
 

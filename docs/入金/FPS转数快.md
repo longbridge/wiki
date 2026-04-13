@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# FPS 转数快（HK）
+# FPS转数快
 
 FPS 转数快（Faster Payment System）是香港金融管理局推出的快速支付系统，支持即时跨行转账、365×24×7 全天候服务，通过 FPS 识别码付款，无需绑定手机号或电邮。
 

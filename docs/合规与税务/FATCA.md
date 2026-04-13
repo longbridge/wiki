@@ -1,4 +1,9 @@
-# FATCA 海外账户税收合规法案
+---
+layout: doc
+sidebar: true
+---
+
+# FATCA
 
 ## 什么是 FATCA
 

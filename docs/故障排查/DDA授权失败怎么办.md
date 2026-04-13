@@ -1,4 +1,9 @@
-# DDA 授权失败怎么办
+---
+layout: doc
+sidebar: true
+---
+
+# DDA授权失败怎么办
 
 DDA 分为两种不同服务，处理方式不同：
 
