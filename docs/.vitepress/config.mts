@@ -105,16 +105,37 @@ const dirDisplayNames: Record<string, string> = {
 // 跳过的目录（语言子目录 + 文档中心入口目录）
 const skipDirs = new Set(['en', 'zh-HK', 'zh-CN', 'docs'])
 
+// 读取目录的排序配置（_order.json），返回 slug/dirname 数组
+function loadOrder(dir: string): string[] {
+  try {
+    const orderFile = path.join(dir, '_order.json')
+    if (fs.existsSync(orderFile)) {
+      return JSON.parse(fs.readFileSync(orderFile, 'utf-8'))
+    }
+  } catch {}
+  return []
+}
+
 // 递归扫描目录生成侧边栏 items
 function generateSidebarItemsFromDir(dir: string, base: string): any[] {
   const items: any[] = []
 
   try {
-    const entries = fs.readdirSync(dir)
-      .filter(e => !e.startsWith('.'))
-      .sort()
+    const order = loadOrder(dir)
+    const allEntries = fs.readdirSync(dir)
+      .filter(e => !e.startsWith('.') && e !== '_order.json')
 
-    for (const entry of entries) {
+    // 按 _order.json 排序；未列出的追加到末尾（字母序）
+    const sorted = [
+      ...order.filter(o => allEntries.includes(o) || allEntries.includes(`${o}.md`))
+             .map(o => allEntries.find(e => e === o || e === `${o}.md`)!),
+      ...allEntries.filter(e => {
+        const slug = e.replace(/\.md$/, '')
+        return !order.includes(slug) && !order.includes(e)
+      }).sort(),
+    ]
+
+    for (const entry of sorted) {
       const fullPath = path.join(dir, entry)
       const stat = fs.statSync(fullPath)
 

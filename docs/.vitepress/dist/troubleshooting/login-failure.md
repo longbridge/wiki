@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# App登录失败怎么办
+# App 登录失败怎么办
 
 无法登录长桥 App 时，根据具体表现定位原因并处理。
 

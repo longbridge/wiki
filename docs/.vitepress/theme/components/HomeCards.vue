@@ -12,7 +12,7 @@
         <!-- 新用户专属入口 -->
         <div class="hero-onboard">
           <div class="onboard-label">第一次使用长桥？</div>
-          <a href="/getting-started/" class="btn-primary">从新手指引开始 →</a>
+          <a :href="withBase('/getting-started/')"  class="btn-primary">从新手指引开始 →</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
@@ -76,7 +76,7 @@
         </div>
         <ul class="tasks-grid">
           <li v-for="task in tasks" :key="task.path">
-            <a :href="task.path" class="task-link">
+            <a :href="withBase(task.path)" class="task-link">
               <span class="task-q">{{ task.q }}</span>
               <svg class="task-arrow" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -99,9 +99,9 @@
           跟着新手指引，你可以在 30 分钟内完成注册、通过 KYC 身份核验、完成入金并买入第一只股票。
         </p>
         <ul class="feat-links">
-          <li><a href="/getting-started/">如何完成开户与首笔交易</a></li>
-          <li><a href="/account/">香港 / 新加坡开户的要求是什么</a></li>
-          <li><a href="/account/">如何修改账户安全设置</a></li>
+          <li><a :href="withBase('/getting-started/')" >如何完成开户与首笔交易</a></li>
+          <li><a :href="withBase('/account/')" >香港 / 新加坡开户的要求是什么</a></li>
+          <li><a :href="withBase('/account/')" >如何修改账户安全设置</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -177,9 +177,9 @@
           需要存钱进来、把钱取出去，或在账户间转账换汇？这里有 eDDA、FPS、电汇等所有入金方式的操作步骤，以及出金到账时间和多币种兑换说明。
         </p>
         <ul class="feat-links">
-          <li><a href="/deposit/">如何从银行卡向账户入金</a></li>
-          <li><a href="/withdrawal/">出金到账需要多久，如何操作</a></li>
-          <li><a href="/transfers-and-fx/">如何进行账户间划转或外币换汇</a></li>
+          <li><a :href="withBase('/deposit/')" >如何从银行卡向账户入金</a></li>
+          <li><a :href="withBase('/withdrawal/')" >出金到账需要多久，如何操作</a></li>
+          <li><a :href="withBase('/transfers-and-fx/')" >如何进行账户间划转或外币换汇</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -248,10 +248,10 @@
           无论是买入第一只股票，还是参与 IPO 认购、使用期权策略或融资杠杆，这里涵盖各类市场和产品的完整操作步骤与核心规则。
         </p>
         <ul class="feat-links">
-          <li><a href="/stock-trading/">如何下单买卖港股 / 美股</a></li>
-          <li><a href="/derivatives/">如何交易期权、窝轮或牛熊证</a></li>
-          <li><a href="/ipo/">如何参与新股认购（IPO）</a></li>
-          <li><a href="/margin/">什么是 Margin Call，如何避免爆仓</a></li>
+          <li><a :href="withBase('/stock-trading/')" >如何下单买卖港股 / 美股</a></li>
+          <li><a :href="withBase('/derivatives/')" >如何交易期权、窝轮或牛熊证</a></li>
+          <li><a :href="withBase('/ipo/')" >如何参与新股认购（IPO）</a></li>
+          <li><a :href="withBase('/margin/')" >什么是 Margin Call，如何避免爆仓</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -312,10 +312,10 @@
           想让闲置资金产生收益、订阅深度行情，或在报税前搞清楚 CRS、FATCA 要求？这里有具体的操作方法和合规说明。
         </p>
         <ul class="feat-links">
-          <li><a href="/funds-and-wealth/">如何使用余额通或开始基金定投</a></li>
-          <li><a href="/market-data/">如何订阅深度行情或使用 AI 助手</a></li>
-          <li><a href="/compliance-and-tax/">CRS 和 FATCA 要求我做什么</a></li>
-          <li><a href="/rewards/">如何查询和使用活动奖励与卡券</a></li>
+          <li><a :href="withBase('/funds-and-wealth/')" >如何使用余额通或开始基金定投</a></li>
+          <li><a :href="withBase('/market-data/')" >如何订阅深度行情或使用 AI 助手</a></li>
+          <li><a :href="withBase('/compliance-and-tax/')" >CRS 和 FATCA 要求我做什么</a></li>
+          <li><a :href="withBase('/rewards/')" >如何查询和使用活动奖励与卡券</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -374,6 +374,8 @@
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+
 const tasks = [
   { q: '如何从银行卡向账户入金？', path: '/deposit/' },
   { q: '出金需要多长时间，如何操作？', path: '/withdrawal/' },

@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# 如何下载长桥App
+# 如何下载长桥 App
 
 > 以下下载链接的版本不一定是最新版本，安装后可在 App 内自行检查更新。
 

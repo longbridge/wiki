@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# DDA自动扣款授权
+# 如何完成 DDA 授权入金
 
 DDA（Direct Debit Authorisation）是新加坡银行与长桥证券合作的授权转账服务。将银行账户与长桥账户绑定后，可直接从长桥 App 发起新元入金，无需上传入金凭证。
 

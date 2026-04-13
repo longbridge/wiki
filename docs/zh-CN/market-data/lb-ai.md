@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# LongbridgeAI信息助手
+# Longbridge AI 信息助手
 
 LongbridgeAI 是 Longbridge 推出的综合财经智能助理，结合大语言模型与财经数据、资讯及社区内容，帮助用户高效获取财经信息。
 
