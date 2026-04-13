@@ -8,18 +8,15 @@ Wise（原名 TransferWise）是一家提供国际汇款和货币转换服务的
 
 ## 支持币种
 
-<!--mcp:get_deposit_config(region="SG", method="Wise", field="currencies")-->
-> 美元（USD）、新加坡元（SGD）
+美元（USD）、新加坡元（SGD）
 
 ## 到账时间
 
-<!--mcp:get_deposit_config(region="SG", method="Wise", field="arrival_time")-->
-> 约 5 分钟至 3 个工作日，具体取决于入金币种。
+约 5 分钟至 3 个工作日，具体取决于入金币种。
 
 ## 手续费
 
-<!--mcp:get_fee_rate(product="deposit", method="Wise", region="SG")-->
-> 长桥不收取费用。Wise 平台可能收取汇款手续费，以 Wise 实际收取为准。
+长桥不收取费用。Wise 平台可能收取汇款手续费，以 Wise 实际收取为准。
 
 ## 收款账户信息
 

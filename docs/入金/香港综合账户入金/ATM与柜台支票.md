@@ -12,31 +12,26 @@
 
 ### 支持币种
 
-<!--mcp:get_deposit_config(region="HK", method="ATM", field="currencies")-->
-> 港元（HKD）、美元（USD）
+港元（HKD）、美元（USD）
 
 ### 到账时间
 
-<!--mcp:get_deposit_config(region="HK", method="ATM", field="arrival_time")-->
-> 同行转账：预计 2 小时内到账
->
-> 跨行转账：预计 1-3 个工作日到账
+同行转账：预计 2 小时内到账
+跨行转账：预计 1-3 个工作日到账
 
 ### 手续费
 
-<!--mcp:get_fee_rate(product="deposit", method="ATM", region="HK")-->
-> 长桥不收取费用，具体费用以银行实际收取为准。
+长桥不收取费用，具体费用以银行实际收取为准。
 
 ### 收款银行信息
 
-<!--mcp:get_receiving_account(region="HK", method="ATM")-->
-> - 收款人名称：Long Bridge HK Limited
-> - 港元收款账号：01287520564946
-> - 美元收款账号：01287520564962
-> - 收款银行：中国银行（香港）有限公司 Bank of China (Hong Kong) Limited
-> - 银行编号：012
-> - SWIFT 代码：BKCHHKHHXXX
-> - 银行地址：2A Des Voeux Road Central, Hong Kong
+- 收款人名称：Long Bridge HK Limited
+- 港元收款账号：01287520564946
+- 美元收款账号：01287520564962
+- 收款银行：中国银行（香港）有限公司 Bank of China (Hong Kong) Limited
+- 银行编号：012
+- SWIFT 代码：BKCHHKHHXXX
+- 银行地址：2A Des Voeux Road Central, Hong Kong
 
 ### 操作流程
 
@@ -67,18 +62,15 @@
 
 ### 支持币种
 
-<!--mcp:get_deposit_config(region="HK", method="cheque", field="currencies")-->
-> 港元（HKD）、美元（USD）
+港元（HKD）、美元（USD）
 
 ### 到账时间
 
-<!--mcp:get_deposit_config(region="HK", method="cheque", field="arrival_time")-->
-> 因银行需处理支票入账，一般需 2 个工作日，具体以银行为准。
+因银行需处理支票入账，一般需 2 个工作日，具体以银行为准。
 
 ### 手续费
 
-<!--mcp:get_fee_rate(product="deposit", method="cheque", region="HK")-->
-> 长桥不收取费用，具体费用以银行实际收取为准。
+长桥不收取费用，具体费用以银行实际收取为准。
 
 ### 收款银行信息
 

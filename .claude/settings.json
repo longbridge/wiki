@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(ls /Users/longbridge/go/pkg/mod/github.com/pgvector/pgvector-go@v0.3.0/*.go)"
+    ]
+  }
+}

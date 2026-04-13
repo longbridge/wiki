@@ -9,28 +9,20 @@
 
 ## 支持品类
 
-<!--mcp:get_transfer_config(type="stock_transfer", region="HK", field="supported_types")-->
-> 香港市场：股票、ETF
->
-> 美国市场：股票、ETF
+香港市场：股票、ETF
+美国市场：股票、ETF
 
 ## 收费标准
 
-<!--mcp:get_fee_rate(product="stock_transfer", region="HK")-->
-> 转入：长桥不收费，转出券商可能收费，请与对方券商确认。
->
-> 转出港股：每支股票 500 港元 / 次
->
-> 转出美股：每支股票 150 美元 / 次
->
-> 转出前请确保账户内有足够的手续费。
+转入：长桥不收费，转出券商可能收费，请与对方券商确认。
+转出港股：每支股票 500 港元 / 次
+转出美股：每支股票 150 美元 / 次
+转出前请确保账户内有足够的手续费。
 
 ## 处理时间
 
-<!--mcp:get_transfer_config(type="stock_transfer", region="HK", field="processing_time")-->
-> 转入：转仓指示确认后 3-5 个工作日
->
-> 转出：一般预计 5-10 个工作日（以双方券商实际处理时间为准）
+转入：转仓指示确认后 3-5 个工作日
+转出：一般预计 5-10 个工作日（以双方券商实际处理时间为准）
 
 ---
 
@@ -38,22 +30,20 @@
 
 ### 转入券商信息
 
-<!--mcp:get_broker_info(region="HK", direction="in")-->
-> **转入港股：**
-> - 接收券商名称：长桥证券（香港）有限公司 Long Bridge HK Limited
-> - CCASS 代码：B02195
-> - 接收账户：您的长桥证券账户号码
-> - 联系人：交收部
-> - 联系电话：(+852) 3585 8944 / (+852) 3585 8915
-> - 联系邮箱：settlement@longbridge.hk
->
-> **转入美股：**
-> - 接收券商名称：Long Bridge HK Limited
-> - DTC 代码：DTC 0534
-> - 接收账户：您的长桥证券账户号码
-> - 联系人：Settlement Team
-> - 联系电话：(+852) 3585 8944 / (+852) 3585 8915
-> - 联系邮箱：settlement@longbridge.hk
+**转入港股：**
+- 接收券商名称：长桥证券（香港）有限公司 Long Bridge HK Limited
+- CCASS 代码：B02195
+- 接收账户：您的长桥证券账户号码
+- 联系人：交收部
+- 联系电话：(+852) 3585 8944 / (+852) 3585 8915
+- 联系邮箱：settlement@longbridge.hk
+**转入美股：**
+- 接收券商名称：Long Bridge HK Limited
+- DTC 代码：DTC 0534
+- 接收账户：您的长桥证券账户号码
+- 联系人：Settlement Team
+- 联系电话：(+852) 3585 8944 / (+852) 3585 8915
+- 联系邮箱：settlement@longbridge.hk
 
 注意：若转出券商对接收账户格式有限制，可直接填写「U11928885」。
 
@@ -82,20 +72,18 @@
 
 ### 长桥转出方信息
 
-<!--mcp:get_broker_info(region="HK", direction="out")-->
-> **转出港股：**
-> - 转出券商：长桥证券（香港）有限公司 Long Bridge HK Limited
-> - CCASS 代码：B02195
-> - 联系人：交收部
-> - 联系电话：(+852) 3585 8944 / (+852) 3585 8915
-> - 联系邮箱：settlement@longbridge.hk
->
-> **转出美股：**
-> - 转出券商名称：Long Bridge HK Limited
-> - DTC 代码：DTC 0534
-> - 联系人：Settlement Team
-> - 联系电话：(+852) 3585 8944 / (+852) 3585 8915
-> - 联系邮箱：settlement@longbridge.hk
+**转出港股：**
+- 转出券商：长桥证券（香港）有限公司 Long Bridge HK Limited
+- CCASS 代码：B02195
+- 联系人：交收部
+- 联系电话：(+852) 3585 8944 / (+852) 3585 8915
+- 联系邮箱：settlement@longbridge.hk
+**转出美股：**
+- 转出券商名称：Long Bridge HK Limited
+- DTC 代码：DTC 0534
+- 联系人：Settlement Team
+- 联系电话：(+852) 3585 8944 / (+852) 3585 8915
+- 联系邮箱：settlement@longbridge.hk
 
 ### 转出操作流程
 

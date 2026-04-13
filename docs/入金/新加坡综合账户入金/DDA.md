@@ -10,18 +10,15 @@ DDA（Direct Debit Authorisation，直接付款授权）是新加坡银行与长
 
 ## 支持币种
 
-<!--mcp:get_deposit_config(region="SG", method="DDA", field="currencies")-->
-> 仅支持新加坡元（SGD）
+仅支持新加坡元（SGD）
 
 ## 到账时间
 
-<!--mcp:get_deposit_config(region="SG", method="DDA", field="arrival_time")-->
-> 预计实时到账
+预计实时到账
 
 ## 手续费
 
-<!--mcp:get_fee_rate(product="deposit", method="DDA", region="SG")-->
-> 免费
+免费
 
 ## DDA 授权流程
 
