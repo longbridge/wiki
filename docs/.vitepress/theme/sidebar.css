@@ -1,0 +1,63 @@
+/* 侧边栏样式 — 参考 developers 项目适配 */
+
+:root {
+  --vp-sidebar-width: 300px;
+}
+
+.VPNavBarTitle.has-sidebar .title {
+  border: 0;
+}
+
+.VPSidebar {
+  outline: none;
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+/* 移除分组之间的横线（VPSidebarGroup.vue scoped: .group + .group） */
+.VPSidebar .group + .group {
+  border-top: none !important;
+  padding-top: 4px !important;
+}
+
+/* 移除子级 items 的左侧竖线（VPSidebarItem.vue scoped: .level-N .items） */
+.VPSidebar .items {
+  border-left: none !important;
+  padding-left: 8px !important;
+}
+
+.VPSidebarItem:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPSidebarItem:not(.is-link) > .item {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.VPSidebarItem .VPLink {
+  border-radius: 8px;
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.VPSidebarItem.is-link .VPLink > p {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.VPSidebarItem.is-active > .item > .link {
+  background: color-mix(in oklab, var(--vp-c-brand-1) 10%, transparent);
+}
+
+.sidebar-item-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 12px;
+  color: var(--vp-c-text-3);
+  vertical-align: middle;
+}
+
+.VPSidebarItem.is-active .sidebar-item-icon {
+  color: var(--vp-c-brand-1);
+}
