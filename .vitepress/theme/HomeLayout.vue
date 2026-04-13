@@ -26,7 +26,7 @@ const accountItems = [
   { name: '资产与账单',     en: 'Assets & Bills',   link: '/资产与账单/' },
   { name: '营销活动与奖励', en: 'Promotions',       link: '/营销活动与奖励/' },
   { name: '故障排查',       en: 'Troubleshooting',  link: '/故障排查/' },
-  { name: '产品功能',       en: 'App Features',     link: '/产品功能/' },
+  { name: 'App 功能',       en: 'App Features',     link: '/App功能/' },
   { name: '合规与政策',     en: 'Compliance',       link: '/合规与政策/' },
 ]
 </script>
@@ -51,7 +51,7 @@ const accountItems = [
         <div class="hp-nav-r">
           <a :href="withBase('/交易市场与规则/')" class="hp-navlink">交易</a>
           <a :href="withBase('/账户相关/')" class="hp-navlink">账户</a>
-          <a :href="withBase('/产品功能/')" class="hp-navlink">产品</a>
+          <a :href="withBase('/App功能/')" class="hp-navlink">产品</a>
         </div>
       </div>
     </nav>
@@ -221,7 +221,7 @@ const accountItems = [
         <span class="hp-ft-sep">·</span>
         <a :href="withBase('/交易市场与规则/')" class="hp-ft-l">交易市场</a>
         <a :href="withBase('/账户相关/')" class="hp-ft-l">账户管理</a>
-        <a :href="withBase('/产品功能/')" class="hp-ft-l">产品功能</a>
+        <a :href="withBase('/App功能/')" class="hp-ft-l">App 功能</a>
       </div>
     </footer>
 

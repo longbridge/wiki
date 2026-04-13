@@ -134,13 +134,13 @@ const categories = [
   },
   {
     svg: S.product,
-    title: '产品功能',
-    link: '/产品功能/',
+    title: 'App 功能',
+    link: '/App功能/',
     links: [
-      { text: 'LongbridgeAI 信息助手', link: '/产品功能/行情与数据/LongbridgeAI信息助手' },
-      { text: '图表交易', link: '/产品功能/交易工具/图表交易' },
-      { text: '市场深度', link: '/产品功能/交易工具/市场深度' },
-      { text: '桌面端快捷键', link: '/产品功能/交易工具/桌面端快捷键' },
+      { text: 'LongbridgeAI 信息助手', link: '/App功能/行情与数据/LongbridgeAI信息助手' },
+      { text: '图表交易', link: '/App功能/交易工具/图表交易' },
+      { text: '市场深度', link: '/App功能/交易工具/市场深度' },
+      { text: '桌面端快捷键', link: '/App功能/交易工具/桌面端快捷键' },
     ]
   },
   {
