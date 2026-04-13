@@ -1,91 +1,211 @@
 /* ═══════════════════════════════════════════════
-   Longbridge Wiki — 主题样式
-   策略：只覆盖字体 + 品牌色，不硬编码任何 bg/text 颜色
-   深色 / 浅色切换完全由 VitePress CSS 变量自动处理
+   Longbridge Wiki — 现代设计主题
    ═══════════════════════════════════════════════ */
 
 /* ── 字体（全局） ──────────────────────────────── */
 :root {
   --vp-font-family-base: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --vp-font-family-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Menlo', monospace;
-}
 
-/* ── 品牌色：Longbridge 官方 Teal（全局，深浅色通用） ── */
-:root {
+  /* 品牌色系 */
   --vp-c-brand-1: #00B8B8;
   --vp-c-brand-2: #00A5A5;
   --vp-c-brand-3: #00CBCB;
   --vp-c-brand-soft: rgba(0, 184, 184, 0.12);
+
+  /* 扩展色彩 */
+  --vp-c-accent: #1f2937;
+  --vp-c-divider-light: rgba(0, 184, 184, 0.08);
 }
 
-/* ── 导航栏：只加毛玻璃模糊，不改颜色 ─────────── */
+/* ── 导航栏：现代毛玻璃设计 ─────────────────────── */
 .VPNav {
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border-bottom: 1px solid var(--vp-c-divider-light) !important;
+  background: linear-gradient(
+    180deg,
+    var(--vp-c-bg-alt) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
 }
 
-/* ── 侧边栏：只调字号和间距 ─────────────────────── */
+/* ── 侧边栏：优化排版和间距 ─────────────────────── */
 .VPSidebarItem.level-0 > .item > .text {
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.07em !important;
   text-transform: uppercase !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
+
+.VPSidebarItem.level-0 > .item {
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin-bottom: 4px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.VPSidebarItem.level-0 > .item:hover {
+  background: var(--vp-c-divider-light) !important;
+}
+
+/* Sidebar 图标支持 */
+.VPSidebarItem .link::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 6px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  flex-shrink: 0 !important;
+}
+
+/* 分类图标 */
+.VPSidebarItem.level-0 > .item::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  flex-shrink: 0 !important;
+  opacity: 0.6 !important;
+}
+
 .VPSidebarItem .link {
   font-size: 13.5px !important;
   font-weight: 500 !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  margin-left: 0 !important;
+  transition: all 0.2s ease !important;
 }
 
-/* ── 标题排版：只调字重和字距，颜色用变量 ──────── */
+.VPSidebarItem .link.active {
+  background: var(--vp-c-brand-soft) !important;
+  color: var(--vp-c-brand-1) !important;
+}
+
+.VPSidebarItem .link:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* ── 标题排版：现代化 ──────────────────────────── */
 .vp-doc h1 {
-  font-size: clamp(1.6rem, 3vw, 2.1rem) !important;
-  font-weight: 800 !important;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem) !important;
+  font-weight: 900 !important;
   letter-spacing: -0.04em !important;
-  line-height: 1.15 !important;
-}
-.vp-doc h2 {
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.03em !important;
-}
-.vp-doc h3 {
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1.5rem !important;
+  background: linear-gradient(135deg, var(--vp-c-text-1), var(--vp-c-brand-1)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
-/* ── 表格：圆角 + 表头大写，颜色用变量 ──────────── */
+.vp-doc h2 {
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid var(--vp-c-divider-light) !important;
+}
+
+.vp-doc h3 {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* ── 表格：现代设计 ─────────────────────────────── */
 .vp-doc table {
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   overflow: hidden !important;
   font-size: 0.875rem !important;
+  border: 1px solid var(--vp-c-divider-light) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  margin: 1.5rem 0 !important;
 }
+
 .vp-doc th {
-  font-size: 0.72rem !important;
+  font-size: 0.75rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.07em !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-bg-soft),
+    rgba(0, 184, 184, 0.05)
+  ) !important;
+  border-bottom: 2px solid var(--vp-c-divider-light) !important;
+  color: var(--vp-c-text-2) !important;
+  padding: 12px !important;
 }
+
+.vp-doc td {
+  padding: 12px !important;
+  border-bottom: 1px solid var(--vp-c-divider-light) !important;
+}
+
+.vp-doc tbody tr {
+  transition: all 0.2s ease !important;
+}
+
 .vp-doc tbody tr:hover {
-  background: var(--vp-c-brand-soft) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 184, 184, 0.08),
+    rgba(0, 184, 184, 0.04)
+  ) !important;
 }
 
-/* ── 代码块：圆角 ───────────────────────────────── */
+/* ── 代码块：现代设计 ───────────────────────────── */
 .vp-doc div[class*='language-'] {
-  border-radius: 10px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--vp-c-divider-light) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  margin: 1.5rem 0 !important;
 }
 
-/* ── 行内代码：品牌色 ───────────────────────────── */
+.vp-doc div[class*='language-']::before {
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-bg-soft),
+    rgba(0, 184, 184, 0.03)
+  ) !important;
+  border-bottom: 1px solid var(--vp-c-divider-light) !important;
+}
+
+/* ── 行内代码：优化样式 ────────────────────────── */
 .vp-doc :not(pre) > code {
   color: var(--vp-c-brand-1) !important;
-  font-size: 0.83em !important;
+  font-size: 0.85em !important;
+  background: var(--vp-c-brand-soft) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
 }
 
-/* ── 引用块：品牌色左边框 ──────────────────────── */
+/* ── 引用块：现代设计 ──────────────────────────── */
 .vp-doc blockquote {
-  border-left-color: var(--vp-c-brand-1) !important;
-  border-radius: 0 8px 8px 0 !important;
+  border-left: 4px solid var(--vp-c-brand-1) !important;
+  border-radius: 4px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 184, 184, 0.08),
+    rgba(0, 184, 184, 0.02)
+  ) !important;
+  padding: 1rem 1.25rem !important;
+  margin: 1.5rem 0 !important;
 }
 
 /* ── 列表标记色 ─────────────────────────────────── */
@@ -93,23 +213,93 @@
   color: var(--vp-c-brand-1) !important;
 }
 
-/* ── 上下翻页按钮：圆角 ─────────────────────────── */
+.vp-doc li {
+  margin: 0.5rem 0 !important;
+  line-height: 1.8 !important;
+}
+
+/* ── 链接样式 ──────────────────────────────────── */
+.vp-doc a {
+  color: var(--vp-c-brand-1) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+.vp-doc a::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: var(--vp-c-brand-1) !important;
+  transition: width 0.3s ease !important;
+}
+
+.vp-doc a:hover::after {
+  width: 100% !important;
+}
+
+/* ── 上下翻页按钮：现代化 ──────────────────────── */
 .pager-link {
   border-radius: 12px !important;
+  border: 1px solid var(--vp-c-divider-light) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 12px 16px !important;
+}
+
+.pager-link:hover {
+  border-color: var(--vp-c-brand-1) !important;
+  background: var(--vp-c-brand-soft) !important;
+  box-shadow: 0 4px 12px rgba(0, 184, 184, 0.15) !important;
 }
 
 /* ── 文字选中色 ─────────────────────────────────── */
 ::selection {
-  background: rgba(0, 184, 184, 0.2);
+  background: rgba(0, 184, 184, 0.25);
+  color: var(--vp-c-text-1);
 }
 
-/* ── 滚动条 ─────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: var(--vp-c-divider);
-  border-radius: 3px;
+/* ── 滚动条：现代化 ────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 184, 184, 0.3);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--vp-c-text-3);
+  background: rgba(0, 184, 184, 0.5);
+  background-clip: padding-box;
+}
+
+/* ── 其他优化 ──────────────────────────────────── */
+.vp-doc {
+  line-height: 1.8 !important;
+}
+
+.vp-doc p {
+  margin: 1rem 0 !important;
+}
+
+.vp-doc hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-divider-light),
+    transparent
+  ) !important;
+  margin: 2rem 0 !important;
 }
