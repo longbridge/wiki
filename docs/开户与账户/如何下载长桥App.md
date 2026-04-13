@@ -7,8 +7,6 @@ sidebar: true
 
 > 以下下载链接的版本不一定是最新版本，安装后可在 App 内自行检查更新。
 
-> **中国大陆存量用户说明**：长桥已停止接受中国大陆境内用户通过存量证明方式开户。中国大陆境内已有账户的存量用户可继续正常使用长桥客户端进行投资交易，相关服务不受影响。访问长桥官网时可能遇到卡顿或受限，建议直接通过 App 使用。如需客服支持，可通过 App 内【我的】-【帮助与客服】联系，或致电 +852 3851 1777。
-
 ## 安卓
 
 [下载链接](https://static.lbkrs.com/app/longbridge-online-release.apk)
@@ -51,3 +49,9 @@ sidebar: true
 
 [32 位系统](https://download.wbrks.com/longbridge-desktop/prod/longbridge-pro-2.33.3-win-ia32.exe)
 [64 位系统](https://download.wbrks.com/longbridge-desktop/prod/longbridge-pro-2.33.3-win-x64.exe)
+
+## 中国大陆存量用户说明
+
+长桥已停止接受中国大陆境内用户通过存量证明方式开户。中国大陆境内已有账户的存量用户可继续正常使用长桥客户端进行投资交易，相关服务不受影响。
+
+访问长桥官网时可能遇到卡顿或受限，建议直接通过 App 使用。如需客服支持，可通过 App 内【我的】-【帮助与客服】联系，或致电 +852 3851 1777。
