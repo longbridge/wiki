@@ -199,13 +199,13 @@ const categories = [
   },
   {
     svg: S.compliance,
-    title: '合规与政策',
-    link: '/合规与政策/',
+    title: '合规与税务',
+    link: '/合规与税务/',
     links: [
-      { text: '美股税表与股息税', link: '/合规与政策/税务合规/美股税表与股息税' },
-      { text: 'FATCA', link: '/合规与政策/税务合规/FATCA' },
-      { text: 'CRS 与 AEOI', link: '/合规与政策/税务合规/CRS与AEOI' },
-      { text: 'FATF 与开户支持地区', link: '/合规与政策/平台政策/FATF与开户支持地区' },
+      { text: '哪些国家和地区可以开户', link: '/合规与税务/哪些国家和地区可以开户' },
+      { text: '美股税表与股息税', link: '/合规与税务/美股税表与股息税' },
+      { text: 'FATCA', link: '/合规与税务/FATCA' },
+      { text: '税务信息交换说明', link: '/合规与税务/税务信息交换说明' },
     ]
   },
   {
