@@ -5,6 +5,8 @@ sidebar: true
 
 # FATCA
 
+美国海外账户税收合规法案要求，客户税务身份确认及申报责任说明。
+
 ## 什么是 FATCA
 
 FATCA（Foreign Account Tax Compliance Act，海外账户税收合规法案）是美国为防止美国纳税人逃避美国税项而制定的法规，由美国财政部和美国国税局（IRS）制定。
