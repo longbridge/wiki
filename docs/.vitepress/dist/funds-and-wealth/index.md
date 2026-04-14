@@ -9,16 +9,26 @@ sidebar: true
 
 ## 本章导航
 
-- [余额通常见问题](/funds-and-wealth/cash-plus-faq)
-- [余额通交易规则](/funds-and-wealth/cash-plus-trading-rules)
-- [余额通](/funds-and-wealth/cash-plus)
-- [基金基础与类型](/funds-and-wealth/fund-basics)
-- [基金常见问题](/funds-and-wealth/fund-faq)
-- [基金收费规则](/funds-and-wealth/fund-fees)
-- [基金定投](/funds-and-wealth/fund-regular-investment)
-- [基金买入与卖出规则](/funds-and-wealth/fund-trading-rules)
-- [香港余额通](/funds-and-wealth/hk-cash-plus)
+### 投资者资格
+
+- [专业投资者认证](/funds-and-wealth/professional-investor)
+
+### 基金投资
+
+- [基金基础与类型](/funds-and-wealth/funds/fund-basics)
+- [基金买入与卖出规则](/funds-and-wealth/funds/fund-trading-rules)
+- [基金收费规则](/funds-and-wealth/funds/fund-fees)
+- [基金定投](/funds-and-wealth/funds/fund-regular-investment)
+- [基金常见问题](/funds-and-wealth/funds/fund-faq)
+
+### 余额通
+
+- [余额通](/funds-and-wealth/cash-plus/cash-plus)
+- [余额通交易规则](/funds-and-wealth/cash-plus/cash-plus-trading-rules)
+- [余额通常见问题](/funds-and-wealth/cash-plus/cash-plus-faq)
+
+### 其他理财
+
 - [闲钱理财](/funds-and-wealth/idle-cash)
-- [货币基金交易规则](/funds-and-wealth/money-market-fund-rules)
-- [新加坡余额通](/funds-and-wealth/sg-cash-plus)
 - [结构化产品](/funds-and-wealth/structured-products)
+- [货币基金交易规则](/funds-and-wealth/money-market-fund-rules)

@@ -9,17 +9,29 @@ sidebar: true
 
 ## 本章导航
 
-- [ATM与柜台支票](/deposit/atm-and-counter-cheque)
-- [银行卡绑定与审核](/deposit/bank-card-binding)
-- [银证转账](/deposit/bank-securities-transfer)
-- [DDA自动扣款授权](/deposit/dda-authorization)
-- [eDDA电子授权扣账](/deposit/edda)
-- [FPS转数快](/deposit/fps)
-- [入金方式对比总览](/deposit/methods-overview)
-- [MT103汇款回执](/deposit/mt103-receipt)
-- [网银与电汇入金](/deposit/online-banking-and-wire)
-- [网银转账入金](/deposit/online-banking-transfer)
-- [PayNow即时转账](/deposit/paynow)
-- [支持的银行与入金方式](/deposit/supported-banks)
-- [电汇入金](/deposit/wire-transfer)
-- [Wise国际汇款](/deposit/wise)
+### 入金前准备
+
+- [银行卡绑定与审核](/deposit/setup/bank-card-binding)
+- [支持银行列表](/deposit/setup/supported-banks)
+
+### 香港账户入金
+
+- [FPS 转数快](/deposit/hk-methods/fps)
+- [eDDA 电子授权扣账](/deposit/hk-methods/edda)
+- [银证转账](/deposit/hk-methods/bank-securities-transfer)
+- [网银转账入金](/deposit/hk-methods/online-banking-transfer)
+- [ATM 与柜台入金](/deposit/hk-methods/atm-and-counter)
+- [支票入金](/deposit/hk-methods/cheque)
+- [电汇入金](/deposit/hk-methods/wire-transfer)
+
+### 新加坡账户入金
+
+- [DDA 自动扣款授权](/deposit/sg-methods/dda-authorization)
+- [PayNow 即时转账](/deposit/sg-methods/paynow)
+- [Wise 国际汇款](/deposit/sg-methods/wise)
+- [网银与电汇入金](/deposit/sg-methods/online-banking-and-wire)
+
+### 参考
+
+- [入金方式](/deposit/methods-overview)
+- [MT103 汇款回执](/deposit/mt103-receipt)

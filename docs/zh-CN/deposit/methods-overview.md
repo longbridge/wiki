@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# 入金方式对比总览
+# 入金方式
 
 香港和新加坡账户的各类入金方式、支持货币、到账时间、手续费及限制说明。
 
@@ -14,10 +14,11 @@ sidebar: true
 | 入金方式 | 到账时间 | 手续费 |
 |---------|---------|--------|
 | [银证转账](/deposit/银证转账) | 即时 | 免费 |
-| [eDDA](/deposit/edda) | 即时 | 免费 |
-| [FPS 转数快](/deposit/fps) | 约 2 小时 | 免费 |
+| [eDDA](/deposit/hk-methods/edda) | 即时 | 免费 |
+| [FPS 转数快](/deposit/hk-methods/fps) | 约 2 小时 | 免费 |
 | [网银转账](/deposit/网银转账入金) | 1-2 个工作日 | 视银行而定 |
-| [ATM / 柜台 / 支票](/deposit/atm-and-counter-cheque) | 1-2 个工作日 | 视银行而定 |
+| [ATM / 柜台](/deposit/hk-methods/atm-and-counter) | 1–3 个工作日 | 视银行而定 |
+| [支票](/deposit/hk-methods/cheque) | 约 2 个工作日 | 视银行而定 |
 | [信用卡入金](/deposit/信用卡入金) | — | 见方式说明 |
 | [电汇](/deposit/电汇入金) | 2-5 个工作日 | 视银行而定 |
 
@@ -33,18 +34,18 @@ sidebar: true
 
 | 入金方式 | 到账时间 | 手续费 | 特点 |
 |---------|---------|--------|------|
-| [PayNow](/deposit/paynow) | 最快 5 分钟内 | 免费 | 扫码支付，每次需使用新二维码 |
-| [DDA](/deposit/dda-authorization) | 实时到账 | 免费 | 一次绑定，支持 5 家新加坡银行 |
+| [PayNow](/deposit/sg-methods/paynow) | 最快 5 分钟内 | 免费 | 扫码支付，每次需使用新二维码 |
+| [DDA](/deposit/sg-methods/dda-authorization) | 实时到账 | 免费 | 一次绑定，支持 5 家新加坡银行 |
 | [网银转账](/deposit/网银与电汇入金) | 1-3 个工作日 | 银行可能收费 | 支持 FAST、SWIFT 等转账方式 |
-| [Wise](/deposit/wise) | 1-3 个工作日 | 银行可能收费 | 需上传账户证明 |
+| [Wise](/deposit/sg-methods/wise) | 1-3 个工作日 | 银行可能收费 | 需上传账户证明 |
 
-DDA 支持的银行：DBS/POSB、UOB、OCBC、Maybank、HSBC Singapore。详见 [DDA 自动扣款授权](/deposit/dda-authorization)。
+DDA 支持的银行：DBS/POSB、UOB、OCBC、Maybank、HSBC Singapore。详见 [DDA 自动扣款授权](/deposit/sg-methods/dda-authorization)。
 
 ### USD（美元）
 
 | 入金方式 | 到账时间 | 手续费 |
 |---------|---------|--------|
-| [Wise](/deposit/wise) | 1-3 个工作日 | 银行可能收费 |
+| [Wise](/deposit/sg-methods/wise) | 1-3 个工作日 | 银行可能收费 |
 | [网银转账](/deposit/网银与电汇入金) | 1-3 个工作日 | 银行可能收费 |
 
 ### HKD（港元）

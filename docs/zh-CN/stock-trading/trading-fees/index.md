@@ -34,6 +34,5 @@ sidebar: true
 
 ## 本章导航
 
-- [交易收费](/stock-trading/交易费用/交易收费) — 完整的佣金表、平台费、监管费详情
-- [港股佣金计算示例](/stock-trading/交易费用/港股佣金计算示例) — 不同金额的港股交易成本计算
-- [美股佣金计算示例](/stock-trading/交易费用/美股佣金计算示例) — 不同股数的美股交易成本计算
+- [交易收费](/stock-trading/trading-fees/fee-schedule) — 完整的佣金表、平台费、监管费详情
+- [我的费率](/stock-trading/trading-fees/my-fees) — 查看账户实际适用的个人费率

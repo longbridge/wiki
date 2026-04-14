@@ -79,6 +79,7 @@ function extractTitle(filePath: string, fallback: string): string {
 // 目录显示名称映射（英文目录名 → 中文显示名）
 const dirDisplayNames: Record<string, string> = {
   'getting-started': '新手入门',
+  'app-guide': 'App 导览',
   'account': '开户与账户',
   'deposit': '入金',
   'withdrawal': '出金',
@@ -93,6 +94,24 @@ const dirDisplayNames: Record<string, string> = {
   'rewards': '活动与奖励',
   'compliance-and-tax': '合规与税务',
   'troubleshooting': '故障排查',
+  // account 子目录
+  'opening': '开户',
+  'account-types': '账户类型',
+  'fees-and-privileges': '费率与权益',
+  // deposit 子目录
+  'setup': '入金前准备',
+  'hk-methods': '香港账户入金',
+  'sg-methods': '新加坡账户入金',
+  // derivatives 子目录
+  'options': '期权',
+  // funds-and-wealth 子目录
+  'funds': '基金投资',
+  'cash-plus': '余额通',
+  // rewards 子目录
+  'task-center': '任务中心',
+  'referral': '邀请与推荐',
+  'activities': '活动',
+  'rewards-mall': '奖励与兑换',
   // stock-trading 子目录
   'trading-hours-and-rules': '交易时间与规则',
   'trading-fees': '交易费用',
@@ -100,6 +119,26 @@ const dirDisplayNames: Record<string, string> = {
   'desktop-tools': '桌面端工具',
   'stock-transfer': '股票转仓',
   'order-types': '订单类型',
+}
+
+// 顶级分类图标（Lucide SVG inline，stroke="currentColor" 自动继承主题色）
+const SIDEBAR_ICONS: Record<string, string> = {
+  'getting-started':         `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>`,
+  'app-guide':               `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`,
+  'account':                 `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>`,
+  'deposit':                 `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>`,
+  'withdrawal':              `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 9-6-6-6 6"/><path d="M12 3v14"/><path d="M5 21h14"/></svg>`,
+  'transfers-and-fx':        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>`,
+  'stock-trading':           `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
+  'derivatives':             `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`,
+  'ipo':                     `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  'margin':                  `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>`,
+  'funds-and-wealth':        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+  'market-data':             `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>`,
+  'portfolio-and-statements':`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><line x1="10" x2="14" y1="13" y2="13"/><line x1="10" x2="14" y1="17" y2="17"/></svg>`,
+  'rewards':                 `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>`,
+  'compliance-and-tax':      `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>`,
+  'troubleshooting':         `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
 }
 
 // 跳过的目录（语言子目录 + 文档中心入口目录）
@@ -117,7 +156,8 @@ function loadOrder(dir: string): string[] {
 }
 
 // 递归扫描目录生成侧边栏 items
-function generateSidebarItemsFromDir(dir: string, base: string): any[] {
+// depth=0：顶级分类的直接子目录（二级），展开；depth>=1：三级及以下，折叠
+function generateSidebarItemsFromDir(dir: string, base: string, depth = 0): any[] {
   const items: any[] = []
 
   try {
@@ -140,16 +180,18 @@ function generateSidebarItemsFromDir(dir: string, base: string): any[] {
       const stat = fs.statSync(fullPath)
 
       if (stat.isDirectory()) {
-        const link = `${base}/${entry}/`
-        const subItems = generateSidebarItemsFromDir(fullPath, `${base}/${entry}`)
+        const subItems = generateSidebarItemsFromDir(fullPath, `${base}/${entry}`, depth + 1)
         const displayName = dirDisplayNames[entry] || entry
+        const hasIndex = fs.existsSync(path.join(fullPath, 'index.md'))
 
-        items.push({
+        const groupItem: any = {
           text: displayName,
-          link,
-          collapsed: false,
+          collapsed: true,
           items: subItems,
-        })
+        }
+        if (hasIndex) groupItem.link = `${base}/${entry}/`
+
+        items.push(groupItem)
       } else if (entry.endsWith('.md') && entry !== 'index.md') {
         const slug = entry.replace(/\.md$/, '')
         const link = `${base}/${slug}`
@@ -170,6 +212,7 @@ function generateSidebarItemsFromDir(dir: string, base: string): any[] {
 // 分类展示顺序（文档中心侧边栏按此顺序排列）
 const categoryOrder = [
   'getting-started',
+  'app-guide',
   'account',
   'deposit',
   'withdrawal',
@@ -209,8 +252,10 @@ function generateSidebar() {
     .map(dir => {
       const dirPath = path.join(zhCNRoot, dir)
       const items = generateSidebarItemsFromDir(dirPath, `/${dir}`)
+      const iconSvg = SIDEBAR_ICONS[dir]
+      const iconHtml = iconSvg ? `<span class="sidebar-item-icon">${iconSvg}</span>` : ''
       return {
-        text: dirDisplayNames[dir] || dir,
+        text: `${iconHtml}${dirDisplayNames[dir] || dir}`,
         link: `/${dir}/`,
         collapsed: false,
         items,

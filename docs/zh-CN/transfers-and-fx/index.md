@@ -11,6 +11,5 @@ sidebar: true
 
 - [自动还款](/transfers-and-fx/auto-repayment)
 - [跨账号划转](/transfers-and-fx/cross-account-transfer)
-- [香港货币兑换](/transfers-and-fx/hk-fx)
+- [货币兑换](/transfers-and-fx/hk-fx)
 - [主子账户资金划转](/transfers-and-fx/master-sub-transfer)
-- [新加坡货币兑换](/transfers-and-fx/sg-fx)

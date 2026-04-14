@@ -9,29 +9,45 @@ sidebar: true
 
 ## 本章导航
 
-- [开户礼包与激活奖励](/rewards/account-opening-rewards)
-- [资产保留奖励](/rewards/asset-retention)
-- [权益与产品](/rewards/benefits)
-- [助力活动](/rewards/boost)
-- [卡券系统](/rewards/coupon-system)
-- [每日签到](/rewards/daily-check-in)
-- [活动资格说明](/rewards/eligibility)
-- [秒杀活动](/rewards/flash-sale)
-- [LB Café](/rewards/lb-cafe)
-- [抽奖活动](/rewards/lucky-draw)
-- [实物奖品](/rewards/physical-prizes)
-- [猜涨跌](/rewards/predict-market)
-- [道具系统](/rewards/props-system)
-- [兑换商城](/rewards/redemption-mall)
-- [邀请活动](/rewards/referral-activity)
-- [邀请中心](/rewards/referral-center)
-- [邀请关系](/rewards/referral-relationship)
-- [奖励记录](/rewards/rewards-history)
+### 概览
+
 - [奖励系统概览](/rewards/rewards-overview)
-- [任务包](/rewards/task-bundle)
-- [任务中心概览](/rewards/task-center)
-- [任务币](/rewards/task-coins)
-- [任务条件说明](/rewards/task-conditions)
-- [交易挑战](/rewards/trading-challenge)
-- [交易排名](/rewards/trading-ranking)
-- [交易红包](/rewards/trading-red-packet)
+- [权益与产品](/rewards/benefits)
+- [活动资格说明](/rewards/eligibility)
+- [专享特权](/rewards/exclusive-privileges)
+
+### 任务中心
+
+- [任务中心概览](/rewards/task-center/task-center)
+- [任务包](/rewards/task-center/task-bundle)
+- [任务币](/rewards/task-center/task-coins)
+- [任务条件说明](/rewards/task-center/task-conditions)
+
+### 邀请与推荐
+
+- [邀请中心](/rewards/referral/referral-center)
+- [邀请活动](/rewards/referral/referral-activity)
+- [邀请关系](/rewards/referral/referral-relationship)
+
+### 活动
+
+- [开户礼包与激活奖励](/rewards/activities/account-opening-rewards)
+- [资产保留奖励](/rewards/activities/asset-retention)
+- [每日签到](/rewards/activities/daily-check-in)
+- [交易挑战](/rewards/activities/trading-challenge)
+- [交易排名](/rewards/activities/trading-ranking)
+- [交易红包](/rewards/activities/trading-red-packet)
+- [抽奖活动](/rewards/activities/lucky-draw)
+- [秒杀活动](/rewards/activities/flash-sale)
+- [猜涨跌](/rewards/activities/predict-market)
+- [助力活动](/rewards/activities/boost)
+- [LB Café](/rewards/activities/lb-cafe)
+
+### 奖励与兑换
+
+- [卡券系统](/rewards/rewards-mall/coupon-system)
+- [我的卡券](/rewards/rewards-mall/my-coupons)
+- [道具系统](/rewards/rewards-mall/props-system)
+- [兑换商城](/rewards/rewards-mall/redemption-mall)
+- [实物奖品](/rewards/rewards-mall/physical-prizes)
+- [奖励记录](/rewards/rewards-mall/rewards-history)
