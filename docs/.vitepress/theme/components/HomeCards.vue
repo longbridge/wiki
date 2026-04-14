@@ -3,11 +3,12 @@
 
     <!-- ── Hero ── -->
     <section class="hero">
+      <HomeBackground />
       <div class="hero-text">
-        <p class="hero-eyebrow">Longbridge · 用户知识库</p>
-        <h1 class="hero-h1">遇到问题？<br>这里有答案</h1>
+        <p class="hero-eyebrow">账户 · 资金 · 交易 · 产品功能</p>
+        <h1 class="hero-h1"><span class="shimmer-text">Longbridge Wiki</span></h1>
         <p class="hero-sub">
-          涵盖开户、入金、交易、合规税务的操作指引，帮你在长桥上快速完成任何任务。
+          账户开设、资金进出、交易规则——每一步操作都有说明
         </p>
         <!-- 新用户专属入口 -->
         <div class="hero-onboard">
@@ -64,6 +65,21 @@
           <!-- Yellow star accent -->
           <polygon points="342,52 345.5,62 356,62 347.5,68.5 350.5,79 342,72.5 333.5,79 336.5,68.5 328,62 338.5,62" fill="#FFC800"/>
         </svg>
+      </div>
+    </section>
+
+    <!-- ── 统计数据 ── -->
+    <section class="stats-band">
+      <div class="stats-inner">
+        <div v-for="stat in stats" :key="stat.label" class="stat-item">
+          <template v-if="stat.isMarkets">
+            <div class="stat-markets">
+              <span v-for="m in markets" :key="m.code" class="flag-icon" v-html="flagSvgs[m.code]" />
+            </div>
+          </template>
+          <span v-else class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
       </div>
     </section>
 
@@ -375,6 +391,26 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress'
+import HomeBackground from './HomeBackground.vue'
+
+const flagSvgs: Record<string, string> = {
+  sg: `<svg width="28" height="19" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="新加坡"><rect width="24" height="8" fill="#EF3340"/><rect y="8" width="24" height="8" fill="#fff"/><circle cx="6" cy="4" r="3.2" fill="#fff"/><circle cx="7.5" cy="4" r="2.5" fill="#EF3340"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(13.5,1.5) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(15.2,3) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(14.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(12.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(11.8,3) scale(0.62)"/></svg>`,
+  hk: `<svg width="28" height="19" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="香港"><rect width="24" height="16" fill="#DE2910"/><g transform="translate(12,8)"><path d="M0,0 C0.8,-1.5 1,-4 0,-6.5 C-1,-4 -0.8,-1.5 0,0" fill="#fff" transform="rotate(18)"/><path d="M0,0 C0.8,-1.5 1,-4 0,-6.5 C-1,-4 -0.8,-1.5 0,0" fill="#fff" transform="rotate(90)"/><path d="M0,0 C0.8,-1.5 1,-4 0,-6.5 C-1,-4 -0.8,-1.5 0,0" fill="#fff" transform="rotate(162)"/><path d="M0,0 C0.8,-1.5 1,-4 0,-6.5 C-1,-4 -0.8,-1.5 0,0" fill="#fff" transform="rotate(234)"/><path d="M0,0 C0.8,-1.5 1,-4 0,-6.5 C-1,-4 -0.8,-1.5 0,0" fill="#fff" transform="rotate(306)"/></g></svg>`,
+  us: `<svg width="28" height="19" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="美国"><rect width="24" height="16" fill="#B22234"/><rect y="1.23" width="24" height="1.23" fill="#fff"/><rect y="3.69" width="24" height="1.23" fill="#fff"/><rect y="6.15" width="24" height="1.23" fill="#fff"/><rect y="8.62" width="24" height="1.23" fill="#fff"/><rect y="11.08" width="24" height="1.23" fill="#fff"/><rect y="13.54" width="24" height="1.23" fill="#fff"/><rect width="9.6" height="8.62" fill="#3C3B6E"/><g fill="#fff"><circle cx="1.6" cy="1.43" r="0.5"/><circle cx="3.2" cy="1.43" r="0.5"/><circle cx="4.8" cy="1.43" r="0.5"/><circle cx="6.4" cy="1.43" r="0.5"/><circle cx="8" cy="1.43" r="0.5"/><circle cx="2.4" cy="2.87" r="0.5"/><circle cx="4" cy="2.87" r="0.5"/><circle cx="5.6" cy="2.87" r="0.5"/><circle cx="7.2" cy="2.87" r="0.5"/><circle cx="1.6" cy="4.31" r="0.5"/><circle cx="3.2" cy="4.31" r="0.5"/><circle cx="4.8" cy="4.31" r="0.5"/><circle cx="6.4" cy="4.31" r="0.5"/><circle cx="8" cy="4.31" r="0.5"/><circle cx="2.4" cy="5.74" r="0.5"/><circle cx="4" cy="5.74" r="0.5"/><circle cx="5.6" cy="5.74" r="0.5"/><circle cx="7.2" cy="5.74" r="0.5"/><circle cx="1.6" cy="7.18" r="0.5"/><circle cx="3.2" cy="7.18" r="0.5"/><circle cx="4.8" cy="7.18" r="0.5"/><circle cx="6.4" cy="7.18" r="0.5"/><circle cx="8" cy="7.18" r="0.5"/></g></svg>`,
+}
+
+const markets = [
+  { code: 'sg', name: '新加坡' },
+  { code: 'hk', name: '香港' },
+  { code: 'us', name: '美国' },
+]
+
+const stats = [
+  { value: '17',   label: '知识主题' },
+  { value: '165+', label: '操作指南' },
+  { value: '3',    label: '语言版本' },
+  { isMarkets: true, label: '覆盖市场' },
+]
 
 const tasks = [
   { q: '如何从银行卡向账户入金？', path: '/deposit/' },
@@ -410,6 +446,17 @@ const tasks = [
   margin: 0 auto;
 }
 
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
 .feat {
   border-top: 1px solid var(--vp-c-divider);
 }
@@ -433,12 +480,123 @@ const tasks = [
 }
 
 .hero-h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-text-1) 0%,
+    var(--vp-c-text-1) 30%,
+    var(--vp-c-brand-1) 44%,
+    #fff 50%,
+    var(--vp-c-brand-1) 56%,
+    var(--vp-c-text-1) 70%,
+    var(--vp-c-text-1) 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer-sweep 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes shimmer-sweep {
+  0%   { background-position: 160% center; }
+  100% { background-position: -160% center; }
+}
+
+/* ── Stats Band ── */
+.stats-band {
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding: 28px 0;
+}
+
+.stats-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px;
+  position: relative;
+}
+
+.stat-item + .stat-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--vp-c-divider);
+}
+
+.stat-value {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--vp-c-text-1);
-  margin: 0 0 20px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.stat-markets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flag-icon {
+  display: inline-flex;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.25);
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.flag-icon svg {
+  display: block;
+  width: 28px;
+  height: 19px;
+}
+
+@media (max-width: 640px) {
+  .stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 0;
+  }
+
+  .stat-item:nth-child(odd) + .stat-item::before {
+    display: none;
+  }
+
+  .stat-item:nth-child(even)::before {
+    display: block !important;
+  }
 }
 
 .hero-sub {

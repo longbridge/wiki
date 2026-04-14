@@ -2,6 +2,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './vars.css'
 import './sidebar.css'
+import Layout from './layouts/Layout.vue'
 import HomeCards from './components/HomeCards.vue'
 import HomeCardsA from './components/HomeCards_A.vue'
 import HomeCardsB from './components/HomeCards_B.vue'
@@ -11,6 +12,7 @@ import TabItem from './components/TabItem.vue'
 
 export default {
   extends: DefaultTheme,
+  Layout,
   enhanceApp({ app }) {
     app.component('HomeCards', HomeCards)
     app.component('HomeCardsA', HomeCardsA)
