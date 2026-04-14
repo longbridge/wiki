@@ -12,7 +12,7 @@ DDA（Direct Debit Authorisation）是新加坡银行与长桥证券合作的授
 | 项目 | 说明 |
 |------|------|
 | 支持币种 | 新加坡元（SGD） |
-| 到账时间 | 实时到账 |
+| 预计到账时间 | 实时到账 |
 | 手续费 | 免费 |
 
 ## 第一步：完成 DDA 授权
@@ -48,3 +48,10 @@ DDA（Direct Debit Authorisation）是新加坡银行与长桥证券合作的授
 
 - DDA 不支持出金
 - 银行端证件信息需与长桥开户信息一致
+
+---
+
+## 相关文档
+
+- [入金方式总览](/deposit/methods-overview) — 对比所有入金方式的预计到账时间与手续费
+- [入金未到账排查](/troubleshooting/deposit-not-received) — 超出预期时间未到账时的排查步骤
