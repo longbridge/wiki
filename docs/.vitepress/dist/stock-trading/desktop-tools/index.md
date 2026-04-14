@@ -18,7 +18,7 @@ sidebar: true
 
 ## 本节文档
 
-- [图表交易](/stock-trading/桌面端工具/图表交易) — K 线图设置、技术指标、图表下单
-- [市场深度](/stock-trading/桌面端工具/市场深度) — 盘口数据、委单深度、实时报价
-- [组件布局与拼接](/stock-trading/桌面端工具/组件布局与拼接) — 自定义工作区、窗口拼接
-- [桌面端快捷键](/stock-trading/桌面端工具/桌面端快捷键) — 键盘快捷操作速查表
+- [图表交易](/stock-trading/desktop-tools/chart-trading) — K 线图设置、技术指标、图表下单
+- [市场深度](/stock-trading/desktop-tools/market-depth) — 盘口数据、委单深度、实时报价
+- [自定义布局](/stock-trading/desktop-tools/custom-layout) — 自定义工作区、窗口拼接
+- [桌面端快捷键](/stock-trading/desktop-tools/keyboard-shortcuts) — 键盘快捷操作速查表
