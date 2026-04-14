@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# 基金收费规则
+# 基金收费
 
 长桥平台基金申购赎回费率为零，管理费和托管费由基金公司收取并在净值中扣除。
 
@@ -41,4 +41,4 @@ sidebar: true
 
 ## 相关文档
 
-- [基金买入与卖出规则](/funds-and-wealth/基金买入与卖出规则) — 交易规则与时间限制
+- [基金交易规则](/funds-and-wealth/funds/fund-trading-rules) — T 日定义、买卖截止时间与撤单规则

@@ -21,4 +21,4 @@ sidebar: true
 - [搜索](/app-guide/search)
 - [动态](/app-guide/feed)
 - [股单](/app-guide/stock-notes)
-- [Longbridge AI 信息助手](/app-guide/lb-ai)
+- [Longbridge AI](/app-guide/lb-ai)

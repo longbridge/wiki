@@ -11,13 +11,18 @@ sidebar: true
 
 ### 普通订单
 
-- [FOK 与 IOC 订单](/stock-trading/order-types/fok-and-ioc)
-- [碎股单](/订单类型/普通订单/碎股单)
-- [限价单与市价单](/订单类型/普通订单/限价单与市价单)
+- [限价单与市价单](/stock-trading/order-types/limit-and-market)
+- [碎股单](/stock-trading/order-types/odd-lot)
+
 ### 条件订单
 
-- [到价反弹订单](/订单类型/条件订单/到价反弹订单)
-- [附加订单](/订单类型/条件订单/附加订单)
+- [到价反弹订单](/stock-trading/order-types/bounce-order)
+- [附加订单](/stock-trading/order-types/conditional-order)
+
 ### 策略订单
 
-- [网格交易](/订单类型/策略订单/网格交易)
+- [网格交易](/stock-trading/order-types/grid-trading)
+
+### 操作指南
+
+- [撤销订单](/stock-trading/order-types/cancel-order)

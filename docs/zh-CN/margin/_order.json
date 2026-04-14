@@ -1,9 +1,7 @@
 [
-  "limit-and-collateral",
-  "currency-collateral",
-  "margin-call",
+  "margin-requirements",
+  "credit-limit",
   "interest-rules",
   "risk-control",
-  "reduce-limit",
   "faq"
 ]

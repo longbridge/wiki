@@ -9,7 +9,7 @@ sidebar: true
 
 ## 为什么要了解公司行动
 
-当你持有的股票发生**分红**、**配送股**、**拆合股**等事件时，这些都是公司行动。长桥会自动处理大部分动作（如现金分红自动入账），但某些行动（如供股、选股派息）需要你**主动应对**——否则可能失去收益或承受其他影响。
+当你持有的股票发生**分红**、**配送股**、**拆合股**等事件时，这些都是公司行动。长桥会自动处理大部分动作（如现金分红自动入账），但某些行动（如供股、选股选息）需要你**主动应对**——否则可能失去收益或承受其他影响。
 
 **关键场景**：
 - 你持有的股票有分红 → 需要了解如何收取，是否有税务影响
@@ -20,14 +20,18 @@ sidebar: true
 
 ### 现金与股息相关
 
-- [派息与特殊派息](/stock-trading/分红与公司行动/派息与特殊派息) — 现金分红的结算、税务、时间线
-- [送股与选股派息](/stock-trading/分红与公司行动/送股与选股派息) — 送股权利、选股派息规则、权益登记日
+- [派息](/stock-trading/corporate-actions/dividend) — 现金分红的结算、税务、时间线
+- [选股选息](/stock-trading/corporate-actions/scrip-dividend) — 送股权利、选股选息规则、权益登记日
 
 ### 融资与股本变动
 
-- [供股权派发](/stock-trading/分红与公司行动/供股权派发) — 供股权获取、行使、交易、放弃规则
-- [拆合股](/stock-trading/分红与公司行动/拆合股) — 拆股合股对持仓与交易的影响
+- [供股要约](/stock-trading/corporate-actions/rights-issue) — 供股权获取、行使、交易、放弃规则
+- [拆合股](/stock-trading/corporate-actions/stock-split) — 拆股合股对持仓与交易的影响
+
+### 股东会议
+
+- [股东大会](/stock-trading/corporate-actions/general-meeting) — 股东大会类型、参与资格、投票机制
 
 ### 风险管理
 
-- [公司行动对长期订单影响](/stock-trading/分红与公司行动/公司行动对长期订单影响) — 分红、拆合股对 GTC/GTD 单的影响
+- [长期订单影响](/stock-trading/corporate-actions/impact-on-orders) — 分红、拆合股对 GTC/GTD 单的影响

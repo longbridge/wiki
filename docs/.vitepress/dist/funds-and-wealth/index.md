@@ -15,9 +15,9 @@ sidebar: true
 
 ### 基金投资
 
-- [基金基础与类型](/funds-and-wealth/funds/fund-basics)
-- [基金买入与卖出规则](/funds-and-wealth/funds/fund-trading-rules)
-- [基金收费规则](/funds-and-wealth/funds/fund-fees)
+- [基金](/funds-and-wealth/funds/fund-basics)
+- [基金交易规则](/funds-and-wealth/funds/fund-trading-rules)
+- [基金收费](/funds-and-wealth/funds/fund-fees)
 - [基金定投](/funds-and-wealth/funds/fund-regular-investment)
 - [基金常见问题](/funds-and-wealth/funds/fund-faq)
 

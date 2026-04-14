@@ -5,17 +5,18 @@ sidebar: true
 
 # 股票交易
 
-本章节涵盖长桥股票交易全流程，包括港股/美股/新加坡市场的交易时段与结算规则、各类订单类型、交易费用、分红与公司行动处理、股票转仓，以及桌面端工具使用说明。
+本章节涵盖长桥股票交易全流程，包括港股/美股/新加坡市场的交易时段与结算规则、各类订单类型、交易费用、公司行动处理、股票转仓，以及桌面端工具使用说明。
 
 ## 本章导航
 
 ### 公司行动
 
-- [派息与特殊派息](/stock-trading/corporate-actions/dividend)
-- [公司行动对长期订单影响](/stock-trading/corporate-actions/impact-on-orders)
-- [供股](/stock-trading/corporate-actions/rights-issue)
-- [送股与选股派息](/stock-trading/corporate-actions/scrip-dividend)
+- [派息](/stock-trading/corporate-actions/dividend)
+- [长期订单影响](/stock-trading/corporate-actions/impact-on-orders)
+- [供股要约](/stock-trading/corporate-actions/rights-issue)
+- [选股选息](/stock-trading/corporate-actions/scrip-dividend)
 - [拆合股](/stock-trading/corporate-actions/stock-split)
+- [股东大会](/stock-trading/corporate-actions/general-meeting)
 ### 桌面端工具
 
 - [图表交易](/stock-trading/desktop-tools/chart-trading)
@@ -25,9 +26,8 @@ sidebar: true
 ### 订单类型
 
 - [到价反弹订单](/stock-trading/order-types/bounce-order)
-- [如何撤销订单](/stock-trading/order-types/cancel-order)
+- [撤销订单](/stock-trading/order-types/cancel-order)
 - [附加订单](/stock-trading/order-types/conditional-order)
-- [FOK与IOC订单](/stock-trading/order-types/fok-and-ioc)
 - [网格交易](/stock-trading/order-types/grid-trading)
 - [限价单与市价单](/stock-trading/order-types/limit-and-market)
 - [碎股单](/stock-trading/order-types/odd-lot)

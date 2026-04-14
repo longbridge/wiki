@@ -12,5 +12,5 @@ sidebar: true
 - [网银出金](/withdrawal/hk-online-banking)
 - [资金退款](/withdrawal/refund)
 - [标准账户出金](/withdrawal/standard-account-guide)
-- [出金到香港银行卡](/withdrawal/to-hk-bank-card)
+- [银行卡出金](/withdrawal/to-hk-bank-card)
 - [电汇出金](/withdrawal/wire-transfer)

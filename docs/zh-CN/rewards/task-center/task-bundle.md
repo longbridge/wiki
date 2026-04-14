@@ -94,5 +94,5 @@ sidebar: true
 
 ## 相关文档
 
-- [任务中心概览](/rewards/任务中心概览) — 任务系统
+- [任务中心](/rewards/task-center/task-center) — 任务系统
 - [任务币](/rewards/任务币) — 任务收益

@@ -5,11 +5,7 @@ sidebar: true
 
 # 交易收费
 
-[HK 收费详情](https://longbridge.com/hk/zh-CN/rate)
-
-[SG 收费详情](https://longbridge.com/sg/zh-CN/pricing)
-
-[费率计算器](https://longbridgehk.com/calc)
+长桥香港及新加坡账户的默认标准交易费率，涵盖港股、美股、期权及融资收费，并附佣金计算示例。
 
 ## 长桥香港
 
@@ -207,3 +203,7 @@ sidebar: true
 | 7 月 13 日 | −1,338.34 | 1,338.34 × 5.75% ÷ 365 |
 | 7 月 14 日 | −48.78 | 48.78 × 5.75% ÷ 365 |
 | 7 月 15 日 | −48.78 | 48.78 × 5.75% ÷ 365 |
+
+---
+
+[费率计算器](https://longbridgehk.com/calc)

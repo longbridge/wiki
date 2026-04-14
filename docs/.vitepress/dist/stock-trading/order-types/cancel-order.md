@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# 如何撤销订单
+# 撤销订单
 
 已提交但尚未完全成交的订单可以撤销。全部成交或已过期的订单无法撤销。
 
@@ -31,6 +31,8 @@ sidebar: true
 | 到价反弹订单 | ✓ | 触发前可撤销 |
 | 网格交易 | ✓ | 停止网格后，未成交的子订单自动撤销 |
 
+GTC / GTD 订单在拆合股等公司行动发生时会被系统自动取消，详见[长期订单影响](/stock-trading/corporate-actions/impact-on-orders)。
+
 ## 不同时段撤单
 
 **交易时段内**：撤单请求实时发送至交易所，通常秒级完成。
@@ -55,6 +57,6 @@ sidebar: true
 
 ## 相关文档
 
-- [限价单与市价单](/stock-trading/订单类型/限价单与市价单) — 各订单类型特性与选择
-- [港股交易规则与结算](/stock-trading/交易时间与规则/港股交易规则与结算) — 交易时段与撤单规则
-- [美股交易规则与结算](/stock-trading/交易时间与规则/美股交易规则与结算) — 美股交易特性
+- [限价单与市价单](/stock-trading/order-types/limit-and-market) — 各订单类型特性与选择
+- [港股交易规则与结算](/stock-trading/trading-hours-and-rules/hk-trading-rules) — 交易时段与撤单规则
+- [美股交易规则与结算](/stock-trading/trading-hours-and-rules/us-trading-rules) — 美股交易特性

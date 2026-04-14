@@ -3,7 +3,7 @@ layout: doc
 sidebar: true
 ---
 
-# 活动资格说明
+# 活动资格
 
 LongBridge 平台活动并非对所有用户统一开放，每个活动都有明确的参与资格范围。系统通过用户分群（Segment）机制确定哪些账户可以参与，不在资格范围内的用户即使完成任务也不会获得奖励。
 
@@ -68,5 +68,5 @@ A：可能原因：（1）您的朋友通过特定渠道（如邀请链接）注
 
 ## 相关文档
 
-- [奖励系统概览](/rewards/奖励系统概览) — 奖励分配机制
-- [开户礼包与激活奖励](/rewards/开户礼包与激活奖励) — 新用户活动
+- [奖励系统](/rewards/rewards-overview) — 奖励分配机制
+- [开户礼包](/rewards/activities/account-opening-rewards) — 新用户活动

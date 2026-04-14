@@ -108,4 +108,4 @@ Penny Interval Program 允许部分期权以最低 0.01 USD 增量交易。
 
 ## 相关文档
 
-- [如何开通期权交易权限](/derivatives/如何开通期权交易权限) — 开通流程
+- [开通期权交易](/derivatives/options/enable-options) — 开通流程

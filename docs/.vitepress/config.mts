@@ -115,7 +115,7 @@ const dirDisplayNames: Record<string, string> = {
   // stock-trading 子目录
   'trading-hours-and-rules': '交易时间与规则',
   'trading-fees': '交易费用',
-  'corporate-actions': '分红与公司行动',
+  'corporate-actions': '公司行动',
   'desktop-tools': '桌面端工具',
   'stock-transfer': '股票转仓',
   'order-types': '订单类型',

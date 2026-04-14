@@ -11,28 +11,19 @@ sidebar: true
 
 ### 概览
 
-- [奖励系统概览](/rewards/rewards-overview)
+- [奖励系统](/rewards/rewards-overview)
 - [权益与产品](/rewards/benefits)
-- [活动资格说明](/rewards/eligibility)
+- [活动资格](/rewards/eligibility)
 - [专享特权](/rewards/exclusive-privileges)
 
-### 任务中心
+### LB Café
 
-- [任务中心概览](/rewards/task-center/task-center)
-- [任务包](/rewards/task-center/task-bundle)
-- [任务币](/rewards/task-center/task-coins)
-- [任务条件说明](/rewards/task-center/task-conditions)
-
-### 邀请与推荐
-
-- [邀请中心](/rewards/referral/referral-center)
-- [邀请活动](/rewards/referral/referral-activity)
-- [邀请关系](/rewards/referral/referral-relationship)
+- [LB Café](/rewards/lb-cafe)
 
 ### 活动
 
-- [开户礼包与激活奖励](/rewards/activities/account-opening-rewards)
-- [资产保留奖励](/rewards/activities/asset-retention)
+- [开户礼包](/rewards/activities/account-opening-rewards)
+- [留存活动](/rewards/activities/asset-retention)
 - [每日签到](/rewards/activities/daily-check-in)
 - [交易挑战](/rewards/activities/trading-challenge)
 - [交易排名](/rewards/activities/trading-ranking)
@@ -41,7 +32,19 @@ sidebar: true
 - [秒杀活动](/rewards/activities/flash-sale)
 - [猜涨跌](/rewards/activities/predict-market)
 - [助力活动](/rewards/activities/boost)
-- [LB Café](/rewards/activities/lb-cafe)
+
+### 任务中心
+
+- [任务中心](/rewards/task-center/task-center)
+- [任务包](/rewards/task-center/task-bundle)
+- [任务币](/rewards/task-center/task-coins)
+- [任务条件](/rewards/task-center/task-conditions)
+
+### 邀请与推荐
+
+- [邀请中心](/rewards/referral/referral-center)
+- [邀请活动](/rewards/referral/referral-activity)
+- [邀请关系](/rewards/referral/referral-relationship)
 
 ### 奖励与兑换
 

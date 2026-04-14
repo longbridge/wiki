@@ -10,7 +10,7 @@ sidebar: true
 <Tabs groupId="withdrawal-region">
   <TabItem value="hk" label="香港账户" default>
 
-香港账户出金支持 FPS 转数快、网银转账、银证转账三种方式，系统根据银行卡类型自动匹配。操作步骤见 [出金到香港银行卡](/withdrawal/to-hk-bank-card)。
+香港账户出金支持 FPS 转数快、网银转账、银证转账三种方式，系统根据银行卡类型自动匹配。操作步骤见 [银行卡出金](/withdrawal/to-hk-bank-card)。
 
 ### FPS 转数快
 
