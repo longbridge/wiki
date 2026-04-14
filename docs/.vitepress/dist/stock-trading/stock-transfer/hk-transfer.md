@@ -53,7 +53,7 @@ sidebar: true
 
 **成本价说明：** 每股成本价为选填项。未填写时按转仓成功当日收盘价计算；已填写后无法修改，如有疑问请联系客服。
 
-各券商转入长桥的详细操作指引请参考 [各券商转入指引](/stock-trading/stock-transfer/broker-transfer-guide)。
+各券商转入长桥的详细操作指引请参考[其他券商转入](/stock-trading/stock-transfer/broker-transfer-guide)。
 
 ### 转出股票
 

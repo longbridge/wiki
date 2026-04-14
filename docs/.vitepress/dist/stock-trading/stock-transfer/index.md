@@ -10,7 +10,7 @@ sidebar: true
 ## 本章导航
 
 - [股票转仓](/stock-trading/stock-transfer/hk-transfer) — 转入转出操作、接收方信息、处理时间（含香港与新加坡账户）
-- [各券商转入指引](/stock-trading/stock-transfer/broker-transfer-guide) — 富途、华盛、老虎、盈透等 14 家券商的具体操作步骤
+- [其他券商转入](/stock-trading/stock-transfer/broker-transfer-guide) — 富途、华盛、老虎、盈透等 14 家券商的具体操作步骤
 - [主子账户股票划转](/stock-trading/stock-transfer/master-sub-transfer) — 长桥主账户与子账户之间划转股票
 - [实物股票](/stock-trading/stock-transfer/physical-shares) — 实物股票转入说明
-- [转仓常见问题](/stock-trading/stock-transfer/faq)
+- [常见问题](/stock-trading/stock-transfer/faq)

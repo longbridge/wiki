@@ -5,7 +5,7 @@ sidebar: true
 
 # 衍生品
 
-本章节涵盖衍生品相关知识与操作，包括如何开通期权交易权限、美股期权基础、买方与卖方策略、期权行情字段介绍、延长时段交易，以及港股窝轮与牛熊证的核心概念。
+本章节涵盖衍生品相关知识与操作，包括开通期权交易、美股期权基础、买方与卖方策略、期权行情字段介绍、延长时段交易，以及港股窝轮与牛熊证的核心概念。
 
 ## 本章导航
 
@@ -17,7 +17,7 @@ sidebar: true
 ### 期权
 
 - [期权基础](/derivatives/options/options-basics)
-- [如何开通期权交易权限](/derivatives/options/enable-options)
+- [开通期权交易](/derivatives/options/enable-options)
 - [期权买方](/derivatives/options/options-buyer)
 - [期权卖方](/derivatives/options/options-seller)
 - [期权策略](/derivatives/options/options-strategies)

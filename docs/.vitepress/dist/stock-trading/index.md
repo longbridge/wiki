@@ -33,8 +33,8 @@ sidebar: true
 - [碎股单](/stock-trading/order-types/odd-lot)
 ### 股票转仓
 
-- [各券商转入指引](/stock-trading/stock-transfer/broker-transfer-guide)
-- [转仓常见问题](/stock-trading/stock-transfer/faq)
+- [其他券商转入](/stock-trading/stock-transfer/broker-transfer-guide)
+- [常见问题](/stock-trading/stock-transfer/faq)
 - [香港股票转仓](/stock-trading/stock-transfer/hk-transfer)
 - [主子账户股票划转](/stock-trading/stock-transfer/master-sub-transfer)
 - [实物股票](/stock-trading/stock-transfer/physical-shares)
