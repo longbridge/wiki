@@ -505,6 +505,7 @@ const tasks = [
   color: transparent;
   animation: shimmer-sweep 4s ease-in-out infinite;
   display: inline-block;
+  padding-bottom: 0.18em;
 }
 
 @keyframes shimmer-sweep {

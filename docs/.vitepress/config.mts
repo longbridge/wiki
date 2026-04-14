@@ -344,8 +344,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '© 2024 Longbridge. All rights reserved.',
-      copyright: 'Made with VitePress',
+      message: '© 2026 Longbridge. All rights reserved.',
     },
   },
 
