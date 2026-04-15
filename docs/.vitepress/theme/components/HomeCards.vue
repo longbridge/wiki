@@ -377,10 +377,22 @@ const tasks = [
 </script>
 
 <style scoped>
-/* ── Tokens ── */
+/* ── Tokens: always #1b1b1f dark like open.longbridge.com ── */
 .home {
-  --brand: #00b8b8;
-  --brand-soft: rgba(0, 184, 184, 0.08);
+  background: #1b1b1f;
+  /* Force dark-mode color tokens regardless of system/user theme */
+  --vp-c-text-1: rgba(255, 255, 255, 0.86);
+  --vp-c-text-2: rgba(235, 235, 235, 0.60);
+  --vp-c-text-3: rgba(235, 235, 235, 0.38);
+  --vp-c-divider: #2e2e32;
+  --vp-c-bg: #1b1b1f;
+  --vp-c-bg-soft: #252529;
+  --vp-c-brand-1: #00f0c4;
+  --vp-c-brand-2: #32eadc;
+  --vp-c-brand-3: #2ed4c7;
+  --vp-c-brand-soft: rgba(0, 240, 196, 0.12);
+  --brand: #00f0c4;
+  --brand-soft: rgba(0, 240, 196, 0.12);
   --gutter: clamp(24px, 5vw, 80px);
   --section-gap: clamp(48px, 7vw, 96px);
   --max-w: min(1160px, 100%);

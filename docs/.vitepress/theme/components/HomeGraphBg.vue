@@ -207,7 +207,7 @@ onMounted(() => {
     if (W === 0 || H === 0) { rafId = requestAnimationFrame(frame); return }
     ctx.clearRect(0, 0, W, H)
 
-    const dark    = document.documentElement.classList.contains('dark')
+    const dark    = true  // homepage always uses #1b1b1f dark bg
     const elapsed = now - t0
     const phase   = (elapsed % CYCLE_MS) / CYCLE_MS
     const cycle   = Math.floor(elapsed / CYCLE_MS)

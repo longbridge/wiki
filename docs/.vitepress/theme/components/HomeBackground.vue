@@ -28,7 +28,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0, 184, 184, 0.14) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0, 240, 196, 0.10) 1px, transparent 1px);
   background-size: 28px 28px;
   background-position: 14px 14px;
 }
@@ -45,7 +45,7 @@
   width: 58%;
   top: -42%;
   right: -6%;
-  background: radial-gradient(circle at 40% 40%, rgba(0, 184, 184, 0.28) 0%, transparent 66%);
+  background: radial-gradient(circle at 40% 40%, rgba(0, 240, 196, 0.22) 0%, transparent 66%);
   filter: blur(52px);
   animation: drift-a 7s ease-in-out infinite alternate;
 }
@@ -55,7 +55,7 @@
   width: 48%;
   bottom: -38%;
   left: -4%;
-  background: radial-gradient(circle at 55% 55%, rgba(0, 184, 184, 0.20) 0%, transparent 66%);
+  background: radial-gradient(circle at 55% 55%, rgba(0, 240, 196, 0.15) 0%, transparent 66%);
   filter: blur(68px);
   animation: drift-b 9s ease-in-out infinite alternate;
 }
@@ -65,7 +65,7 @@
   width: 34%;
   top: 8%;
   left: 31%;
-  background: radial-gradient(circle at 50% 45%, rgba(196, 240, 234, 0.28) 0%, transparent 64%);
+  background: radial-gradient(circle at 50% 45%, rgba(50, 234, 220, 0.20) 0%, transparent 64%);
   filter: blur(80px);
   animation: drift-c 5s ease-in-out infinite alternate;
 }
@@ -90,20 +90,4 @@
   100% { transform: translate(14%, -16%) scale(0.92); }
 }
 
-/* ── Dark mode ── */
-html.dark .mesh-bg::before {
-  background-image: radial-gradient(circle, rgba(0, 240, 196, 0.10) 1px, transparent 1px);
-}
-
-html.dark .orb-a {
-  background: radial-gradient(circle at 40% 40%, rgba(0, 240, 196, 0.22) 0%, transparent 66%);
-}
-
-html.dark .orb-b {
-  background: radial-gradient(circle at 55% 55%, rgba(0, 240, 196, 0.15) 0%, transparent 66%);
-}
-
-html.dark .orb-c {
-  background: radial-gradient(circle at 50% 45%, rgba(50, 234, 220, 0.20) 0%, transparent 64%);
-}
 </style>
