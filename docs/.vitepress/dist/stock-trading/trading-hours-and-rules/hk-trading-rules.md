@@ -106,3 +106,13 @@ sidebar: true
 ## 相关文档
 
 - [限价单与市价单](/stock-trading/订单类型/限价单与市价单) — ELO（增强限价单）、ALO（竞价限价单）和 AO（竞价市价单）详细规则
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [撤销订单](/stock-trading/order-types/cancel-order)
+- [交易市场与规则](/stock-trading/trading-hours-and-rules)
+
+<!-- backlinks:end -->

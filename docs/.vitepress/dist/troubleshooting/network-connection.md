@@ -74,3 +74,11 @@ global 和 mainland 地址均无法连接，但部分第三方服务可以连接
 如需查询本地 IP 地址：
 - [https://www.ip138.com/](https://www.ip138.com/)
 - [https://ip.tool.chinaz.com/](https://ip.tool.chinaz.com/)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

@@ -148,3 +148,12 @@ sidebar: true
 ## 同时持有两个账户
 
 一个客户可以同时申请并使用两个账户，资金相互独立。如需在两个账户之间划转资金，可通过「资金划转与换汇」中的跨账号划转功能操作。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [综合账户](/account/account-types/comprehensive-account)
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

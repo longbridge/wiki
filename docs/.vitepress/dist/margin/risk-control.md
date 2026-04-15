@@ -31,7 +31,7 @@ sidebar: true
 
 股权资产小于等于维持保证金要求。
 
-在此状态下，您的账户必须根据「应追缴保证金」的数值，在截止日 14:00 前存入足够的保证金或主动平仓部分头寸，否则账户会被强制平仓。券商有权自行决定平仓的股票、价格、数量和时间。
+在此状态下，您的账户必须根据「应追缴保证金」的数值，在截止日 14:00 前存入足够的保证金或主动平仓部分头寸，否则账户会被强制平仓。券商有权自行决定平仓的股票、价格、数量和时间。具体操作步骤见[如何应对追加保证金通知](/margin/how-to-respond-to-margin-call)。
 
 ## 字段解释
 
@@ -54,3 +54,15 @@ sidebar: true
 
 - [保证金](/margin/margin-requirements) — 保证金三层结构（IM/MM/FM）、追缴机制与强制平仓说明
 - [融资额度](/margin/credit-limit) — 额度评估、降低与关闭操作
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [完成首笔融资买入](/getting-started/first-margin-buy)
+- [融资额度](/margin/credit-limit)
+- [如何应对追加保证金通知](/margin/how-to-respond-to-margin-call)
+- [融资融券](/margin)
+- [保证金](/margin/margin-requirements)
+
+<!-- backlinks:end -->

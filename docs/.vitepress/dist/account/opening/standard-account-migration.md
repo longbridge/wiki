@@ -30,3 +30,11 @@ sidebar: true
 [注销申请表](https://pub.lbkrs.com/files/202602/pv8cMeCNFrsbUc5z/nz3.pdf)
 
 提交邮箱：service@longbridge.global
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

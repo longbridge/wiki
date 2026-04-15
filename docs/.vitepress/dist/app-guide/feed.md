@@ -107,3 +107,10 @@ sidebar: true
 
 **关注动态**：也会显示你关注的用户的最新关注行为（如「1 小时前 · 关注了 XX」）。
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

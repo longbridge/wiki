@@ -68,3 +68,12 @@ sidebar: true
 ## 持仓信息
 
 市场深度界面显示当前持仓数量及持仓成本价，方便实时对照盈亏。建议与图表交易组件配合使用，结合价格走势和盘口深度综合判断买卖时机。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [桌面端工具](/stock-trading/desktop-tools)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

@@ -198,3 +198,11 @@ sidebar: true
 
 - [任务中心](/rewards/task-center/task-center) — 任务系统说明
 - [活动资格](/rewards/eligibility) — 活动参与条件
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+
+<!-- backlinks:end -->

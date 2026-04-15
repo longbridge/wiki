@@ -37,3 +37,11 @@ sidebar: true
 ## 相关文档
 
 - [余额通交易规则](/funds-and-wealth/余额通交易规则) — 余额通是货币基金产品
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->

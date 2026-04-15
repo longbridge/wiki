@@ -75,3 +75,12 @@ sidebar: true
 - 发布时间（如「1 小时前」「37 分钟前」）
 
 资讯内容涵盖：公司最新动态、行业分析报告、机构评级调整、市场异动速递等与该股票相关的信息。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [行情数据](/market-data)
+- [股东大会](/stock-trading/corporate-actions/general-meeting)
+
+<!-- backlinks:end -->

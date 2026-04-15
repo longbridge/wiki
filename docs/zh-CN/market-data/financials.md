@@ -105,3 +105,12 @@ sidebar: true
 - **历史数据**：点击各模块的「更多」按钮，可查看更多历史期数据
 
 > 以上行情、资讯及其他数据来自第三方数据源，仅供参考，不构成投资建议。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [行情数据](/market-data)
+- [行情与全景](/market-data/overview)
+
+<!-- backlinks:end -->

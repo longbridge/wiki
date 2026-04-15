@@ -103,3 +103,11 @@ T+0 交易，T+2 交收，均为现金结算。
 ## 剩余价值查询
 
 [牛熊证回收和剩余价值查询](https://hk.warrants.com/tc/cbbc/residual-value)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+
+<!-- backlinks:end -->

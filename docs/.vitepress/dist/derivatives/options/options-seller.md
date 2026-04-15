@@ -93,5 +93,14 @@ sidebar: true
 ## 相关文档
 
 - [期权买方](/derivatives/options/options-buyer) — 买方权利特征与盈亏计算
-- [如何买入期权](/derivatives/options/如何买入期权) — 期权链查找与下单操作步骤
+- [如何买入期权](/derivatives/options/how-to-buy-options) — 期权链查找与下单操作步骤
 - [保证金](/margin/margin-requirements) — 期权卖方保证金计算规则
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+- [期权买方](/derivatives/options/options-buyer)
+
+<!-- backlinks:end -->

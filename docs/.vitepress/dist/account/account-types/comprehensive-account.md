@@ -35,3 +35,11 @@ sidebar: true
 - [如何开通综合账户](/account/opening/open-account) — 开户资格、认证流程、注销
 - [日内融账户](/account/account-types/intraday-margin) — 支持当日回转交易的特殊账户类型
 - [模拟账户](/account/account-types/paper-trading) — 用虚拟资金练习交易
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

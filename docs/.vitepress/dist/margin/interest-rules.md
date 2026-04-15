@@ -75,3 +75,14 @@ HK/SG 通用：
 
 - [融资额度](/margin/credit-limit) — 额度评估、降低与关闭操作
 - [保证金](/margin/margin-requirements) — 保证金结构与追缴（Margin Call）机制
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [完成首笔融资买入](/getting-started/first-margin-buy)
+- [融资额度](/margin/credit-limit)
+- [融资常见问题](/margin/faq)
+- [融资融券](/margin)
+
+<!-- backlinks:end -->

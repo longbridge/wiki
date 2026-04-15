@@ -58,3 +58,10 @@ sidebar: true
 - **相关资讯**：与该股票相关的新闻文章
 - **相关股单 / 用户**：持有或讨论该标的的股单和社区用户
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

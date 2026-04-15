@@ -85,3 +85,12 @@ sidebar: true
 ## 碎股转仓
 
 长桥支持碎股转入及转出。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [订单类型](/stock-trading/order-types)
+
+<!-- backlinks:end -->

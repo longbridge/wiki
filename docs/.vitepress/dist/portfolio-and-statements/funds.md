@@ -49,3 +49,11 @@ sidebar: true
 收益参考 7 日预期年化收益率，最终以实际到账金额为准，不保证最低收益。
 
 > 详细规则请参考[余额通](/funds-and-wealth/余额通/香港余额通)。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [资产与账单](/portfolio-and-statements)
+
+<!-- backlinks:end -->

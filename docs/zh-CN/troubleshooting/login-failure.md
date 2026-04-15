@@ -62,3 +62,12 @@ sidebar: true
 
 - **在线客服**：长桥 App → 我的 → 帮助与客服 → 在线客服
 - **客服热线**：4000712688
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [联系客服](/troubleshooting/contact-support)
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

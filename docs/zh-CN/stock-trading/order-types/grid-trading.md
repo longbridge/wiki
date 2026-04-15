@@ -96,3 +96,12 @@ sidebar: true
 - 资金/持仓问题：资金或持仓满足下一次触发条件时自动恢复
 - 持仓极值：持仓数回落至设定区间时恢复
 - 价格越界：股价回落至价格区间时恢复
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [订单类型](/stock-trading/order-types)
+
+<!-- backlinks:end -->

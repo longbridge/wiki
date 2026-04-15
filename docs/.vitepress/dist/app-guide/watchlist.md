@@ -40,3 +40,10 @@ sidebar: true
 2. 选择「新建分组」，输入分组名称
 3. 将已有标的拖入对应分组，或在添加标的时直接选择目标分组
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

@@ -4,6 +4,7 @@
     <!-- ── Hero ── -->
     <section class="hero">
       <HomeBackground />
+      <ClientOnly><HomeGraphBg /></ClientOnly>
       <div class="hero-text">
         <p class="hero-eyebrow">账户 · 资金 · 交易 · 产品功能</p>
         <h1 class="hero-h1"><span class="shimmer-text">Longbridge Wiki</span></h1>
@@ -15,56 +16,6 @@
           <div class="onboard-label">第一次使用长桥？</div>
           <a :href="withBase('/getting-started/')"  class="btn-primary">从新手指引开始 →</a>
         </div>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <!-- 知识库搜索结果界面：问题 → 答案 -->
-        <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Browser frame -->
-          <rect x="52" y="30" width="276" height="242" rx="16" class="c-bg" stroke="#c4f0ea" stroke-width="1.5"/>
-          <!-- Title bar -->
-          <rect x="52" y="30" width="276" height="40" rx="16" class="c-sf"/>
-          <rect x="52" y="57" width="276" height="13" class="c-sf"/>
-          <circle cx="76" cy="50" r="6" fill="#FF2720"/>
-          <circle cx="94" cy="50" r="6" fill="#FFC800"/>
-          <circle cx="112" cy="50" r="6" fill="#26e2c5"/>
-          <!-- Search bar -->
-          <rect x="72" y="86" width="236" height="34" rx="9" class="c-alt" stroke="#c4f0ea" stroke-width="1"/>
-          <circle cx="91" cy="103" r="7" fill="none" stroke="#7cccbe" stroke-width="1.5"/>
-          <line x1="96" y1="108" x2="101" y2="113" stroke="#7cccbe" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- query text -->
-          <rect x="108" y="99" width="78" height="7" rx="3.5" fill="#7cccbe" opacity="0.45"/>
-          <!-- cursor blink -->
-          <rect x="189" y="98" width="2" height="10" rx="1" fill="#00b8b8"/>
-          <!-- separator -->
-          <line x1="72" y1="134" x2="308" y2="134" stroke="#c4f0ea" stroke-width="1" opacity="0.5"/>
-          <!-- Result 1 — 账户类 -->
-          <rect x="72" y="142" width="236" height="44" rx="8" class="c-alt"/>
-          <rect x="84" y="154" width="36" height="17" rx="8.5" fill="#00b8b8" opacity="0.13"/>
-          <rect x="89" y="159" width="26" height="5" rx="2.5" fill="#00b8b8" opacity="0.72"/>
-          <rect x="128" y="154" width="116" height="7" rx="3.5" fill="#7cccbe" opacity="0.5"/>
-          <rect x="128" y="167" width="84" height="5" rx="2.5" class="c-sf"/>
-          <path d="M293 163 l5 4 l-5 4" stroke="#7cccbe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Result 2 — 资金类 -->
-          <rect x="72" y="192" width="236" height="44" rx="8" class="c-bg"/>
-          <rect x="84" y="204" width="36" height="17" rx="8.5" fill="#FFC800" opacity="0.13"/>
-          <rect x="89" y="209" width="26" height="5" rx="2.5" fill="#FFC800" opacity="0.72"/>
-          <rect x="128" y="204" width="100" height="7" rx="3.5" fill="#7cccbe" opacity="0.42"/>
-          <rect x="128" y="217" width="70" height="5" rx="2.5" class="c-sf"/>
-          <path d="M293 213 l5 4 l-5 4" stroke="#c4f0ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Result 3 — partial peek -->
-          <rect x="72" y="242" width="236" height="24" rx="8" class="c-bg"/>
-          <rect x="84" y="250" width="36" height="11" rx="5.5" fill="#7cccbe" opacity="0.1"/>
-          <rect x="128" y="251" width="82" height="7" rx="3.5" class="c-sf"/>
-          <!-- Checkmark answer badge top-right -->
-          <circle cx="301" cy="60" r="24" fill="#c4f0ea" opacity="0.22"/>
-          <circle cx="301" cy="60" r="17" fill="#26e2c5"/>
-          <path d="M292 60 l6 6 l11-12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Article count pill -->
-          <rect x="52" y="12" width="88" height="22" rx="11" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="62" y="21" width="68" height="5" rx="2.5" fill="#7cccbe" opacity="0.55"/>
-          <!-- Yellow star accent -->
-          <polygon points="342,52 345.5,62 356,62 347.5,68.5 350.5,79 342,72.5 333.5,79 336.5,68.5 328,62 338.5,62" fill="#FFC800"/>
-        </svg>
       </div>
     </section>
 
@@ -392,6 +343,7 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
 import HomeBackground from './HomeBackground.vue'
+import HomeGraphBg from './HomeGraphBg.vue'
 
 const flagSvgs: Record<string, string> = {
   sg: `<svg width="28" height="19" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="新加坡"><rect width="24" height="8" fill="#EF3340"/><rect y="8" width="24" height="8" fill="#fff"/><circle cx="6" cy="4" r="3.2" fill="#fff"/><circle cx="7.5" cy="4" r="2.5" fill="#EF3340"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(13.5,1.5) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(15.2,3) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(14.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(12.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(11.8,3) scale(0.62)"/></svg>`,
@@ -434,8 +386,25 @@ const tasks = [
   --max-w: min(1160px, 100%);
 }
 
-/* ── Shared section shell ── */
-.hero,
+/* ── Hero: full-width, text left-anchored over canvas ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 480px;
+  padding: var(--section-gap) var(--gutter);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+/* ── Feature sections: 2-column grid ── */
 .feat {
   display: grid;
   grid-template-columns: 1fr 38%;
@@ -444,20 +413,6 @@ const tasks = [
   padding: var(--section-gap) var(--gutter);
   max-width: var(--max-w);
   margin: 0 auto;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-text,
-.hero-visual {
-  position: relative;
-  z-index: 1;
-}
-
-.feat {
   border-top: 1px solid var(--vp-c-divider);
 }
 
@@ -836,7 +791,6 @@ const tasks = [
 
 /* ── Collapse to single column below 768px ── */
 @media (max-width: 768px) {
-  .hero,
   .feat,
   .feat--reverse {
     grid-template-columns: 1fr;
@@ -847,10 +801,13 @@ const tasks = [
     order: unset;
   }
 
-  .hero-visual,
   .feat-visual {
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  .hero-text {
+    max-width: 100%;
   }
 
   .tasks-grid {

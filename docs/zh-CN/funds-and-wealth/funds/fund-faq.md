@@ -30,3 +30,10 @@ sidebar: true
 
 普通基金卖出后，资金通常在 T+3 日确认净值后的 **7 个交易日内**到账。具体到账时间以实际为准。
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->

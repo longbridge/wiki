@@ -118,3 +118,13 @@ sidebar: true
 - 费用：Computershare 收取 375 港币转股手续费
 - 注意：专为阿里健康员工持股设计，必须用阿里健康工作邮箱；流程共 6 步
 - 处理时间：对方转出后 1-2 个工作日存入
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [股票转仓](/stock-trading/stock-transfer/hk-transfer)
+- [股票转仓](/stock-trading/stock-transfer)
+
+<!-- backlinks:end -->

@@ -7,7 +7,7 @@ sidebar: true
 
 香港和新加坡账户的各类入金方式、支持货币、到账时间、手续费及限制说明。
 
-> 需要帮助选择？[如何选择入金方式](/deposit/如何选择入金方式) 根据账户类型和资金紧急程度给出推荐。
+> 需要帮助选择？[如何选择入金方式](/deposit/how-to-choose-deposit-method) 根据账户类型和资金紧急程度给出推荐。
 
 ## 长桥香港账户
 
@@ -64,3 +64,24 @@ DDA 支持的银行：DBS/POSB、UOB、OCBC、Maybank、HSBC Singapore。详见 
 - Wise 入金需上传账户证明（含客户姓名、Wise 账户号码及 Wise logo）
 - 如有多笔入金汇款，请针对每笔资金分别通知长桥
 - 因追缴保证金通知而入金时，请及时填写存款通知，避免因不能及时到账导致账户被平仓
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [ATM 与柜台入金](/deposit/hk-methods/atm-and-counter)
+- [银证转账入金](/deposit/hk-methods/bank-securities-transfer)
+- [支票入金](/deposit/hk-methods/cheque)
+- [eDDA 入金](/deposit/hk-methods/edda)
+- [FPS 转数快入金](/deposit/hk-methods/fps)
+- [网银转账入金](/deposit/hk-methods/online-banking-transfer)
+- [电汇入金](/deposit/hk-methods/wire-transfer)
+- [如何选择入金方式](/deposit/how-to-choose-deposit-method)
+- [入金](/deposit)
+- [DDA 入金](/deposit/sg-methods/dda-authorization)
+- [网银或电汇入金](/deposit/sg-methods/online-banking-and-wire)
+- [PayNow 入金](/deposit/sg-methods/paynow)
+- [Wise 入金](/deposit/sg-methods/wise)
+- [如何应对追加保证金通知](/margin/how-to-respond-to-margin-call)
+
+<!-- backlinks:end -->

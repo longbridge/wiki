@@ -77,3 +77,12 @@ sidebar: true
 [注销申请表](https://pub.lbkrs.com/files/202602/LS5FyJKJf5ZmQAVT/___20260225.pdf)
 
 提交邮箱：service@longbridge.hk
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [综合账户](/account/account-types/comprehensive-account)
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

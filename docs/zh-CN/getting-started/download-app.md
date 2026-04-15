@@ -46,3 +46,11 @@ sidebar: true
 
 - [登录注册](/getting-started/login-and-register) — 账户登录与注册流程
 - [我的](/getting-started/profile) — App 我的页面功能说明
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [新手入门](/getting-started)
+
+<!-- backlinks:end -->

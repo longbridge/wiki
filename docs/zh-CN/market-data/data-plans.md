@@ -80,3 +80,11 @@ sidebar: true
 ## iOS 收费说明
 
 iOS 因平台抽成定价会比 Android 和电脑端略贵。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [行情数据](/market-data)
+
+<!-- backlinks:end -->

@@ -99,3 +99,12 @@ PayNow、DDA、Wise 均不支持出金。
 
   </TabItem>
 </Tabs>
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [出金](/withdrawal)
+- [银行卡出金](/withdrawal/to-hk-bank-card)
+
+<!-- backlinks:end -->

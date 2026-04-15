@@ -73,3 +73,22 @@ sidebar: true
 **在线客服**：长桥 App → 我的 → 帮助与客服 → 在线客服
 
 **客服热线**：4000712688
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [ATM 与柜台入金](/deposit/hk-methods/atm-and-counter)
+- [银证转账入金](/deposit/hk-methods/bank-securities-transfer)
+- [支票入金](/deposit/hk-methods/cheque)
+- [eDDA 入金](/deposit/hk-methods/edda)
+- [FPS 转数快入金](/deposit/hk-methods/fps)
+- [网银转账入金](/deposit/hk-methods/online-banking-transfer)
+- [电汇入金](/deposit/hk-methods/wire-transfer)
+- [DDA 入金](/deposit/sg-methods/dda-authorization)
+- [网银或电汇入金](/deposit/sg-methods/online-banking-and-wire)
+- [PayNow 入金](/deposit/sg-methods/paynow)
+- [Wise 入金](/deposit/sg-methods/wise)
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

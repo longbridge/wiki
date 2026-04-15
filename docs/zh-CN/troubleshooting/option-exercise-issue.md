@@ -71,3 +71,11 @@ sidebar: true
 - 异常描述（未行权 / 多出持仓 / 被提前行权等）
 
 **在线客服**：长桥 App → 我的 → 帮助与客服 → 在线客服
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

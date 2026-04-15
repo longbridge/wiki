@@ -88,3 +88,11 @@ T+0 交易，T+2 交收，均为现金结算。
 [轮证结算值计算器](https://www.warrants.hsbc.com.hk/sc/tools/settlement)
 
 [轮证文件及通告查询](https://www.gswarrants.com.hk/tc/warrant/listing-doc)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+
+<!-- backlinks:end -->

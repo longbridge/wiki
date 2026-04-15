@@ -76,3 +76,11 @@ sidebar: true
 
 - [任务币](/rewards/任务币) — 道具与任务币关系
 - [兑换商城](/rewards/兑换商城) — 道具兑换
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+
+<!-- backlinks:end -->

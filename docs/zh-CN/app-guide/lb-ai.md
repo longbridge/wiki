@@ -43,3 +43,11 @@ LongbridgeAI 专注于财经领域，可协助处理以下需求：
 ## 免责声明
 
 LongbridgeAI 提供的内容仅供参考，不构成投资建议。投资有风险，决策前请结合自身情况审慎判断。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

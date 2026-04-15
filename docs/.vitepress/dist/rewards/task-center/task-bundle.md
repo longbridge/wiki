@@ -96,3 +96,11 @@ sidebar: true
 
 - [任务中心](/rewards/task-center/task-center) — 任务系统
 - [任务币](/rewards/任务币) — 任务收益
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+
+<!-- backlinks:end -->

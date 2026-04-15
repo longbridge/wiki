@@ -49,3 +49,10 @@ sidebar: true
 | 帮助与客服  | 联系在线客服、查看帮助文档    |
 | 设置     | 账户安全、通知、语言等系统设置  |
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

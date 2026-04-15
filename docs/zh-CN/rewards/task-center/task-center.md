@@ -102,3 +102,13 @@ sidebar: true
 - 不同类型奖励的到账方式不同，任务币直接进入账户余额，卡券和实物请在对应入口查收
 - 部分任务在活动期间内每用户只能完成一次（如新手任务）
 - 部分任务包需先手动点击"领取"按钮后才开始记录进度
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+- [任务包](/rewards/task-center/task-bundle)
+- [任务条件](/rewards/task-center/task-conditions)
+
+<!-- backlinks:end -->

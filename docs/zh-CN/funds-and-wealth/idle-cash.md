@@ -58,7 +58,7 @@ sidebar: true
 
 ## 风险提示与收益参考说明
 
-- 货币基金和债券基金均有亏损风险，并非保本产品
+- 货币基金和债券基金均有亏损风险，并非保本产品；完整费用结构见[基金收费](/funds-and-wealth/funds/fund-fees)
 - 进阶理财产品赎回时间不同于余额通，使用前请确认资金使用计划
 - 历史收益数据仅作参考，不构成收益承诺
 - 具体申赎规则和最新收益数据以产品详情页为准
@@ -67,5 +67,15 @@ sidebar: true
 
 ## 相关文档
 
-- [如何开通余额通](/funds-and-wealth/如何开通余额通) — 开通步骤与授权说明
+- [如何开通余额通](/funds-and-wealth/how-to-enable-cash-plus) — 开通步骤与授权说明
 - [余额通](/funds-and-wealth/cash-plus/cash-plus) — 余额通运作机制与各市场规则详解
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [基金定投](/funds-and-wealth/funds/fund-regular-investment)
+- [如何开通余额通](/funds-and-wealth/how-to-enable-cash-plus)
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->

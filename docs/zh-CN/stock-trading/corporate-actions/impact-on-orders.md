@@ -26,3 +26,13 @@ sidebar: true
 ## 长桥如何处理受影响的长期订单
 
 有关长期订单将于该公司行动除净日开市前被取消。如有需要，请重新发出交易指示。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [公司行动](/stock-trading/corporate-actions)
+- [股票交易](/stock-trading)
+- [撤销订单](/stock-trading/order-types/cancel-order)
+
+<!-- backlinks:end -->

@@ -70,3 +70,12 @@ A：可能原因：（1）您的朋友通过特定渠道（如邀请链接）注
 
 - [奖励系统](/rewards/rewards-overview) — 奖励分配机制
 - [开户礼包](/rewards/activities/account-opening-rewards) — 新用户活动
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+- [任务条件](/rewards/task-center/task-conditions)
+
+<!-- backlinks:end -->

@@ -40,3 +40,13 @@ sidebar: true
 ## 如何查看派息信息
 
 可在个股页面 - 全景 - 百科 - 分红信息处查看分红（派息）相关记录。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股东大会](/stock-trading/corporate-actions/general-meeting)
+- [公司行动](/stock-trading/corporate-actions)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

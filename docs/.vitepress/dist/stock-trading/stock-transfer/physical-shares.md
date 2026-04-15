@@ -61,3 +61,12 @@ sidebar: true
 5. 取回当天需携带身份证明文件核对身份，并在提货文件内签署确认
 
 [实物股票提取表格](https://pub.lbkrs.com/files/202602/6kTEfaCUxAWB7v5R/20260216.pdf)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [股票转仓](/stock-trading/stock-transfer)
+
+<!-- backlinks:end -->

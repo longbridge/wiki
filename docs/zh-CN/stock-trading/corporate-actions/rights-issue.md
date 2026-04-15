@@ -70,3 +70,13 @@ sidebar: true
 登记及过户费：1.5 港元/手，不足 1 手按 1 手收费。
 
 分红服务费：按现金股息总额 0.2%，最低 30 港元。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股东大会](/stock-trading/corporate-actions/general-meeting)
+- [公司行动](/stock-trading/corporate-actions)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

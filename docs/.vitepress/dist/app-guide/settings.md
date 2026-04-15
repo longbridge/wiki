@@ -136,3 +136,11 @@ sidebar: true
 
 - **切换账号** — 退出当前账号并切换到其他账号
 - **退出登录** — 退出当前账号登录状态
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [App 导览](/app-guide)
+
+<!-- backlinks:end -->

@@ -33,3 +33,12 @@ sidebar: true
 
 - [网银出金](/withdrawal/hk-online-banking) — 出金规则与费用详情
 - [银行卡绑定与审核](/deposit/银行卡绑定与审核) — 银行卡绑定与认证要求
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [网银出金](/withdrawal/hk-online-banking)
+- [出金](/withdrawal)
+
+<!-- backlinks:end -->

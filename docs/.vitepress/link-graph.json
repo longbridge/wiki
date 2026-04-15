@@ -1,0 +1,2283 @@
+{
+  "nodes": [
+    {
+      "id": "/account/account-faq",
+      "title": "账户常见问题",
+      "category": "account"
+    },
+    {
+      "id": "/account/account-switching",
+      "title": "账户切换",
+      "category": "account"
+    },
+    {
+      "id": "/account/account-types/comprehensive-account",
+      "title": "综合账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/account-types/intraday-margin",
+      "title": "日内融账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/account-types/paper-trading",
+      "title": "模拟账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/account-types/virtual-asset",
+      "title": "虚拟资产账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/anti-fraud",
+      "title": "防诈骗提示",
+      "category": "account"
+    },
+    {
+      "id": "/account/biometric-auth",
+      "title": "生物认证",
+      "category": "account"
+    },
+    {
+      "id": "/account/estate",
+      "title": "遗产处理",
+      "category": "account"
+    },
+    {
+      "id": "/account",
+      "title": "开户与账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/opening/account-rejected",
+      "title": "开户被拒怎么办",
+      "category": "account"
+    },
+    {
+      "id": "/account/opening/open-account",
+      "title": "如何开通综合账户",
+      "category": "account"
+    },
+    {
+      "id": "/account/opening/standard-account-migration",
+      "title": "标准账户停运与迁移",
+      "category": "account"
+    },
+    {
+      "id": "/app-guide/discover",
+      "title": "发现",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/feed",
+      "title": "动态",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide",
+      "title": "App 导览",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/lb-ai",
+      "title": "Longbridge AI",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/profile",
+      "title": "个人中心",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/search",
+      "title": "搜索",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/settings",
+      "title": "App 设置",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/stock-notes",
+      "title": "股单",
+      "category": "app-guide"
+    },
+    {
+      "id": "/app-guide/watchlist",
+      "title": "自选",
+      "category": "app-guide"
+    },
+    {
+      "id": "/compliance-and-tax/eligible-countries",
+      "title": "哪些国家和地区可以开户",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/compliance-and-tax/fatca",
+      "title": "FATCA",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/compliance-and-tax",
+      "title": "合规与税务",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/compliance-and-tax/privacy-policy",
+      "title": "平台隐私政策",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/compliance-and-tax/tax-information-exchange",
+      "title": "税务信息交换说明",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/compliance-and-tax/us-stock-tax",
+      "title": "美股税表与股息税",
+      "category": "compliance-and-tax"
+    },
+    {
+      "id": "/deposit/hk-methods/atm-and-counter",
+      "title": "ATM 与柜台入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/bank-securities-transfer",
+      "title": "银证转账入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/cheque",
+      "title": "支票入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/edda",
+      "title": "eDDA 入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/fps",
+      "title": "FPS 转数快入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/online-banking-transfer",
+      "title": "网银转账入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/hk-methods/wire-transfer",
+      "title": "电汇入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/how-to-choose-deposit-method",
+      "title": "如何选择入金方式",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit",
+      "title": "入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/methods-overview",
+      "title": "入金方式",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/mt103-receipt",
+      "title": "MT103 汇款回执",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/setup/bank-card-binding",
+      "title": "银行卡绑定与审核",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/setup/supported-banks",
+      "title": "支持银行列表",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/sg-methods/dda-authorization",
+      "title": "DDA 入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/sg-methods/online-banking-and-wire",
+      "title": "网银或电汇入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/sg-methods/paynow",
+      "title": "PayNow 入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/deposit/sg-methods/wise",
+      "title": "Wise 入金",
+      "category": "deposit"
+    },
+    {
+      "id": "/derivatives/cbbc",
+      "title": "牛熊证",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives",
+      "title": "衍生品",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/enable-options",
+      "title": "开通期权交易",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/how-to-buy-options",
+      "title": "如何买入期权",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-basics",
+      "title": "期权基础",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-buyer",
+      "title": "期权买方",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-calculator",
+      "title": "期权计算器",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-chain",
+      "title": "期权链",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-extended-hours",
+      "title": "期权延长时段交易",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-fields",
+      "title": "期权行情字段介绍",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-getting-started",
+      "title": "期权交易入门",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-seller",
+      "title": "期权卖方",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/options/options-strategies",
+      "title": "期权策略",
+      "category": "derivatives"
+    },
+    {
+      "id": "/derivatives/warrants",
+      "title": "窝轮",
+      "category": "derivatives"
+    },
+    {
+      "id": "/docs",
+      "title": "文档",
+      "category": "docs"
+    },
+    {
+      "id": "/funds-and-wealth/cash-plus/cash-plus-faq",
+      "title": "余额通常见问题",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/cash-plus/cash-plus-trading-rules",
+      "title": "余额通交易规则",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/cash-plus/cash-plus",
+      "title": "余额通",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/first-fund-regular-investment",
+      "title": "完成首笔基金定投",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/fund-basics",
+      "title": "基金",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/fund-faq",
+      "title": "基金常见问题",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/fund-fees",
+      "title": "基金收费",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/fund-regular-investment",
+      "title": "基金定投",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/funds/fund-trading-rules",
+      "title": "基金交易规则",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/how-to-enable-cash-plus",
+      "title": "如何开通余额通",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/idle-cash",
+      "title": "闲钱理财",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth",
+      "title": "基金与理财",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/money-market-fund-rules",
+      "title": "货币基金交易规则",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/professional-investor",
+      "title": "专业投资者认证",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/funds-and-wealth/structured-products",
+      "title": "结构化产品",
+      "category": "funds-and-wealth"
+    },
+    {
+      "id": "/getting-started/buy-first-hk-stock",
+      "title": "买入第一只港股",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started/download-app",
+      "title": "下载 App",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started/first-deposit",
+      "title": "完成首次入金",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started/first-margin-buy",
+      "title": "完成首笔融资买入",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started",
+      "title": "新手入门",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started/login-and-register",
+      "title": "登录注册",
+      "category": "getting-started"
+    },
+    {
+      "id": "/getting-started/price-alert",
+      "title": "设置股价提醒",
+      "category": "getting-started"
+    },
+    {
+      "id": "/graph",
+      "title": "知识图谱",
+      "category": "graph"
+    },
+    {
+      "id": "/",
+      "title": "index",
+      "category": "root"
+    },
+    {
+      "id": "/ipo/grey-market-trading",
+      "title": "暗盘交易",
+      "category": "ipo"
+    },
+    {
+      "id": "/ipo",
+      "title": "新股认购 / IPO",
+      "category": "ipo"
+    },
+    {
+      "id": "/ipo/subscription",
+      "title": "新股申购",
+      "category": "ipo"
+    },
+    {
+      "id": "/margin/credit-limit",
+      "title": "融资额度",
+      "category": "margin"
+    },
+    {
+      "id": "/margin/faq",
+      "title": "融资常见问题",
+      "category": "margin"
+    },
+    {
+      "id": "/margin/how-to-respond-to-margin-call",
+      "title": "如何应对追加保证金通知",
+      "category": "margin"
+    },
+    {
+      "id": "/margin",
+      "title": "融资融券",
+      "category": "margin"
+    },
+    {
+      "id": "/margin/interest-rules",
+      "title": "融资利息",
+      "category": "margin"
+    },
+    {
+      "id": "/margin/margin-requirements",
+      "title": "保证金",
+      "category": "margin"
+    },
+    {
+      "id": "/margin/risk-control",
+      "title": "账户风控",
+      "category": "margin"
+    },
+    {
+      "id": "/market-data/announcements",
+      "title": "公告与讨论",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/data-plans",
+      "title": "行情套餐",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/financials",
+      "title": "财务分析",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data",
+      "title": "行情数据",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/indicators",
+      "title": "指标介绍",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/market-overview",
+      "title": "市场行情",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/money-flow",
+      "title": "资金流向",
+      "category": "market-data"
+    },
+    {
+      "id": "/market-data/overview",
+      "title": "行情与全景",
+      "category": "market-data"
+    },
+    {
+      "id": "/portfolio-and-statements/cash",
+      "title": "现金",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/crypto",
+      "title": "加密货币",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/funds",
+      "title": "基金",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements",
+      "title": "资产与账单",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/overview",
+      "title": "资产概览",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/pnl",
+      "title": "盈亏分析",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/settings",
+      "title": "资产设置",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/statement",
+      "title": "结单",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/portfolio-and-statements/wealth",
+      "title": "财富",
+      "category": "portfolio-and-statements"
+    },
+    {
+      "id": "/rewards/activities/account-opening-rewards",
+      "title": "开户礼包",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/asset-retention",
+      "title": "留存活动",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/boost",
+      "title": "助力活动",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/daily-check-in",
+      "title": "每日签到",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/flash-sale",
+      "title": "秒杀活动",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/lucky-draw",
+      "title": "抽奖活动",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/predict-market",
+      "title": "猜涨跌",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/trading-challenge",
+      "title": "交易挑战",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/trading-ranking",
+      "title": "交易排名",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/activities/trading-red-packet",
+      "title": "交易红包",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/benefits",
+      "title": "权益与产品",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/eligibility",
+      "title": "活动资格",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/exclusive-privileges",
+      "title": "专享特权",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards",
+      "title": "活动与奖励",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/lb-cafe",
+      "title": "LB Café",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/referral/referral-activity",
+      "title": "邀请活动",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/referral/referral-center",
+      "title": "邀请中心",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/referral/referral-relationship",
+      "title": "邀请关系",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/coupon-system",
+      "title": "卡券系统",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/my-coupons",
+      "title": "我的卡券",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/physical-prizes",
+      "title": "实物奖品",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/props-system",
+      "title": "道具系统",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/redemption-mall",
+      "title": "兑换商城",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-mall/rewards-history",
+      "title": "奖励记录",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/rewards-overview",
+      "title": "奖励系统",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/task-center/task-bundle",
+      "title": "任务包",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/task-center/task-center",
+      "title": "任务中心",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/task-center/task-coins",
+      "title": "任务币",
+      "category": "rewards"
+    },
+    {
+      "id": "/rewards/task-center/task-conditions",
+      "title": "任务条件",
+      "category": "rewards"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/dividend",
+      "title": "派息",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/general-meeting",
+      "title": "股东大会",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/impact-on-orders",
+      "title": "长期订单影响",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions",
+      "title": "公司行动",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/rights-issue",
+      "title": "供股要约",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/scrip-dividend",
+      "title": "选股选息",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/corporate-actions/stock-split",
+      "title": "拆合股",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/desktop-tools/chart-trading",
+      "title": "图表交易",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/desktop-tools/custom-layout",
+      "title": "自定义布局",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/desktop-tools",
+      "title": "桌面端工具",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/desktop-tools/keyboard-shortcuts",
+      "title": "桌面端快捷键",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/desktop-tools/market-depth",
+      "title": "市场深度",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading",
+      "title": "股票交易",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/bounce-order",
+      "title": "到价反弹订单",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/cancel-order",
+      "title": "撤销订单",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/conditional-order",
+      "title": "附加订单",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/grid-trading",
+      "title": "网格交易",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types",
+      "title": "订单类型",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/limit-and-market",
+      "title": "限价单与市价单",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/order-types/odd-lot",
+      "title": "碎股单",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer/broker-transfer-guide",
+      "title": "其他券商转入",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer/faq",
+      "title": "常见问题",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer/hk-transfer",
+      "title": "股票转仓",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer",
+      "title": "股票转仓",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer/master-sub-transfer",
+      "title": "主子账户股票划转",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/stock-transfer/physical-shares",
+      "title": "实物股票",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-fees/fee-schedule",
+      "title": "交易收费",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-fees",
+      "title": "交易费用",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-fees/my-fees",
+      "title": "我的费率",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules/hk-trading-rules",
+      "title": "港股交易规则与结算",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules",
+      "title": "交易市场与规则",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules/sg-trading-rules",
+      "title": "新加坡股票交易规则与结算",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules/us-regular-investment",
+      "title": "美股定投",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules/us-short-selling",
+      "title": "美股卖空",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/stock-trading/trading-hours-and-rules/us-trading-rules",
+      "title": "美股交易规则与结算",
+      "category": "stock-trading"
+    },
+    {
+      "id": "/transfers-and-fx/auto-repayment",
+      "title": "自动还款",
+      "category": "transfers-and-fx"
+    },
+    {
+      "id": "/transfers-and-fx/cross-account-transfer",
+      "title": "跨账号划转",
+      "category": "transfers-and-fx"
+    },
+    {
+      "id": "/transfers-and-fx/hk-fx",
+      "title": "货币兑换",
+      "category": "transfers-and-fx"
+    },
+    {
+      "id": "/transfers-and-fx",
+      "title": "资金划转与换汇",
+      "category": "transfers-and-fx"
+    },
+    {
+      "id": "/transfers-and-fx/master-sub-transfer",
+      "title": "主子账户资金划转",
+      "category": "transfers-and-fx"
+    },
+    {
+      "id": "/troubleshooting/contact-support",
+      "title": "联系客服",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/dda-failure",
+      "title": "DDA 授权失败怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/deposit-not-received",
+      "title": "入金未到账怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/hang-seng-clarification",
+      "title": "恒生银行可疑账号澄清",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting",
+      "title": "故障排查",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/login-failure",
+      "title": "App 登录失败怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/network-connection",
+      "title": "App 网络连接排查",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/option-exercise-issue",
+      "title": "期权行权异常怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/order-failure",
+      "title": "订单提交失败怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/sms-code",
+      "title": "收不到短信验证码",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/troubleshooting/withdrawal-failure",
+      "title": "出金失败怎么办",
+      "category": "troubleshooting"
+    },
+    {
+      "id": "/withdrawal/hk-online-banking",
+      "title": "网银出金",
+      "category": "withdrawal"
+    },
+    {
+      "id": "/withdrawal",
+      "title": "出金",
+      "category": "withdrawal"
+    },
+    {
+      "id": "/withdrawal/refund",
+      "title": "资金退款",
+      "category": "withdrawal"
+    },
+    {
+      "id": "/withdrawal/standard-account-guide",
+      "title": "标准账户出金",
+      "category": "withdrawal"
+    },
+    {
+      "id": "/withdrawal/to-hk-bank-card",
+      "title": "银行卡出金",
+      "category": "withdrawal"
+    },
+    {
+      "id": "/withdrawal/wire-transfer",
+      "title": "电汇出金",
+      "category": "withdrawal"
+    }
+  ],
+  "edges": [
+    {
+      "source": "/account/account-faq",
+      "target": "/troubleshooting/contact-support"
+    },
+    {
+      "source": "/account/account-faq",
+      "target": "/getting-started/first-deposit"
+    },
+    {
+      "source": "/account/account-faq",
+      "target": "/deposit/how-to-choose-deposit-method"
+    },
+    {
+      "source": "/account/account-types/comprehensive-account",
+      "target": "/account/opening/open-account"
+    },
+    {
+      "source": "/account/account-types/comprehensive-account",
+      "target": "/account/account-types/intraday-margin"
+    },
+    {
+      "source": "/account/account-types/comprehensive-account",
+      "target": "/account/account-types/paper-trading"
+    },
+    {
+      "source": "/account",
+      "target": "/account/opening/open-account"
+    },
+    {
+      "source": "/account",
+      "target": "/account/opening/standard-account-migration"
+    },
+    {
+      "source": "/account",
+      "target": "/account/opening/account-rejected"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-types/comprehensive-account"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-types/paper-trading"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-types/intraday-margin"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-types/virtual-asset"
+    },
+    {
+      "source": "/account",
+      "target": "/account/biometric-auth"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-switching"
+    },
+    {
+      "source": "/account",
+      "target": "/account/account-faq"
+    },
+    {
+      "source": "/account",
+      "target": "/account/anti-fraud"
+    },
+    {
+      "source": "/account",
+      "target": "/account/estate"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/profile"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/settings"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/watchlist"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/discover"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/search"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/feed"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/stock-notes"
+    },
+    {
+      "source": "/app-guide",
+      "target": "/app-guide/lb-ai"
+    },
+    {
+      "source": "/app-guide/profile",
+      "target": "/rewards/lb-cafe"
+    },
+    {
+      "source": "/compliance-and-tax",
+      "target": "/compliance-and-tax/eligible-countries"
+    },
+    {
+      "source": "/compliance-and-tax",
+      "target": "/compliance-and-tax/fatca"
+    },
+    {
+      "source": "/compliance-and-tax",
+      "target": "/compliance-and-tax/privacy-policy"
+    },
+    {
+      "source": "/compliance-and-tax",
+      "target": "/compliance-and-tax/tax-information-exchange"
+    },
+    {
+      "source": "/compliance-and-tax",
+      "target": "/compliance-and-tax/us-stock-tax"
+    },
+    {
+      "source": "/deposit/hk-methods/atm-and-counter",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/atm-and-counter",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/bank-securities-transfer",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/bank-securities-transfer",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/cheque",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/cheque",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/edda",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/edda",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/fps",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/fps",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/online-banking-transfer",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/online-banking-transfer",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/hk-methods/wire-transfer",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/hk-methods/wire-transfer",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/hk-methods/bank-securities-transfer"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/hk-methods/edda"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/hk-methods/fps"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/sg-methods/paynow"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/sg-methods/dda-authorization"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/sg-methods/wise"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/how-to-choose-deposit-method",
+      "target": "/margin/how-to-respond-to-margin-call"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/setup/bank-card-binding"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/setup/supported-banks"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/fps"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/edda"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/bank-securities-transfer"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/online-banking-transfer"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/atm-and-counter"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/cheque"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/hk-methods/wire-transfer"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/sg-methods/dda-authorization"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/sg-methods/paynow"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/sg-methods/wise"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/sg-methods/online-banking-and-wire"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit",
+      "target": "/deposit/mt103-receipt"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/how-to-choose-deposit-method"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/hk-methods/edda"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/hk-methods/fps"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/hk-methods/atm-and-counter"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/hk-methods/cheque"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/sg-methods/paynow"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/sg-methods/dda-authorization"
+    },
+    {
+      "source": "/deposit/methods-overview",
+      "target": "/deposit/sg-methods/wise"
+    },
+    {
+      "source": "/deposit/setup/bank-card-binding",
+      "target": "/deposit/setup/supported-banks"
+    },
+    {
+      "source": "/deposit/sg-methods/dda-authorization",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/sg-methods/dda-authorization",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/sg-methods/online-banking-and-wire",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/sg-methods/online-banking-and-wire",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/sg-methods/paynow",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/sg-methods/paynow",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/deposit/sg-methods/wise",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/deposit/sg-methods/wise",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/warrants"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/cbbc"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-basics"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/enable-options"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-buyer"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-seller"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-strategies"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-calculator"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-chain"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-fields"
+    },
+    {
+      "source": "/derivatives",
+      "target": "/derivatives/options/options-extended-hours"
+    },
+    {
+      "source": "/derivatives/options/how-to-buy-options",
+      "target": "/derivatives/options/enable-options"
+    },
+    {
+      "source": "/derivatives/options/how-to-buy-options",
+      "target": "/derivatives/options/options-buyer"
+    },
+    {
+      "source": "/derivatives/options/how-to-buy-options",
+      "target": "/derivatives/options/options-chain"
+    },
+    {
+      "source": "/derivatives/options/options-basics",
+      "target": "/derivatives/options/enable-options"
+    },
+    {
+      "source": "/derivatives/options/options-buyer",
+      "target": "/derivatives/options/how-to-buy-options"
+    },
+    {
+      "source": "/derivatives/options/options-buyer",
+      "target": "/derivatives/options/enable-options"
+    },
+    {
+      "source": "/derivatives/options/options-buyer",
+      "target": "/derivatives/options/options-seller"
+    },
+    {
+      "source": "/derivatives/options/options-getting-started",
+      "target": "/derivatives/options/enable-options"
+    },
+    {
+      "source": "/derivatives/options/options-getting-started",
+      "target": "/derivatives/options/options-buyer"
+    },
+    {
+      "source": "/derivatives/options/options-getting-started",
+      "target": "/derivatives/options/options-chain"
+    },
+    {
+      "source": "/derivatives/options/options-getting-started",
+      "target": "/derivatives/options/options-calculator"
+    },
+    {
+      "source": "/derivatives/options/options-seller",
+      "target": "/derivatives/options/options-buyer"
+    },
+    {
+      "source": "/derivatives/options/options-seller",
+      "target": "/derivatives/options/how-to-buy-options"
+    },
+    {
+      "source": "/derivatives/options/options-seller",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/docs",
+      "target": "/getting-started"
+    },
+    {
+      "source": "/docs",
+      "target": "/account"
+    },
+    {
+      "source": "/docs",
+      "target": "/deposit"
+    },
+    {
+      "source": "/docs",
+      "target": "/withdrawal"
+    },
+    {
+      "source": "/docs",
+      "target": "/transfers-and-fx"
+    },
+    {
+      "source": "/docs",
+      "target": "/stock-trading"
+    },
+    {
+      "source": "/docs",
+      "target": "/derivatives"
+    },
+    {
+      "source": "/docs",
+      "target": "/ipo"
+    },
+    {
+      "source": "/docs",
+      "target": "/margin"
+    },
+    {
+      "source": "/docs",
+      "target": "/funds-and-wealth"
+    },
+    {
+      "source": "/docs",
+      "target": "/market-data"
+    },
+    {
+      "source": "/docs",
+      "target": "/portfolio-and-statements"
+    },
+    {
+      "source": "/docs",
+      "target": "/rewards"
+    },
+    {
+      "source": "/docs",
+      "target": "/compliance-and-tax"
+    },
+    {
+      "source": "/docs",
+      "target": "/troubleshooting"
+    },
+    {
+      "source": "/funds-and-wealth/funds/first-fund-regular-investment",
+      "target": "/funds-and-wealth/funds/fund-basics"
+    },
+    {
+      "source": "/funds-and-wealth/funds/first-fund-regular-investment",
+      "target": "/funds-and-wealth/funds/fund-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth/funds/first-fund-regular-investment",
+      "target": "/funds-and-wealth/funds/fund-fees"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-basics",
+      "target": "/funds-and-wealth/funds/fund-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-fees",
+      "target": "/funds-and-wealth/funds/fund-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-regular-investment",
+      "target": "/funds-and-wealth/idle-cash"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-regular-investment",
+      "target": "/funds-and-wealth/funds/fund-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-regular-investment",
+      "target": "/funds-and-wealth/funds/fund-fees"
+    },
+    {
+      "source": "/funds-and-wealth/funds/fund-trading-rules",
+      "target": "/funds-and-wealth/funds/fund-fees"
+    },
+    {
+      "source": "/funds-and-wealth/how-to-enable-cash-plus",
+      "target": "/funds-and-wealth/cash-plus/cash-plus"
+    },
+    {
+      "source": "/funds-and-wealth/how-to-enable-cash-plus",
+      "target": "/funds-and-wealth/idle-cash"
+    },
+    {
+      "source": "/funds-and-wealth/idle-cash",
+      "target": "/funds-and-wealth/funds/fund-fees"
+    },
+    {
+      "source": "/funds-and-wealth/idle-cash",
+      "target": "/funds-and-wealth/how-to-enable-cash-plus"
+    },
+    {
+      "source": "/funds-and-wealth/idle-cash",
+      "target": "/funds-and-wealth/cash-plus/cash-plus"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/professional-investor"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/funds/fund-basics"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/funds/fund-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/funds/fund-fees"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/funds/fund-regular-investment"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/funds/fund-faq"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/cash-plus/cash-plus"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/cash-plus/cash-plus-trading-rules"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/cash-plus/cash-plus-faq"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/idle-cash"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/structured-products"
+    },
+    {
+      "source": "/funds-and-wealth",
+      "target": "/funds-and-wealth/money-market-fund-rules"
+    },
+    {
+      "source": "/getting-started/download-app",
+      "target": "/getting-started/login-and-register"
+    },
+    {
+      "source": "/getting-started/first-margin-buy",
+      "target": "/getting-started/buy-first-hk-stock"
+    },
+    {
+      "source": "/getting-started/first-margin-buy",
+      "target": "/margin/interest-rules"
+    },
+    {
+      "source": "/getting-started/first-margin-buy",
+      "target": "/margin/risk-control"
+    },
+    {
+      "source": "/getting-started/first-margin-buy",
+      "target": "/margin/how-to-respond-to-margin-call"
+    },
+    {
+      "source": "/getting-started",
+      "target": "/getting-started/download-app"
+    },
+    {
+      "source": "/getting-started",
+      "target": "/getting-started/login-and-register"
+    },
+    {
+      "source": "/getting-started",
+      "target": "/getting-started/first-deposit"
+    },
+    {
+      "source": "/getting-started",
+      "target": "/getting-started/buy-first-hk-stock"
+    },
+    {
+      "source": "/getting-started",
+      "target": "/getting-started/price-alert"
+    },
+    {
+      "source": "/ipo",
+      "target": "/ipo/grey-market-trading"
+    },
+    {
+      "source": "/ipo",
+      "target": "/ipo/subscription"
+    },
+    {
+      "source": "/margin/credit-limit",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/margin/credit-limit",
+      "target": "/margin/interest-rules"
+    },
+    {
+      "source": "/margin/credit-limit",
+      "target": "/margin/risk-control"
+    },
+    {
+      "source": "/margin/faq",
+      "target": "/margin/interest-rules"
+    },
+    {
+      "source": "/margin/how-to-respond-to-margin-call",
+      "target": "/deposit/methods-overview"
+    },
+    {
+      "source": "/margin/how-to-respond-to-margin-call",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/margin/how-to-respond-to-margin-call",
+      "target": "/margin/risk-control"
+    },
+    {
+      "source": "/margin/how-to-respond-to-margin-call",
+      "target": "/deposit/how-to-choose-deposit-method"
+    },
+    {
+      "source": "/margin",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/margin",
+      "target": "/margin/credit-limit"
+    },
+    {
+      "source": "/margin",
+      "target": "/margin/interest-rules"
+    },
+    {
+      "source": "/margin",
+      "target": "/margin/risk-control"
+    },
+    {
+      "source": "/margin",
+      "target": "/margin/faq"
+    },
+    {
+      "source": "/margin/interest-rules",
+      "target": "/margin/credit-limit"
+    },
+    {
+      "source": "/margin/interest-rules",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/margin/margin-requirements",
+      "target": "/margin/how-to-respond-to-margin-call"
+    },
+    {
+      "source": "/margin/margin-requirements",
+      "target": "/margin/credit-limit"
+    },
+    {
+      "source": "/margin/margin-requirements",
+      "target": "/margin/risk-control"
+    },
+    {
+      "source": "/margin/risk-control",
+      "target": "/margin/how-to-respond-to-margin-call"
+    },
+    {
+      "source": "/margin/risk-control",
+      "target": "/margin/margin-requirements"
+    },
+    {
+      "source": "/margin/risk-control",
+      "target": "/margin/credit-limit"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/data-plans"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/market-overview"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/money-flow"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/indicators"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/overview"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/financials"
+    },
+    {
+      "source": "/market-data",
+      "target": "/market-data/announcements"
+    },
+    {
+      "source": "/market-data/overview",
+      "target": "/market-data/financials"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/overview"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/cash"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/funds"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/wealth"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/crypto"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/pnl"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/statement"
+    },
+    {
+      "source": "/portfolio-and-statements",
+      "target": "/portfolio-and-statements/settings"
+    },
+    {
+      "source": "/portfolio-and-statements/overview",
+      "target": "/deposit"
+    },
+    {
+      "source": "/rewards/activities/asset-retention",
+      "target": "/rewards/rewards-overview"
+    },
+    {
+      "source": "/rewards/eligibility",
+      "target": "/rewards/rewards-overview"
+    },
+    {
+      "source": "/rewards/eligibility",
+      "target": "/rewards/activities/account-opening-rewards"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-overview"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/benefits"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/eligibility"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/exclusive-privileges"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/lb-cafe"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/account-opening-rewards"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/asset-retention"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/daily-check-in"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/trading-challenge"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/trading-ranking"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/trading-red-packet"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/lucky-draw"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/flash-sale"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/predict-market"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/activities/boost"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/task-center/task-center"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/task-center/task-bundle"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/task-center/task-coins"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/task-center/task-conditions"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/referral/referral-center"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/referral/referral-activity"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/referral/referral-relationship"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/coupon-system"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/my-coupons"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/props-system"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/redemption-mall"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/physical-prizes"
+    },
+    {
+      "source": "/rewards",
+      "target": "/rewards/rewards-mall/rewards-history"
+    },
+    {
+      "source": "/rewards/referral/referral-activity",
+      "target": "/rewards/rewards-overview"
+    },
+    {
+      "source": "/rewards/rewards-mall/coupon-system",
+      "target": "/rewards/rewards-overview"
+    },
+    {
+      "source": "/rewards/task-center/task-bundle",
+      "target": "/rewards/task-center/task-center"
+    },
+    {
+      "source": "/rewards/task-center/task-conditions",
+      "target": "/rewards/task-center/task-center"
+    },
+    {
+      "source": "/rewards/task-center/task-conditions",
+      "target": "/rewards/eligibility"
+    },
+    {
+      "source": "/stock-trading/corporate-actions/general-meeting",
+      "target": "/stock-trading/corporate-actions/dividend"
+    },
+    {
+      "source": "/stock-trading/corporate-actions/general-meeting",
+      "target": "/stock-trading/corporate-actions/rights-issue"
+    },
+    {
+      "source": "/stock-trading/corporate-actions/general-meeting",
+      "target": "/market-data/announcements"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/dividend"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/scrip-dividend"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/rights-issue"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/stock-split"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/general-meeting"
+    },
+    {
+      "source": "/stock-trading/corporate-actions",
+      "target": "/stock-trading/corporate-actions/impact-on-orders"
+    },
+    {
+      "source": "/stock-trading/desktop-tools",
+      "target": "/stock-trading/desktop-tools/chart-trading"
+    },
+    {
+      "source": "/stock-trading/desktop-tools",
+      "target": "/stock-trading/desktop-tools/market-depth"
+    },
+    {
+      "source": "/stock-trading/desktop-tools",
+      "target": "/stock-trading/desktop-tools/custom-layout"
+    },
+    {
+      "source": "/stock-trading/desktop-tools",
+      "target": "/stock-trading/desktop-tools/keyboard-shortcuts"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/dividend"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/impact-on-orders"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/rights-issue"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/scrip-dividend"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/stock-split"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/corporate-actions/general-meeting"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/desktop-tools/chart-trading"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/desktop-tools/custom-layout"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/desktop-tools/keyboard-shortcuts"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/desktop-tools/market-depth"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/bounce-order"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/cancel-order"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/conditional-order"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/grid-trading"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/limit-and-market"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/order-types/odd-lot"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/stock-transfer/broker-transfer-guide"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/stock-transfer/faq"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/stock-transfer/hk-transfer"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/stock-transfer/master-sub-transfer"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/stock-transfer/physical-shares"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-fees/fee-schedule"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-hours-and-rules/hk-trading-rules"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-hours-and-rules/sg-trading-rules"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-hours-and-rules/us-regular-investment"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-hours-and-rules/us-short-selling"
+    },
+    {
+      "source": "/stock-trading",
+      "target": "/stock-trading/trading-hours-and-rules/us-trading-rules"
+    },
+    {
+      "source": "/stock-trading/order-types/cancel-order",
+      "target": "/stock-trading/corporate-actions/impact-on-orders"
+    },
+    {
+      "source": "/stock-trading/order-types/cancel-order",
+      "target": "/stock-trading/order-types/limit-and-market"
+    },
+    {
+      "source": "/stock-trading/order-types/cancel-order",
+      "target": "/stock-trading/trading-hours-and-rules/hk-trading-rules"
+    },
+    {
+      "source": "/stock-trading/order-types/cancel-order",
+      "target": "/stock-trading/trading-hours-and-rules/us-trading-rules"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/limit-and-market"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/odd-lot"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/bounce-order"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/conditional-order"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/grid-trading"
+    },
+    {
+      "source": "/stock-trading/order-types",
+      "target": "/stock-trading/order-types/cancel-order"
+    },
+    {
+      "source": "/stock-trading/stock-transfer/hk-transfer",
+      "target": "/stock-trading/stock-transfer/broker-transfer-guide"
+    },
+    {
+      "source": "/stock-trading/stock-transfer",
+      "target": "/stock-trading/stock-transfer/hk-transfer"
+    },
+    {
+      "source": "/stock-trading/stock-transfer",
+      "target": "/stock-trading/stock-transfer/broker-transfer-guide"
+    },
+    {
+      "source": "/stock-trading/stock-transfer",
+      "target": "/stock-trading/stock-transfer/master-sub-transfer"
+    },
+    {
+      "source": "/stock-trading/stock-transfer",
+      "target": "/stock-trading/stock-transfer/physical-shares"
+    },
+    {
+      "source": "/stock-trading/stock-transfer",
+      "target": "/stock-trading/stock-transfer/faq"
+    },
+    {
+      "source": "/stock-trading/trading-fees",
+      "target": "/stock-trading/trading-fees/fee-schedule"
+    },
+    {
+      "source": "/stock-trading/trading-fees",
+      "target": "/stock-trading/trading-fees/my-fees"
+    },
+    {
+      "source": "/stock-trading/trading-hours-and-rules",
+      "target": "/stock-trading/trading-hours-and-rules/sg-trading-rules"
+    },
+    {
+      "source": "/stock-trading/trading-hours-and-rules",
+      "target": "/stock-trading/trading-hours-and-rules/hk-trading-rules"
+    },
+    {
+      "source": "/stock-trading/trading-hours-and-rules",
+      "target": "/stock-trading/trading-hours-and-rules/us-trading-rules"
+    },
+    {
+      "source": "/stock-trading/trading-hours-and-rules",
+      "target": "/stock-trading/trading-hours-and-rules/us-short-selling"
+    },
+    {
+      "source": "/stock-trading/trading-hours-and-rules",
+      "target": "/stock-trading/trading-hours-and-rules/us-regular-investment"
+    },
+    {
+      "source": "/transfers-and-fx",
+      "target": "/transfers-and-fx/auto-repayment"
+    },
+    {
+      "source": "/transfers-and-fx",
+      "target": "/transfers-and-fx/cross-account-transfer"
+    },
+    {
+      "source": "/transfers-and-fx",
+      "target": "/transfers-and-fx/hk-fx"
+    },
+    {
+      "source": "/transfers-and-fx",
+      "target": "/transfers-and-fx/master-sub-transfer"
+    },
+    {
+      "source": "/troubleshooting/contact-support",
+      "target": "/troubleshooting/login-failure"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/contact-support"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/dda-failure"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/deposit-not-received"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/hang-seng-clarification"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/login-failure"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/network-connection"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/option-exercise-issue"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/order-failure"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/sms-code"
+    },
+    {
+      "source": "/troubleshooting",
+      "target": "/troubleshooting/withdrawal-failure"
+    },
+    {
+      "source": "/withdrawal/hk-online-banking",
+      "target": "/withdrawal/to-hk-bank-card"
+    },
+    {
+      "source": "/withdrawal",
+      "target": "/withdrawal/hk-online-banking"
+    },
+    {
+      "source": "/withdrawal",
+      "target": "/withdrawal/refund"
+    },
+    {
+      "source": "/withdrawal",
+      "target": "/withdrawal/standard-account-guide"
+    },
+    {
+      "source": "/withdrawal",
+      "target": "/withdrawal/to-hk-bank-card"
+    },
+    {
+      "source": "/withdrawal",
+      "target": "/withdrawal/wire-transfer"
+    },
+    {
+      "source": "/withdrawal/to-hk-bank-card",
+      "target": "/withdrawal/hk-online-banking"
+    }
+  ]
+}

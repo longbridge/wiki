@@ -55,3 +55,13 @@ sidebar: true
 关闭后，系统在最近交易日赎回持仓，最晚 T+1 到账。
 
 香港账户：关闭后原余额通持仓转入普通基金账户；若账户有融资，购买力下降可能触发追缴保证金，请注意风险。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [如何开通余额通](/funds-and-wealth/how-to-enable-cash-plus)
+- [闲钱理财](/funds-and-wealth/idle-cash)
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->

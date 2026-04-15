@@ -37,3 +37,10 @@ sidebar: true
 
 页面底部「隐藏已使用/已失效卡券」开关，默认开启。关闭后可查看所有历史卡券记录。
 
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [活动与奖励](/rewards)
+
+<!-- backlinks:end -->

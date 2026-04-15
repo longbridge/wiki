@@ -93,3 +93,12 @@ sidebar: true
 
 - TradingView 模式图表不显示附加单委托线，建议切换为经典模式使用
 - 美股不支持夜盘期间使用图表交易下单
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [桌面端工具](/stock-trading/desktop-tools)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

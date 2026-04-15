@@ -73,3 +73,12 @@ sidebar: true
 - 组合键：Command/Ctrl + 数字、字母或标点符号
 
 自定义设置入口：设置 > 快捷键。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [桌面端工具](/stock-trading/desktop-tools)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

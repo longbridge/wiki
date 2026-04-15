@@ -53,3 +53,12 @@ sidebar: true
 - 计算结果基于 Black-Scholes 模型，仅供参考，不代表实际成交价格。
 - 实际市场价格受供需、流动性等因素影响，可能与理论价格存在差异。
 - 点击「查看免责声明」了解更多说明。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+- [期权交易入门](/derivatives/options/options-getting-started)
+
+<!-- backlinks:end -->

@@ -60,3 +60,11 @@ sidebar: true
 提交邮箱：service@longbridge.hk
 
 如仅注销虚拟资产账户（保留证券账户），请在申请表中勾选"取消证券交易账户"，并备注虚拟资产账户的证券号码。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

@@ -55,3 +55,12 @@ sidebar: true
 - [派息](/stock-trading/corporate-actions/dividend) — 股息分派的参与条件与处理
 - [供股要约](/stock-trading/corporate-actions/rights-issue) — 股东大会批准后触发的供股流程
 - [公告与讨论](/market-data/announcements) — 在 App 内查看公司公告
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [公司行动](/stock-trading/corporate-actions)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

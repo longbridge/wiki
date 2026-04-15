@@ -90,3 +90,12 @@ sidebar: true
 
 - [市场深度](/stock-trading/桌面端工具/市场深度) — 桌面端工具
 - [图表交易](/stock-trading/桌面端工具/图表交易) — 桌面端交易工具
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [桌面端工具](/stock-trading/desktop-tools)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

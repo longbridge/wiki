@@ -28,3 +28,11 @@ sidebar: true
 客服热线：+852 3851 1777
 WhatsApp：+852 5223 6373
 客服邮箱：service@longbridge.hk
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

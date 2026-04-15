@@ -118,3 +118,13 @@ ADR 托管费用平均每股 1 至 5 美分，收取金额和时间因不同 ADR
 - [限价单与市价单](/stock-trading/订单类型/限价单与市价单) — 订单类型
 - [美股定投](/stock-trading/交易时间与规则/美股定投) — 定投规则与设置
 - [美股卖空](/stock-trading/交易时间与规则/美股卖空) — 卖空交易规则
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [撤销订单](/stock-trading/order-types/cancel-order)
+- [交易市场与规则](/stock-trading/trading-hours-and-rules)
+
+<!-- backlinks:end -->

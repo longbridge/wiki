@@ -46,3 +46,15 @@ sidebar: true
 - [期权基础](/derivatives/期权基础)
 - [期权买方](/derivatives/期权买方)
 - [期权卖方](/derivatives/期权卖方)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+- [如何买入期权](/derivatives/options/how-to-buy-options)
+- [期权基础](/derivatives/options/options-basics)
+- [期权买方](/derivatives/options/options-buyer)
+- [期权交易入门](/derivatives/options/options-getting-started)
+
+<!-- backlinks:end -->

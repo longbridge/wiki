@@ -100,3 +100,12 @@ sidebar: true
 - 长桥不会主动要求您将验证码提供给他人，请勿泄露验证码
 - 收不到验证码时，请参阅 [收不到短信验证码](../troubleshooting/收不到短信验证码.md) 排查
 - 登录遇到问题，可点击页面右上角「Get Help」直接联系客服
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [下载 App](/getting-started/download-app)
+- [新手入门](/getting-started)
+
+<!-- backlinks:end -->

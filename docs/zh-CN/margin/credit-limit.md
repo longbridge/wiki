@@ -41,3 +41,14 @@ sidebar: true
 - [保证金](/margin/margin-requirements) — 初始、维持、平仓三层结构与购买力计算
 - [融资利息](/margin/interest-rules)
 - [账户风控](/margin/risk-control) — 安全/中等/预警/危险四级风控状态与购买力影响
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [融资融券](/margin)
+- [融资利息](/margin/interest-rules)
+- [保证金](/margin/margin-requirements)
+- [账户风控](/margin/risk-control)
+
+<!-- backlinks:end -->

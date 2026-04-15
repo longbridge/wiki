@@ -24,3 +24,12 @@ sidebar: true
 注销后重新申请开通会重置虚拟练习资金。
 
 可注销次数：一个月一次。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [综合账户](/account/account-types/comprehensive-account)
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

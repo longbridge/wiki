@@ -167,3 +167,12 @@ sidebar: true
 
 - [银行代码总览（PDF）](https://www.wfsfaa.gov.hk/sfo/pdf/common/Form/tsfs/bank_code.pdf)
 - [银行代码在线查询](https://bank-codes-hk.com/hong-kong-bank-code-search/)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [入金](/deposit)
+- [银行卡绑定与审核](/deposit/setup/bank-card-binding)
+
+<!-- backlinks:end -->

@@ -9,6 +9,7 @@ import HomeCardsB from './components/HomeCards_B.vue'
 import HomeCardsC from './components/HomeCards_C.vue'
 import Tabs from './components/Tabs.vue'
 import TabItem from './components/TabItem.vue'
+import LinkGraph from './components/LinkGraph.vue'
 
 export default {
   extends: DefaultTheme,
@@ -20,5 +21,6 @@ export default {
     app.component('HomeCardsC', HomeCardsC)
     app.component('Tabs', Tabs)
     app.component('TabItem', TabItem)
+    app.component('LinkGraph', LinkGraph)
   },
 } satisfies Theme

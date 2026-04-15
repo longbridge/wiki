@@ -26,3 +26,12 @@ sidebar: true
 ## 不足一股的处理
 
 若发生拆合股后持仓不足一股，则会在企业行动后换为等额现金返还到客户账户。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [公司行动](/stock-trading/corporate-actions)
+- [股票交易](/stock-trading)
+
+<!-- backlinks:end -->

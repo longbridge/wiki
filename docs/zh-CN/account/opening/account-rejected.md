@@ -54,3 +54,11 @@ sidebar: true
 **在线客服**：长桥 App → 我的 → 帮助与客服 → 在线客服  
 **香港邮箱**：service@longbridge.hk  
 **新加坡邮箱**：contact@longbridge.sg
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [开户与账户](/account)
+
+<!-- backlinks:end -->

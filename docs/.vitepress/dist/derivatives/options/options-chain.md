@@ -83,3 +83,13 @@ sidebar: true
 
 点击任意期权合约行，进入该期权的详情页，可查看完整行情数据（Delta、Gamma、Theta、Vega、Rho、隐含波动率、历史波动率等）、K
 线图表、期权计算器，以及发起买入/卖出下单。
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+- [如何买入期权](/derivatives/options/how-to-buy-options)
+- [期权交易入门](/derivatives/options/options-getting-started)
+
+<!-- backlinks:end -->

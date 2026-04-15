@@ -95,3 +95,15 @@ sidebar: true
 ## 相关文档
 
 - [基金收费](/funds-and-wealth/funds/fund-fees) — 申购赎回费率与管理费说明
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [完成首笔基金定投](/funds-and-wealth/funds/first-fund-regular-investment)
+- [基金](/funds-and-wealth/funds/fund-basics)
+- [基金收费](/funds-and-wealth/funds/fund-fees)
+- [基金定投](/funds-and-wealth/funds/fund-regular-investment)
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->

@@ -7,7 +7,7 @@ sidebar: true
 
 期权买方权利特征、买入看涨和看跌期权的盈亏计算及行权选择。
 
-> 了解盈亏原理后，若需下单操作，参阅[如何买入期权](/derivatives/options/如何买入期权)。
+> 了解盈亏原理后，若需下单操作，参阅[如何买入期权](/derivatives/options/how-to-buy-options)。
 
 ## 定义
 
@@ -86,6 +86,17 @@ sidebar: true
 
 ## 相关文档
 
-- [如何买入期权](/derivatives/options/如何买入期权) — 期权链查找、行权价选择与下单操作步骤
+- [如何买入期权](/derivatives/options/how-to-buy-options) — 期权链查找、行权价选择与下单操作步骤
 - [开通期权交易](/derivatives/options/enable-options) — 权限级别与申请流程
 - [期权卖方](/derivatives/options/options-seller) — 卖方义务方的风险收益特征
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [衍生品](/derivatives)
+- [如何买入期权](/derivatives/options/how-to-buy-options)
+- [期权交易入门](/derivatives/options/options-getting-started)
+- [期权卖方](/derivatives/options/options-seller)
+
+<!-- backlinks:end -->

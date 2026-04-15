@@ -67,3 +67,12 @@ sidebar: true
 - 执行后相关股票及费用会被冻结及扣除，期间股票不能卖出/转仓/提取
 - 股票冻结/扣除可能即时影响总资产值、保证金值、风控状态，须自行承担相关风险
 - 不同股票兑换比例有别（如 BABA：1 美股 = 8 港股），如有疑问请联系客服查询
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [股票转仓](/stock-trading/stock-transfer)
+
+<!-- backlinks:end -->

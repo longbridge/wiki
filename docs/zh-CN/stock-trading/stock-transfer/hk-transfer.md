@@ -115,3 +115,12 @@ sidebar: true
 - 新加坡账户处于融资中或手续费不足时无法发起转出
 - 转仓过程中如遇股票派息，长桥收到后会入账至客户长桥账户
 - 如无法在 App 内操作，可通过邮件申请：[下载转仓表格](https://pub.lbkrs.com/files/202602/rdnfx1shWbkNDAwD/___20260206.pdf)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [股票交易](/stock-trading)
+- [股票转仓](/stock-trading/stock-transfer)
+
+<!-- backlinks:end -->

@@ -48,3 +48,12 @@ sidebar: true
 - [订单提交失败怎么办](/troubleshooting/订单提交失败怎么办)
 - [App 登录失败怎么办](/troubleshooting/login-failure)
 - [收不到短信验证码](/troubleshooting/收不到短信验证码)
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [账户常见问题](/account/account-faq)
+- [故障排查](/troubleshooting)
+
+<!-- backlinks:end -->

@@ -42,3 +42,15 @@ sidebar: true
 ## 相关文档
 
 - [基金交易规则](/funds-and-wealth/funds/fund-trading-rules) — T 日定义、买卖截止时间与撤单规则
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [完成首笔基金定投](/funds-and-wealth/funds/first-fund-regular-investment)
+- [基金定投](/funds-and-wealth/funds/fund-regular-investment)
+- [基金交易规则](/funds-and-wealth/funds/fund-trading-rules)
+- [闲钱理财](/funds-and-wealth/idle-cash)
+- [基金与理财](/funds-and-wealth)
+
+<!-- backlinks:end -->
