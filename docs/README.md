@@ -1,4 +1,4 @@
-# Longbridge Wiki
+# Longbridge Docs
 
 全量文档索引。共 15 个知识领域，路径均相对于 `docs/` 目录。
 

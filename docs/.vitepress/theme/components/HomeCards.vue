@@ -7,7 +7,7 @@
       <ClientOnly><HomeGraphBg /></ClientOnly>
       <div class="hero-text">
         <p class="hero-eyebrow">账户 · 资金 · 交易 · 产品功能</p>
-        <h1 class="hero-h1"><span class="shimmer-text">Longbridge Wiki</span></h1>
+        <h1 class="hero-h1"><span class="shimmer-text">Longbridge Docs</span></h1>
         <p class="hero-sub">
           账户开设、资金进出、交易规则——每一步操作都有说明
         </p>

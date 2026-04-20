@@ -266,8 +266,8 @@ function generateSidebar() {
 }
 
 export default defineConfig({
-  title: 'Longbridge Wiki',
-  description: '长桥证券用户知识库',
+  title: 'Longbridge Docs',
+  description: 'Longbridge Docs',
   base: '/',
   ignoreDeadLinks: true,
   cleanUrls: true,
@@ -340,7 +340,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/longbridge/wiki' },
+      { icon: 'github', link: 'https://github.com/longbridge/docs' },
     ],
 
     footer: {

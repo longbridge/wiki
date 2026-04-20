@@ -1,5 +1,5 @@
-# Longbridge Wiki
+# Longbridge Docs
 
 长桥证券用户知识库，涵盖账户管理、资金操作、交易规则、产品功能等 15 个知识领域。
 
-**线上地址**：[wiki.longbridge.com](http://wiki.longbridge.com/)
+**线上地址**：[docs.longbridge.com](http://docs.longbridge.com/)
