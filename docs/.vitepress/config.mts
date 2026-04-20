@@ -268,7 +268,7 @@ function generateSidebar() {
 export default defineConfig({
   title: 'Longbridge Wiki',
   description: '长桥证券用户知识库',
-  base: '/wiki/',
+  base: '/',
   ignoreDeadLinks: true,
   cleanUrls: true,
 
