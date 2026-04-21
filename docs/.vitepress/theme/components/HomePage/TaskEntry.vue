@@ -40,20 +40,20 @@ const tasks = [
 .task-entry__title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--lb-text);
-  margin-bottom: var(--lb-space-xs);
+  color: var(--text);
+  margin-bottom: var(--space-xs);
 }
 
 .task-entry__sub {
   font-size: 0.9rem;
-  color: var(--lb-text-mute);
-  margin-bottom: var(--lb-space-lg);
+  color: var(--text-mute);
+  margin-bottom: var(--space-lg);
 }
 
 .task-entry__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--lb-space-md);
+  gap: var(--space-md);
   max-width: 720px;
   margin: 0 auto;
 }
@@ -65,21 +65,21 @@ const tasks = [
 .task-entry__card {
   display: flex;
   align-items: center;
-  gap: var(--lb-space-sm);
-  padding: var(--lb-space-md);
-  background: var(--lb-card-bg);
-  border: 1px solid var(--lb-card-border);
-  border-radius: var(--lb-card-radius);
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
   text-decoration: none;
-  color: var(--lb-text);
+  color: var(--text);
   font-weight: 500;
-  transition: var(--lb-transition);
-  box-shadow: var(--lb-card-shadow);
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
 }
 
 .task-entry__card:hover {
   border-color: var(--vp-c-brand-1);
-  box-shadow: var(--lb-card-shadow-hover);
+  box-shadow: var(--card-shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -89,8 +89,8 @@ const tasks = [
 .task-entry__arrow {
   width: 16px;
   height: 16px;
-  color: var(--lb-text-mute);
-  transition: var(--lb-transition);
+  color: var(--text-mute);
+  transition: var(--transition);
 }
 
 .task-entry__card:hover .task-entry__arrow { color: var(--vp-c-brand-1); }

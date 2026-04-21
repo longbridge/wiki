@@ -56,19 +56,19 @@ function search(q?: string) {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--lb-space-md);
+  gap: var(--space-md);
 }
 
 .ask-box__input-wrap {
   display: flex;
   align-items: center;
-  background: var(--lb-bg);
-  border: 1.5px solid var(--lb-border);
-  border-radius: var(--lb-radius-full);
-  padding: 0 var(--lb-space-md);
-  gap: var(--lb-space-sm);
-  transition: var(--lb-transition);
-  box-shadow: var(--lb-card-shadow);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-md);
+  gap: var(--space-sm);
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
 }
 
 .ask-box__input-wrap:focus-within {
@@ -79,7 +79,7 @@ function search(q?: string) {
 .ask-box__icon {
   width: 18px;
   height: 18px;
-  color: var(--lb-text-mute);
+  color: var(--text-mute);
   flex-shrink: 0;
 }
 
@@ -89,12 +89,12 @@ function search(q?: string) {
   outline: none;
   background: transparent;
   font-size: 1rem;
-  color: var(--lb-text);
+  color: var(--text);
   padding: 14px 0;
   min-width: 0;
 }
 
-.ask-box__input::placeholder { color: var(--lb-text-mute); }
+.ask-box__input::placeholder { color: var(--text-mute); }
 
 .ask-box__submit {
   width: 32px;
@@ -108,7 +108,7 @@ function search(q?: string) {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: var(--lb-transition);
+  transition: var(--transition);
 }
 
 .ask-box__submit svg { width: 16px; height: 16px; }
@@ -118,24 +118,24 @@ function search(q?: string) {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--lb-space-xs);
+  gap: var(--space-xs);
 }
 
 .ask-box__hot-label {
   font-size: 0.8rem;
-  color: var(--lb-text-mute);
+  color: var(--text-mute);
   flex-shrink: 0;
 }
 
 .ask-box__chip {
   font-size: 0.8rem;
   padding: 4px 12px;
-  border-radius: var(--lb-radius-full);
-  border: 1px solid var(--lb-border);
-  background: var(--lb-bg-soft);
-  color: var(--lb-text-soft);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text-soft);
   cursor: pointer;
-  transition: var(--lb-transition);
+  transition: var(--transition);
 }
 
 .ask-box__chip:hover {

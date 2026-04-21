@@ -183,7 +183,7 @@ git commit -m "feat(theme): add design token system and enable appearance auto"
 
 用法示例：
 ```md
-<LbCallout type="warning" title="注意">港股交易时间以香港交易所为准。</LbCallout>
+<Callout type="warning" title="注意">港股交易时间以香港交易所为准。</Callout>
 ```
 
 - [ ] **Step 1: 创建 LbCallout.vue**
@@ -254,7 +254,7 @@ enhanceApp({ app }) {
 临时在任意 Markdown 文件中加入并检查渲染：
 
 ```md
-<LbCallout type="warning" title="测试">内容。</LbCallout>
+<Callout type="warning" title="测试">内容。</Callout>
 ```
 
 确认四种类型颜色正确，暗色模式下对比度合格后移除测试代码。
@@ -277,10 +277,10 @@ git commit -m "feat(components): add LbCallout component"
 
 用法示例：
 ```md
-<LbSteps>
-  <LbStep title="打开长桥 App">点击底部「市场」标签。</LbStep>
-  <LbStep title="选择港股">搜索股票代码。</LbStep>
-</LbSteps>
+<Steps>
+  <Step title="打开长桥 App">点击底部「市场」标签。</Step>
+  <Step title="选择港股">搜索股票代码。</Step>
+</Steps>
 ```
 
 - [ ] **Step 1: 创建 LbStep.vue**
@@ -400,7 +400,7 @@ git commit -m "feat(components): add LbSteps/LbStep components"
 
 用法示例：
 ```md
-<LbVideo src="https://cdn.example.com/demo.mp4" poster="/img/thumb.jpg" caption="长桥 App 下单演示" />
+<Video src="https://cdn.example.com/demo.mp4" poster="/img/thumb.jpg" caption="长桥 App 下单演示" />
 ```
 
 - [ ] **Step 1: 创建 LbVideo.vue**
@@ -485,7 +485,7 @@ git commit -m "feat(components): add LbVideo component"
 
 用法示例（`spots` 是热区数组，x/y 是相对图片的百分比位置）：
 ```md
-<LbScreenshot
+<Screenshot
   src="/img/trade-order.png"
   alt="下单页面"
   :spots="[
@@ -622,7 +622,7 @@ git commit -m "feat(components): add LbScreenshot with hotspot annotations"
 
 用法示例：
 ```md
-<LbRateTable
+<RateTable
   :dimensions="['港股', '美股', 'A股']"
   :rows="[
     { item: '佣金', hk: '0.03%，最低 3 HKD', us: 'USD 0.005/股', cn: '0.025%' },
@@ -764,7 +764,7 @@ git commit -m "feat(components): add LbRateTable structured rate component"
 
 港股交易费用计算器，内置真实费率参数作为样板实现。用法：
 ```md
-<LbCalculator market="hk" />
+<Calculator market="hk" />
 ```
 
 - [ ] **Step 1: 创建 LbCalculator.vue**
@@ -969,7 +969,7 @@ git commit -m "feat(components): add LbCalculator HK stock fee calculator"
 
 用法示例：
 ```md
-<LbAppDeepLink href="longbridge://trade/order?symbol=700.HK" label="在 App 中下单港股" />
+<AppDeepLink href="longbridge://trade/order?symbol=700.HK" label="在 App 中下单港股" />
 ```
 
 - [ ] **Step 1: 创建 LbAppDeepLink.vue**

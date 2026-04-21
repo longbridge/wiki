@@ -11,14 +11,14 @@ import Tabs from './components/Tabs.vue'
 import TabItem from './components/TabItem.vue'
 import LinkGraph from './components/LinkGraph.vue'
 import HomePage from './components/HomePage/index.vue'
-import LbCallout from './components/LbCallout.vue'
-import LbSteps from './components/LbSteps.vue'
-import LbStep from './components/LbStep.vue'
-import LbVideo from './components/LbVideo.vue'
-import LbScreenshot from './components/LbScreenshot.vue'
-import LbRateTable from './components/LbRateTable.vue'
-import LbCalculator from './components/LbCalculator.vue'
-import LbAppDeepLink from './components/LbAppDeepLink.vue'
+import Callout from './components/Callout.vue'
+import Steps from './components/Steps.vue'
+import Step from './components/Step.vue'
+import Video from './components/Video.vue'
+import Screenshot from './components/Screenshot.vue'
+import RateTable from './components/RateTable.vue'
+import Calculator from './components/Calculator.vue'
+import AppDeepLink from './components/AppDeepLink.vue'
 import CategoryLanding from './components/CategoryLanding.vue'
 import ArticleHeader from './components/ArticleHeader.vue'
 
@@ -34,14 +34,14 @@ export default {
     app.component('TabItem', TabItem)
     app.component('LinkGraph', LinkGraph)
     app.component('HomePage', HomePage)
-    app.component('LbCallout', LbCallout)
-    app.component('LbSteps', LbSteps)
-    app.component('LbStep', LbStep)
-    app.component('LbVideo', LbVideo)
-    app.component('LbScreenshot', LbScreenshot)
-    app.component('LbRateTable', LbRateTable)
-    app.component('LbCalculator', LbCalculator)
-    app.component('LbAppDeepLink', LbAppDeepLink)
+    app.component('Callout', Callout)
+    app.component('Steps', Steps)
+    app.component('Step', Step)
+    app.component('Video', Video)
+    app.component('Screenshot', Screenshot)
+    app.component('RateTable', RateTable)
+    app.component('Calculator', Calculator)
+    app.component('AppDeepLink', AppDeepLink)
     app.component('CategoryLanding', CategoryLanding)
     app.component('ArticleHeader', ArticleHeader)
   },

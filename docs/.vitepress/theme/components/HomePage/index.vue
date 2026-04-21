@@ -40,14 +40,14 @@ import DomainGrid from './DomainGrid.vue'
 .home-hero {
   position: relative;
   overflow: hidden;
-  padding: var(--lb-space-3xl) var(--lb-space-xl) var(--lb-space-2xl);
+  padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
   text-align: center;
 }
 
 .home-hero__bg {
   position: absolute;
   inset: 0;
-  background: var(--lb-grad-hero);
+  background: var(--grad-hero);
   z-index: 0;
 }
 
@@ -59,7 +59,7 @@ import DomainGrid from './DomainGrid.vue'
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--lb-space-md);
+  gap: var(--space-md);
 }
 
 .home-hero__eyebrow {
@@ -74,7 +74,7 @@ import DomainGrid from './DomainGrid.vue'
 .home-hero__title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  color: var(--lb-text);
+  color: var(--text);
   line-height: 1.15;
   margin: 0;
   letter-spacing: -0.02em;
@@ -82,13 +82,13 @@ import DomainGrid from './DomainGrid.vue'
 
 .home-hero__sub {
   font-size: 1.05rem;
-  color: var(--lb-text-soft);
+  color: var(--text-soft);
   margin: 0;
   max-width: 480px;
 }
 
 .home-section {
-  padding: var(--lb-space-2xl) var(--lb-space-xl);
+  padding: var(--space-2xl) var(--space-xl);
 }
 
 .home-inner {
@@ -98,21 +98,21 @@ import DomainGrid from './DomainGrid.vue'
 
 .home-divider {
   height: 1px;
-  background: var(--lb-border-soft);
-  margin: 0 var(--lb-space-xl);
+  background: var(--border-soft);
+  margin: 0 var(--space-xl);
 }
 
 @media (max-width: 768px) {
   .home-hero {
-    padding: var(--lb-space-2xl) var(--lb-space-md) var(--lb-space-xl);
+    padding: var(--space-2xl) var(--space-md) var(--space-xl);
   }
 
   .home-section {
-    padding: var(--lb-space-xl) var(--lb-space-md);
+    padding: var(--space-xl) var(--space-md);
   }
 
   .home-divider {
-    margin: 0 var(--lb-space-md);
+    margin: 0 var(--space-md);
   }
 }
 </style>

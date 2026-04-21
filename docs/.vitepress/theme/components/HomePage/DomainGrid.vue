@@ -156,21 +156,21 @@ const tertiaryDomains  = domains.filter(d => d.weight === 'tertiary')
 .domain-grid__title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--lb-text);
-  margin-bottom: var(--lb-space-xs);
+  color: var(--text);
+  margin-bottom: var(--space-xs);
 }
 
 .domain-grid__sub {
   font-size: 0.9rem;
-  color: var(--lb-text-mute);
-  margin-bottom: var(--lb-space-xl);
+  color: var(--text-mute);
+  margin-bottom: var(--space-xl);
 }
 
 .domain-grid__primary {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--lb-space-md);
-  margin-bottom: var(--lb-space-lg);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 @media (max-width: 640px) {
@@ -180,8 +180,8 @@ const tertiaryDomains  = domains.filter(d => d.weight === 'tertiary')
 .domain-grid__secondary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--lb-space-md);
-  margin-bottom: var(--lb-space-lg);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 @media (max-width: 768px) {
@@ -195,32 +195,32 @@ const tertiaryDomains  = domains.filter(d => d.weight === 'tertiary')
 .domain-grid__tertiary {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--lb-space-sm);
+  gap: var(--space-sm);
   justify-content: center;
 }
 
 .domain-card {
-  background: var(--lb-card-bg);
-  border: 1px solid var(--lb-card-border);
-  border-radius: var(--lb-card-radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
   text-decoration: none;
-  color: var(--lb-text);
-  transition: var(--lb-transition);
-  box-shadow: var(--lb-card-shadow);
+  color: var(--text);
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
   text-align: left;
 }
 
 .domain-card:hover {
   border-color: var(--vp-c-brand-1);
-  box-shadow: var(--lb-card-shadow-hover);
+  box-shadow: var(--card-shadow-hover);
   transform: translateY(-2px);
 }
 
 .domain-card--primary {
   display: flex;
   align-items: center;
-  gap: var(--lb-space-md);
-  padding: var(--lb-space-lg);
+  gap: var(--space-md);
+  padding: var(--space-lg);
 }
 
 .domain-card--primary .domain-card__icon { font-size: 2rem; flex-shrink: 0; }
@@ -234,15 +234,15 @@ const tertiaryDomains  = domains.filter(d => d.weight === 'tertiary')
 
 .domain-card--primary .domain-card__desc {
   font-size: 0.85rem;
-  color: var(--lb-text-soft);
+  color: var(--text-soft);
 }
 
 .domain-card__arrow {
   width: 18px;
   height: 18px;
-  color: var(--lb-text-mute);
+  color: var(--text-mute);
   flex-shrink: 0;
-  transition: var(--lb-transition);
+  transition: var(--transition);
 }
 
 .domain-card:hover .domain-card__arrow { color: var(--vp-c-brand-1); }
@@ -251,20 +251,20 @@ const tertiaryDomains  = domains.filter(d => d.weight === 'tertiary')
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--lb-space-xs);
-  padding: var(--lb-space-md);
+  gap: var(--space-xs);
+  padding: var(--space-md);
 }
 
 .domain-card--secondary .domain-card__icon { font-size: 1.5rem; }
 .domain-card--secondary .domain-card__label { font-weight: 600; font-size: 0.9rem; }
-.domain-card--secondary .domain-card__desc { font-size: 0.8rem; color: var(--lb-text-soft); }
+.domain-card--secondary .domain-card__desc { font-size: 0.8rem; color: var(--text-soft); }
 
 .domain-card--tertiary {
   display: flex;
   align-items: center;
-  gap: var(--lb-space-xs);
+  gap: var(--space-xs);
   padding: 8px 16px;
-  border-radius: var(--lb-radius-full);
+  border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 500;
 }

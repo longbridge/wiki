@@ -46,29 +46,29 @@ const isExpired = computed(() => {
 
 <style scoped>
 .article-header {
-  border-bottom: 1px solid var(--lb-border);
-  margin-bottom: var(--lb-space-lg);
-  padding-bottom: var(--lb-space-md);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
 }
 
 .article-header__inner {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--lb-space-sm);
+  gap: var(--space-sm);
 }
 
 .article-header__markets {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--lb-space-xs);
+  gap: var(--space-xs);
 }
 
 .article-header__market-tag {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 2px 10px;
-  border-radius: var(--lb-radius-full);
+  border-radius: var(--radius-full);
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
   border: 1px solid color-mix(in oklab, var(--vp-c-brand-1) 30%, transparent);
@@ -79,7 +79,7 @@ const isExpired = computed(() => {
   align-items: center;
   gap: 4px;
   font-size: 0.8rem;
-  color: var(--lb-text-mute);
+  color: var(--text-mute);
   margin-left: auto;
 }
 

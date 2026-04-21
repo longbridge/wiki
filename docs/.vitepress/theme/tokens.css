@@ -2,54 +2,54 @@
 
 :root {
   /* 渐变 */
-  --lb-grad-mint:    linear-gradient(135deg, #00b8b8 0%, #00d4a8 100%);
-  --lb-grad-ocean:   linear-gradient(135deg, #0066cc 0%, #00b8b8 100%);
-  --lb-grad-sunset:  linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  --lb-grad-violet:  linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-  --lb-grad-hero:    linear-gradient(160deg, #e8fffe 0%, #f0fff8 40%, #ffffff 100%);
+  --grad-mint:    linear-gradient(135deg, #00b8b8 0%, #00d4a8 100%);
+  --grad-ocean:   linear-gradient(135deg, #0066cc 0%, #00b8b8 100%);
+  --grad-sunset:  linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  --grad-violet:  linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  --grad-hero:    linear-gradient(160deg, #e8fffe 0%, #f0fff8 40%, #ffffff 100%);
 
   /* 表面 */
-  --lb-bg:           var(--vp-c-bg);
-  --lb-bg-soft:      var(--vp-c-bg-soft);
-  --lb-bg-mute:      var(--vp-c-bg-mute);
-  --lb-border:       var(--vp-c-divider);
-  --lb-border-soft:  color-mix(in oklab, var(--vp-c-divider) 50%, transparent);
+  --bg:           var(--vp-c-bg);
+  --bg-soft:      var(--vp-c-bg-soft);
+  --bg-mute:      var(--vp-c-bg-mute);
+  --border:       var(--vp-c-divider);
+  --border-soft:  color-mix(in oklab, var(--vp-c-divider) 50%, transparent);
 
   /* 卡片 */
-  --lb-card-bg:      var(--vp-c-bg-soft);
-  --lb-card-border:  var(--vp-c-divider);
-  --lb-card-radius:  12px;
-  --lb-card-shadow:  0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
-  --lb-card-shadow-hover: 0 4px 16px rgba(0,0,0,.10), 0 8px 32px rgba(0,0,0,.06);
+  --card-bg:      var(--vp-c-bg-soft);
+  --card-border:  var(--vp-c-divider);
+  --card-radius:  12px;
+  --card-shadow:  0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,.10), 0 8px 32px rgba(0,0,0,.06);
 
   /* 文字 */
-  --lb-text:         var(--vp-c-text-1);
-  --lb-text-soft:    var(--vp-c-text-2);
-  --lb-text-mute:    var(--vp-c-text-3);
+  --text:         var(--vp-c-text-1);
+  --text-soft:    var(--vp-c-text-2);
+  --text-mute:    var(--vp-c-text-3);
 
   /* 间距 */
-  --lb-space-xs:     4px;
-  --lb-space-sm:     8px;
-  --lb-space-md:     16px;
-  --lb-space-lg:     24px;
-  --lb-space-xl:     40px;
-  --lb-space-2xl:    64px;
+  --space-xs:     4px;
+  --space-sm:     8px;
+  --space-md:     16px;
+  --space-lg:     24px;
+  --space-xl:     40px;
+  --space-2xl:    64px;
 
   /* 圆角 */
-  --lb-radius-sm:    6px;
-  --lb-radius-md:    10px;
-  --lb-radius-lg:    16px;
-  --lb-radius-xl:    24px;
-  --lb-radius-full:  9999px;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+  --radius-xl:    24px;
+  --radius-full:  9999px;
 
   /* 过渡 */
-  --lb-transition:   all 0.2s ease;
+  --transition:   all 0.2s ease;
 }
 
 .dark {
-  --lb-grad-hero:    linear-gradient(160deg, #0a1628 0%, #0d1f1f 40%, #111827 100%);
-  --lb-card-bg:      rgba(255,255,255,0.04);
-  --lb-card-border:  rgba(255,255,255,0.08);
-  --lb-card-shadow:  0 1px 4px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.2);
-  --lb-card-shadow-hover: 0 4px 16px rgba(0,0,0,.4), 0 8px 32px rgba(0,0,0,.3);
+  --grad-hero:    linear-gradient(160deg, #0a1628 0%, #0d1f1f 40%, #111827 100%);
+  --card-bg:      rgba(255,255,255,0.04);
+  --card-border:  rgba(255,255,255,0.08);
+  --card-shadow:  0 1px 4px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.2);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,.4), 0 8px 32px rgba(0,0,0,.3);
 }
