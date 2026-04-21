@@ -1,0 +1,55 @@
+/* Longbridge 设计令牌 — 表面、渐变、阴影、排版 */
+
+:root {
+  /* 渐变 */
+  --grad-mint:    linear-gradient(135deg, #00b8b8 0%, #00d4a8 100%);
+  --grad-ocean:   linear-gradient(135deg, #0066cc 0%, #00b8b8 100%);
+  --grad-sunset:  linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  --grad-violet:  linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  --grad-hero:    linear-gradient(160deg, #e8fffe 0%, #f0fff8 40%, #ffffff 100%);
+
+  /* 表面 */
+  --bg:           var(--vp-c-bg);
+  --bg-soft:      var(--vp-c-bg-soft);
+  --bg-mute:      var(--vp-c-bg-mute);
+  --border:       var(--vp-c-divider);
+  --border-soft:  color-mix(in oklab, var(--vp-c-divider) 50%, transparent);
+
+  /* 卡片 */
+  --card-bg:      var(--vp-c-bg-soft);
+  --card-border:  var(--vp-c-divider);
+  --card-radius:  12px;
+  --card-shadow:  0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,.10), 0 8px 32px rgba(0,0,0,.06);
+
+  /* 文字 */
+  --text:         var(--vp-c-text-1);
+  --text-soft:    var(--vp-c-text-2);
+  --text-mute:    var(--vp-c-text-3);
+
+  /* 间距 */
+  --space-xs:     4px;
+  --space-sm:     8px;
+  --space-md:     16px;
+  --space-lg:     24px;
+  --space-xl:     40px;
+  --space-2xl:    64px;
+
+  /* 圆角 */
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+  --radius-xl:    24px;
+  --radius-full:  9999px;
+
+  /* 过渡 */
+  --transition:   all 0.2s ease;
+}
+
+.dark {
+  --grad-hero:    linear-gradient(160deg, #0a1628 0%, #0d1f1f 40%, #111827 100%);
+  --card-bg:      rgba(255,255,255,0.04);
+  --card-border:  rgba(255,255,255,0.08);
+  --card-shadow:  0 1px 4px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.2);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,.4), 0 8px 32px rgba(0,0,0,.3);
+}
