@@ -3,4 +3,4 @@ layout: page
 sidebar: false
 ---
 
-<HomeCards />
+<HomePage />
