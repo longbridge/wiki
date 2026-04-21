@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Breadcrumb from '../components/Breadcrumb/index.vue'
 import DocBackground from '../components/DocBackground.vue'
+import ArticleHeader from '../components/ArticleHeader.vue'
 
 const { frontmatter } = useData()
 const isDocPage = computed(() => {
@@ -19,6 +20,7 @@ const isDocPage = computed(() => {
     </template>
     <template #doc-top>
       <Breadcrumb />
+      <ArticleHeader />
     </template>
   </DefaultTheme.Layout>
 </template>

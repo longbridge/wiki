@@ -19,6 +19,8 @@ import LbScreenshot from './components/LbScreenshot.vue'
 import LbRateTable from './components/LbRateTable.vue'
 import LbCalculator from './components/LbCalculator.vue'
 import LbAppDeepLink from './components/LbAppDeepLink.vue'
+import CategoryLanding from './components/CategoryLanding.vue'
+import ArticleHeader from './components/ArticleHeader.vue'
 
 export default {
   extends: DefaultTheme,
@@ -40,5 +42,7 @@ export default {
     app.component('LbRateTable', LbRateTable)
     app.component('LbCalculator', LbCalculator)
     app.component('LbAppDeepLink', LbAppDeepLink)
+    app.component('CategoryLanding', CategoryLanding)
+    app.component('ArticleHeader', ArticleHeader)
   },
 } satisfies Theme
