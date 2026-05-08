@@ -11,11 +11,17 @@ sidebar: true
 
 ## 安卓
 
-[下载链接](https://static.lbkrs.com/app/longbridge-online-release.apk)
+- [HK App 下载链接](https://static.lbkrs.com/app/longbridge-online-release.apk)
+- [SG App 下载链接](https://static.lbkrs.com/app/longbridgesg-online-release.apk)
 
 ## 苹果（iOS）
 
 长桥 iOS App 已在中国大陆 App Store 下架，中国大陆地区用户无法通过中国大陆 Apple ID 下载。海外其他地区用户可使用当地 Apple ID 在 App Store 正常搜索并下载。
+
+### 中国大陆通过 TestFlight 下载
+
+- HK App：使用大陆 Apple ID 下载 TestFlight，[点击加入](https://testflight.apple.com/join/q27PHAxw)后选择长桥 App 安装。
+- SG App：使用其他地区 Apple ID 下载 TestFlight，[点击加入](https://testflight.apple.com/join/WVQMKEyl)后选择长桥 App 安装。
 
 ### 更新已安装的 App
 
