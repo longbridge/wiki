@@ -1,0 +1,12 @@
+[
+  "network-connection",
+  "sms-code",
+  "login-failure",
+  "deposit-not-received",
+  "withdrawal-failure",
+  "order-failure",
+  "dda-failure",
+  "option-exercise-issue",
+  "hang-seng-clarification",
+  "contact-support"
+]

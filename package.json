@@ -1,17 +1,24 @@
 {
-  "name": "longbridge-wiki",
+  "name": "longbridge-docs",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "graph": "tsx scripts/generate-link-graph.ts"
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview",
+    "graph": "tsx scripts/generate-link-graph.ts",
+    "vitepress:dev": "vitepress dev docs",
+    "vitepress:build": "vitepress build docs",
+    "vitepress:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "vitepress": "^1.6.3",
-    "vue": "^3.5.13",
+    "@rspress/core": "^2.0.10",
+    "@types/react": "^18.3.12",
+    "@unocss/reset": "^0.61.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "unocss": "^0.61.9",
-    "@unocss/reset": "^0.61.9"
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
   }
 }

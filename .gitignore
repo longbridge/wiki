@@ -1,9 +1,13 @@
 node_modules
 .vitepress/dist
 .vitepress/cache
+.rspress
+doc_build
 .idea
 CLAUDE.md
 .DS_Store
 scripts/*
+!scripts/convert-order-to-meta.ts
+!scripts/generate-link-graph.ts
 .playwright-mcp
 graphrag_quickstart
