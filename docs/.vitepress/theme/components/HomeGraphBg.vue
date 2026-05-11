@@ -2,7 +2,7 @@
   <canvas
     ref="canvasRef"
     aria-hidden="true"
-    class="home-graph-bg"
+    class="absolute inset-0 w-full h-full pointer-events-none select-none z-[1]"
   />
 </template>
 
@@ -437,15 +437,3 @@ onUnmounted(() => {
   if (mouseCleanup) mouseCleanup()
 })
 </script>
-
-<style scoped>
-.home-graph-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-}
-</style>

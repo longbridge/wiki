@@ -1,0 +1,616 @@
+/* ============================================================
+   Longbridge Docs — 品牌色变量（原 vars.css）
+   ============================================================ */
+
+:root {
+  --vp-c-brand-1: #00b8b8;
+  --vp-c-brand-2: #1ac7c7;
+  --vp-c-brand-3: #33cdcd;
+  --vp-c-brand-soft: rgba(0, 184, 184, 0.12);
+}
+
+.dark {
+  --vp-c-brand-1: #00f0c4;
+  --vp-c-brand-2: #32eadc;
+  --vp-c-brand-3: #2ed4c7;
+  --vp-c-brand-soft: rgba(0, 240, 196, 0.12);
+}
+
+/* 首页使用自定义 HomeNavbar，隐藏 VitePress 默认导航栏 */
+.home-page-layout .VPNav {
+  display: none !important;
+}
+
+/* ============================================================
+   Tailwind 指令
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   @layer base — 文档排版（原 docs.css）
+   ============================================================ */
+
+@layer base {
+  /* h2: default is margin: 48px 0 16px + padding-top: 24px = 72px total gap */
+  .vp-doc h2 {
+    @apply mt-8 mb-3;
+    padding-top: 16px;
+  }
+
+  /* h3: default is margin: 32px 0 0 */
+  .vp-doc h3 {
+    @apply mt-5;
+  }
+
+  /* h4: default is margin: 24px 0 0 */
+  .vp-doc h4 {
+    @apply mt-4;
+  }
+
+  .vp-doc p {
+    @apply my-2.5;
+  }
+
+  .vp-doc hr {
+    @apply my-4;
+  }
+
+  .vp-doc ul,
+  .vp-doc ol {
+    @apply my-2.5;
+  }
+
+  .vp-doc li + li {
+    @apply mt-1;
+  }
+}
+
+/* ============================================================
+   @layer components — Sidebar（原 sidebar.css）
+   ============================================================ */
+
+@layer components {
+  :root {
+    --vp-sidebar-width: 300px;
+  }
+
+  .VPSidebar {
+    outline: none;
+    border-right: 1px solid var(--vp-c-divider);
+  }
+
+  .VPNavBarTitle.has-sidebar .title {
+    border: 0;
+  }
+
+  /* Remove default group separator lines and add chapter spacing */
+  .VPSidebar .group + .group {
+    border-top: none !important;
+    padding-top: 0;
+    margin-top: 20px;
+  }
+
+  /* Remove sub-item left border, normalise indentation */
+  .VPSidebar .items {
+    border-left: none !important;
+    padding-left: 8px !important;
+  }
+
+  /* ─── Top-level section headers (level-0) ───────────────── */
+
+  .VPSidebarItem.level-0 > .item {
+    padding: 0 4px;
+  }
+
+  .VPSidebarItem.level-0 > .item > .link,
+  .VPSidebarItem.level-0 > .item > .text {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--vp-c-text-1);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Fixed expand: hide top-level caret */
+  .VPSidebarItem.level-0 > .item > .caret {
+    display: none;
+  }
+
+  /* Top-level hover: subtle gray, no brand fill */
+  .VPSidebarItem.level-0 > .item > .link:hover {
+    background: var(--vp-c-default-soft);
+    color: var(--vp-c-text-1);
+  }
+
+  /* Top-level active: section headers are never pill-highlighted. */
+  .VPSidebarItem.level-0.is-active > .item > .link {
+    background: transparent !important;
+    color: var(--vp-c-text-1);
+  }
+
+  /* ─── Level-1 group headers ──────────────────────────────── */
+
+  .VPSidebarItem.level-1 > .item {
+    padding: 0 4px;
+  }
+
+  .VPSidebarItem.level-1 > .item > .link,
+  .VPSidebarItem.level-1 > .item > .text {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--vp-c-text-2);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Lighter caret for level-1 */
+  .VPSidebarItem.level-1 > .item > .caret {
+    opacity: 0.5;
+  }
+
+  /* Level-1 hover */
+  .VPSidebarItem.level-1 > .item > .link:hover,
+  .VPSidebarItem.level-1:not(.is-link) > .item > .text:hover {
+    background: var(--vp-c-default-soft);
+    color: var(--vp-c-text-1);
+  }
+
+  /* ─── Icons ──────────────────────────────────────────────── */
+
+  .sidebar-item-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 10px;
+    color: var(--vp-c-text-3);
+    vertical-align: middle;
+  }
+
+  .sidebar-item-icon--sub {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 8px;
+    color: var(--vp-c-text-3);
+    vertical-align: middle;
+  }
+
+  .VPSidebarItem.level-0 > .item > .link:hover .sidebar-item-icon,
+  .VPSidebarItem.level-0.is-active > .item > .link .sidebar-item-icon {
+    color: var(--vp-c-brand-1);
+  }
+
+  .VPSidebarItem.level-1 > .item > .link:hover .sidebar-item-icon--sub,
+  .VPSidebarItem.level-1.is-active > .item > .link .sidebar-item-icon--sub {
+    color: var(--vp-c-brand-1);
+  }
+
+  /* ─── Leaf links (VPLink) ────────────────────────────────── */
+
+  .VPSidebarItem .VPLink {
+    border-radius: 10px;
+    padding: 6px 12px 6px 16px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--vp-c-text-2);
+    transition: background 0.12s, color 0.12s;
+  }
+
+  .VPSidebarItem.is-link .VPLink > p {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+
+  .VPSidebarItem .VPLink:hover {
+    background: var(--vp-c-default-soft);
+    color: var(--vp-c-text-1);
+  }
+
+  /* ─── Active leaf ────────────────────────────────────────── */
+
+  .VPSidebarItem.is-active > .item > .link {
+    background: var(--vp-c-brand-soft);
+    border-radius: 10px;
+  }
+
+  .VPSidebarItem.is-active .VPLink {
+    color: var(--vp-c-brand-1);
+    text-shadow: -0.2px 0 0 currentColor, 0.2px 0 0 currentColor;
+  }
+
+  .VPSidebarItem.is-active .VPLink:hover {
+    background: transparent;
+    color: var(--vp-c-brand-1);
+  }
+
+  .VPSidebarItem.is-active .sidebar-item-icon,
+  .VPSidebarItem.is-active .sidebar-item-icon--sub {
+    color: var(--vp-c-brand-1);
+  }
+}
+
+/* ============================================================
+   AI Drawer push layout（行为类逻辑保留为纯 CSS）
+   ============================================================ */
+
+#VPContent {
+  transition: padding-right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 769px) {
+  html.ai-drawer-open #VPContent {
+    padding-right: var(--ai-drawer-width, 380px) !important;
+  }
+}
+
+html.ai-resizing #VPContent {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #VPContent {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   @layer components — Search modal（原 search.css）
+   ============================================================ */
+
+@layer components {
+  /* Force light mode on backdrop and shell, even in dark system/theme */
+  .VPLocalSearchBox .backdrop,
+  .dark .VPLocalSearchBox .backdrop {
+    background: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(8px);
+  }
+
+  .VPLocalSearchBox .shell,
+  .dark .VPLocalSearchBox .shell {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 20px 60px rgba(0, 0, 0, 0.14) !important;
+    overflow: hidden;
+    max-width: 600px !important;
+    width: calc(100vw - 60px) !important;
+  }
+
+  /* Search bar */
+  .VPLocalSearchBox .search-bar,
+  .dark .VPLocalSearchBox .search-bar {
+    background: transparent !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+  }
+
+  .VPLocalSearchBox .search-bar:focus-within,
+  .dark .VPLocalSearchBox .search-bar:focus-within {
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  .VPLocalSearchBox .search-bar input,
+  .dark .VPLocalSearchBox .search-bar input {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    caret-color: #555555 !important;
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .VPLocalSearchBox .search-bar input:focus,
+  .VPLocalSearchBox .search-bar input:focus-visible,
+  .dark .VPLocalSearchBox .search-bar input:focus,
+  .dark .VPLocalSearchBox .search-bar input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .VPLocalSearchBox .search-bar input::placeholder,
+  .dark .VPLocalSearchBox .search-bar input::placeholder {
+    color: rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .VPLocalSearchBox .search-icon,
+  .dark .VPLocalSearchBox .search-icon {
+    color: rgba(0, 0, 0, 0.28) !important;
+    fill: rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .VPLocalSearchBox .search-actions button,
+  .VPLocalSearchBox .search-actions kbd,
+  .dark .VPLocalSearchBox .search-actions button,
+  .dark .VPLocalSearchBox .search-actions kbd {
+    color: rgba(0, 0, 0, 0.28) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    background: transparent !important;
+  }
+
+  /* Results list */
+  .VPLocalSearchBox .results,
+  .dark .VPLocalSearchBox .results {
+    padding: 3px 8px 4px;
+    gap: 2px !important;
+    background: transparent !important;
+  }
+
+  .VPLocalSearchBox .result,
+  .dark .VPLocalSearchBox .result {
+    border: none !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    margin-bottom: 1px;
+    padding: 4px 10px !important;
+    outline: none !important;
+    transition: background 0.1s;
+  }
+
+  .VPLocalSearchBox .result:hover,
+  .dark .VPLocalSearchBox .result:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .VPLocalSearchBox .result.selected,
+  .dark .VPLocalSearchBox .result.selected {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Titles — breadcrumb stacked above main title */
+  .VPLocalSearchBox .titles,
+  .dark .VPLocalSearchBox .titles {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0px !important;
+  }
+
+  /* Hide the # icon */
+  .VPLocalSearchBox .title-icon,
+  .dark .VPLocalSearchBox .title-icon {
+    display: none !important;
+  }
+
+  /* Breadcrumb path */
+  .VPLocalSearchBox .title:not(.main),
+  .dark .VPLocalSearchBox .title:not(.main) {
+    font-size: 11px !important;
+    color: rgba(0, 0, 0, 0.36) !important;
+    font-weight: 400 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+  }
+
+  /* Main title */
+  .VPLocalSearchBox .title.main,
+  .dark .VPLocalSearchBox .title.main {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+  }
+
+  .VPLocalSearchBox .title .text,
+  .dark .VPLocalSearchBox .title .text {
+    color: inherit !important;
+  }
+
+  /* Excerpt */
+  .VPLocalSearchBox .excerpt,
+  .dark .VPLocalSearchBox .excerpt {
+    font-size: 12px !important;
+    color: rgba(0, 0, 0, 0.42) !important;
+    margin-top: 2px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Custom blocks (tip/info/warning/danger/steps) inside excerpts */
+  .VPLocalSearchBox .excerpt .custom-block,
+  .dark .VPLocalSearchBox .excerpt .custom-block {
+    background: transparent !important;
+    border: none !important;
+    border-left: 2px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0 3px 3px 0 !important;
+    padding: 1px 6px !important;
+    margin: 2px 0 !important;
+  }
+
+  .VPLocalSearchBox .excerpt .custom-block-title,
+  .dark .VPLocalSearchBox .excerpt .custom-block-title {
+    display: none !important;
+  }
+
+  .VPLocalSearchBox .excerpt .custom-block p,
+  .VPLocalSearchBox .excerpt .custom-block li,
+  .dark .VPLocalSearchBox .excerpt .custom-block p,
+  .dark .VPLocalSearchBox .excerpt .custom-block li {
+    color: rgba(0, 0, 0, 0.42) !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+  }
+
+  /* Steps container */
+  .VPLocalSearchBox .excerpt .steps,
+  .dark .VPLocalSearchBox .excerpt .steps {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .VPLocalSearchBox .excerpt .steps > ol,
+  .dark .VPLocalSearchBox .excerpt .steps > ol {
+    counter-reset: none;
+    list-style: decimal !important;
+  }
+
+  /* Lists inside excerpts */
+  .VPLocalSearchBox .excerpt ol,
+  .VPLocalSearchBox .excerpt ul,
+  .dark .VPLocalSearchBox .excerpt ol,
+  .dark .VPLocalSearchBox .excerpt ul {
+    padding-left: 14px !important;
+    margin: 1px 0 !important;
+  }
+
+  .VPLocalSearchBox .excerpt li,
+  .dark .VPLocalSearchBox .excerpt li {
+    margin: 0 !important;
+    font-size: 12px !important;
+    color: rgba(0, 0, 0, 0.42) !important;
+  }
+
+  /* Code blocks in excerpts */
+  .VPLocalSearchBox .excerpt pre,
+  .dark .VPLocalSearchBox .excerpt pre {
+    display: none !important;
+  }
+
+  /* Tables in excerpts */
+  .VPLocalSearchBox .excerpt table,
+  .dark .VPLocalSearchBox .excerpt table {
+    font-size: 11px !important;
+    margin: 2px 0 !important;
+    width: auto !important;
+  }
+
+  .VPLocalSearchBox .excerpt th,
+  .VPLocalSearchBox .excerpt td,
+  .dark .VPLocalSearchBox .excerpt th,
+  .dark .VPLocalSearchBox .excerpt td {
+    padding: 1px 6px !important;
+    background: transparent !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Keyword highlight — brand teal, no background */
+  .VPLocalSearchBox mark,
+  .dark .VPLocalSearchBox mark {
+    background: transparent !important;
+    color: rgba(0, 153, 153, 0.9) !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Search action buttons */
+  .VPLocalSearchBox .back-button,
+  .VPLocalSearchBox .toggle-layout-button,
+  .VPLocalSearchBox .clear-button,
+  .dark .VPLocalSearchBox .back-button,
+  .dark .VPLocalSearchBox .toggle-layout-button,
+  .dark .VPLocalSearchBox .clear-button {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(0, 0, 0, 0.3) !important;
+    position: relative;
+  }
+
+  .VPLocalSearchBox .clear-button .vpi-delete,
+  .VPLocalSearchBox .back-button .vpi-close,
+  .dark .VPLocalSearchBox .clear-button .vpi-delete,
+  .dark .VPLocalSearchBox .back-button .vpi-close {
+    color: rgba(0, 0, 0, 0.3) !important;
+    --vp-icon-color: rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .VPLocalSearchBox .search-actions button:not([disabled]):hover,
+  .VPLocalSearchBox .toggle-layout-button.detailed-list,
+  .dark .VPLocalSearchBox .search-actions button:not([disabled]):hover,
+  .dark .VPLocalSearchBox .toggle-layout-button.detailed-list {
+    color: rgba(0, 0, 0, 0.55) !important;
+  }
+
+  /* CSS tooltips via title attribute */
+  .VPLocalSearchBox .back-button::after,
+  .VPLocalSearchBox .toggle-layout-button::after,
+  .VPLocalSearchBox .clear-button::after {
+    content: attr(title);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 32, 40, 0.88);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+  }
+
+  .VPLocalSearchBox .back-button:hover::after,
+  .VPLocalSearchBox .toggle-layout-button:hover::after,
+  .VPLocalSearchBox .clear-button:hover::after {
+    opacity: 1;
+  }
+
+  /* Footer shortcuts */
+  .VPLocalSearchBox .search-keyboard-shortcuts,
+  .dark .VPLocalSearchBox .search-keyboard-shortcuts {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+    padding: 10px 20px !important;
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .VPLocalSearchBox .search-keyboard-shortcuts span,
+  .dark .VPLocalSearchBox .search-keyboard-shortcuts span {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 11px !important;
+    color: rgba(0, 0, 0, 0.4) !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .VPLocalSearchBox kbd,
+  .dark .VPLocalSearchBox kbd {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    padding: 0 4px !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+}

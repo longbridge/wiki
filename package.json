@@ -9,10 +9,11 @@
     "graph": "tsx scripts/generate-link-graph.ts"
   },
   "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.13",
-    "unocss": "^0.61.9",
-    "@unocss/reset": "^0.61.9"
+    "vue": "^3.5.13"
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",
