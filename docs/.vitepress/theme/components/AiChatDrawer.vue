@@ -1,6 +1,7 @@
 <!-- docs/.vitepress/theme/components/AiChatDrawer.vue -->
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, onMounted } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 import { stream } from 'fetch-event-stream'
 import MarkdownRender from 'markstream-vue'
 import { useAIModal } from '../composables/useAIModal'
@@ -31,6 +32,38 @@ const query = ref('')
 const isLoading = ref(false)
 const currentController = ref<AbortController | null>(null)
 const copiedIndex = ref<number | null>(null)
+
+// ── Resizable drawer ─────────────────────────────────────────
+const MIN_WIDTH = 320
+const MAX_WIDTH = 720
+const drawerWidth = useLocalStorage('lb-ai-drawer-width', 380)
+
+function syncWidthVar(w: number) {
+  document.documentElement.style.setProperty('--ai-drawer-width', `${w}px`)
+}
+
+onMounted(() => syncWidthVar(drawerWidth.value))
+watch(drawerWidth, syncWidthVar)
+
+function startResize(e: MouseEvent) {
+  e.preventDefault()
+  const startX = e.clientX
+  const startW = drawerWidth.value
+  document.documentElement.classList.add('ai-resizing')
+
+  function onMove(ev: MouseEvent) {
+    const newW = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, startW + startX - ev.clientX))
+    drawerWidth.value = newW
+    syncWidthVar(newW)
+  }
+  function onUp() {
+    document.documentElement.classList.remove('ai-resizing')
+    document.removeEventListener('mousemove', onMove)
+    document.removeEventListener('mouseup', onUp)
+  }
+  document.addEventListener('mousemove', onMove)
+  document.addEventListener('mouseup', onUp)
+}
 
 async function copy(content: string, index: number) {
   await navigator.clipboard.writeText(content)
@@ -170,7 +203,9 @@ function close() {
 
 <template>
   <Transition name="drawer">
-    <div v-if="modelValue" class="ai-drawer">
+    <div v-if="modelValue" class="ai-drawer" :style="{ width: drawerWidth + 'px' }">
+      <!-- Resize handle -->
+      <div class="ai-resize-handle" @mousedown="startResize" />
       <!-- Header -->
       <div class="ai-drawer-header">
         <div class="ai-drawer-title">
@@ -316,7 +351,8 @@ function close() {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 380px;
+  /* width is set via :style binding; fallback here for safety */
+  width: var(--ai-drawer-width, 380px);
   max-width: 100vw;
   background: var(--vp-c-bg);
   border-left: 1px solid var(--vp-c-border);
@@ -324,6 +360,22 @@ function close() {
   flex-direction: column;
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
   z-index: 100;
+}
+
+/* Resize handle — left edge drag strip */
+.ai-resize-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  cursor: col-resize;
+  z-index: 10;
+  transition: background 0.15s;
+}
+.ai-resize-handle:hover,
+.ai-resize-handle:active {
+  background: rgba(0, 184, 184, 0.35);
 }
 
 /* ── Header ──────────────────────────────────────────────── */

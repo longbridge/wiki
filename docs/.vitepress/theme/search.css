@@ -16,6 +16,8 @@
     0 0 0 1px rgba(0, 0, 0, 0.06),
     0 20px 60px rgba(0, 0, 0, 0.14) !important;
   overflow: hidden;
+  max-width: 600px !important;
+  width: calc(100vw - 60px) !important;
 }
 
 /* Search bar */
@@ -28,7 +30,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
   box-shadow: none !important;
   outline: none !important;
-  padding: 0 20px !important;
+  padding: 0 !important;
 }
 
 .VPLocalSearchBox .search-bar:focus-within,
@@ -85,7 +87,8 @@
 /* Results list */
 .VPLocalSearchBox .results,
 .dark .VPLocalSearchBox .results {
-  padding: 5px 8px 8px;
+  padding: 3px 8px 4px;
+  gap: 2px !important;
   background: transparent !important;
 }
 
@@ -95,7 +98,7 @@
   border-radius: 10px !important;
   background: transparent !important;
   margin-bottom: 1px;
-  padding: 7px 10px !important;
+  padding: 4px 10px !important;
   outline: none !important;
   transition: background 0.1s;
 }
@@ -240,13 +243,70 @@
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Keyword highlight */
+/* Keyword highlight — brand teal, no background */
 .VPLocalSearchBox mark,
 .dark .VPLocalSearchBox mark {
-  background: rgba(0, 0, 0, 0.06) !important;
-  color: #111111 !important;
-  border-radius: 3px !important;
-  padding: 0 2px !important;
+  background: transparent !important;
+  color: rgba(0, 153, 153, 0.9) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  font-weight: 600 !important;
+}
+
+/* Search action buttons — neutral, no brand color */
+.VPLocalSearchBox .back-button,
+.VPLocalSearchBox .toggle-layout-button,
+.VPLocalSearchBox .clear-button,
+.dark .VPLocalSearchBox .back-button,
+.dark .VPLocalSearchBox .toggle-layout-button,
+.dark .VPLocalSearchBox .clear-button {
+  background: transparent !important;
+  border: none !important;
+  color: rgba(0, 0, 0, 0.3) !important;
+  position: relative;
+}
+
+/* Override VitePress icon color on clear/back buttons */
+.VPLocalSearchBox .clear-button .vpi-delete,
+.VPLocalSearchBox .back-button .vpi-close,
+.dark .VPLocalSearchBox .clear-button .vpi-delete,
+.dark .VPLocalSearchBox .back-button .vpi-close {
+  color: rgba(0, 0, 0, 0.3) !important;
+  --vp-icon-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override VitePress hover brand color on search buttons */
+.VPLocalSearchBox .search-actions button:not([disabled]):hover,
+.VPLocalSearchBox .toggle-layout-button.detailed-list,
+.dark .VPLocalSearchBox .search-actions button:not([disabled]):hover,
+.dark .VPLocalSearchBox .toggle-layout-button.detailed-list {
+  color: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* CSS tooltips via title attribute */
+.VPLocalSearchBox .back-button::after,
+.VPLocalSearchBox .toggle-layout-button::after,
+.VPLocalSearchBox .clear-button::after {
+  content: attr(title);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 32, 40, 0.88);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.VPLocalSearchBox .back-button:hover::after,
+.VPLocalSearchBox .toggle-layout-button:hover::after,
+.VPLocalSearchBox .clear-button:hover::after {
+  opacity: 1;
 }
 
 /* Footer shortcuts */
