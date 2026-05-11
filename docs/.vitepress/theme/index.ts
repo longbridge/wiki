@@ -1,5 +1,6 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import 'markstream-vue/index.css'
 import './vars.css'
 import './sidebar.css'
 import './search.css'

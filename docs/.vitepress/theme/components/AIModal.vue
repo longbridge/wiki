@@ -1,6 +1,9 @@
 <!-- docs/.vitepress/theme/components/AIModal.vue -->
 <script setup lang="ts">
 import { ref, watch, nextTick } from 'vue'
+import { stream } from 'fetch-event-stream'
+import MarkdownRender from 'markstream-vue'
+import { useAIModal } from '../composables/useAIModal'
 
 const AI_ENDPOINT = import.meta.env.VITE_AI_API_ENDPOINT || '/api/ai/v1/invoke'
 
@@ -9,12 +12,6 @@ const AI_HEADERS: Record<string, string> = {
   'account-channel': import.meta.env.VITE_AI_ACCOUNT_CHANNEL,
   'app-id': import.meta.env.VITE_AI_APP_ID,
   'X-Agent-Key': import.meta.env.VITE_AI_AGENT_KEY,
-}
-
-interface Message {
-  role: 'user' | 'assistant'
-  content: string
-  loading?: boolean
 }
 
 const props = defineProps<{
@@ -26,25 +23,24 @@ const emit = defineEmits<{
   'update:modelValue': [boolean]
 }>()
 
+const { messages, clearMessages } = useAIModal()
+
 const inputRef = ref<HTMLTextAreaElement>()
 const messagesRef = ref<HTMLDivElement>()
 const query = ref('')
-const messages = ref<Message[]>([])
 const isLoading = ref(false)
+const currentController = ref<AbortController | null>(null)
 
 watch(
   () => props.modelValue,
   (open) => {
     if (!open) {
-      messages.value = []
       query.value = ''
-      isLoading.value = false
       return
     }
     nextTick(() => {
       if (props.initialQuery) {
-        query.value = props.initialQuery
-        submit()
+        submitText(props.initialQuery)
       } else {
         inputRef.value?.focus()
       }
@@ -52,83 +48,102 @@ watch(
   }
 )
 
-async function submit() {
-  const text = query.value.trim()
-  if (!text || isLoading.value) return
+function scrollToBottom() {
+  nextTick(() => {
+    if (messagesRef.value) {
+      messagesRef.value.scrollTop = messagesRef.value.scrollHeight
+    }
+  })
+}
 
-  messages.value.push({ role: 'user', content: text })
-  query.value = ''
+async function submitText(text: string) {
+  const trimmed = text.trim()
+  if (!trimmed || isLoading.value) return
+
+  messages.value.push({ role: 'user', content: trimmed })
+  messages.value.push({ role: 'assistant', content: '', loading: true, final: false })
+
   isLoading.value = true
+  scrollToBottom()
 
-  const assistantMsg: Message = { role: 'assistant', content: '', loading: true }
-  messages.value.push(assistantMsg)
+  const controller = new AbortController()
+  currentController.value = controller
 
-  await nextTick()
-  messagesRef.value?.scrollTo({ top: messagesRef.value.scrollHeight, behavior: 'smooth' })
+  // Get reactive reference to the assistant message we just pushed
+  const assistantMsg = messages.value[messages.value.length - 1]
+  let firstChunk = true
 
   try {
-    const res = await fetch(AI_ENDPOINT, {
+    const iter = await stream(AI_ENDPOINT, {
       method: 'POST',
       headers: AI_HEADERS,
-      body: JSON.stringify({ message: text }),
+      body: JSON.stringify({ message: trimmed }),
+      signal: controller.signal,
     })
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    if (!res.body) throw new Error('No response body')
+    for await (const event of iter) {
+      if (event.data === '[DONE]') break
 
-    const reader = res.body.getReader()
-    const decoder = new TextDecoder()
-    let buffer = ''
-    let firstChunk = true
-
-    outer: while (true) {
-      const { done, value } = await reader.read()
-      if (done) break
-      buffer += decoder.decode(value, { stream: true })
-
-      const lines = buffer.split('\n')
-      buffer = lines.pop() ?? ''
-
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue
-        const data = line.slice(6).trim()
-        if (data === '[DONE]') break outer
-
-        let piece: string
-        try {
-          const parsed = JSON.parse(data)
-          if (parsed && typeof parsed === 'object') {
-            piece = parsed.delta?.content
-              ?? parsed.delta
-              ?? parsed.content
-              ?? parsed.text
-              ?? parsed.message
-              ?? parsed.data
-              ?? parsed.output
-              ?? ''
-          } else {
-            piece = String(parsed)
-          }
-        } catch {
-          piece = data
+      let piece = ''
+      try {
+        const parsed = JSON.parse(event.data)
+        if (parsed && typeof parsed === 'object') {
+          // Vercel AI UI Message Stream v1: only extract text-delta events
+          if (parsed.type && parsed.type !== 'text-delta') continue
+          piece = typeof parsed.delta === 'string'
+            ? parsed.delta
+            : (parsed.delta?.content ?? parsed.content ?? parsed.text ?? '')
+        } else {
+          piece = String(parsed)
         }
-
-        if (!piece) continue
-        if (firstChunk) { assistantMsg.loading = false; firstChunk = false }
-        assistantMsg.content += piece
+      } catch {
+        piece = event.data
       }
 
-      await nextTick()
-      messagesRef.value?.scrollTo({ top: messagesRef.value.scrollHeight, behavior: 'smooth' })
+      if (!piece) continue
+      if (firstChunk) {
+        assistantMsg.loading = false
+        firstChunk = false
+      }
+      assistantMsg.content += piece
+      scrollToBottom()
     }
 
     if (firstChunk) assistantMsg.loading = false
-  } catch (e) {
-    assistantMsg.content = '抱歉，出现了错误，请稍后重试。'
+    assistantMsg.final = true
+  } catch (err) {
+    // User aborted via stop button
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      assistantMsg.loading = false
+      assistantMsg.final = true
+      return
+    }
+    assistantMsg.content = assistantMsg.content || '抱歉，出现了错误，请稍后重试。'
     assistantMsg.loading = false
+    assistantMsg.final = true
   } finally {
     isLoading.value = false
+    currentController.value = null
   }
+}
+
+async function submit() {
+  const text = query.value.trim()
+  if (!text) return
+  query.value = ''
+  await submitText(text)
+}
+
+function stop() {
+  currentController.value?.abort()
+}
+
+function retry(assistantIndex: number) {
+  if (isLoading.value) return
+  const userMsg = messages.value[assistantIndex - 1]
+  if (!userMsg || userMsg.role !== 'user') return
+  messages.value.splice(assistantIndex)
+  submitText(userMsg.content)
 }
 
 function onKeydown(e: KeyboardEvent) {
@@ -155,15 +170,30 @@ function close() {
           </svg>
           <span>Assistant</span>
         </div>
-        <button class="ai-drawer-close" @click="close" aria-label="关闭">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
+        <div class="ai-drawer-header-actions">
+          <button
+            v-if="messages.length > 0"
+            class="ai-clear-btn"
+            title="清空对话"
+            @click="clearMessages"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+              <path d="M10 11v6M14 11v6" />
+              <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" />
+            </svg>
+          </button>
+          <button class="ai-drawer-close" @click="close" aria-label="关闭">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Messages -->
-      <div ref="messagesRef" class="ai-drawer-messages">
+      <div ref="messagesRef" class="ai-drawer-messages" aria-live="polite" aria-atomic="false">
         <div v-if="messages.length === 0" class="ai-drawer-empty">
           <div class="ai-drawer-empty-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -173,6 +203,7 @@ function close() {
           </div>
           <p>向 AI 提问，基于专业文档库为你解答</p>
         </div>
+
         <div
           v-for="(msg, i) in messages"
           :key="i"
@@ -180,10 +211,40 @@ function close() {
           :class="msg.role"
         >
           <div class="ai-msg-bubble">
-            <span v-if="msg.loading" class="ai-loading-dots">
-              <span /><span /><span />
-            </span>
-            <span v-else>{{ msg.content }}</span>
+            <!-- User message: plain text -->
+            <template v-if="msg.role === 'user'">{{ msg.content }}</template>
+
+            <!-- Assistant message -->
+            <template v-else>
+              <!-- Waiting for first token: show loading dots -->
+              <span v-if="msg.loading && !msg.content" class="ai-loading-dots">
+                <span /><span /><span />
+              </span>
+              <!-- Streaming or completed: render markdown -->
+              <ClientOnly v-else>
+                <MarkdownRender
+                  :custom-id="`msg-${i}`"
+                  :content="msg.content"
+                  :final="!!msg.final"
+                  :max-live-nodes="0"
+                  :typewriter="!msg.final"
+                  :fade="false"
+                />
+              </ClientOnly>
+              <!-- Retry button shown on completed assistant messages -->
+              <button
+                v-if="msg.final && !isLoading"
+                class="ai-retry-btn"
+                title="重新生成"
+                @click="retry(i)"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="1 4 1 10 7 10" />
+                  <path d="M3.51 15a9 9 0 1 0 .49-4" />
+                </svg>
+                重新生成
+              </button>
+            </template>
           </div>
         </div>
       </div>
@@ -201,9 +262,22 @@ function close() {
             @keydown="onKeydown"
           />
           <div class="ai-drawer-input-actions">
+            <!-- Stop button while loading -->
             <button
+              v-if="isLoading"
+              class="ai-drawer-stop"
+              @click="stop"
+              aria-label="停止"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+              </svg>
+            </button>
+            <!-- Send button when idle -->
+            <button
+              v-else
               class="ai-drawer-send"
-              :disabled="isLoading || !query.trim()"
+              :disabled="!query.trim()"
               @click="submit"
               aria-label="发送"
             >
@@ -252,9 +326,15 @@ function close() {
   color: var(--vp-c-text-1);
 }
 .ai-star-icon {
-  color: #3b82f6;
+  color: var(--vp-c-brand-1);
   flex-shrink: 0;
 }
+.ai-drawer-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ai-clear-btn,
 .ai-drawer-close {
   background: none;
   border: none;
@@ -266,7 +346,11 @@ function close() {
   align-items: center;
   line-height: 1;
 }
-.ai-drawer-close:hover { background: var(--vp-c-bg-soft); color: var(--vp-c-text-1); }
+.ai-clear-btn:hover,
+.ai-drawer-close:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+}
 
 /* Messages */
 .ai-drawer-messages {
@@ -293,8 +377,8 @@ function close() {
   max-width: 75%;
   padding: 10px 14px;
   border-radius: 18px 18px 4px 18px;
-  background: #f0f0f0;
-  color: #1a1a1a;
+  background: var(--vp-c-brand-1);
+  color: #fff;
   font-size: 14px;
   line-height: 1.6;
   white-space: pre-wrap;
@@ -306,13 +390,49 @@ function close() {
   font-size: 14px;
   line-height: 1.7;
   color: var(--vp-c-text-1);
-  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Dark mode user bubble */
+/* Hide markstream-vue injected scroll-to-bottom button */
+.assistant .ai-msg-bubble :deep([class*="scroll"]),
+.assistant .ai-msg-bubble :deep([class*="goto"]) {
+  display: none !important;
+}
+
+/* Override markstream-vue defaults to match VitePress theme */
+.assistant .ai-msg-bubble :deep(.markstream-vue) {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--vp-c-text-1);
+}
+.assistant .ai-msg-bubble :deep(pre) {
+  border-radius: 8px;
+  font-size: 13px;
+}
+.assistant .ai-msg-bubble :deep(code:not(pre code)) {
+  background: var(--vp-c-bg-soft);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.assistant .ai-msg-bubble :deep(p) {
+  margin: 0 0 8px;
+}
+.assistant .ai-msg-bubble :deep(p:last-child) {
+  margin-bottom: 0;
+}
+.assistant .ai-msg-bubble :deep(ul),
+.assistant .ai-msg-bubble :deep(ol) {
+  padding-left: 20px;
+  margin: 4px 0 8px;
+}
+
+/* Dark mode: use dark brand color for user bubble */
 :root.dark .user .ai-msg-bubble {
-  background: #2a2a2a;
-  color: #f0f0f0;
+  background: var(--vp-c-brand-1);
+  color: #0a1628;
 }
 
 /* Loading dots */
@@ -328,6 +448,28 @@ function close() {
 @keyframes bounce {
   0%, 80%, 100% { transform: translateY(0); }
   40% { transform: translateY(-5px); }
+}
+
+/* Retry button */
+.ai-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid var(--vp-c-divider);
+  cursor: pointer;
+  color: var(--vp-c-text-3);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1;
+  transition: color .15s, border-color .15s, background .15s;
+  align-self: flex-start;
+}
+.ai-retry-btn:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
 }
 
 /* Input area */
@@ -346,7 +488,7 @@ function close() {
   transition: border-color .15s;
 }
 .ai-drawer-input-box:focus-within {
-  border-color: #3b82f6;
+  border-color: var(--vp-c-brand-1);
 }
 .ai-drawer-input {
   width: 100%;
@@ -366,11 +508,11 @@ function close() {
   display: flex;
   justify-content: flex-end;
 }
-.ai-drawer-send {
+.ai-drawer-send,
+.ai-drawer-stop {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #3b82f6;
   border: none;
   cursor: pointer;
   display: flex;
@@ -380,8 +522,15 @@ function close() {
   transition: opacity .15s, background .15s;
   flex-shrink: 0;
 }
-.ai-drawer-send:hover:not(:disabled) { background: #2563eb; }
+.ai-drawer-send {
+  background: var(--vp-c-brand-1);
+}
+.ai-drawer-send:hover:not(:disabled) { background: var(--vp-c-brand-2); }
 .ai-drawer-send:disabled { opacity: 0.35; cursor: not-allowed; }
+.ai-drawer-stop {
+  background: #ef4444;
+}
+.ai-drawer-stop:hover { background: #dc2626; }
 
 /* Slide-in animation */
 .drawer-enter-active,
