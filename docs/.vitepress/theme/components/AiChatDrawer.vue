@@ -32,6 +32,26 @@ const query = ref('')
 const isLoading = ref(false)
 const currentController = ref<AbortController | null>(null)
 const copiedIndex = ref<number | null>(null)
+const isAtBottom = ref(true)
+
+function checkAtBottom() {
+  if (!messagesRef.value) return
+  const el = messagesRef.value
+  isAtBottom.value = el.scrollHeight - el.scrollTop - el.clientHeight < 60
+}
+
+function scrollToLatest() {
+  if (messagesRef.value) {
+    messagesRef.value.scrollTo({ top: messagesRef.value.scrollHeight, behavior: 'smooth' })
+  }
+}
+
+function autoGrow() {
+  const el = inputRef.value
+  if (!el) return
+  el.style.height = 'auto'
+  el.style.height = `${Math.min(el.scrollHeight, 120)}px`
+}
 
 // ── Resizable drawer ─────────────────────────────────────────
 const MIN_WIDTH = 320
@@ -98,9 +118,12 @@ function scrollToBottom() {
   nextTick(() => {
     if (messagesRef.value) {
       messagesRef.value.scrollTop = messagesRef.value.scrollHeight
+      isAtBottom.value = true
     }
   })
 }
+
+watch(query, () => nextTick(autoGrow))
 
 async function submitText(text: string) {
   const trimmed = text.trim()
@@ -237,7 +260,7 @@ function close() {
       </div>
 
       <!-- Messages -->
-      <div ref="messagesRef" class="ai-messages" aria-live="polite" aria-atomic="false">
+      <div ref="messagesRef" class="ai-messages" aria-live="polite" aria-atomic="false" @scroll="checkAtBottom">
         <div v-if="messages.length === 0" class="ai-empty">
           <div class="ai-empty-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -302,6 +325,21 @@ function close() {
         </div>
       </div>
 
+      <!-- Scroll to latest button -->
+      <Transition name="fade-up">
+        <button
+          v-if="!isAtBottom && messages.length > 0"
+          class="ai-scroll-latest"
+          @click="scrollToLatest"
+          aria-label="滚动到最新消息"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+          <span>最新消息</span>
+        </button>
+      </Transition>
+
       <!-- Input area -->
       <div class="ai-input-wrap">
         <div class="ai-input-box">
@@ -315,7 +353,6 @@ function close() {
             @keydown="onKeydown"
           />
           <div class="ai-input-footer">
-            <span class="ai-input-hint">Enter 发送 · Shift+Enter 换行</span>
             <button
               v-if="isLoading"
               class="ai-send-btn ai-stop-btn"
@@ -359,23 +396,35 @@ function close() {
   display: flex;
   flex-direction: column;
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
-  z-index: 100;
+  /* Higher than VPNav (z-index:20) and HomeNavbar (z-index:100) so the drawer
+     properly covers the top-right corner without pushing nav bars. */
+  z-index: 200;
 }
 
-/* Resize handle — left edge drag strip */
+/* Resize handle — left edge, dash indicator on hover */
 .ai-resize-handle {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 5px;
+  width: 12px;
   cursor: col-resize;
   z-index: 10;
-  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.ai-resize-handle:hover,
-.ai-resize-handle:active {
-  background: rgba(0, 184, 184, 0.35);
+.ai-resize-handle::after {
+  content: '';
+  width: 3px;
+  height: 32px;
+  border-radius: 99px;
+  background: transparent;
+  transition: background 0.2s;
+}
+.ai-resize-handle:hover::after,
+.ai-resize-handle:active::after {
+  background: var(--vp-c-border);
 }
 
 /* ── Header ──────────────────────────────────────────────── */
@@ -635,20 +684,15 @@ function close() {
   font-family: inherit;
   line-height: 1.5;
   outline: none;
+  min-height: 24px;
   max-height: 120px;
   overflow-y: auto;
 }
 .ai-input::placeholder { color: var(--vp-c-text-3); }
 .ai-input-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-}
-.ai-input-hint {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-  letter-spacing: 0.01em;
-  user-select: none;
 }
 .ai-send-btn {
   width: 30px;
@@ -668,6 +712,36 @@ function close() {
 .ai-send-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 .ai-stop-btn { background: #ef4444; color: white; }
 .ai-stop-btn:hover { opacity: 1; background: #dc2626; }
+
+/* Scroll to latest button */
+.ai-scroll-latest {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 20px;
+  padding: 5px 12px 5px 10px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 5;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.ai-scroll-latest:hover {
+  background: var(--vp-c-bg-mute);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.14);
+}
+.fade-up-enter-active,
+.fade-up-leave-active { transition: opacity 0.2s ease, transform 0.2s ease; }
+.fade-up-enter-from,
+.fade-up-leave-to { opacity: 0; transform: translateX(-50%) translateY(6px); }
 
 /* Slide-in transition */
 .drawer-enter-active,

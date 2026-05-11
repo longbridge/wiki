@@ -180,41 +180,27 @@
 
 /* ─── AI Drawer push layout ──────────────────────────────── */
 /* --ai-drawer-width is set dynamically by AiChatDrawer.vue (default 380px).
-   VPContent uses width:100% + box-sizing:border-box, so padding-right shrinks content.
-   VPNav (position:fixed) and HomeNavbar .hn-root (position:sticky) use width:calc. */
+   Only #VPContent is pushed — nav bars (fixed/sticky) stay full-width and the
+   drawer (z-index:200) naturally covers the top-right corner, which is the
+   standard pattern used by VS Code, GitHub, etc. */
 #VPContent {
   transition: padding-right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.VPNav,
-.hn-root {
-  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-/* Tablet and above: push content + shrink both nav types */
 @media (min-width: 769px) {
   html.ai-drawer-open #VPContent {
     padding-right: var(--ai-drawer-width, 380px) !important;
   }
-  html.ai-drawer-open .VPNav {
-    width: calc(100% - var(--ai-drawer-width, 380px)) !important;
-  }
-  html.ai-drawer-open .hn-root {
-    width: calc(100% - var(--ai-drawer-width, 380px));
-  }
 }
 
-/* Disable transitions while drag-resizing to keep content in sync */
-html.ai-resizing #VPContent,
-html.ai-resizing .VPNav,
-html.ai-resizing .hn-root {
+/* Disable transition while drag-resizing to keep content in sync with drawer */
+html.ai-resizing #VPContent {
   transition: none !important;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  #VPContent,
-  .VPNav,
-  .hn-root {
+  #VPContent {
     transition: none !important;
   }
 }

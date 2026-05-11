@@ -46,7 +46,7 @@ watch(modalOpen, (open) => {
       <HomeNavbar v-if="isHomePage" />
       <DocBackground v-if="isDocPage" />
     </template>
-    <template #doc-top>
+    <template #doc-before>
       <Breadcrumb />
     </template>
     <template #layout-bottom>
