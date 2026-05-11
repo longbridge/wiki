@@ -18,14 +18,64 @@ const SEARCH_SCHEMES: Scheme[] = [
 ]
 
 const SIDEBAR_SCHEMES: Scheme[] = [
-  { id: 'default',      name: '默认',     description: '原始样式' },
-  { id: 'border-rail',  name: '边框导轨', description: '左侧竖线指示，无背景填充' },
-  { id: 'hover-card',   name: '悬浮卡片', description: '白卡阴影，侧栏背景微区分' },
+  { id: 'default',       name: 'Lovable 风格', description: '深色标题 + 圆角胶囊 + 拟粗 active（默认基线）' },
+  { id: 'section-group', name: '章节分组', description: 'uppercase 分区标题 + 实心色块 active' },
+  { id: 'border-rail',   name: '边框导轨', description: '左侧竖线指示，无背景填充' },
+  { id: 'hover-card',    name: '悬浮卡片', description: '白卡阴影，侧栏背景微区分' },
   { id: 'full-highlight', name: '全色高亮', description: '品牌色背景整行，分区有分割线' },
 ]
 
 const SIDEBAR_CSS: Record<string, string> = {
   'default': '',
+  'section-group': `
+    /* 分区标题 — uppercase 小字 */
+    .VPSidebarItem:not(.is-link) > .item {
+      padding: 20px 12px 8px 12px !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.04em !important;
+      color: var(--vp-c-text-3) !important;
+    }
+    /* 隐藏分区标题的折叠箭头 */
+    .VPSidebarItem:not(.is-link) > .item .caret {
+      display: none !important;
+    }
+    /* 条目链接 */
+    .VPSidebarItem .VPLink {
+      border-radius: 10px !important;
+      padding: 10px 14px !important;
+    }
+    /* 图标默认色 */
+    .sidebar-item-icon {
+      color: var(--vp-c-text-3) !important;
+      opacity: 0.75;
+    }
+    /* Active 项 — 实心品牌色背景 */
+    .VPSidebarItem.is-active > .item > .link {
+      background: color-mix(in oklab, var(--vp-c-brand-1) 18%, transparent) !important;
+      border-radius: 10px !important;
+    }
+    .VPSidebarItem.is-active .VPLink {
+      color: var(--vp-c-brand-1) !important;
+      font-weight: 600 !important;
+    }
+    .VPSidebarItem.is-active .sidebar-item-icon {
+      color: var(--vp-c-brand-1) !important;
+      opacity: 1 !important;
+    }
+    /* hover */
+    .VPSidebarItem:hover .VPLink {
+      background: var(--vp-c-default-soft) !important;
+    }
+    .VPSidebarItem.is-active:hover .VPLink {
+      background: transparent !important;
+    }
+    /* 移除分区间的额外线条 */
+    .VPSidebar .group + .group {
+      border-top: none !important;
+      padding-top: 0 !important;
+    }
+  `,
   'border-rail': `
     .VPSidebarItem .VPLink {
       border-radius: 0 !important;

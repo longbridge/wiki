@@ -1,0 +1,210 @@
+/* Search modal — always light, Lovable.dev style */
+
+/* Force light mode on backdrop and shell, even in dark system/theme */
+.VPLocalSearchBox .backdrop,
+.dark .VPLocalSearchBox .backdrop {
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(8px);
+}
+
+.VPLocalSearchBox .shell,
+.dark .VPLocalSearchBox .shell {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.14) !important;
+  overflow: hidden;
+}
+
+/* Search bar */
+.VPLocalSearchBox .search-bar,
+.dark .VPLocalSearchBox .search-bar {
+  background: transparent !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 20px !important;
+}
+
+.VPLocalSearchBox .search-bar:focus-within,
+.dark .VPLocalSearchBox .search-bar:focus-within {
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.VPLocalSearchBox .search-bar input,
+.dark .VPLocalSearchBox .search-bar input {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #111111 !important;
+  caret-color: #555555 !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.VPLocalSearchBox .search-bar input:focus,
+.VPLocalSearchBox .search-bar input:focus-visible,
+.dark .VPLocalSearchBox .search-bar input:focus,
+.dark .VPLocalSearchBox .search-bar input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.VPLocalSearchBox .search-bar input::placeholder,
+.dark .VPLocalSearchBox .search-bar input::placeholder {
+  color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.VPLocalSearchBox .search-icon,
+.dark .VPLocalSearchBox .search-icon {
+  color: rgba(0, 0, 0, 0.28) !important;
+  fill: rgba(0, 0, 0, 0.28) !important;
+}
+
+.VPLocalSearchBox .search-actions button,
+.VPLocalSearchBox .search-actions kbd,
+.dark .VPLocalSearchBox .search-actions button,
+.dark .VPLocalSearchBox .search-actions kbd {
+  color: rgba(0, 0, 0, 0.28) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: transparent !important;
+}
+
+/* Results list */
+.VPLocalSearchBox .results,
+.dark .VPLocalSearchBox .results {
+  padding: 8px 10px 12px;
+  background: transparent !important;
+}
+
+.VPLocalSearchBox .result,
+.dark .VPLocalSearchBox .result {
+  border: none !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  margin-bottom: 1px;
+  padding: 10px 12px !important;
+  outline: none !important;
+  transition: background 0.1s;
+}
+
+.VPLocalSearchBox .result:hover,
+.dark .VPLocalSearchBox .result:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.VPLocalSearchBox .result.selected,
+.dark .VPLocalSearchBox .result.selected {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Titles — breadcrumb stacked above main title */
+.VPLocalSearchBox .titles,
+.dark .VPLocalSearchBox .titles {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 1px !important;
+}
+
+/* Hide the # icon */
+.VPLocalSearchBox .title-icon,
+.dark .VPLocalSearchBox .title-icon {
+  display: none !important;
+}
+
+/* Breadcrumb path */
+.VPLocalSearchBox .title:not(.main),
+.dark .VPLocalSearchBox .title:not(.main) {
+  font-size: 11px !important;
+  color: rgba(0, 0, 0, 0.36) !important;
+  font-weight: 400 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+
+/* Main title */
+.VPLocalSearchBox .title.main,
+.dark .VPLocalSearchBox .title.main {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+}
+
+.VPLocalSearchBox .title .text,
+.dark .VPLocalSearchBox .title .text {
+  color: inherit !important;
+}
+
+/* Excerpt */
+.VPLocalSearchBox .excerpt,
+.dark .VPLocalSearchBox .excerpt {
+  font-size: 12px !important;
+  color: rgba(0, 0, 0, 0.42) !important;
+  margin-top: 3px !important;
+  line-height: 1.55 !important;
+}
+
+/* Keyword highlight */
+.VPLocalSearchBox mark,
+.dark .VPLocalSearchBox mark {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #111111 !important;
+  border-radius: 3px !important;
+  padding: 0 2px !important;
+}
+
+/* Footer shortcuts */
+.VPLocalSearchBox .search-keyboard-shortcuts,
+.dark .VPLocalSearchBox .search-keyboard-shortcuts {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  padding: 10px 20px !important;
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.VPLocalSearchBox .search-keyboard-shortcuts span,
+.dark .VPLocalSearchBox .search-keyboard-shortcuts span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 11px !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+.VPLocalSearchBox kbd,
+.dark .VPLocalSearchBox kbd {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  padding: 0 4px !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+}
