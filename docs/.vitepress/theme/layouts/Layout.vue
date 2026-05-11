@@ -56,7 +56,7 @@ watch(modalOpen, (open) => {
       <!-- 非首页浮动触发按钮 -->
       <button
         v-if="!isHomePage"
-        class="ai-fab"
+        class="fixed bottom-7 right-7 w-12 h-12 rounded-full bg-[#00b8b8] text-white border-0 cursor-pointer flex items-center justify-center shadow-[0_4px_16px_rgba(0,184,184,0.45)] z-[999] transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,184,184,0.55)]"
         @click="openAIModal()"
         aria-label="打开 AI 助手"
       >
@@ -68,28 +68,3 @@ watch(modalOpen, (open) => {
     </template>
   </DefaultTheme.Layout>
 </template>
-
-<style scoped>
-.ai-fab {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #00b8b8;
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 184, 184, 0.45);
-  z-index: 999;
-  transition: transform .15s, box-shadow .15s;
-}
-.ai-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 184, 184, 0.55);
-}
-</style>

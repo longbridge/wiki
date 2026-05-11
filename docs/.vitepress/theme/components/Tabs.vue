@@ -153,32 +153,3 @@ onMounted(() => {
 provide('tabs-register', registerTab)
 provide('tabs-active', activeTab)
 </script>
-
-<style scoped>
-.tab-line-btn {
-  padding: 0.3rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  white-space: nowrap;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  transition:
-    color 0.15s,
-    border-color 0.15s;
-}
-
-.tab-line-active {
-  color: var(--vp-c-text-1);
-  border-bottom-color: var(--vp-c-text-1);
-}
-
-.tab-line-inactive {
-  color: var(--vp-c-text-2);
-}
-
-.tab-line-inactive:hover {
-  color: var(--vp-c-text-1);
-}
-</style>

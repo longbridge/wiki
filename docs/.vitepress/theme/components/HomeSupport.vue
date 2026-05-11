@@ -14,7 +14,7 @@ provide('openAIModal', openAIModal)
 </script>
 
 <template>
-  <div class="home-support">
+  <div class="min-h-screen">
     <HeroSection />
     <FindWaysSection />
     <AIFeatureSection />
@@ -22,9 +22,3 @@ provide('openAIModal', openAIModal)
     <FooterCTA />
   </div>
 </template>
-
-<style scoped>
-.home-support {
-  min-height: 100vh;
-}
-</style>

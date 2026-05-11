@@ -33,36 +33,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style scoped>
-.tab-item {
-  animation: fade-in 0.2s ease-in-out;
-}
-
-.tab-item :deep(ul) {
-  list-style-type: disc;
-  padding-left: 1.25rem;
-  margin: 0.75rem 0;
-}
-
-.tab-item :deep(ol) {
-  list-style-type: decimal;
-  padding-left: 1.25rem;
-  margin: 0.75rem 0;
-}
-
-.tab-item :deep(li) {
-  margin: 0.25rem 0;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
