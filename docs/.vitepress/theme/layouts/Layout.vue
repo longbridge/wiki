@@ -5,6 +5,9 @@ import DefaultTheme from 'vitepress/theme'
 import Breadcrumb from '../components/Breadcrumb/index.vue'
 import DocBackground from '../components/DocBackground.vue'
 import HomeNavbar from '../components/HomeNavbar.vue'
+import TweakPanel from '../components/TweakPanel.vue'
+
+const isDev = import.meta.env.DEV
 
 const { frontmatter } = useData()
 
@@ -35,6 +38,9 @@ onBeforeUnmount(() => {
     </template>
     <template #doc-top>
       <Breadcrumb />
+    </template>
+    <template #layout-bottom>
+      <TweakPanel v-if="isDev" />
     </template>
   </DefaultTheme.Layout>
 </template>

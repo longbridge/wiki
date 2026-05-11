@@ -1,134 +1,145 @@
 <script setup lang="ts">
-import { inject } from 'vue'
-import { inBrowser } from 'vitepress'
-
-const openAIModal = inject<(query?: string) => void>('openAIModal')
-
-function callOpenAI() {
-  openAIModal?.()
-}
-
-function openSearch() {
-  if (!inBrowser) return
-  document.querySelector('.VPNavBarSearch button')?.click()
-}
-
-function scrollToTopics() {
-  if (!inBrowser) return
-  document.getElementById('topics-section')?.scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 
 <template>
-  <section class="find-ways">
-    <div class="find-ways-inner">
-      <h2 class="find-ways-title">三种方式，找到你要的答案</h2>
-      <div class="find-ways-grid">
-        <!-- 搜索文档 -->
-        <button class="way-card" @click="openSearch" aria-label="打开搜索">
-          <span class="way-icon">🔍</span>
-          <h3 class="way-name">搜索文档</h3>
-          <p class="way-desc">关键词直达答案</p>
-        </button>
-        <!-- AI 智能问答（高亮） -->
-        <button class="way-card way-card--ai" @click="callOpenAI" aria-label="打开 AI 问答">
-          <span class="way-icon">🤖</span>
-          <h3 class="way-name">AI 智能问答</h3>
-          <p class="way-desc">用自然语言提问，秒级获得专业解答</p>
-        </button>
-        <!-- 按主题浏览 -->
-        <button class="way-card" @click="scrollToTopics" aria-label="浏览主题列表">
-          <span class="way-icon">📚</span>
-          <h3 class="way-name">按主题浏览</h3>
-          <p class="way-desc">9 大专题，系统分类</p>
-        </button>
+  <section class="quick-topics">
+    <div class="qt-inner">
+      <h2 class="qt-title">你可能正在找</h2>
+      <div class="qt-grid">
+        <div class="qt-col">
+          <span class="qt-cat">开户 &amp; 资金</span>
+          <ul class="qt-list">
+            <li><a href="/account/">港股、美股如何开户？</a></li>
+            <li><a href="/deposit/">入金方式和到账时间</a></li>
+            <li><a href="/withdrawal/">如何出金？手续费多少？</a></li>
+            <li><a href="/transfers-and-fx/">资金划转与换汇说明</a></li>
+          </ul>
+          <a class="qt-more" href="/getting-started/">新手入门指南 →</a>
+        </div>
+        <div class="qt-col">
+          <span class="qt-cat">交易 &amp; 持仓</span>
+          <ul class="qt-list">
+            <li><a href="/stock-trading/">如何买入第一只股票？</a></li>
+            <li><a href="/stock-trading/">查看持仓盈亏明细</a></li>
+            <li><a href="/stock-trading/">期权交易如何开通？</a></li>
+            <li><a href="/portfolio-and-statements/">账单与对账单下载</a></li>
+          </ul>
+          <a class="qt-more" href="/stock-trading/">股票交易文档 →</a>
+        </div>
+        <div class="qt-col">
+          <span class="qt-cat">合规 &amp; 税务</span>
+          <ul class="qt-list">
+            <li><a href="/compliance-and-tax/">W-8BEN 表格填写指南</a></li>
+            <li><a href="/compliance-and-tax/">美股股息预扣税说明</a></li>
+            <li><a href="/compliance-and-tax/">FATCA &amp; CRS 申报</a></li>
+            <li><a href="/compliance-and-tax/">CAT 综合审计追踪费</a></li>
+          </ul>
+          <a class="qt-more" href="/compliance-and-tax/">合规与税务 →</a>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.find-ways {
+.quick-topics {
   padding: 64px 24px;
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.find-ways-inner {
+.qt-inner {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.find-ways-title {
+.qt-title {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--vp-c-text-1);
   margin: 0 0 40px;
 }
 
-.find-ways-grid {
+.qt-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: 0;
 }
 
-.way-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 28px 20px;
-  border-radius: 16px;
-  border: 1.5px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  cursor: pointer;
-  text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s;
+.qt-col {
+  padding: 0 32px;
+  border-right: 1px solid var(--vp-c-divider);
 }
 
-.way-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 20px rgba(0, 184, 184, 0.12);
+.qt-col:first-child {
+  padding-left: 0;
 }
 
-.way-card--ai {
-  background: #0f172a;
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 24px rgba(0, 184, 184, 0.18);
+.qt-col:last-child {
+  padding-right: 0;
+  border-right: none;
 }
 
-.way-card--ai:hover {
-  box-shadow: 0 6px 32px rgba(0, 184, 184, 0.28);
-}
-
-.way-icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-
-.way-name {
-  font-size: 1rem;
+.qt-cat {
+  display: block;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin: 0 0 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+  margin-bottom: 16px;
 }
 
-.way-card--ai .way-name {
-  color: #fff;
+.qt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
 }
 
-.way-desc {
-  font-size: 0.875rem;
+.qt-list li {
+  padding: 5px 0;
+}
+
+.qt-list a {
+  font-size: 0.9rem;
   color: var(--vp-c-text-2);
-  margin: 0;
+  text-decoration: none;
   line-height: 1.5;
+  transition: color 0.15s;
 }
 
-.way-card--ai .way-desc {
-  color: #6ee7e7;
+.qt-list a:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.qt-more {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.qt-more:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
-  .find-ways-grid {
+  .qt-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .qt-col {
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
+    padding-bottom: 32px;
+  }
+
+  .qt-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 </style>

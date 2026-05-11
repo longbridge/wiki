@@ -87,7 +87,7 @@ function tryAI() {
   color: white;
   border: none;
   padding: 12px 28px;
-  border-radius: 24px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -98,10 +98,10 @@ function tryAI() {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
 }
-/* Chat window mock */
+/* Chat window mock — uses UX 5.0 dark bg tokens */
 .chat-window {
-  background: #1e293b;
-  border-radius: 16px;
+  background: #0A0E19;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -110,21 +110,19 @@ function tryAI() {
 .chat-bubble {
   max-width: 88%;
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: 10px;
   font-size: 14px;
   line-height: 1.6;
 }
 .chat-bubble--user {
   align-self: flex-end;
-  background: #334155;
-  color: #e2e8f0;
-  border-bottom-right-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
 }
 .chat-bubble--ai {
   align-self: flex-start;
-  background: #064e3b;
-  color: #a7f3d0;
-  border-bottom-left-radius: 4px;
+  background: rgba(0, 184, 184, 0.14);
+  color: rgba(0, 240, 196, 0.9);
 }
 @media (max-width: 768px) {
   .ai-feature-inner {

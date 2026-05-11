@@ -6,13 +6,6 @@ import { inBrowser } from 'vitepress'
 const openAIModal = inject<(query?: string) => void>('openAIModal')
 
 const query = ref('')
-type BgEffect = 'dots' | 'lines' | 'glow'
-const bgEffect = ref<BgEffect>('dots')
-const effects: { id: BgEffect; label: string }[] = [
-  { id: 'dots', label: '点阵' },
-  { id: 'lines', label: '扫线' },
-  { id: 'glow', label: '光晕' },
-]
 
 function handleSearch() {
   openAIModal?.(query.value.trim() || undefined)
@@ -25,18 +18,9 @@ function scrollToTopics() {
 </script>
 
 <template>
-  <section :class="['hero', 'hero-bg-' + bgEffect]">
-    <div class="bg-switcher" aria-label="切换背景效果">
-      <button
-        v-for="e in effects"
-        :key="e.id"
-        :class="['bgsw-btn', { active: bgEffect === e.id }]"
-        :title="e.label"
-        @click="bgEffect = e.id"
-      >{{ e.label }}</button>
-    </div>
+  <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">✨ 长桥官方帮助中心 · AI 智答 · 持续更新</div>
+      <div class="hero-badge">长桥官方帮助中心 · AI 智答 · 持续更新</div>
       <h1 class="hero-h1">
         有问题，直接问<br>
         <span class="hero-accent">答案在这里</span>
@@ -77,41 +61,8 @@ function scrollToTopics() {
   background: var(--vp-c-bg);
 }
 
-/* ── 效果切换开关 ── */
-.bg-switcher {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  gap: 6px;
-  z-index: 10;
-}
-.bgsw-btn {
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-3);
-  cursor: pointer;
-  transition: all .15s;
-  line-height: 1.6;
-}
-.bgsw-btn:hover { color: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
-.bgsw-btn.active { background: var(--vp-c-brand-soft); color: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
-
-/* ── 共用：四周渐隐遮罩 ── */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 90% 70% at 50% 45%, transparent 35%, var(--vp-c-bg) 88%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── 效果 A：点阵漂移 ── */
-.hero-bg-dots::before {
+/* 点阵背景 */
+.hero::before {
   content: '';
   position: absolute;
   inset: -56px;
@@ -126,42 +77,16 @@ function scrollToTopics() {
   100% { transform: translate(28px, 28px); }
 }
 
-/* ── 效果 B：扫描线 ── */
-.hero-bg-lines::before {
+/* 四周渐隐遮罩 */
+.hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 23px,
-    rgba(0, 184, 184, 0.05) 23px,
-    rgba(0, 184, 184, 0.05) 24px
-  );
-  background-size: 100% 24px;
-  animation: lines-scan 6s linear infinite;
+  background: radial-gradient(ellipse 90% 70% at 50% 45%, transparent 35%, var(--vp-c-bg) 88%);
   pointer-events: none;
   z-index: 0;
-}
-@keyframes lines-scan {
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 -24px; }
 }
 
-/* ── 效果 C：呼吸光晕 ── */
-.hero-bg-glow::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(0, 184, 184, 0.10) 0%, transparent 70%);
-  animation: glow-breathe 4s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-@keyframes glow-breathe {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50%       { opacity: 1;    transform: scale(1.18); }
-}
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -198,13 +123,15 @@ function scrollToTopics() {
   max-width: 560px;
   margin: 0 auto 24px;
   background: var(--vp-c-bg);
-  border: 1.5px solid var(--vp-c-divider);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
 }
-.hero-search-wrap:focus-within { border-color: var(--vp-c-brand-1); }
+.hero-search-wrap:focus-within {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 2px 12px rgba(0, 184, 184, 0.12);
+}
 .hero-input {
   flex: 1;
   border: none;
@@ -234,7 +161,7 @@ function scrollToTopics() {
   color: white;
   border: none;
   padding: 12px 28px;
-  border-radius: 24px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -244,9 +171,9 @@ function scrollToTopics() {
 .hero-btn-outline {
   background: transparent;
   color: var(--vp-c-brand-1);
-  border: 1.5px solid var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-brand-1);
   padding: 12px 28px;
-  border-radius: 24px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
