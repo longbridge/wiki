@@ -2,7 +2,11 @@
 import { inject } from 'vue'
 import { inBrowser } from 'vitepress'
 
-const openAIModal = inject<(query?: string) => void>('openAIModal')!
+const openAIModal = inject<(query?: string) => void>('openAIModal')
+
+function callOpenAI() {
+  openAIModal?.()
+}
 
 function openSearch() {
   if (!inBrowser) return
@@ -27,7 +31,7 @@ function scrollToTopics() {
           <p class="way-desc">关键词直达答案</p>
         </button>
         <!-- AI 智能问答（高亮） -->
-        <button class="way-card way-card--ai" @click="openAIModal()" aria-label="打开 AI 问答">
+        <button class="way-card way-card--ai" @click="callOpenAI" aria-label="打开 AI 问答">
           <span class="way-icon">🤖</span>
           <h3 class="way-name">AI 智能问答</h3>
           <p class="way-desc">用自然语言提问，秒级获得专业解答</p>
