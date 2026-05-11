@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import { ref, provide } from 'vue'
+import { provide } from 'vue'
 import HeroSection from './sections/HeroSection.vue'
 import FindWaysSection from './sections/FindWaysSection.vue'
 import AIFeatureSection from './sections/AIFeatureSection.vue'
 import TopicsGrid from './sections/TopicsGrid.vue'
 import FooterCTA from './sections/FooterCTA.vue'
 import AIModal from './AIModal.vue'
+import { useAIModal } from '../composables/useAIModal'
 
-const modalOpen = ref(false)
-const initialQuery = ref('')
+const { modalOpen, initialQuery, openAIModal } = useAIModal()
 
-function openAIModal(query?: string) {
-  initialQuery.value = query ?? ''
-  modalOpen.value = true
-}
-
+// 子组件仍通过 inject 使用
 provide('openAIModal', openAIModal)
 </script>
 

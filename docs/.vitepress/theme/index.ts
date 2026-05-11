@@ -11,12 +11,14 @@ import Tabs from './components/Tabs.vue'
 import TabItem from './components/TabItem.vue'
 import LinkGraph from './components/LinkGraph.vue'
 import HomeSupport from './components/HomeSupport.vue'
+import HomeNavbar from './components/HomeNavbar.vue'
 
 export default {
   extends: DefaultTheme,
   Layout,
   enhanceApp({ app }) {
     app.component('HomeSupport', HomeSupport)
+    app.component('HomeNavbar', HomeNavbar)
     app.component('HomeCards', HomeCards)
     app.component('HomeCardsA', HomeCardsA)
     app.component('HomeCardsB', HomeCardsB)
