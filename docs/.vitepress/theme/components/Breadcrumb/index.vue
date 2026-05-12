@@ -10,7 +10,7 @@
           <a
             v-if="item.link && index !== breadcrumbItems.length - 1"
             :href="item.link"
-            class="text-brand-1 no-underline transition-colors duration-300 hover:text-brand-2"
+            class="text-vp-text2 no-underline transition-colors duration-300 hover:text-vp-text1"
           >
             {{ item.text }}
           </a>

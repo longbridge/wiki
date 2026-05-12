@@ -33,9 +33,13 @@ export function useAIModal() {
     modalOpen.value = true
   }
 
+  function toggleAIModal() {
+    modalOpen.value = !modalOpen.value
+  }
+
   function clearMessages() {
     messages.value = []
   }
 
-  return { modalOpen, initialQuery, openAIModal, messages, clearMessages }
+  return { modalOpen, initialQuery, openAIModal, toggleAIModal, messages, clearMessages }
 }

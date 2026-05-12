@@ -1,22 +1,140 @@
 /* ============================================================
-   Longbridge Docs — 品牌色变量（原 vars.css）
+   Longbridge Docs — 颜色 Token 体系（Longbridge UX 5.0 / DESIGN.md 对齐）
    ============================================================ */
 
 :root {
-  --vp-c-brand-1: #00b8b8;
-  --vp-c-brand-2: #1ac7c7;
-  --vp-c-brand-3: #33cdcd;
+  /* ── Brand ── */
+  --vp-c-brand-1:   #00B8B8;
+  --vp-c-brand-2:   #1ac7c7;
+  --vp-c-brand-3:   #33cdcd;
   --vp-c-brand-soft: rgba(0, 184, 184, 0.12);
+  --vp-c-brand-aux: #E5F8F8;
+
+  /* ── Text（覆盖 VitePress 默认，对齐 DESIGN.md）── */
+  --vp-c-text-1: #0A0E19;
+  --vp-c-text-2: #6C6E75;
+  --vp-c-text-3: #A9ABAE;
+
+  /* ── Background ── */
+  --vp-c-bg:     #FFFFFF;
+  --vp-c-bg-soft: #F3F5F6;
+  --vp-c-bg-alt: #F3F5F6;
+  --vp-c-bg-elv: #FFFFFF;
+
+  /* ── Divider / Border ── */
+  --vp-c-divider: #DDDDDF;
+  --vp-c-border:  #E6E7E8;
+
+  /* ── Status（theme-invariant）── */
+  --lb-c-up:      #00ADA2;
+  --lb-c-down:    #FF3A75;
+  --lb-c-success: #00CC92;
+  --lb-c-warning: #FF9728;
+  --lb-c-danger:  #F7415F;
+  --lb-c-info:    #2A99FE;
+
+  /* ── AI 模块（始终深色，不随主题切换）── */
+  --lb-ai-bg:             #0A0E19;
+  --lb-ai-surface:        #232630;
+  --lb-ai-border:         #2C3039;
+  --lb-ai-divider:        #3B3E47;
+  --lb-ai-text-1:         #FFFFFF;
+  --lb-ai-text-2:         #9D9FA3;
+  --lb-ai-text-3:         #60626A;
+  --lb-ai-accent:         #00F0C4;
+  --lb-ai-accent-aux:     #09252A;
+  --lb-ai-on-accent:      #0A0E19;
+  --lb-ai-bubble-user-bg: rgba(255, 255, 255, 0.08);
+  --lb-ai-bubble-user-fg: rgba(255, 255, 255, 0.82);
+  --lb-ai-bubble-ai-bg:   rgba(0, 240, 196, 0.14);
+  --lb-ai-bubble-ai-fg:   rgba(0, 240, 196, 0.90);
+
+  /* ── 分类卡片色板 ── */
+  --lb-cat-blue:    #3B82F6;
+  --lb-cat-cyan:    #06B6D4;
+  --lb-cat-teal:    #14B8A6;
+  --lb-cat-green:   #22C55E;
+  --lb-cat-lime:    #84CC16;
+  --lb-cat-yellow:  #EAB308;
+  --lb-cat-amber:   #F59E0B;
+  --lb-cat-orange:  #F97316;
+  --lb-cat-red:     #EF4444;
+  --lb-cat-pink:    #EC4899;
+  --lb-cat-fuchsia: #D946EF;
+  --lb-cat-purple:  #A855F7;
+  --lb-cat-violet:  #8B5CF6;
+  --lb-cat-indigo:  #6366F1;
+  --lb-cat-slate:   #64748B;
+
+  /* ── SVG 插画 mint 色板 ── */
+  --lb-illu-mint-50:  #c4f0ea;
+  --lb-illu-mint-200: #7cccbe;
+  --lb-illu-mint-400: #26e2c5;
+  --lb-illu-mint-600: #00b8b8;
+
+  /* ── HomeGraphBg 浅色 ── */
+  --lb-graph-bg:  #e8faf8;
+  --lb-graph-sf:  #f2fdf9;
+  --lb-graph-alt: #EAEBEC;
+  --lb-graph-bdr: #DDDDDF;
+
+  /* ── 反色 CTA 按钮（登录/注册）── */
+  --lb-cta-bg: #0d0d0d;
+  --lb-cta-fg: #ffffff;
+  --lb-cta-border: rgba(0, 0, 0, 0.12);
 }
 
 .dark {
-  --vp-c-brand-1: #00f0c4;
-  --vp-c-brand-2: #32eadc;
-  --vp-c-brand-3: #2ed4c7;
+  /* ── Brand ── */
+  --vp-c-brand-1:   #00F0C4;
+  --vp-c-brand-2:   #32eadc;
+  --vp-c-brand-3:   #2ed4c7;
   --vp-c-brand-soft: rgba(0, 240, 196, 0.12);
+  --vp-c-brand-aux: #09252A;
+
+  /* ── Text ── */
+  --vp-c-text-1: #FFFFFF;
+  --vp-c-text-2: #9D9FA3;
+  --vp-c-text-3: #60626A;
+
+  /* ── Background ── */
+  --vp-c-bg:      #0A0E19;
+  --vp-c-bg-soft: #232630;
+  --vp-c-bg-alt:  #232630;
+  --vp-c-bg-elv:  #232630;
+
+  /* ── Divider / Border ── */
+  --vp-c-divider: #3B3E47;
+  --vp-c-border:  #2C3039;
+
+  /* ── HomeGraphBg 暗色 ── */
+  --lb-graph-bg:  #1b2b2b;
+  --lb-graph-sf:  #112020;
+  --lb-graph-alt: #0d1c1c;
+  --lb-graph-bdr: #243232;
+
+  /* ── 反色 CTA 按钮（暗色下用浅色） ── */
+  --lb-cta-bg: #f0f0f0;
+  --lb-cta-fg: #0d0d0d;
+  --lb-cta-border: rgba(255, 255, 255, 0.12);
 }
 
-/* 首页使用自定义 HomeNavbar，隐藏 VitePress 默认导航栏 */
+/* 全站使用自定义 HomeNavbar，隐藏 VitePress 默认导航栏 */
+.custom-nav-layout .VPNav {
+  display: none !important;
+}
+.custom-nav-layout .VPContent {
+  padding-top: 0 !important;
+}
+.custom-nav-layout .VPSidebar {
+  top: 0;
+  padding-top: var(--hn-height, 112px);
+}
+.custom-nav-layout .VPLocalNav {
+  top: var(--hn-height, 112px);
+}
+
+/* 首页额外隐藏 VPNav（兼容旧逻辑，custom-nav-layout 已涵盖） */
 .home-page-layout .VPNav {
   display: none !important;
 }
@@ -250,6 +368,10 @@
   html.ai-drawer-open #VPContent {
     padding-right: var(--ai-drawer-width, 380px) !important;
   }
+
+  html.ai-drawer-open .VPDocAside {
+    display: none !important;
+  }
 }
 
 html.ai-resizing #VPContent {
@@ -263,22 +385,19 @@ html.ai-resizing #VPContent {
 }
 
 /* ============================================================
-   @layer components — Search modal（原 search.css）
+   @layer components — Search modal（使用 token，支持双主题）
    ============================================================ */
 
 @layer components {
-  /* Force light mode on backdrop and shell, even in dark system/theme */
-  .VPLocalSearchBox .backdrop,
-  .dark .VPLocalSearchBox .backdrop {
+  .VPLocalSearchBox .backdrop {
     background: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(8px);
   }
 
-  .VPLocalSearchBox .shell,
-  .dark .VPLocalSearchBox .shell {
-    background: #ffffff !important;
-    border: none !important;
-    border-radius: 20px !important;
+  .VPLocalSearchBox .shell {
+    background: var(--vp-c-bg) !important;
+    border: 1px solid var(--vp-c-border) !important;
+    border-radius: 12px !important;
     box-shadow:
       0 0 0 1px rgba(0, 0, 0, 0.06),
       0 20px 60px rgba(0, 0, 0, 0.14) !important;
@@ -288,34 +407,31 @@ html.ai-resizing #VPContent {
   }
 
   /* Search bar */
-  .VPLocalSearchBox .search-bar,
-  .dark .VPLocalSearchBox .search-bar {
+  .VPLocalSearchBox .search-bar {
     background: transparent !important;
     border-top: none !important;
     border-right: none !important;
     border-left: none !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
     box-shadow: none !important;
     outline: none !important;
     padding: 0 !important;
   }
 
-  .VPLocalSearchBox .search-bar:focus-within,
-  .dark .VPLocalSearchBox .search-bar:focus-within {
+  .VPLocalSearchBox .search-bar:focus-within {
     border-top: none !important;
     border-right: none !important;
     border-left: none !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
+    border-bottom: 1px solid var(--vp-c-border) !important;
     box-shadow: none !important;
     outline: none !important;
   }
 
-  .VPLocalSearchBox .search-bar input,
-  .dark .VPLocalSearchBox .search-bar input {
+  .VPLocalSearchBox .search-bar input {
     font-size: 16px !important;
     font-weight: 400 !important;
-    color: #111111 !important;
-    caret-color: #555555 !important;
+    color: var(--vp-c-text-1) !important;
+    caret-color: var(--vp-c-text-2) !important;
     background: transparent !important;
     outline: none !important;
     box-shadow: none !important;
@@ -323,44 +439,36 @@ html.ai-resizing #VPContent {
   }
 
   .VPLocalSearchBox .search-bar input:focus,
-  .VPLocalSearchBox .search-bar input:focus-visible,
-  .dark .VPLocalSearchBox .search-bar input:focus,
-  .dark .VPLocalSearchBox .search-bar input:focus-visible {
+  .VPLocalSearchBox .search-bar input:focus-visible {
     outline: none !important;
     box-shadow: none !important;
     border: none !important;
   }
 
-  .VPLocalSearchBox .search-bar input::placeholder,
-  .dark .VPLocalSearchBox .search-bar input::placeholder {
-    color: rgba(0, 0, 0, 0.28) !important;
+  .VPLocalSearchBox .search-bar input::placeholder {
+    color: var(--vp-c-text-3) !important;
   }
 
-  .VPLocalSearchBox .search-icon,
-  .dark .VPLocalSearchBox .search-icon {
-    color: rgba(0, 0, 0, 0.28) !important;
-    fill: rgba(0, 0, 0, 0.28) !important;
+  .VPLocalSearchBox .search-icon {
+    color: var(--vp-c-text-3) !important;
+    fill: var(--vp-c-text-3) !important;
   }
 
   .VPLocalSearchBox .search-actions button,
-  .VPLocalSearchBox .search-actions kbd,
-  .dark .VPLocalSearchBox .search-actions button,
-  .dark .VPLocalSearchBox .search-actions kbd {
-    color: rgba(0, 0, 0, 0.28) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
+  .VPLocalSearchBox .search-actions kbd {
+    color: var(--vp-c-text-3) !important;
+    border-color: var(--vp-c-divider) !important;
     background: transparent !important;
   }
 
   /* Results list */
-  .VPLocalSearchBox .results,
-  .dark .VPLocalSearchBox .results {
+  .VPLocalSearchBox .results {
     padding: 3px 8px 4px;
     gap: 2px !important;
     background: transparent !important;
   }
 
-  .VPLocalSearchBox .result,
-  .dark .VPLocalSearchBox .result {
+  .VPLocalSearchBox .result {
     border: none !important;
     border-radius: 10px !important;
     background: transparent !important;
@@ -370,22 +478,19 @@ html.ai-resizing #VPContent {
     transition: background 0.1s;
   }
 
-  .VPLocalSearchBox .result:hover,
-  .dark .VPLocalSearchBox .result:hover {
-    background: rgba(0, 0, 0, 0.04) !important;
+  .VPLocalSearchBox .result:hover {
+    background: var(--vp-c-default-soft) !important;
   }
 
-  .VPLocalSearchBox .result.selected,
-  .dark .VPLocalSearchBox .result.selected {
-    background: rgba(0, 0, 0, 0.05) !important;
+  .VPLocalSearchBox .result.selected {
+    background: var(--vp-c-default-soft) !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
   }
 
   /* Titles — breadcrumb stacked above main title */
-  .VPLocalSearchBox .titles,
-  .dark .VPLocalSearchBox .titles {
+  .VPLocalSearchBox .titles {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -393,16 +498,14 @@ html.ai-resizing #VPContent {
   }
 
   /* Hide the # icon */
-  .VPLocalSearchBox .title-icon,
-  .dark .VPLocalSearchBox .title-icon {
+  .VPLocalSearchBox .title-icon {
     display: none !important;
   }
 
   /* Breadcrumb path */
-  .VPLocalSearchBox .title:not(.main),
-  .dark .VPLocalSearchBox .title:not(.main) {
+  .VPLocalSearchBox .title:not(.main) {
     font-size: 11px !important;
-    color: rgba(0, 0, 0, 0.36) !important;
+    color: var(--vp-c-text-3) !important;
     font-weight: 400 !important;
     display: flex !important;
     align-items: center !important;
@@ -410,111 +513,94 @@ html.ai-resizing #VPContent {
   }
 
   /* Main title */
-  .VPLocalSearchBox .title.main,
-  .dark .VPLocalSearchBox .title.main {
+  .VPLocalSearchBox .title.main {
     font-size: 14px !important;
     font-weight: 600 !important;
-    color: #111111 !important;
+    color: var(--vp-c-text-1) !important;
   }
 
-  .VPLocalSearchBox .title .text,
-  .dark .VPLocalSearchBox .title .text {
+  .VPLocalSearchBox .title .text {
     color: inherit !important;
   }
 
   /* Excerpt */
-  .VPLocalSearchBox .excerpt,
-  .dark .VPLocalSearchBox .excerpt {
+  .VPLocalSearchBox .excerpt {
     font-size: 12px !important;
-    color: rgba(0, 0, 0, 0.42) !important;
+    color: var(--vp-c-text-2) !important;
     margin-top: 2px !important;
     line-height: 1.5 !important;
   }
 
-  /* Custom blocks (tip/info/warning/danger/steps) inside excerpts */
-  .VPLocalSearchBox .excerpt .custom-block,
-  .dark .VPLocalSearchBox .excerpt .custom-block {
+  /* Custom blocks inside excerpts */
+  .VPLocalSearchBox .excerpt .custom-block {
     background: transparent !important;
     border: none !important;
-    border-left: 2px solid rgba(0, 0, 0, 0.1) !important;
+    border-left: 2px solid var(--vp-c-divider) !important;
     border-radius: 0 3px 3px 0 !important;
     padding: 1px 6px !important;
     margin: 2px 0 !important;
   }
 
-  .VPLocalSearchBox .excerpt .custom-block-title,
-  .dark .VPLocalSearchBox .excerpt .custom-block-title {
+  .VPLocalSearchBox .excerpt .custom-block-title {
     display: none !important;
   }
 
   .VPLocalSearchBox .excerpt .custom-block p,
-  .VPLocalSearchBox .excerpt .custom-block li,
-  .dark .VPLocalSearchBox .excerpt .custom-block p,
-  .dark .VPLocalSearchBox .excerpt .custom-block li {
-    color: rgba(0, 0, 0, 0.42) !important;
+  .VPLocalSearchBox .excerpt .custom-block li {
+    color: var(--vp-c-text-2) !important;
     margin: 0 !important;
     font-size: 12px !important;
   }
 
   /* Steps container */
-  .VPLocalSearchBox .excerpt .steps,
-  .dark .VPLocalSearchBox .excerpt .steps {
+  .VPLocalSearchBox .excerpt .steps {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  .VPLocalSearchBox .excerpt .steps > ol,
-  .dark .VPLocalSearchBox .excerpt .steps > ol {
+  .VPLocalSearchBox .excerpt .steps > ol {
     counter-reset: none;
     list-style: decimal !important;
   }
 
   /* Lists inside excerpts */
   .VPLocalSearchBox .excerpt ol,
-  .VPLocalSearchBox .excerpt ul,
-  .dark .VPLocalSearchBox .excerpt ol,
-  .dark .VPLocalSearchBox .excerpt ul {
+  .VPLocalSearchBox .excerpt ul {
     padding-left: 14px !important;
     margin: 1px 0 !important;
   }
 
-  .VPLocalSearchBox .excerpt li,
-  .dark .VPLocalSearchBox .excerpt li {
+  .VPLocalSearchBox .excerpt li {
     margin: 0 !important;
     font-size: 12px !important;
-    color: rgba(0, 0, 0, 0.42) !important;
+    color: var(--vp-c-text-2) !important;
   }
 
   /* Code blocks in excerpts */
-  .VPLocalSearchBox .excerpt pre,
-  .dark .VPLocalSearchBox .excerpt pre {
+  .VPLocalSearchBox .excerpt pre {
     display: none !important;
   }
 
   /* Tables in excerpts */
-  .VPLocalSearchBox .excerpt table,
-  .dark .VPLocalSearchBox .excerpt table {
+  .VPLocalSearchBox .excerpt table {
     font-size: 11px !important;
     margin: 2px 0 !important;
     width: auto !important;
   }
 
   .VPLocalSearchBox .excerpt th,
-  .VPLocalSearchBox .excerpt td,
-  .dark .VPLocalSearchBox .excerpt th,
-  .dark .VPLocalSearchBox .excerpt td {
+  .VPLocalSearchBox .excerpt td {
     padding: 1px 6px !important;
     background: transparent !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
+    border-color: var(--vp-c-divider) !important;
   }
 
   /* Keyword highlight — brand teal, no background */
-  .VPLocalSearchBox mark,
-  .dark .VPLocalSearchBox mark {
+  .VPLocalSearchBox mark {
     background: transparent !important;
-    color: rgba(0, 153, 153, 0.9) !important;
+    color: var(--vp-c-brand-1) !important;
     border-radius: 0 !important;
     padding: 0 !important;
     font-weight: 600 !important;
@@ -523,29 +609,22 @@ html.ai-resizing #VPContent {
   /* Search action buttons */
   .VPLocalSearchBox .back-button,
   .VPLocalSearchBox .toggle-layout-button,
-  .VPLocalSearchBox .clear-button,
-  .dark .VPLocalSearchBox .back-button,
-  .dark .VPLocalSearchBox .toggle-layout-button,
-  .dark .VPLocalSearchBox .clear-button {
+  .VPLocalSearchBox .clear-button {
     background: transparent !important;
     border: none !important;
-    color: rgba(0, 0, 0, 0.3) !important;
+    color: var(--vp-c-text-3) !important;
     position: relative;
   }
 
   .VPLocalSearchBox .clear-button .vpi-delete,
-  .VPLocalSearchBox .back-button .vpi-close,
-  .dark .VPLocalSearchBox .clear-button .vpi-delete,
-  .dark .VPLocalSearchBox .back-button .vpi-close {
-    color: rgba(0, 0, 0, 0.3) !important;
-    --vp-icon-color: rgba(0, 0, 0, 0.3) !important;
+  .VPLocalSearchBox .back-button .vpi-close {
+    color: var(--vp-c-text-3) !important;
+    --vp-icon-color: var(--vp-c-text-3) !important;
   }
 
   .VPLocalSearchBox .search-actions button:not([disabled]):hover,
-  .VPLocalSearchBox .toggle-layout-button.detailed-list,
-  .dark .VPLocalSearchBox .search-actions button:not([disabled]):hover,
-  .dark .VPLocalSearchBox .toggle-layout-button.detailed-list {
-    color: rgba(0, 0, 0, 0.55) !important;
+  .VPLocalSearchBox .toggle-layout-button.detailed-list {
+    color: var(--vp-c-text-2) !important;
   }
 
   /* CSS tooltips via title attribute */
@@ -557,8 +636,8 @@ html.ai-resizing #VPContent {
     top: calc(100% + 6px);
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(30, 32, 40, 0.88);
-    color: rgba(255, 255, 255, 0.9);
+    background: var(--vp-c-text-1);
+    color: var(--vp-c-bg);
     font-size: 11px;
     padding: 4px 8px;
     border-radius: 6px;
@@ -576,39 +655,36 @@ html.ai-resizing #VPContent {
   }
 
   /* Footer shortcuts */
-  .VPLocalSearchBox .search-keyboard-shortcuts,
-  .dark .VPLocalSearchBox .search-keyboard-shortcuts {
+  .VPLocalSearchBox .search-keyboard-shortcuts {
     display: flex !important;
     align-items: center !important;
     flex-wrap: wrap !important;
     gap: 14px !important;
     padding: 10px 20px !important;
-    background: rgba(0, 0, 0, 0.02) !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+    background: var(--vp-c-bg-soft) !important;
+    border-top: 1px solid var(--vp-c-divider) !important;
   }
 
-  .VPLocalSearchBox .search-keyboard-shortcuts span,
-  .dark .VPLocalSearchBox .search-keyboard-shortcuts span {
+  .VPLocalSearchBox .search-keyboard-shortcuts span {
     display: inline-flex !important;
     align-items: center !important;
     gap: 4px !important;
     font-size: 11px !important;
-    color: rgba(0, 0, 0, 0.4) !important;
+    color: var(--vp-c-text-3) !important;
     white-space: nowrap !important;
     line-height: 1 !important;
   }
 
-  .VPLocalSearchBox kbd,
-  .dark .VPLocalSearchBox kbd {
+  .VPLocalSearchBox kbd {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     min-width: 20px !important;
     height: 20px !important;
     padding: 0 4px !important;
-    background: rgba(0, 0, 0, 0.05) !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    color: rgba(0, 0, 0, 0.4) !important;
+    background: var(--vp-c-bg-soft) !important;
+    border: 1px solid var(--vp-c-divider) !important;
+    color: var(--vp-c-text-3) !important;
     border-radius: 4px !important;
     font-size: 11px !important;
     line-height: 1 !important;
@@ -807,7 +883,7 @@ html.ai-resizing #VPContent {
     color: var(--vp-c-brand-1);
     background: var(--vp-c-brand-soft);
     padding: 4px 14px;
-    border-radius: 20px;
+    border-radius: 6px;
     margin-bottom: 24px;
     font-weight: 500;
   }
@@ -833,7 +909,7 @@ html.ai-resizing #VPContent {
   }
   .hero-search-wrap:focus-within {
     border-color: var(--vp-c-brand-1);
-    box-shadow: 0 2px 12px rgba(0, 184, 184, 0.12);
+    box-shadow: 0 2px 12px var(--vp-c-brand-soft);
   }
   .hero-input {
     flex: 1;
@@ -925,7 +1001,7 @@ html.ai-resizing #VPContent {
     color: var(--vp-c-brand-1);
     background: var(--vp-c-brand-soft);
     padding: 4px 12px;
-    border-radius: 20px;
+    border-radius: 6px;
     margin-bottom: 16px;
   }
   .af-title { font-size: 1.75rem; font-weight: 800; line-height: 1.3; color: var(--vp-c-text-1); margin: 0 0 20px; }
@@ -946,7 +1022,7 @@ html.ai-resizing #VPContent {
   .af-btn:hover { opacity: 0.88; }
   .af-btn:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 2px; }
   .chat-window {
-    background: #0A0E19;
+    background: var(--lb-ai-bg);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -954,8 +1030,8 @@ html.ai-resizing #VPContent {
     gap: 12px;
   }
   .chat-bubble { max-width: 88%; padding: 10px 14px; border-radius: 10px; font-size: 14px; line-height: 1.6; }
-  .chat-bubble--user { align-self: flex-end; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.82); }
-  .chat-bubble--ai { align-self: flex-start; background: rgba(0, 184, 184, 0.14); color: rgba(0, 240, 196, 0.9); }
+  .chat-bubble--user { align-self: flex-end; background: var(--lb-ai-bubble-user-bg); color: var(--lb-ai-bubble-user-fg); }
+  .chat-bubble--ai { align-self: flex-start; background: var(--lb-ai-bubble-ai-bg); color: var(--lb-ai-bubble-ai-fg); }
 
   /* ─── FooterCTA.vue ─── */
   .footer-cta { padding: 80px 24px; text-align: center; background: var(--vp-c-bg-soft); }
@@ -992,7 +1068,7 @@ html.ai-resizing #VPContent {
     text-decoration: none;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
-  .topic-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 4px 20px rgba(0, 184, 184, 0.12); transform: translateY(-2px); }
+  .topic-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 4px 20px var(--vp-c-brand-soft); transform: translateY(-2px); }
   .topic-icon-wrap { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--vp-c-text-3); }
   .topic-name { font-size: 1rem; font-weight: 700; color: var(--vp-c-text-1); margin: 0; }
   .topic-count { font-size: 0.8rem; color: var(--vp-c-text-3); margin: 0 0 auto; }
@@ -1010,10 +1086,10 @@ html.ai-resizing #VPContent {
     margin-bottom: 16px;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
-  .featured-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 6px 28px rgba(0, 184, 184, 0.14); transform: translateY(-2px); }
+  .featured-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 6px 28px var(--vp-c-brand-soft); transform: translateY(-2px); }
   .featured-icon-wrap { width: 68px; height: 68px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--vp-c-text-3); }
   .featured-body { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-  .featured-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; color: #f59e0b; background: #f59e0b1a; border-radius: 4px; padding: 2px 8px; width: fit-content; letter-spacing: 0.03em; }
+  .featured-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; color: var(--lb-c-warning); background: color-mix(in srgb, var(--lb-c-warning) 10%, transparent); border-radius: 4px; padding: 2px 8px; width: fit-content; letter-spacing: 0.03em; }
   .featured-name { font-size: 1.3rem; font-weight: 700; color: var(--vp-c-text-1); margin: 0; }
   .featured-count { font-size: 0.85rem; color: var(--vp-c-text-2); margin: 0; }
   .featured-arrow { font-size: 1.4rem; color: var(--vp-c-text-3); flex-shrink: 0; transition: color 0.2s; }
@@ -1031,37 +1107,38 @@ html.ai-resizing #VPContent {
     text-decoration: none;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
-  .small-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 4px 16px rgba(0, 184, 184, 0.1); transform: translateY(-2px); }
+  .small-card:hover { border-color: var(--vp-c-brand-1); box-shadow: 0 4px 16px var(--vp-c-brand-soft); transform: translateY(-2px); }
   .small-icon-wrap { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--vp-c-text-3); }
   .small-name { font-size: 0.88rem; font-weight: 600; color: var(--vp-c-text-1); line-height: 1.3; }
   .small-count { font-size: 0.75rem; color: var(--vp-c-text-3); }
 
-  /* ─── HomeNavbar.vue ─── */
-  .hn-root { position: sticky; top: 0; z-index: 100; background: var(--vp-c-bg); border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
-  .hn-top-bar { height: 52px; display: flex; align-items: center; }
+  /* ─── HomeNavbar.vue（全部使用 token，无 .dark 硬编码覆盖）─── */
+  .hn-root { position: sticky; top: 0; z-index: 100; background: var(--vp-c-bg); border-bottom: 1px solid var(--vp-c-divider); }
+  .hn-top-bar { height: 64px; display: flex; align-items: center; }
   .hn-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .hn-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
   .hn-logo-icon { width: 24px; height: 24px; object-fit: contain; }
-  .hn-logo-text { font-size: 17px; font-weight: 700; color: #0d0d0d; letter-spacing: -0.5px; white-space: nowrap; line-height: 1; }
-  .hn-logo-docs { font-weight: 400; color: #666; }
-  .hn-center { display: flex; align-items: center; gap: 6px; }
+  .hn-logo-text { font-size: 17px; font-weight: 700; color: var(--vp-c-text-1); letter-spacing: -0.5px; white-space: nowrap; line-height: 1; }
+  .hn-logo-docs { font-weight: 400; color: var(--vp-c-text-2); }
+  .hn-center { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .hn-search-btn {
     display: flex;
     align-items: center;
     gap: 8px;
     height: 33px;
+    min-width: 220px;
     padding: 0 13px;
-    background: #fafafa;
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 9999px;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 6px;
     cursor: pointer;
-    color: #888;
+    color: var(--vp-c-text-3);
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
     transition: border-color 0.15s;
   }
-  .hn-search-btn:hover { border-color: rgba(0, 0, 0, 0.2); }
+  .hn-search-btn:hover { border-color: var(--vp-c-divider); }
   .hn-search-label { font-size: 13px; }
   .hn-kbd {
     display: inline-flex;
@@ -1070,12 +1147,12 @@ html.ai-resizing #VPContent {
     height: 17px;
     min-width: 18px;
     padding: 0 4px;
-    background: #ebebeb;
+    background: var(--vp-c-default-soft);
     border-radius: 5px;
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
     font-weight: 500;
-    color: #888;
+    color: var(--vp-c-text-3);
     letter-spacing: 0.2px;
   }
   .hn-askai-btn {
@@ -1084,42 +1161,58 @@ html.ai-resizing #VPContent {
     gap: 6px;
     height: 33px;
     padding: 0 13px;
-    background: #fafafa;
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 9999px;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 6px;
     cursor: pointer;
-    color: #0d0d0d;
+    color: var(--vp-c-text-1);
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
     transition: border-color 0.15s;
   }
-  .hn-askai-btn:hover { border-color: rgba(0, 0, 0, 0.2); }
-  .hn-sparkle { color: #18e299; }
+  .hn-askai-btn:hover { border-color: var(--vp-c-divider); }
+  .hn-sparkle { color: var(--vp-c-brand-1); }
   .hn-icon-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    background: #fafafa;
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 16px;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 6px;
     cursor: pointer;
-    color: #666;
+    color: var(--vp-c-text-2);
     padding: 0;
     transition: border-color 0.15s;
   }
-  .hn-icon-btn:hover { border-color: rgba(0, 0, 0, 0.2); }
-  .hn-icon { width: 12px; height: 12px; flex-shrink: 0; }
-  .hn-auth { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .hn-icon-btn:hover { border-color: var(--vp-c-divider); }
+  .hn-icon-btn--active { background: var(--vp-c-default-soft); border-color: var(--vp-c-divider); color: var(--vp-c-text-1); }
+  .hn-icon { width: 14px; height: 14px; flex-shrink: 0; }
+  .hn-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .hn-dev-platform {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--vp-c-text-2);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+  }
+  .hn-dev-platform:hover { color: var(--vp-c-text-1); background: var(--vp-c-default-soft); }
   .hn-login {
     height: 32px;
     padding: 0 14px;
-    border-radius: 9999px;
+    border-radius: 6px;
     border: none;
     background: transparent;
-    color: #666;
+    color: var(--vp-c-text-2);
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
@@ -1127,14 +1220,14 @@ html.ai-resizing #VPContent {
     align-items: center;
     transition: color 0.15s;
   }
-  .hn-login:hover { color: #0d0d0d; }
+  .hn-login:hover { color: var(--vp-c-text-1); }
   .hn-register {
     height: 33px;
     padding: 0 17px;
-    border-radius: 9999px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: #0d0d0d;
-    color: #fff;
+    border-radius: 6px;
+    border: 1px solid var(--lb-cta-border);
+    background: var(--lb-cta-bg);
+    color: var(--lb-cta-fg);
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
@@ -1144,7 +1237,7 @@ html.ai-resizing #VPContent {
     transition: opacity 0.15s;
   }
   .hn-register:hover { opacity: 0.85; }
-  .hn-bottom-bar { height: 40px; border-top: 1px solid rgba(0, 0, 0, 0.04); }
+  .hn-bottom-bar { height: 48px; }
   .hn-bottom-inner {
     width: 100%;
     max-width: 1551px;
@@ -1160,9 +1253,9 @@ html.ai-resizing #VPContent {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    height: 40px;
+    height: 48px;
     font-size: 13px;
-    color: #666;
+    color: var(--vp-c-text-2);
     text-decoration: none;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
@@ -1170,8 +1263,8 @@ html.ai-resizing #VPContent {
     font-weight: 400;
     box-sizing: border-box;
   }
-  .hn-tab:hover { color: #0d0d0d; }
-  .hn-tab--active { color: #18e299; border-bottom-color: #18e299; font-weight: 500; }
+  .hn-tab:hover { color: var(--vp-c-text-1); }
+  .hn-tab--active { color: var(--vp-c-text-1); border-bottom-color: var(--vp-c-text-1); font-weight: 500; }
   .hn-extra-links { display: flex; align-items: center; gap: 4px; }
   .hn-extra-btn {
     display: flex;
@@ -1182,27 +1275,11 @@ html.ai-resizing #VPContent {
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
-    color: #666;
+    color: var(--vp-c-text-2);
     text-decoration: none;
     transition: background 0.15s, color 0.15s;
   }
-  .hn-extra-btn:hover { background: rgba(0,0,0,0.04); color: #0d0d0d; }
-  .dark .hn-root { border-bottom-color: rgba(255, 255, 255, 0.08); background: var(--vp-c-bg); }
-  .dark .hn-logo-text { color: #f0f0f0; }
-  .dark .hn-logo-docs { color: #999; }
-  .dark .hn-search-btn, .dark .hn-askai-btn, .dark .hn-icon-btn { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #aaa; }
-  .dark .hn-search-btn:hover, .dark .hn-askai-btn:hover, .dark .hn-icon-btn:hover { border-color: rgba(255,255,255,0.25); }
-  .dark .hn-askai-btn { color: #f0f0f0; }
-  .dark .hn-kbd { background: rgba(255,255,255,0.1); color: #aaa; }
-  .dark .hn-login { color: #aaa; }
-  .dark .hn-login:hover { color: #f0f0f0; }
-  .dark .hn-register { background: #f0f0f0; color: #0d0d0d; border-color: rgba(255,255,255,0.1); }
-  .dark .hn-bottom-bar { border-top-color: rgba(255,255,255,0.05); }
-  .dark .hn-tab { color: #888; }
-  .dark .hn-tab:hover { color: #f0f0f0; }
-  .dark .hn-tab--active { color: #00f0c4; border-bottom-color: #00f0c4; }
-  .dark .hn-extra-btn { color: #888; }
-  .dark .hn-extra-btn:hover { background: rgba(255,255,255,0.06); color: #f0f0f0; }
+  .hn-extra-btn:hover { background: var(--vp-c-default-soft); color: var(--vp-c-text-1); }
 
   /* ─── HomeCards_A.vue ─── */
   .home-wrap { max-width: 1200px; margin: 0 auto; padding: 48px 24px 64px; }
@@ -1429,7 +1506,7 @@ html.ai-resizing #VPContent {
   .feat-links a::after { content: '→'; color: var(--vp-c-text-3); transition: color 0.15s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); flex-shrink: 0; margin-left: 8px; }
   .feat-links a:hover { color: var(--brand); }
   .feat-links a:hover::after { color: var(--brand); transform: translateX(4px); }
-  .hero-onboard { display: inline-flex; align-items: center; gap: 16px; padding: 12px 16px; background: var(--brand-soft); border: 1px solid rgba(0, 184, 184, 0.2); border-radius: 10px; flex-wrap: wrap; }
+  .hero-onboard { display: inline-flex; align-items: center; gap: 16px; padding: 12px 16px; background: var(--brand-soft); border: 1px solid var(--vp-c-brand-soft); border-radius: 10px; flex-wrap: wrap; }
   .onboard-label { font-size: 0.875rem; color: var(--vp-c-text-2); font-weight: 500; }
   .tasks { background: var(--vp-c-bg-soft); border-top: 1px solid var(--vp-c-divider); border-bottom: 1px solid var(--vp-c-divider); }
   .tasks-inner { max-width: var(--max-w); margin: 0 auto; padding: clamp(36px, 5vw, 64px) var(--gutter); }
@@ -1479,7 +1556,8 @@ html.ai-resizing #VPContent {
     .tasks-grid { grid-template-columns: 1fr; }
     .hero-onboard { flex-direction: column; align-items: flex-start; gap: 10px; }
     .hn-search-label { display: none; }
-    .hn-auth .hn-register { display: none; }
+    .hn-dev-platform { display: none; }
+    .hn-actions .hn-register { display: none; }
     .hn-bottom-bar { display: none; }
   }
   @media (max-width: 640px) {
@@ -1547,4 +1625,158 @@ html.ai-resizing #VPContent {
 @keyframes shimmer-sweep {
   0%   { background-position: 160% center; }
   100% { background-position: -160% center; }
+}
+
+/* ============================================================
+   详情页优化 — 三栏布局 & Hero & TOC
+   ============================================================ */
+
+/* F.2 — 三栏布局尺寸 */
+:root {
+  --hn-height: 112px;
+  --vp-sidebar-width: 272px;
+  --vp-aside-width: 272px;
+}
+@media (min-width: 960px) {
+  .VPDoc .content-container .content { max-width: 760px !important; }
+}
+
+/* F.3 — Hero 标题区 */
+.lb-doc-hero { margin: 8px 0 28px; }
+.lb-doc-hero .lb-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.lb-doc-hero .lb-title {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+  margin: 0;
+}
+.lb-title-row { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 12px; }
+.lb-title-row .lb-title { margin: 0; flex: 1; }
+.lb-copy-btn {
+  flex-shrink: 0;
+  margin-top: 8px;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-border);
+  background: transparent;
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.lb-copy-btn:hover { color: var(--vp-c-text-1); border-color: var(--vp-c-text-2); }
+.lb-doc-hero .lb-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  max-width: 60ch;
+  margin: 0;
+}
+/* 隐藏 markdown 首 H1，由 PageHero 接管 */
+.vp-doc > div > h1:first-child { display: none; }
+
+/* F.4 — 正文排版节奏 */
+.vp-doc h2 {
+  padding-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+.vp-doc p, .vp-doc li { line-height: 1.75; }
+.vp-doc table { font-size: 14px; }
+.vp-doc th { background: transparent !important; font-weight: 600; }
+.vp-doc .custom-block {
+  border: 1px solid var(--vp-c-divider);
+  border-left-width: 3px;
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+.vp-doc .custom-block.tip { border-left-color: var(--vp-c-brand-1); }
+.vp-doc .custom-block.warning { border-left-color: var(--lb-c-warning); }
+.vp-doc .custom-block.danger { border-left-color: var(--lb-c-danger); }
+
+/* F.5 — 右栏 TOC 紧凑风格 */
+.VPDocAside { font-size: 13px; }
+.VPDocAside .outline-title {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+  font-weight: 600;
+}
+.VPDocOutlineItem .outline-link {
+  position: relative;
+  padding-left: 12px;
+  color: var(--vp-c-text-2);
+  border-left: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.VPDocOutlineItem .outline-link:hover { color: var(--vp-c-text-1); }
+.VPDocOutlineItem .outline-link.active {
+  color: var(--vp-c-brand-1);
+  border-left-color: var(--vp-c-brand-1);
+  background: transparent;
+}
+.dark .VPDocOutlineItem .outline-link.active {
+  color: var(--vp-c-brand-2);
+  border-left-color: var(--vp-c-brand-2);
+}
+
+/* F.7 — 移动端浮动 FAB 桌面隐藏 */
+@media (min-width: 960px) {
+  .ai-fab-mobile { display: none !important; }
+}
+
+/* F.8 — Sidebar active 由 pill 改为左竖条 */
+.VPSidebarItem.is-active > .item > .VPLink {
+  background: transparent !important;
+  border-radius: 0;
+  position: relative;
+}
+.VPSidebarItem.is-active > .item > .VPLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--vp-c-brand-1);
+  border-radius: 2px;
+}
+.dark .VPSidebarItem.is-active > .item > .VPLink::before {
+  background: var(--vp-c-brand-2);
+}
+
+/* PageFeedback */
+.lb-page-feedback {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+.lb-page-feedback--done { color: var(--vp-c-text-3); font-style: italic; }
+.lb-pfb-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--vp-c-text-1);
+  transition: border-color .15s, background .15s;
+}
+.lb-pfb-btn:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
 }

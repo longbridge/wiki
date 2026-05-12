@@ -76,60 +76,60 @@
         <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="acct-grad" x1="50%" y1="0%" x2="50%" y2="100%">
-              <stop offset="0%" stop-color="#c4f0ea"/>
-              <stop offset="100%" stop-color="#c4f0ea" stop-opacity="0"/>
+              <stop offset="0%" stop-color="var(--lb-illu-mint-50)"/>
+              <stop offset="100%" stop-color="var(--lb-illu-mint-50)" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <!-- Background card -->
           <rect x="36" y="26" width="268" height="228" rx="16" class="c-bg" stroke="url(#acct-grad)" stroke-width="1.5"/>
           <!-- Step 1: 注册/ID -->
-          <circle cx="88" cy="90" r="28" class="c-sf" stroke="#c4f0ea" stroke-width="1.5"/>
+          <circle cx="88" cy="90" r="28" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1.5"/>
           <!-- ID card icon -->
-          <rect x="74" y="79" width="28" height="21" rx="4" class="c-bg" stroke="#7cccbe" stroke-width="1.5"/>
-          <circle cx="83" cy="87" r="5" fill="#c4f0ea"/>
+          <rect x="74" y="79" width="28" height="21" rx="4" class="c-bg" stroke="var(--lb-illu-mint-200)" stroke-width="1.5"/>
+          <circle cx="83" cy="87" r="5" fill="var(--lb-illu-mint-50)"/>
           <rect x="82" y="95" width="14" height="3" rx="1.5" class="c-sf"/>
           <!-- Step number badge -->
-          <circle cx="108" cy="68" r="10" fill="#00b8b8"/>
+          <circle cx="108" cy="68" r="10" fill="var(--lb-illu-mint-600)"/>
           <rect x="104" y="65" width="8" height="6" rx="1.5" fill="white" opacity="0.9"/>
           <!-- Connector 1→2 -->
-          <line x1="117" y1="90" x2="143" y2="90" stroke="#c4f0ea" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="117" y1="90" x2="143" y2="90" stroke="var(--lb-illu-mint-50)" stroke-width="1.5" stroke-dasharray="4 3"/>
           <!-- Step 2: KYC 核验 (active/highlighted) -->
-          <circle cx="170" cy="90" r="28" fill="#c4f0ea" opacity="0.18" stroke="#26e2c5" stroke-width="1.5"/>
+          <circle cx="170" cy="90" r="28" fill="var(--lb-illu-mint-50)" opacity="0.18" stroke="var(--lb-illu-mint-400)" stroke-width="1.5"/>
           <!-- Face / person icon -->
-          <circle cx="170" cy="84" r="11" fill="#7cccbe" opacity="0.42"/>
-          <path d="M156 104 C156 93 184 93 184 104" fill="#c4f0ea" opacity="0.45"/>
+          <circle cx="170" cy="84" r="11" fill="var(--lb-illu-mint-200)" opacity="0.42"/>
+          <path d="M156 104 C156 93 184 93 184 104" fill="var(--lb-illu-mint-50)" opacity="0.45"/>
           <!-- KYC verified tick -->
-          <circle cx="190" cy="68" r="11" fill="#26e2c5"/>
+          <circle cx="190" cy="68" r="11" fill="var(--lb-illu-mint-400)"/>
           <path d="M184 68 l5 5 l8-9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <!-- Connector 2→3 -->
-          <line x1="199" y1="90" x2="225" y2="90" stroke="#c4f0ea" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="199" y1="90" x2="225" y2="90" stroke="var(--lb-illu-mint-50)" stroke-width="1.5" stroke-dasharray="4 3"/>
           <!-- Step 3: 首笔交易 -->
-          <circle cx="252" cy="90" r="28" class="c-sf" stroke="#c4f0ea" stroke-width="1.5"/>
+          <circle cx="252" cy="90" r="28" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1.5"/>
           <!-- Mini upward chart -->
-          <polyline points="239,101 247,93 256,97 265,80" stroke="#7cccbe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="265" cy="80" r="4" class="c-bg" stroke="#26e2c5" stroke-width="2"/>
+          <polyline points="239,101 247,93 256,97 265,80" stroke="var(--lb-illu-mint-200)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="265" cy="80" r="4" class="c-bg" stroke="var(--lb-illu-mint-400)" stroke-width="2"/>
           <!-- Step label bars -->
-          <rect x="70" y="130" width="36" height="5" rx="2.5" fill="#00b8b8" opacity="0.45"/>
-          <rect x="152" y="130" width="36" height="5" rx="2.5" fill="#26e2c5" opacity="0.6"/>
-          <rect x="234" y="130" width="36" height="5" rx="2.5" fill="#7cccbe" opacity="0.5"/>
+          <rect x="70" y="130" width="36" height="5" rx="2.5" fill="var(--lb-illu-mint-600)" opacity="0.45"/>
+          <rect x="152" y="130" width="36" height="5" rx="2.5" fill="var(--lb-illu-mint-400)" opacity="0.6"/>
+          <rect x="234" y="130" width="36" height="5" rx="2.5" fill="var(--lb-illu-mint-200)" opacity="0.5"/>
           <!-- Result card: 账户已开立 -->
-          <rect x="50" y="152" width="240" height="84" rx="12" class="c-alt" stroke="#c4f0ea" stroke-width="1"/>
+          <rect x="50" y="152" width="240" height="84" rx="12" class="c-alt" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
           <!-- Avatar -->
-          <circle cx="80" cy="186" r="22" class="c-bg" stroke="#c4f0ea" stroke-width="1"/>
-          <circle cx="80" cy="180" r="12" fill="#7cccbe" opacity="0.42"/>
+          <circle cx="80" cy="186" r="22" class="c-bg" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <circle cx="80" cy="180" r="12" fill="var(--lb-illu-mint-200)" opacity="0.42"/>
           <path d="M63 202 C63 190 97 190 97 202" class="c-sf"/>
           <!-- Info lines -->
-          <rect x="110" y="163" width="76" height="7" rx="3.5" fill="#7cccbe" opacity="0.45"/>
+          <rect x="110" y="163" width="76" height="7" rx="3.5" fill="var(--lb-illu-mint-200)" opacity="0.45"/>
           <rect x="110" y="176" width="140" height="5" rx="2.5" class="c-sf"/>
           <rect x="110" y="187" width="120" height="5" rx="2.5" class="c-sf"/>
           <!-- Approved badge -->
-          <rect x="110" y="202" width="80" height="22" rx="11" fill="#26e2c5"/>
+          <rect x="110" y="202" width="80" height="22" rx="11" fill="var(--lb-illu-mint-400)"/>
           <rect x="120" y="211" width="60" height="4" rx="2" fill="white" opacity="0.85"/>
           <!-- Account type chip -->
-          <rect x="200" y="202" width="76" height="22" rx="8" class="c-bg" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="208" y="211" width="60" height="4" rx="2" fill="#c4f0ea"/>
+          <rect x="200" y="202" width="76" height="22" rx="8" class="c-bg" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="208" y="211" width="60" height="4" rx="2" fill="var(--lb-illu-mint-50)"/>
           <!-- Yellow star accent -->
-          <polygon points="310,52 313.5,62 324,62 315.5,68.5 318.5,79 310,72.5 301.5,79 304.5,68.5 296,62 306.5,62" fill="#FFC800"/>
+          <polygon points="310,52 313.5,62 324,62 315.5,68.5 318.5,79 310,72.5 301.5,79 304.5,68.5 296,62 306.5,62" fill="var(--lb-c-warning)"/>
         </svg>
       </div>
     </section>
@@ -153,54 +153,54 @@
         <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="fund-grad" x1="50%" y1="0%" x2="50%" y2="100%">
-              <stop offset="0%" stop-color="#c4f0ea"/>
-              <stop offset="100%" stop-color="#c4f0ea" stop-opacity="0"/>
+              <stop offset="0%" stop-color="var(--lb-illu-mint-50)"/>
+              <stop offset="100%" stop-color="var(--lb-illu-mint-50)" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <!-- Left: bank card -->
-          <rect x="18" y="78" width="112" height="80" rx="12" class="c-bg" stroke="#c4f0ea" stroke-width="1.5"/>
-          <rect x="30" y="94" width="56" height="9" rx="4.5" fill="#7cccbe" opacity="0.65"/>
+          <rect x="18" y="78" width="112" height="80" rx="12" class="c-bg" stroke="var(--lb-illu-mint-50)" stroke-width="1.5"/>
+          <rect x="30" y="94" width="56" height="9" rx="4.5" fill="var(--lb-illu-mint-200)" opacity="0.65"/>
           <rect x="30" y="110" width="40" height="5" rx="2.5" class="c-sf"/>
           <rect x="30" y="121" width="50" height="5" rx="2.5" class="c-sf"/>
-          <circle cx="112" cy="84" r="7" fill="#FFC800" opacity="0.75"/>
+          <circle cx="112" cy="84" r="7" fill="var(--lb-c-warning)" opacity="0.75"/>
           <!-- Payment method chips below bank -->
-          <rect x="18" y="170" width="42" height="18" rx="9" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="24" y="177" width="30" height="4" rx="2" fill="#7cccbe" opacity="0.6"/>
-          <rect x="66" y="170" width="48" height="18" rx="9" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="72" y="177" width="36" height="4" rx="2" fill="#7cccbe" opacity="0.6"/>
-          <rect x="18" y="194" width="52" height="18" rx="9" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="24" y="201" width="40" height="4" rx="2" fill="#7cccbe" opacity="0.6"/>
-          <rect x="76" y="194" width="40" height="18" rx="9" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="82" y="201" width="28" height="4" rx="2" fill="#7cccbe" opacity="0.6"/>
+          <rect x="18" y="170" width="42" height="18" rx="9" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="24" y="177" width="30" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.6"/>
+          <rect x="66" y="170" width="48" height="18" rx="9" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="72" y="177" width="36" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.6"/>
+          <rect x="18" y="194" width="52" height="18" rx="9" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="24" y="201" width="40" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.6"/>
+          <rect x="76" y="194" width="40" height="18" rx="9" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="82" y="201" width="28" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.6"/>
           <!-- Right: LB account -->
-          <rect x="210" y="78" width="112" height="80" rx="12" class="c-bg" stroke="#c4f0ea" stroke-width="1.5"/>
-          <rect x="222" y="94" width="56" height="9" rx="4.5" fill="#7cccbe" opacity="0.65"/>
+          <rect x="210" y="78" width="112" height="80" rx="12" class="c-bg" stroke="var(--lb-illu-mint-50)" stroke-width="1.5"/>
+          <rect x="222" y="94" width="56" height="9" rx="4.5" fill="var(--lb-illu-mint-200)" opacity="0.65"/>
           <rect x="222" y="110" width="40" height="5" rx="2.5" class="c-sf"/>
           <rect x="222" y="121" width="50" height="5" rx="2.5" class="c-sf"/>
-          <circle cx="210" cy="84" r="7" fill="#26e2c5"/>
+          <circle cx="210" cy="84" r="7" fill="var(--lb-illu-mint-400)"/>
           <!-- In arrow (bank → account, solid) -->
-          <path d="M132 106 L212 106" stroke="#26e2c5" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M207 102 l5 4 l-5 4" stroke="#26e2c5" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M132 106 L212 106" stroke="var(--lb-illu-mint-400)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M207 102 l5 4 l-5 4" stroke="var(--lb-illu-mint-400)" stroke-width="2" stroke-linecap="round" fill="none"/>
           <!-- Out arrow (account → bank, dashed) -->
-          <path d="M212 128 L132 128" stroke="#7cccbe" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 3"/>
-          <path d="M137 124 l-5 4 l5 4" stroke="#7cccbe" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M212 128 L132 128" stroke="var(--lb-illu-mint-200)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 3"/>
+          <path d="M137 124 l-5 4 l5 4" stroke="var(--lb-illu-mint-200)" stroke-width="2" stroke-linecap="round" fill="none"/>
           <!-- Currency exchange badge top-center -->
-          <rect x="118" y="42" width="104" height="28" rx="14" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <text x="170" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#00b8b8" font-family="system-ui, sans-serif">HKD · USD · SGD</text>
+          <rect x="118" y="42" width="104" height="28" rx="14" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <text x="170" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="var(--lb-illu-mint-600)" font-family="system-ui, sans-serif">HKD · USD · SGD</text>
           <!-- FX rate card bottom-right -->
-          <rect x="192" y="168" width="130" height="84" rx="10" class="c-alt" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="204" y="182" width="60" height="6" rx="3" fill="#7cccbe" opacity="0.45"/>
-          <rect x="204" y="196" width="26" height="5" rx="2.5" fill="#c4f0ea" opacity="0.65"/>
-          <path d="M234 198 L254 198" stroke="#c4f0ea" stroke-width="1" stroke-dasharray="2 2"/>
-          <rect x="258" y="196" width="26" height="5" rx="2.5" fill="#7cccbe" opacity="0.55"/>
-          <rect x="204" y="208" width="26" height="5" rx="2.5" fill="#7cccbe" opacity="0.55"/>
-          <path d="M234 210 L254 210" stroke="#c4f0ea" stroke-width="1" stroke-dasharray="2 2"/>
-          <rect x="258" y="208" width="26" height="5" rx="2.5" fill="#FFC800" opacity="0.72"/>
-          <rect x="204" y="220" width="26" height="5" rx="2.5" fill="#FFC800" opacity="0.5"/>
-          <path d="M234 222 L254 222" stroke="#c4f0ea" stroke-width="1" stroke-dasharray="2 2"/>
-          <rect x="258" y="220" width="26" height="5" rx="2.5" fill="#c4f0ea"/>
+          <rect x="192" y="168" width="130" height="84" rx="10" class="c-alt" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="204" y="182" width="60" height="6" rx="3" fill="var(--lb-illu-mint-200)" opacity="0.45"/>
+          <rect x="204" y="196" width="26" height="5" rx="2.5" fill="var(--lb-illu-mint-50)" opacity="0.65"/>
+          <path d="M234 198 L254 198" stroke="var(--lb-illu-mint-50)" stroke-width="1" stroke-dasharray="2 2"/>
+          <rect x="258" y="196" width="26" height="5" rx="2.5" fill="var(--lb-illu-mint-200)" opacity="0.55"/>
+          <rect x="204" y="208" width="26" height="5" rx="2.5" fill="var(--lb-illu-mint-200)" opacity="0.55"/>
+          <path d="M234 210 L254 210" stroke="var(--lb-illu-mint-50)" stroke-width="1" stroke-dasharray="2 2"/>
+          <rect x="258" y="208" width="26" height="5" rx="2.5" fill="var(--lb-c-warning)" opacity="0.72"/>
+          <rect x="204" y="220" width="26" height="5" rx="2.5" fill="var(--lb-c-warning)" opacity="0.5"/>
+          <path d="M234 222 L254 222" stroke="var(--lb-illu-mint-50)" stroke-width="1" stroke-dasharray="2 2"/>
+          <rect x="258" y="220" width="26" height="5" rx="2.5" fill="var(--lb-illu-mint-50)"/>
           <rect x="204" y="234" width="60" height="13" rx="6.5" class="c-sf"/>
-          <rect x="212" y="238" width="44" height="4" rx="2" fill="#c4f0ea" opacity="0.6"/>
+          <rect x="212" y="238" width="44" height="4" rx="2" fill="var(--lb-illu-mint-50)" opacity="0.6"/>
         </svg>
       </div>
     </section>
@@ -225,21 +225,21 @@
         <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="area-fill" x1="50%" y1="0%" x2="50%" y2="100%">
-              <stop offset="0%" stop-color="#7cccbe" stop-opacity="0.45"/>
+              <stop offset="0%" stop-color="var(--lb-illu-mint-200)" stop-opacity="0.45"/>
               <stop offset="100%" stop-color="#e6ebf0" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <!-- Chart frame -->
           <rect x="36" y="44" width="268" height="192" rx="12" class="c-bg c-bdr" stroke-width="1"/>
           <!-- Market tabs: 港股 / 美股 / 期权 -->
-          <rect x="48" y="56" width="38" height="20" rx="10" fill="#00b8b8"/>
+          <rect x="48" y="56" width="38" height="20" rx="10" fill="var(--lb-illu-mint-600)"/>
           <rect x="54" y="64" width="26" height="4" rx="2" fill="white" opacity="0.9"/>
-          <rect x="92" y="56" width="38" height="20" rx="10" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="98" y="64" width="26" height="4" rx="2" fill="#7cccbe" opacity="0.65"/>
-          <rect x="136" y="56" width="44" height="20" rx="10" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="142" y="64" width="32" height="4" rx="2" fill="#7cccbe" opacity="0.65"/>
+          <rect x="92" y="56" width="38" height="20" rx="10" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="98" y="64" width="26" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.65"/>
+          <rect x="136" y="56" width="44" height="20" rx="10" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="142" y="64" width="32" height="4" rx="2" fill="var(--lb-illu-mint-200)" opacity="0.65"/>
           <!-- Gain chip top-right -->
-          <rect x="260" y="55" width="36" height="20" rx="10" fill="#26e2c5"/>
+          <rect x="260" y="55" width="36" height="20" rx="10" fill="var(--lb-illu-mint-400)"/>
           <rect x="265" y="63" width="26" height="4" rx="2" fill="white" opacity="0.9"/>
           <!-- Grid lines -->
           <line x1="48" y1="100" x2="292" y2="100" stroke="#86cfc3" stroke-width="0.5" opacity="0.3" stroke-dasharray="3"/>
@@ -249,22 +249,22 @@
           <!-- Area fill -->
           <path d="M56 196 L84 174 L116 156 L148 132 L180 112 L212 94 L244 78 L276 62 L276 212 L56 212 Z" fill="url(#area-fill)"/>
           <!-- Price line -->
-          <polyline points="56,196 84,174 116,156 148,132 180,112 212,94 244,78 276,62" stroke="#7cccbe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <polyline points="56,196 84,174 116,156 148,132 180,112 212,94 244,78 276,62" stroke="var(--lb-illu-mint-200)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           <!-- Candlestick bodies at 4 points -->
-          <rect x="81" y="168" width="6" height="12" rx="1" fill="#26e2c5" opacity="0.75"/>
-          <line x1="84" y1="164" x2="84" y2="182" stroke="#26e2c5" stroke-width="1" opacity="0.5"/>
-          <rect x="145" y="127" width="6" height="11" rx="1" fill="#FF2720" opacity="0.55"/>
-          <line x1="148" y1="123" x2="148" y2="141" stroke="#FF2720" stroke-width="1" opacity="0.4"/>
-          <rect x="209" y="89" width="6" height="11" rx="1" fill="#26e2c5" opacity="0.75"/>
-          <line x1="212" y1="85" x2="212" y2="103" stroke="#26e2c5" stroke-width="1" opacity="0.5"/>
-          <circle cx="276" cy="62" r="5" class="c-bg" stroke="#26e2c5" stroke-width="2"/>
+          <rect x="81" y="168" width="6" height="12" rx="1" fill="var(--lb-illu-mint-400)" opacity="0.75"/>
+          <line x1="84" y1="164" x2="84" y2="182" stroke="var(--lb-illu-mint-400)" stroke-width="1" opacity="0.5"/>
+          <rect x="145" y="127" width="6" height="11" rx="1" fill="var(--lb-c-danger)" opacity="0.55"/>
+          <line x1="148" y1="123" x2="148" y2="141" stroke="var(--lb-c-danger)" stroke-width="1" opacity="0.4"/>
+          <rect x="209" y="89" width="6" height="11" rx="1" fill="var(--lb-illu-mint-400)" opacity="0.75"/>
+          <line x1="212" y1="85" x2="212" y2="103" stroke="var(--lb-illu-mint-400)" stroke-width="1" opacity="0.5"/>
+          <circle cx="276" cy="62" r="5" class="c-bg" stroke="var(--lb-illu-mint-400)" stroke-width="2"/>
           <!-- Bottom: IPO badge + 期权 chip -->
-          <rect x="36" y="244" width="88" height="28" rx="10" fill="#FFC800" opacity="0.14" stroke="#FFC800" stroke-width="1"/>
-          <rect x="50" y="255" width="60" height="5" rx="2.5" fill="#FFC800" opacity="0.8"/>
-          <rect x="136" y="244" width="80" height="28" rx="10" class="c-sf" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="150" y="255" width="52" height="5" rx="2.5" fill="#7cccbe" opacity="0.65"/>
+          <rect x="36" y="244" width="88" height="28" rx="10" fill="var(--lb-c-warning)" opacity="0.14" stroke="var(--lb-c-warning)" stroke-width="1"/>
+          <rect x="50" y="255" width="60" height="5" rx="2.5" fill="var(--lb-c-warning)" opacity="0.8"/>
+          <rect x="136" y="244" width="80" height="28" rx="10" class="c-sf" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="150" y="255" width="52" height="5" rx="2.5" fill="var(--lb-illu-mint-200)" opacity="0.65"/>
           <!-- Red dot accent top-right -->
-          <circle cx="308" cy="62" r="8" fill="#FF2720" opacity="0.8"/>
+          <circle cx="308" cy="62" r="8" fill="var(--lb-c-danger)" opacity="0.8"/>
         </svg>
       </div>
     </section>
@@ -289,50 +289,50 @@
         <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="wealth-grad" x1="50%" y1="0%" x2="50%" y2="100%">
-              <stop offset="0%" stop-color="#c4f0ea"/>
-              <stop offset="100%" stop-color="#c4f0ea" stop-opacity="0"/>
+              <stop offset="0%" stop-color="var(--lb-illu-mint-50)"/>
+              <stop offset="100%" stop-color="var(--lb-illu-mint-50)" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <!-- Portfolio donut (余额通/基金定投) -->
           <circle cx="112" cy="116" r="62" class="c-bdr" fill="none" stroke-width="22"/>
           <!-- Main ~58% teal segment -->
-          <circle cx="112" cy="116" r="62" fill="none" stroke="#00b8b8" stroke-width="22"
+          <circle cx="112" cy="116" r="62" fill="none" stroke="var(--lb-illu-mint-600)" stroke-width="22"
             stroke-dasharray="226 164" stroke-dashoffset="47"/>
           <!-- ~25% yellow segment -->
-          <circle cx="112" cy="116" r="62" fill="none" stroke="#FFC800" stroke-width="22"
+          <circle cx="112" cy="116" r="62" fill="none" stroke="var(--lb-c-warning)" stroke-width="22"
             stroke-dasharray="98 292" stroke-dashoffset="-179"/>
           <!-- ~17% light teal segment -->
-          <circle cx="112" cy="116" r="62" fill="none" stroke="#7cccbe" stroke-width="22"
+          <circle cx="112" cy="116" r="62" fill="none" stroke="var(--lb-illu-mint-200)" stroke-width="22"
             stroke-dasharray="66 324" stroke-dashoffset="-277"/>
           <!-- Donut hole -->
           <circle cx="112" cy="116" r="46" class="c-bg"/>
-          <text x="112" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#00b8b8" font-family="system-ui, sans-serif">5.2%</text>
-          <text x="112" y="126" text-anchor="middle" font-size="9" fill="#7cccbe" font-family="system-ui, sans-serif">年化收益</text>
+          <text x="112" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="var(--lb-illu-mint-600)" font-family="system-ui, sans-serif">5.2%</text>
+          <text x="112" y="126" text-anchor="middle" font-size="9" fill="var(--lb-illu-mint-200)" font-family="system-ui, sans-serif">年化收益</text>
           <!-- Compliance shield (CRS/FATCA) top-right -->
-          <path d="M226 44 L276 44 L276 82 C276 100 263 112 251 120 C239 112 226 100 226 82 Z" fill="#1a3832" stroke="#26e2c5" stroke-width="1.5"/>
-          <path d="M241 80 l8 8 l14-15" stroke="#26e2c5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M226 44 L276 44 L276 82 C276 100 263 112 251 120 C239 112 226 100 226 82 Z" fill="#1a3832" stroke="var(--lb-illu-mint-400)" stroke-width="1.5"/>
+          <path d="M241 80 l8 8 l14-15" stroke="var(--lb-illu-mint-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <!-- Tax/compliance document card -->
           <rect x="196" y="134" width="120" height="60" rx="10" class="c-bg" stroke="url(#wealth-grad)" stroke-width="1.5"/>
-          <rect x="208" y="148" width="54" height="6" rx="3" fill="#7cccbe" opacity="0.55"/>
+          <rect x="208" y="148" width="54" height="6" rx="3" fill="var(--lb-illu-mint-200)" opacity="0.55"/>
           <rect x="208" y="161" width="96" height="4" rx="2" class="c-sf"/>
           <rect x="208" y="171" width="80" height="4" rx="2" class="c-sf"/>
           <rect x="208" y="181" width="64" height="4" rx="2" class="c-sf"/>
           <!-- Market ticker strip (行情数据) at bottom -->
-          <rect x="28" y="202" width="284" height="52" rx="10" class="c-alt" stroke="#c4f0ea" stroke-width="1"/>
-          <rect x="40" y="214" width="38" height="6" rx="3" fill="#7cccbe" opacity="0.5"/>
-          <rect x="86" y="214" width="28" height="6" rx="3" fill="#26e2c5" opacity="0.6"/>
-          <rect x="122" y="214" width="34" height="6" rx="3" fill="#7cccbe" opacity="0.42"/>
-          <rect x="164" y="214" width="30" height="6" rx="3" fill="#c4f0ea"/>
-          <rect x="202" y="214" width="38" height="6" rx="3" fill="#7cccbe" opacity="0.48"/>
-          <rect x="248" y="214" width="28" height="6" rx="3" fill="#26e2c5" opacity="0.5"/>
-          <rect x="40" y="226" width="30" height="4" rx="2" fill="#26e2c5" opacity="0.45"/>
-          <rect x="86" y="226" width="22" height="4" rx="2" fill="#FF2720" opacity="0.4"/>
-          <rect x="122" y="226" width="26" height="4" rx="2" fill="#26e2c5" opacity="0.4"/>
-          <rect x="164" y="226" width="22" height="4" rx="2" fill="#FF2720" opacity="0.38"/>
-          <rect x="202" y="226" width="28" height="4" rx="2" fill="#26e2c5" opacity="0.42"/>
-          <rect x="248" y="226" width="22" height="4" rx="2" fill="#FF2720" opacity="0.4"/>
+          <rect x="28" y="202" width="284" height="52" rx="10" class="c-alt" stroke="var(--lb-illu-mint-50)" stroke-width="1"/>
+          <rect x="40" y="214" width="38" height="6" rx="3" fill="var(--lb-illu-mint-200)" opacity="0.5"/>
+          <rect x="86" y="214" width="28" height="6" rx="3" fill="var(--lb-illu-mint-400)" opacity="0.6"/>
+          <rect x="122" y="214" width="34" height="6" rx="3" fill="var(--lb-illu-mint-200)" opacity="0.42"/>
+          <rect x="164" y="214" width="30" height="6" rx="3" fill="var(--lb-illu-mint-50)"/>
+          <rect x="202" y="214" width="38" height="6" rx="3" fill="var(--lb-illu-mint-200)" opacity="0.48"/>
+          <rect x="248" y="214" width="28" height="6" rx="3" fill="var(--lb-illu-mint-400)" opacity="0.5"/>
+          <rect x="40" y="226" width="30" height="4" rx="2" fill="var(--lb-illu-mint-400)" opacity="0.45"/>
+          <rect x="86" y="226" width="22" height="4" rx="2" fill="var(--lb-c-danger)" opacity="0.4"/>
+          <rect x="122" y="226" width="26" height="4" rx="2" fill="var(--lb-illu-mint-400)" opacity="0.4"/>
+          <rect x="164" y="226" width="22" height="4" rx="2" fill="var(--lb-c-danger)" opacity="0.38"/>
+          <rect x="202" y="226" width="28" height="4" rx="2" fill="var(--lb-illu-mint-400)" opacity="0.42"/>
+          <rect x="248" y="226" width="22" height="4" rx="2" fill="var(--lb-c-danger)" opacity="0.4"/>
           <!-- Yellow star accent -->
-          <polygon points="36,52 39.5,62 50,62 41.5,68.5 44.5,79 36,72.5 27.5,79 30.5,68.5 22,62 32.5,62" fill="#FFC800"/>
+          <polygon points="36,52 39.5,62 50,62 41.5,68.5 44.5,79 36,72.5 27.5,79 30.5,68.5 22,62 32.5,62" fill="var(--lb-c-warning)"/>
         </svg>
       </div>
     </section>

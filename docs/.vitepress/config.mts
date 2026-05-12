@@ -3,6 +3,7 @@ import { loadEnv } from 'vite'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
+import { NAV_TABS } from './tabs.config'
 
 // 读取 docs/.env.local（不入 git）中的私密配置
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -266,7 +267,7 @@ const categoryOrder = [
   'troubleshooting',
 ]
 
-// 生成侧边栏配置（从 zh-CN 读取，路径映射到根路径）
+// 生成侧边栏配置（从 zh-CN 读取，按 tab 路径前缀返回多套 sidebar）
 function generateSidebar() {
   const zhCNRoot = './docs/zh-CN'
 
@@ -282,24 +283,31 @@ function generateSidebar() {
     } catch { return [] }
   })()
 
-  // 全站共用一份聚合侧边栏，key 用 '/' 匹配所有路由
-  // 这样点击文章后侧边栏不会切换，只高亮当前页
-  const allItems = categoryOrder
-    .filter(dir => topDirs.includes(dir))
-    .map(dir => {
-      const dirPath = path.join(zhCNRoot, dir)
-      const items = generateSidebarItemsFromDir(dirPath, `/${dir}`)
-      const iconSvg = SIDEBAR_ICONS[dir]
-      const iconHtml = iconSvg ? `<span class="sidebar-item-icon">${iconSvg}</span>` : ''
-      return {
-        text: `${iconHtml}${dirDisplayNames[dir] || dir}`,
-        link: `/${dir}/`,
-        collapsed: false,
-        items,
-      }
-    })
+  // 构建每个分类目录的 sidebar item
+  const itemByCategory: Record<string, object> = {}
+  for (const dir of categoryOrder) {
+    if (!topDirs.includes(dir)) continue
+    const dirPath = path.join(zhCNRoot, dir)
+    const items = generateSidebarItemsFromDir(dirPath, `/${dir}`)
+    const iconSvg = SIDEBAR_ICONS[dir]
+    const iconHtml = iconSvg ? `<span class="sidebar-item-icon">${iconSvg}</span>` : ''
+    itemByCategory[dir] = {
+      text: `${iconHtml}${dirDisplayNames[dir] || dir}`,
+      link: `/${dir}/`,
+      collapsed: false,
+      items,
+    }
+  }
 
-  return { '/': allItems }
+  // 每个 tab 路径前缀对应该 tab 下的分类列表
+  const sidebar: Record<string, object[]> = {}
+  for (const tab of NAV_TABS) {
+    sidebar[tab.path] = tab.categories
+      .filter(cat => itemByCategory[cat])
+      .map(cat => itemByCategory[cat])
+  }
+
+  return sidebar
 }
 
 export default defineConfig({
@@ -384,6 +392,20 @@ export default defineConfig({
     footer: {
       message: '© 2026 Longbridge. All rights reserved.',
     },
+
+    outline: { level: [2, 3], label: '本页内容' },
+
+    lastUpdated: {
+      text: '最近更新',
+      formatOptions: { dateStyle: 'medium' },
+    },
+
+    editLink: {
+      pattern: 'https://github.com/longbridge/docs/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
+
+    docFooter: { prev: '上一篇', next: '下一篇' },
   },
 
   markdown: {

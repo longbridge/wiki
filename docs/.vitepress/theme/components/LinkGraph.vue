@@ -23,6 +23,7 @@
 import { ref, onMounted, onUnmounted, reactive, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import graphDataRaw from '../../link-graph.json'
+import { CATEGORY_COLORS } from '../colors'
 
 // ------- 类型 -------
 
@@ -47,24 +48,7 @@ interface SimEdge {
 
 // ------- 常量 -------
 
-const CATEGORY_COLORS: Record<string, string> = {
-  'getting-started':      '#4caf50',
-  'app-guide':            '#8bc34a',
-  'account':              '#2196f3',
-  'deposit':              '#00b8b8',
-  'withdrawal':           '#ff9800',
-  'transfers-and-fx':     '#ff5722',
-  'stock-trading':        '#00bcd4',
-  'derivatives':          '#9c27b0',
-  'ipo':                  '#ffc107',
-  'margin':               '#f44336',
-  'funds-and-wealth':     '#009688',
-  'market-data':          '#3f51b5',
-  'portfolio-and-statements': '#607d8b',
-  'rewards':              '#e91e63',
-  'compliance-and-tax':   '#795548',
-  'troubleshooting':      '#9e9e9e',
-}
+// CATEGORY_COLORS imported from ../colors.ts
 
 const CATEGORY_LABELS: Record<string, string> = {
   'getting-started':      '新手入门',
@@ -223,7 +207,9 @@ function tick() {
 // ------- 渲染 -------
 
 function getCategoryColor(cat: string): string {
-  return CATEGORY_COLORS[cat] || '#888'
+  return CATEGORY_COLORS[cat] ||
+    getComputedStyle(document.documentElement).getPropertyValue('--vp-c-text-3').trim() ||
+    '#888'
 }
 
 function draw() {

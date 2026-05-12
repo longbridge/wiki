@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import { data as _topicCountsRaw } from '../../../topic-counts.data'
 import type { TopicKey, TopicCounts } from '../../../topic-counts.data'
 import {
@@ -21,29 +20,12 @@ const TOPICS: { key: TopicKey; icon: typeof Zap; label: string; path: string }[]
   { key: 'portfolio-and-statements', icon: ClipboardList,   label: '资产与账单',     path: '/portfolio-and-statements/' },
 ]
 
-const layout = ref<'default' | 'featured-grid'>('default')
-
-function syncLayout() {
-  const saved = localStorage.getItem('__tweak_active')
-  layout.value = (saved === 'featured-grid') ? 'featured-grid' : 'default'
-}
-
-onMounted(() => {
-  syncLayout()
-  window.addEventListener('__tweak_change', syncLayout)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('__tweak_change', syncLayout)
-})
-
 const featuredTopic = TOPICS[0]
 const restTopics = TOPICS.slice(1)
 </script>
 
 <template>
-  <!-- ── 布局：精选大卡 + 4 列小网格 ── -->
-  <section v-if="layout === 'featured-grid'" id="topics-section" class="topics">
+  <section id="topics-section" class="topics">
     <div class="topics-inner">
       <h2 class="topics-title">9 大专题，系统覆盖</h2>
 
@@ -74,29 +56,6 @@ const restTopics = TOPICS.slice(1)
           </span>
           <span class="small-name">{{ t.label }}</span>
           <span class="small-count">{{ topicCounts[t.key] }} 篇</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 布局：标准 3 列网格（default）── -->
-  <section v-else id="topics-section" class="topics">
-    <div class="topics-inner">
-      <h2 class="topics-title">9 大专题，系统覆盖</h2>
-      <div class="topics-grid">
-        <a
-          v-for="t in TOPICS"
-          :key="t.key"
-          :href="t.path"
-          class="topic-card"
-          :aria-label="`${t.label}，${topicCounts[t.key]} 篇文档`"
-        >
-          <span class="topic-icon-wrap">
-            <component :is="t.icon" :size="24" :stroke-width="1.5" />
-          </span>
-          <h3 class="topic-name">{{ t.label }}</h3>
-          <p class="topic-count">{{ topicCounts[t.key] }} 篇文档</p>
-          <span class="topic-link">浏览文档 →</span>
         </a>
       </div>
     </div>

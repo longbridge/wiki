@@ -222,6 +222,10 @@ function onKeydown(e: KeyboardEvent) {
 function close() {
   emit('update:modelValue', false)
 }
+
+function toggleExpand() {
+  drawerWidth.value = drawerWidth.value >= MAX_WIDTH ? 380 : MAX_WIDTH
+}
 </script>
 
 <template>
@@ -232,10 +236,10 @@ function close() {
       <!-- Header -->
       <div class="ai-drawer-header">
         <div class="ai-drawer-title">
-          <svg class="ai-star-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <svg class="ai-star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" />
           </svg>
-          <span>AI 助手</span>
+          <span>Assistant</span>
         </div>
         <div class="ai-drawer-header-actions">
           <button
@@ -251,6 +255,15 @@ function close() {
               <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" />
             </svg>
           </button>
+          <!-- Expand / shrink -->
+          <button class="ai-header-btn" :title="drawerWidth >= MAX_WIDTH ? '收起' : '展开'" @click="toggleExpand">
+            <svg v-if="drawerWidth < MAX_WIDTH" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+            <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14h6v6M14 4h6v6M10 20l-7-7M20 10l-7 7" />
+            </svg>
+          </button>
           <button class="ai-header-btn" @click="close" aria-label="关闭">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M18 6L6 18M6 6l12 12" />
@@ -258,17 +271,12 @@ function close() {
           </button>
         </div>
       </div>
+      <!-- Disclaimer -->
+      <p class="ai-disclaimer">Responses are generated using AI and may contain mistakes.</p>
 
       <!-- Messages -->
       <div ref="messagesRef" class="ai-messages" aria-live="polite" aria-atomic="false" @scroll="checkAtBottom">
-        <div v-if="messages.length === 0" class="ai-empty">
-          <div class="ai-empty-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" />
-            </svg>
-          </div>
-          <p>向 AI 提问，基于专业文档库为你解答</p>
-        </div>
+        <div v-if="messages.length === 0" class="ai-empty" />
 
         <div
           v-for="(msg, i) in messages"
@@ -347,19 +355,26 @@ function close() {
             ref="inputRef"
             v-model="query"
             class="ai-input"
-            placeholder="有问题，直接问..."
+            placeholder="Ask a question..."
             rows="1"
             :disabled="isLoading"
             @keydown="onKeydown"
           />
           <div class="ai-input-footer">
+            <!-- Attachment placeholder (visual only) -->
+            <button class="ai-attach-btn" disabled aria-label="附件" tabindex="-1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
+              </svg>
+            </button>
+            <!-- Stop / Send -->
             <button
               v-if="isLoading"
               class="ai-send-btn ai-stop-btn"
               @click="stop"
               aria-label="停止"
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
               </svg>
             </button>
@@ -370,7 +385,7 @@ function close() {
               @click="submit"
               aria-label="发送"
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 19V5M5 12l7-7 7 7" />
               </svg>
             </button>
@@ -440,13 +455,25 @@ function close() {
 .ai-drawer-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-weight: 600;
   font-size: 15px;
   color: var(--vp-c-text-1);
   letter-spacing: -0.01em;
 }
-.ai-star-icon { color: #00b8b8; flex-shrink: 0; }
+.ai-star-icon { color: var(--vp-c-brand-1); flex-shrink: 0; }
+
+/* Disclaimer */
+.ai-disclaimer {
+  margin: 0;
+  padding: 10px 20px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--vp-c-text-3);
+  text-align: center;
+  border-bottom: 0.5px solid var(--vp-c-divider);
+  flex-shrink: 0;
+}
 .ai-drawer-header-actions { display: flex; align-items: center; gap: 4px; }
 .ai-header-btn {
   background: none;
@@ -477,31 +504,7 @@ function close() {
 .ai-messages::-webkit-scrollbar-track { background: transparent; }
 .ai-messages::-webkit-scrollbar-thumb { background: var(--vp-c-border); border-radius: 2px; }
 
-.ai-empty {
-  text-align: center;
-  padding: 56px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.ai-empty-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #00b8b8;
-}
-.ai-empty p {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--vp-c-text-2);
-  max-width: 220px;
-}
+.ai-empty { flex: 1; }
 
 .ai-msg { display: flex; }
 .ai-msg.user { justify-content: flex-end; }
@@ -511,7 +514,7 @@ function close() {
   max-width: 75%;
   padding: 10px 14px;
   border-radius: 16px 16px 4px 16px;
-  background: #00b8b8;
+  background: var(--vp-c-brand-1);
   color: #fff;
   font-size: 14px;
   line-height: 1.6;
@@ -545,7 +548,7 @@ function close() {
 }
 .assistant .ai-msg-bubble :deep(code:not(pre code)) {
   background: var(--vp-c-bg-mute);
-  color: #00b8b8;
+  color: var(--vp-c-brand-1);
   padding: 2px 5px;
   border-radius: 4px;
   font-size: 13px;
@@ -557,7 +560,7 @@ function close() {
 .assistant .ai-msg-bubble :deep(h1),
 .assistant .ai-msg-bubble :deep(h2),
 .assistant .ai-msg-bubble :deep(h3) { color: var(--vp-c-text-1); margin: 12px 0 6px; }
-.assistant .ai-msg-bubble :deep(a) { color: #00b8b8; }
+.assistant .ai-msg-bubble :deep(a) { color: var(--vp-c-brand-1); }
 .assistant .ai-msg-bubble :deep(strong) { color: var(--vp-c-text-1); }
 .assistant .ai-msg-bubble :deep(blockquote) {
   border-left: 3px solid var(--vp-c-border);
@@ -583,7 +586,7 @@ function close() {
   padding: 4px 0;
 }
 .ai-thinking-star {
-  color: #00b8b8;
+  color: var(--vp-c-brand-1);
   flex-shrink: 0;
   animation: ai-star-pulse 2s ease-in-out infinite;
 }
@@ -637,7 +640,7 @@ function close() {
   transition: color .15s, border-color .15s, background .15s;
 }
 .ai-action-btn:hover { color: var(--vp-c-text-1); border-color: var(--vp-c-border); background: var(--vp-c-bg-mute); }
-.ai-action-btn.copied { color: #22c55e; }
+.ai-action-btn.copied { color: var(--lb-c-success); }
 .ai-action-tooltip {
   position: absolute;
   bottom: calc(100% + 6px);
@@ -661,18 +664,19 @@ function close() {
   flex-shrink: 0;
 }
 .ai-input-box {
-  border: 1.5px solid var(--vp-c-border);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 16px;
+  background: var(--vp-c-bg);
   padding: 12px 14px 10px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   transition: border-color .15s, box-shadow .15s;
 }
 .ai-input-box:focus-within {
-  border-color: #00b8b8;
-  box-shadow: 0 0 0 3px rgba(0, 184, 184, 0.1);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
 }
 .ai-input {
   width: 100%;
@@ -691,27 +695,37 @@ function close() {
 .ai-input::placeholder { color: var(--vp-c-text-3); }
 .ai-input-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+}
+.ai-attach-btn {
+  background: none;
+  border: none;
+  cursor: default;
+  color: var(--vp-c-text-3);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
 }
 .ai-send-btn {
   width: 30px;
   height: 30px;
-  border-radius: 8px;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #00b8b8;
-  color: #fff;
+  background: var(--vp-c-text-1);
+  color: var(--vp-c-bg);
   transition: opacity .15s;
   flex-shrink: 0;
 }
-.ai-send-btn:hover:not(:disabled):not(.ai-stop-btn) { opacity: 0.85; }
-.ai-send-btn:disabled { opacity: 0.25; cursor: not-allowed; }
-.ai-stop-btn { background: #ef4444; color: white; }
-.ai-stop-btn:hover { opacity: 1; background: #dc2626; }
+.ai-send-btn:hover:not(:disabled):not(.ai-stop-btn) { opacity: 0.8; }
+.ai-send-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+.ai-stop-btn { background: var(--lb-c-danger); color: white; }
+.ai-stop-btn:hover { opacity: 1; filter: brightness(0.88); }
 
 /* Scroll to latest button */
 .ai-scroll-latest {

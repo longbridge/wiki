@@ -1,265 +1,754 @@
 ---
-name: Longbridge Docs
-description: 长桥证券官方帮助中心，AI 问答 + 专题文档
+version: "alpha"
+name: "Longbridge UX 5.0"
+description: "Professional financial trading platform design system. Clean, efficient, high-contrast visual identity optimized for data-dense financial information. Dual-theme (light/dark) with teal brand accent."
+
+# ── COLORS ──────────────────────────────────────────────────────────────────
+# Flat keys with -light / -dark suffix.
+# Status and AI tokens are theme-invariant (no suffix).
 colors:
-  brand: "#00B8B8"
+  # Semantic alias required by design-md linter (maps to brand-light)
+  primary: "#00B8B8"
+
+  # Brand
+  brand-light: "#00B8B8"
   brand-dark: "#00F0C4"
-  brand-aux: "#E5F8F8"
+  brand-aux-light: "#E5F8F8"
   brand-aux-dark: "#09252A"
-  text-primary: "#0A0E19"
-  text-secondary: "#6C6E75"
-  text-tertiary: "#A9ABAE"
-  bg-primary: "#FFFFFF"
-  bg-secondary: "#F3F5F6"
+
+  # Text
+  text-primary-light: "#0A0E19"
+  text-primary-dark: "#FFFFFF"
+  text-secondary-light: "#6C6E75"
+  text-secondary-dark: "#9D9FA3"
+  text-tertiary-light: "#A9ABAE"   # ⚠️ forbidden for body copy
+  text-tertiary-dark: "#60626A"    # ⚠️ forbidden for body copy
+
+  # Backgrounds
+  bg-primary-light: "#FFFFFF"
   bg-primary-dark: "#0A0E19"
+  bg-secondary-light: "#F3F5F6"
   bg-secondary-dark: "#232630"
-  divider: "#DDDDDF"
-  border: "#E6E7E8"
+
+  # Divider & Border
+  divider-light: "#DDDDDF"
+  divider-dark: "#3B3E47"
+  border-light: "#E6E7E8"
+  border-dark: "#2C3039"
+
+  # Status (theme-invariant)
   status-up: "#00ADA2"
   status-down: "#FF3A75"
   status-error: "#F7415F"
   status-warning: "#FF9728"
   status-success: "#00CC92"
   status-info: "#2A99FE"
+
+  # AI Module (always dark-palette, theme-invariant)
+  ai-brand: "#00F0C4"
+  ai-brand-aux: "#09252A"
+  ai-bg-primary: "#0A0E19"
+  ai-bg-secondary: "#232630"
+  ai-text-primary: "#FFFFFF"
+  ai-text-secondary: "#9D9FA3"
+  ai-text-tertiary: "#60626A"
+  ai-divider: "#3B3E47"
+  ai-border: "#2C3039"
+
+# ── TYPOGRAPHY ───────────────────────────────────────────────────────────────
+# Font families (Inter / Cera Pro / SF Pro Display) are official UX 5.0.
+# ⚠️ Font sizes and line heights recommended from Tailwind CSS default type scale.
 typography:
-  display:
-    fontFamily: "system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
-    fontSize: "clamp(2.4rem, 6vw, 4rem)"
-    fontWeight: 800
-    lineHeight: 1.15
-    letterSpacing: "-0.02em"
-  headline:
-    fontFamily: "system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
-    fontSize: "clamp(1.5rem, 3vw, 2rem)"
-    fontWeight: 700
-    lineHeight: 1.25
-  title:
-    fontFamily: "system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
-    fontSize: "1rem"
-    fontWeight: 600
-    lineHeight: 1.4
-  body:
-    fontFamily: "system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
-    fontSize: "15px"
-    fontWeight: 400
-    lineHeight: 1.7
-  label:
-    fontFamily: "system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
-    fontSize: "13px"
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: "0.01em"
+  # Display / Marketing — Cera Pro
+  display-xl:
+    fontFamily: "Cera Pro"
+    fontSize: "48px"     # Tailwind text-5xl
+    lineHeight: "52px"   # Tailwind leading-none
+    fontWeight: "700"
+  display-lg:
+    fontFamily: "Cera Pro"
+    fontSize: "36px"     # Tailwind text-4xl
+    lineHeight: "40px"   # Tailwind leading-10
+    fontWeight: "700"
+  display-md:
+    fontFamily: "Cera Pro"
+    fontSize: "30px"     # Tailwind text-3xl
+    lineHeight: "36px"   # Tailwind leading-9
+    fontWeight: "600"
+
+  # Interface Headings — Inter
+  heading-xl:
+    fontFamily: "Inter"
+    fontSize: "24px"     # Tailwind text-2xl
+    lineHeight: "32px"   # Tailwind leading-8
+    fontWeight: "600"
+  heading-lg:
+    fontFamily: "Inter"
+    fontSize: "20px"     # Tailwind text-xl
+    lineHeight: "28px"   # Tailwind leading-7
+    fontWeight: "600"
+  heading-md:
+    fontFamily: "Inter"
+    fontSize: "18px"     # Tailwind text-lg
+    lineHeight: "28px"
+    fontWeight: "600"
+
+  # Body — Inter
+  body-lg:
+    fontFamily: "Inter"
+    fontSize: "16px"     # Tailwind text-base
+    lineHeight: "24px"   # Tailwind leading-6
+    fontWeight: "400"
+  body-md:
+    fontFamily: "Inter"
+    fontSize: "14px"     # Tailwind text-sm
+    lineHeight: "20px"   # Tailwind leading-5
+    fontWeight: "400"
+  body-sm:
+    fontFamily: "Inter"
+    fontSize: "12px"     # Tailwind text-xs
+    lineHeight: "16px"   # Tailwind leading-4
+    fontWeight: "400"
+
+  # Button Labels — Inter
+  button-xl-label:
+    fontFamily: "Inter"
+    fontSize: "16px"
+    lineHeight: "21px"
+    fontWeight: "600"
+  button-lg:
+    fontFamily: "Inter"
+    fontSize: "16px"
+    lineHeight: "21px"
+    fontWeight: "500"
+  button-md:
+    fontFamily: "Inter"
+    fontSize: "14px"
+    lineHeight: "18px"
+    fontWeight: "500"
+
+  # Financial Numbers — SF Pro Display
+  number-lg:
+    fontFamily: "SF Pro Display"
+    fontSize: "24px"     # Tailwind text-2xl
+    lineHeight: "32px"
+    fontWeight: "600"
+  number-md:
+    fontFamily: "SF Pro Display"
+    fontSize: "18px"     # Tailwind text-lg
+    lineHeight: "28px"
+    fontWeight: "500"
+  number-sm:
+    fontFamily: "SF Pro Display"
+    fontSize: "14px"     # Tailwind text-sm
+    lineHeight: "20px"
+    fontWeight: "400"
+
+# ── ROUNDED ──────────────────────────────────────────────────────────────────
+# Official Longbridge UX 5.0 values.
 rounded:
-  sm: "6px"
-  md: "12px"
-  lg: "18px"
+  sm: "6px"    # General cards, buttons, tabs, inputs, charts
+  md: "12px"   # AI scenario cards — exclusive use
+  lg: "18px"   # Sheet / drawer top corners only
+
+# ── SPACING ───────────────────────────────────────────────────────────────────
+# ⚠️ Recommended from Tailwind CSS default spacing scale (1 unit = 4 px).
 spacing:
-  xs: "4px"
-  sm: "8px"
-  md: "16px"
-  lg: "24px"
-  xl: "40px"
+  "0":    "0px"
+  "0.5":  "2px"
+  "1":    "4px"
+  "2":    "8px"
+  "3":    "12px"   # SM button h-padding
+  "4":    "16px"   # LG button h-padding, common section gap
+  "5":    "20px"   # Card internal padding
+  "6":    "24px"   # XL button h-padding, module gap
+  "8":    "32px"
+  "10":   "40px"
+  "12":   "48px"
+  "16":   "64px"
+  "20":   "80px"
+  "24":   "96px"
+
+# ── SHADOWS ───────────────────────────────────────────────────────────────────
+# Official Longbridge UX 5.0 values. Light and dark variants.
+shadows:
+  card-light:       "0px 2px 8px 0px rgba(0,0,0,0.08)"
+  card-dark:        "0px 2px 8px 0px rgba(0,0,0,0.24)"
+  collapsed-light:  "0px 1px 4px 0px rgba(0,0,0,0.06)"
+  collapsed-dark:   "0px 1px 4px 0px rgba(0,0,0,0.18)"
+  dropdown-light:   "0px 4px 12px 0px rgba(0,0,0,0.12)"
+  dropdown-dark:    "0px 4px 12px 0px rgba(0,0,0,0.32)"
+
+# ── Z-INDEX ───────────────────────────────────────────────────────────────────
+# ⚠️ Recommended from Tailwind CSS default z-index scale + shadcn/ui convention.
+# shadcn dialog default = z-50, used here for modal / toast layer.
+zIndex:
+  base:     0    # Tailwind z-0  — normal document flow
+  dropdown: 10   # Tailwind z-10 — dropdowns, tooltips
+  sticky:   20   # Tailwind z-20 — sticky headers
+  fixed:    30   # Tailwind z-30 — fixed navigation
+  overlay:  40   # Tailwind z-40 — modal backdrops
+  modal:    50   # Tailwind z-50 / shadcn dialog — modals, sheets, toasts
+
+# ── MOTION ────────────────────────────────────────────────────────────────────
+# duration-max (500ms) and stagger-max (100ms) are official UX 5.0 constraints.
+# ⚠️ Individual duration values recommended from Tailwind CSS default transition
+# durations; easing-standard from Tailwind ease-in-out; easing-emphasized from
+# Material Design expressive easing curve.
+motion:
+  duration-fast:      "150ms"   # Tailwind duration-150 — hover, micro-interactions
+  duration-base:      "200ms"   # Tailwind duration-200 — standard (shadcn default)
+  duration-slow:      "300ms"   # Tailwind duration-300 — modals, page transitions
+  duration-max:       "500ms"   # Official UX 5.0 hard ceiling
+  stagger-max:        "100ms"   # Official UX 5.0 per-step stagger ceiling
+  easing-standard:    "cubic-bezier(0.4, 0, 0.2, 1)"   # Tailwind ease-in-out
+  easing-emphasized:  "cubic-bezier(0.2, 0, 0, 1)"     # Material Design expressive
+
+# ── COMPONENTS ────────────────────────────────────────────────────────────────
+# Light-theme defaults. Dark-theme: replace -light color tokens with -dark.
+# All button heights are official Longbridge UX 5.0 values.
 components:
-  button-primary:
-    backgroundColor: "{colors.brand}"
+
+  # Primary (Emphasis) Buttons
+  button-primary-xl:
+    height: "52px"
+    backgroundColor: "{colors.brand-light}"
     textColor: "#FFFFFF"
     rounded: "{rounded.sm}"
+    padding: "0 24px"
+    fontSize: "16px"
+    fontWeight: "600"
+  button-primary-lg:
     height: "44px"
-    padding: "0 20px"
-  button-primary-disabled:
-    backgroundColor: "{colors.bg-secondary}"
-    textColor: "{colors.text-tertiary}"
+    backgroundColor: "{colors.brand-light}"
+    textColor: "#FFFFFF"
     rounded: "{rounded.sm}"
-    height: "44px"
-    padding: "0 20px"
-  button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.text-primary}"
+    padding: "10px 16px"
+    fontSize: "16px"
+    fontWeight: "500"
+  button-primary-md:
+    height: "36px"
+    backgroundColor: "{colors.brand-light}"
+    textColor: "#FFFFFF"
     rounded: "{rounded.sm}"
-    height: "44px"
-    padding: "0 20px"
-  button-tertiary:
-    backgroundColor: "{colors.bg-secondary}"
-    textColor: "{colors.text-primary}"
-    rounded: "{rounded.sm}"
-    height: "44px"
-    padding: "0 20px"
-  button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.brand}"
-    rounded: "{rounded.sm}"
+    padding: "8px 16px"
+    fontSize: "14px"
+    fontWeight: "500"
+  button-primary-sm:
     height: "28px"
-    padding: "0 12px"
-  card:
-    backgroundColor: "{colors.bg-primary}"
+    backgroundColor: "{colors.brand-light}"
+    textColor: "#FFFFFF"
     rounded: "{rounded.sm}"
-    padding: "16px"
-  card-ai:
-    backgroundColor: "{colors.bg-secondary-dark}"
-    rounded: "{rounded.md}"
-    padding: "16px"
+    padding: "5px 12px"
+    fontSize: "14px"
+    fontWeight: "500"
+  button-primary-pressed:
+    overlay: "rgba(10,14,25,0.05)"
+  button-primary-disabled:
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-tertiary-light}"
+    opacity: "0.7"
+
+  # Secondary (Outline) Buttons
+  button-secondary-lg:
+    height: "44px"
+    backgroundColor: "transparent"
+    textColor: "{colors.text-primary-light}"
+    borderColor: "{colors.divider-light}"
+    borderWidth: "1px"
+    rounded: "{rounded.sm}"
+    padding: "10px 16px"
+    fontSize: "16px"
+    fontWeight: "500"
+  button-secondary-sm:
+    height: "28px"
+    backgroundColor: "transparent"
+    textColor: "{colors.text-primary-light}"
+    borderColor: "{colors.divider-light}"
+    borderWidth: "1px"
+    rounded: "{rounded.sm}"
+    padding: "5px 12px"
+    fontSize: "14px"
+    fontWeight: "500"
+  button-secondary-pressed:
+    overlay: "rgba(10,14,25,0.05)"
+    borderColor: "#DBDCDE"
+  button-secondary-disabled:
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-tertiary-light}"
+    opacity: "0.7"
+
+  # Tertiary (Filled Secondary) Buttons
+  button-tertiary-lg:
+    height: "44px"
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-primary-light}"
+    rounded: "{rounded.sm}"
+    padding: "10px 16px"
+    fontSize: "16px"
+    fontWeight: "500"
+  button-tertiary-sm:
+    height: "28px"
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-primary-light}"
+    rounded: "{rounded.sm}"
+    padding: "5px 12px"
+    fontSize: "14px"
+    fontWeight: "500"
+  button-tertiary-pressed:
+    overlay: "rgba(10,14,25,0.05)"
+  button-tertiary-disabled:
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-tertiary-light}"
+    opacity: "0.7"
+
+  # Ghost (Brand Outline) Buttons — SM size only
+  button-ghost-sm:
+    height: "28px"
+    backgroundColor: "transparent"
+    textColor: "{colors.brand-light}"
+    borderColor: "{colors.brand-light}"
+    borderWidth: "1px"
+    rounded: "{rounded.sm}"
+    padding: "5px 12px"
+    fontSize: "14px"
+    fontWeight: "500"
+  button-ghost-sm-pressed:
+    overlay: "rgba(10,14,25,0.05)"
+  button-ghost-sm-disabled:
+    backgroundColor: "{colors.bg-secondary-light}"
+    textColor: "{colors.text-tertiary-light}"
+    opacity: "0.7"
+
+  # Switch
+  switch:
+    width: "32px"
+    height: "32px"
+    knobSize: "16px"
+    trackRadius: "10px"
+    knobRadius: "50%"
+    onTrackColor: "rgba(0,184,184,0.25)"
+    onKnobColor: "{colors.brand-light}"
+    offTrackColor: "rgba(108,110,117,0.25)"
+    offKnobColor: "{colors.text-secondary-light}"
+    disabledOpacity: "0.5"
+    transition: "200ms cubic-bezier(0.4,0,0.2,1)"
+
+  # Checkbox
+  checkbox:
+    size: "20px"
+    hitArea: "20px"
+    checkedBackground: "{colors.brand-light}"
+    checkedIconColor: "#FFFFFF"
+    borderRadius: "1px"
+    disabledCheckedBackground: "#A9ABAE"
+    uncheckedOpacity: "0.3"
+
+  # Radio
+  radio:
+    size: "20px"
+    hitArea: "20px"
+    selectedBorderColor: "{colors.brand-light}"
+    selectedBorderWidth: "2px"
+    selectedInnerDotColor: "{colors.brand-light}"
+    borderRadius: "50%"
+    unselectedOpacity: "0.3"
 ---
 
-# Design System: Longbridge Docs
+## Overview
 
-## 1. Overview
+**Longbridge UX 5.0** is the design system for Longbridge — a professional financial trading and investment platform serving retail and institutional investors across Hong Kong, Singapore, and global markets. The visual identity blends financial precision with modern clarity: high-contrast typography for data legibility, a teal brand accent for interactive elements, and a strict dual-theme (light / dark) that inverts cleanly across every surface.
 
-**Creative North Star: "The Expert Guide"**
+The system is optimized for information density. Financial data — price tickers, P&L figures, portfolio summaries, order books — must be scannable at a glance. Decorative flourishes are suppressed in favor of clear hierarchy, consistent spacing, and purposeful color use.
 
-这套设计系统是一份经过校对的专业简报，不是热线客服台，也不是知识库工具。每个页面的职责只有一件：精确回答用户的那个问题，然后让他离开去执行。装饰是耗时成本。信息层次是信任基础。温度来自清晰，不来自温暖色调。
+### Core Design Principles
 
-双主题（Light / Dark）是产品承诺，不是功能可选项。Light 模式是大多数散户白天在手机上查阅文档的场景，高对比度，内容密度适中。Dark 模式是 AI 功能的原生场景，也是夜间交易者的首选。两套主题之间的切换不应有视觉跳跃，颜色语义严格对应。
+1. **Dual-theme symmetry**: Every color token uses a `-light` / `-dark` suffix. Light mode and dark mode are equal citizens — never build exclusively for one.
+2. **Teal brand accent**: `{colors.brand-light}` (#00B8B8) in light mode, `{colors.brand-dark}` (#00F0C4) in dark mode. Used on interactive elements (buttons, links, active states, focus rings), never decoratively.
+3. **AI module isolation**: The AI module always renders on a dark palette using the `ai-*` token set, regardless of the user's current light/dark preference. `ai-*` tokens are theme-invariant — never override them with `-light`/`-dark` variants.
+4. **Status colors are theme-invariant**: `status-up`, `status-down`, `status-error`, `status-warning`, `status-success`, `status-info` are single keys with no suffix. They must not be adjusted per theme.
+5. **No tertiary text in body copy**: `{colors.text-tertiary-light}` and `{colors.text-tertiary-dark}` exist only for placeholders and the most subordinate captions. Use `text-secondary-*` for secondary information; use `text-primary-*` for everything that matters.
 
-本系统明确拒绝：传统银行官网的密集蓝灰感和 PDF 式导航；Notion/Confluence 的极简白底工具感（品牌辨识为零）；券商营销页的红绿配色和大 Banner 视觉噪音；以及任何一眼可辨为 AI 产出的模板特征，包括渐变文字、玻璃态堆叠卡片和相同尺寸的图标格。
+### Token Naming Convention
 
-**Key Characteristics:**
-- 平坦为默认，阴影只回应交互状态
-- 品牌色（Longbridge Teal）是稀缺资源，不超过屏幕面积 10%
-- AI 场景固定使用深色底，与普通内容形成明确区隔
-- 移动端优先：触摸目标 ≥44px，中文行高 ≥1.7
-- 分隔线固定 0.5px，描边固定 1px，不允许自定义同义值
+Color tokens use a flat `{semantic-name}-{theme}` pattern:
 
-## 2. Colors: The Precision Palette
+- `brand-light` / `brand-dark` — primary accent color per theme
+- `text-primary-light` / `text-primary-dark` — main text per theme
+- `bg-primary-light` / `bg-primary-dark` — page background per theme
 
-双主题语义色系，Light 为主，Dark 作为平等的公民存在。每一个 token 都有且仅有一个唯一意义，不允许创建同义色值。
+Status colors and AI tokens are **theme-invariant** (single key, no suffix). The `primary` key is a semantic alias for `brand-light`, required by the design-md linter.
 
-### Primary
-- **Longbridge Teal** (`#00B8B8`，Dark: `#00F0C4`): 品牌的唯一代言。仅用于主按钮、强调操作、链接、激活状态和进度指示。在任何给定屏幕上，它的出现面积不超过 10%，其稀缺性即是其力量。Dark 模式下升温为薄荷绿，保持同等视觉权重。
-- **Teal Whisper** (`#E5F8F8`，Dark: `#09252A`): 品牌辅助背景。用于徽章、品牌语境的卡片底色或选中状态背景，不用于大面积填充。
+---
 
-### Neutral
-- **Deep Ink** (`#0A0E19`，Dark: `#FFFFFF`): 标题和正文的唯一文字色。不是纯黑，带轻微冷蓝倾向，与品牌色形成内在呼应。Dark 模式翻转为纯白，不带色偏。
-- **Muted Slate** (`#6C6E75`，Dark: `#9D9FA3`): 次级信息、辅助标签、时间戳。不用于正文，不用于标题。
-- **Subdued Chalk** (`#A9ABAE`，Dark: `#60626A`): 三级文字色。仅限免责声明、法律条款，严禁用于任何正文或交互元素。
-- **Clean Surface** (`#FFFFFF`，Dark: `#0A0E19`): 页面主背景。Light 纯白，Dark 深墨蓝。
-- **Frost** (`#F3F5F6`，Dark: `#232630`): 卡片、输入框、代码块的背景。比主背景暗一级，提供无边框的视觉分层。
-- **Hairline** (`#DDDDDF`，Dark: `#3B3E47`): 分隔线专用，固定 0.5px，不用于描边。
-- **Perimeter** (`#E6E7E8`，Dark: `#2C3039`): 描边专用，固定 1px，不用于分隔线。
+## Colors
 
-### Secondary: Status Colors
-交易情境的状态色，与品牌色不重叠，浅深主题通用：
-- **Market Teal** (`#00ADA2`): 上涨、盈利状态，偏绿调以区别于品牌蓝绿。
-- **Alert Rose** (`#FF3A75`): 下跌、亏损状态。
-- **Critical** (`#F7415F`): 错误、删除操作。
-- **Amber** (`#FF9728`): 预警、风险提示。
-- **Confirm** (`#00CC92`): 成功、完成操作。
-- **Sky** (`#2A99FE`): 信息提示、中性通知。
+### Brand & Accent
 
-### Named Rules
-**The Single Voice Rule.** 品牌色 Longbridge Teal 在任意屏幕上的占比不超过 10%。超过这个比例，它就成了背景噪音；在这个比例内，它是用户注意力的精确导向。
+- **Brand Light** (`{colors.brand-light}` — #00B8B8): The teal brand accent for light mode. Used on primary buttons, active tab indicators, focus rings, brand wordmark, and interactive link colors.
+- **Brand Dark** (`{colors.brand-dark}` — #00F0C4): The lighter teal used in dark mode for the same elements. Luminosity is boosted to maintain contrast against dark backgrounds.
+- **Brand Aux Light** (`{colors.brand-aux-light}` — #E5F8F8): A very light teal tint used for selected-row highlights, tag backgrounds, and brand-themed surface accents in light mode.
+- **Brand Aux Dark** (`{colors.brand-aux-dark}` — #09252A): The deep teal complement for dark-mode brand-themed surfaces — often used as a soft highlight behind selected items in dark theme.
 
-**The Semantic Lock Rule.** 每个 token 只有一个用途。`--lbus-divider` 只做分隔线，`--lbus-border` 只做描边，不允许互换，不允许用 hex 字面量代替。新增色值前必须确认现有 token 无法满足需求。
+### Text
 
-## 3. Typography
+- **Text Primary** (`{colors.text-primary-light}` — #0A0E19 / `{colors.text-primary-dark}` — #FFFFFF): All primary content — headlines, prices, order quantities, body paragraphs.
+- **Text Secondary** (`{colors.text-secondary-light}` — #6C6E75 / `{colors.text-secondary-dark}` — #9D9FA3): Labels, captions, metadata, secondary data columns. Do not use for the main data value in a cell.
+- **Text Tertiary** (`{colors.text-tertiary-light}` — #A9ABAE / `{colors.text-tertiary-dark}` — #60626A): ⚠️ **Forbidden for body copy.** Reserved for input placeholder text and the lowest-hierarchy annotations. When in doubt, use secondary instead.
 
-**Body Font:** system-ui → -apple-system → PingFang SC → Microsoft YaHei → sans-serif
+### Backgrounds
 
-使用系统字体栈。在 iOS 上是 SF Pro + PingFang，在 Android 上是 Roboto + Noto Sans，在 Windows 上是 Segoe + Microsoft YaHei。零加载成本，原生渲染质量，中英文各得其所。
+- **BG Primary** (`{colors.bg-primary-light}` — #FFFFFF / `{colors.bg-primary-dark}` — #0A0E19): The default page floor. Pure white in light, deep navy-black in dark.
+- **BG Secondary** (`{colors.bg-secondary-light}` — #F3F5F6 / `{colors.bg-secondary-dark}` — #232630): Elevated card surfaces, sidebar backgrounds, section bands. One step above the primary background.
 
-**Character:** 不寻求字体个性。字体本身应当透明，让信息层次成为视觉焦点。字号和字重的对比度是层次感的唯一来源，不依赖装饰性字体。
+### Divider & Border
+
+- **Divider** (`{colors.divider-light}` — #DDDDDF / `{colors.divider-dark}` — #3B3E47): Horizontal rule between rows, separators inside cards.
+- **Border** (`{colors.border-light}` — #E6E7E8 / `{colors.border-dark}` — #2C3039): 1px strokes around cards, inputs, data tables. Slightly lighter than divider.
+
+### Status (Theme-Invariant)
+
+All status colors carry the same hex in both light and dark mode. Do not override with `-light`/`-dark` variants.
+
+| Token | Value | Use |
+|---|---|---|
+| `{colors.status-up}` | #00ADA2 | Price up / positive P&L — teal-green |
+| `{colors.status-down}` | #FF3A75 | Price down / negative P&L — rose |
+| `{colors.status-error}` | #F7415F | Form error, system alert |
+| `{colors.status-warning}` | #FF9728 | Warning callout, pending state |
+| `{colors.status-success}` | #00CC92 | Order filled, deposit confirmed |
+| `{colors.status-info}` | #2A99FE | Informational tooltip, news badge |
+
+### AI Module (Theme-Invariant, Always Dark)
+
+The AI module ignores the user's light/dark preference and always renders on a dark palette. Use only `ai-*` tokens within AI-designated surfaces.
+
+| Token | Value | Role |
+|---|---|---|
+| `{colors.ai-brand}` | #00F0C4 | AI accent — same as brand-dark |
+| `{colors.ai-brand-aux}` | #09252A | AI accent auxiliary background |
+| `{colors.ai-bg-primary}` | #0A0E19 | AI surface base |
+| `{colors.ai-bg-secondary}` | #232630 | AI card / elevated surface |
+| `{colors.ai-text-primary}` | #FFFFFF | AI primary text |
+| `{colors.ai-text-secondary}` | #9D9FA3 | AI secondary text |
+| `{colors.ai-text-tertiary}` | #60626A | AI placeholder / low-hierarchy |
+| `{colors.ai-divider}` | #3B3E47 | AI row separator |
+| `{colors.ai-border}` | #2C3039 | AI card border |
+
+---
+
+## Typography
+
+### Font Families
+
+The system uses three families, each assigned to a distinct semantic role:
+
+| Family | Role | Fallback |
+|---|---|---|
+| **Cera Pro** | Display / Marketing headlines | `Inter, -apple-system, sans-serif` |
+| **Inter** | Interface headings, body copy, button labels | `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` |
+| **SF Pro Display** | Financial numbers — prices, P&L, quantities | `Inter, -apple-system, sans-serif` |
+
+**Cera Pro** anchors the brand voice on marketing and landing surfaces. Its geometric precision reads confidently at large display sizes.
+
+**Inter** handles all interface text. Its optimized legibility at small sizes (12–16px) is essential for data-dense trading views.
+
+**SF Pro Display** is used exclusively for financial numbers that need to be compared across rows — tabular figures, ticker prices, portfolio values. Its optically consistent digits prevent misreading when scanning rapidly.
 
 ### Hierarchy
-- **Display** (800, `clamp(2.4rem, 6vw, 4rem)`, line-height 1.15, tracking −0.02em): 首页 Hero 主标题。全站仅此一处使用。letter-spacing 收紧，使大字号在中文排版下不显松散。
-- **Headline** (700, `clamp(1.5rem, 3vw, 2rem)`, line-height 1.25): 章节大标题，如「9 大专题，系统覆盖」。
-- **Title** (600, `1rem/16px`, line-height 1.4): 卡片标题、导航标签、弹出层标题。
-- **Body** (400, `15px`, line-height 1.7): 所有正文内容。行高 1.7 是中文阅读舒适度下限，不可低于此值。段落宽度限制在 65–75ch，超宽屏幕不拉伸正文列。
-- **Label** (500, `13px`, line-height 1.4, tracking +0.01em): 导航项、徽章、按钮文字、元数据标签。500 字重确保小号中文不因字重不足显得模糊。
 
-### Named Rules
-**The 1.7 Floor Rule.** 中文正文 `line-height` 不得低于 1.7。低于此值的段落在手机屏幕上阅读会产生行与行之间的视觉拥挤感，直接破坏「清晰」的品牌承诺。
+| Token | Family | Size | Weight | Line Height | Use |
+|---|---|---|---|---|---|
+| `{typography.display-xl}` | Cera Pro | 48px | 700 | 52px | Marketing hero headline |
+| `{typography.display-lg}` | Cera Pro | 36px | 700 | 40px | Section header, product page H1 |
+| `{typography.display-md}` | Cera Pro | 30px | 600 | 36px | Sub-section header |
+| `{typography.heading-xl}` | Inter | 24px | 600 | 32px | Modal title, primary page heading |
+| `{typography.heading-lg}` | Inter | 20px | 600 | 28px | Card title, panel heading |
+| `{typography.heading-md}` | Inter | 18px | 600 | 28px | Section sub-heading, form group title |
+| `{typography.body-lg}` | Inter | 16px | 400 | 24px | Primary body / form labels |
+| `{typography.body-md}` | Inter | 14px | 400 | 20px | Default body text, table cells |
+| `{typography.body-sm}` | Inter | 12px | 400 | 16px | Captions, timestamps, footnotes |
+| `{typography.button-xl-label}` | Inter | 16px | 600 | 21px | XL primary button label |
+| `{typography.button-lg}` | Inter | 16px | 500 | 21px | LG button label |
+| `{typography.button-md}` | Inter | 14px | 500 | 18px | MD / SM button label |
+| `{typography.number-lg}` | SF Pro Display | 24px | 600 | 32px | Hero price, portfolio total |
+| `{typography.number-md}` | SF Pro Display | 18px | 500 | 28px | Watchlist price, position value |
+| `{typography.number-sm}` | SF Pro Display | 14px | 400 | 20px | Table price cell, small ticker |
 
-**The Weight Contrast Rule.** 相邻层级的字重差不小于 100。Display(800) → Headline(700) → Title(600) → Body(400)：每一级降 100–200，视觉上步步可辨。避免同屏出现两个 700 字重的元素互相竞争。
+### Principles
 
-## 4. Elevation
+- Display sizes use **Cera Pro weight 700 or 600** — never weight 400. The geometric boldness is the brand signal.
+- Interface body stays **Inter weight 400** for paragraphs and **weight 500 or 600** for labels and headings.
+- Financial numbers always use **SF Pro Display** — mixing Inter numbers in a price column creates optical inconsistency that slows scanning.
+- Do not specify `letter-spacing` unless correcting a specific rendering issue. The system carries no global letter-spacing values.
 
-本系统默认平坦。静态卡片不带阴影，靠背景色层叠（`bg-primary` vs `bg-secondary`）实现分层。阴影是交互响应，不是装饰手段。
+### Note on Font Availability
 
-### Shadow Vocabulary
-- **Collapsed** (`0 1px 4px rgba(0,0,0,0.06)`，Dark: `rgba(0,0,0,0.18)`): 折叠卡片、行内展开内容，轻触式存在感。
-- **Card** (`0 2px 8px rgba(0,0,0,0.08)`，Dark: `rgba(0,0,0,0.24)`): 悬停卡片、激活的内容块。静止时不出现，hover/focus 时出现。
-- **Dropdown** (`0 4px 12px rgba(0,0,0,0.12)`，Dark: `rgba(0,0,0,0.32)`): 下拉菜单、浮动面板。只用于脱离文档流的浮层。
+Cera Pro is a licensed typeface. If unavailable, use **Inter Bold** as a substitute — it loses the geometric character but maintains legibility. SF Pro Display is a system font on Apple platforms; on other platforms fall back to **Inter** with `font-variant-numeric: tabular-nums` to preserve column alignment.
 
-### Named Rules
-**The Flat-by-Default Rule.** 任何静止状态的表面不带阴影。阴影出现意味着「此处发生了交互」，不是「此处是一张卡片」。滥用阴影等同于滥用强调，结果是强调失效。
+---
 
-**The Three-Layer Ceiling Rule.** 最多三层阴影级别，不引入第四层。`collapsed` 是内容，`card` 是浮动内容，`dropdown` 是脱流浮层。层级超过三层时重新审视信息架构而非增加阴影级别。
+## Layout
 
-## 5. Components
+### Spacing System
 
-### Buttons
+- **Base unit:** 4px (Tailwind convention).
+- All spacing values derive from multiples of 4px. Half-unit (2px = `{spacing.0.5}`) is available for micro-adjustments in compact table rows.
 
-形状保守，语义清晰。圆角 6px，不使用全圆角（pill）形状，除非是搜索框或 badge 类元素。
+| Token | Value | Key Use |
+|---|---|---|
+| `{spacing.0}` | 0px | Reset |
+| `{spacing.0.5}` | 2px | Micro gap, icon-to-label offset |
+| `{spacing.1}` | 4px | Inline icon margin, tight list gap |
+| `{spacing.2}` | 8px | Row gap in dense data tables |
+| `{spacing.3}` | 12px | SM button horizontal padding |
+| `{spacing.4}` | 16px | LG button h-padding, section column gap |
+| `{spacing.5}` | 20px | Card internal padding |
+| `{spacing.6}` | 24px | XL button h-padding, module-to-module gap |
+| `{spacing.8}` | 32px | Between major card groups |
+| `{spacing.10}` | 40px | Large section vertical padding |
+| `{spacing.12}` | 48px | Panel top padding |
+| `{spacing.16}` | 64px | Page section top/bottom padding |
+| `{spacing.20}` | 80px | — |
+| `{spacing.24}` | 96px | Maximum section rhythm (marketing pages) |
 
-- **Shape:** 轻微圆角（6px），传递专业克制感而非消费级友好感。
-- **Primary (LG/MD):** 背景 `#00B8B8`，白色文字，`height: 44px/36px`，`padding: 0 20px`。同屏不出现两个及以上大型 Primary 按钮。
-- **Secondary:** 透明背景，`1px solid #E6E7E8`，`--lbus-text-primary` 文字。等级低于 Primary，用于次要操作。
-- **Tertiary:** `#F3F5F6` 背景，`--lbus-text-primary` 文字。比 Secondary 更低调，用于第三优先级操作。
-- **Ghost (SM only, 28px):** 透明背景，`1px solid #00B8B8`，品牌色文字。仅 SM 尺寸使用，用于内联的品牌操作链接，不用于页面主操作。
-- **Disabled:** 背景 `#F3F5F6`，文字 `#A9ABAE`，`opacity: 0.7`，`pointer-events: none`。
-- **Hover/Pressed:** 所有变体叠加 `rgba(10,14,25,0.05)` 蒙层，`transition: 200ms ease`。不使用颜色切换，使用透明度叠加。
+### Grid & Container
 
-### Cards / Containers
+- **Max content width:** 1440px centered for trading views; 1200px for marketing pages.
+- **Trading layout:** Left sidebar (watchlist / navigation) + center main pane + optional right drawer. The pane sizes are fluid, not fixed-column.
+- **Data tables:** Full-width within their container; column widths sized to content with sticky first column where row identity matters.
+- **Card grids:** 3-up at desktop (≥1024px), 2-up at tablet (768–1023px), 1-up at mobile (<768px).
 
-- **Corner Style:** 普通卡片 6px；AI 功能卡片 12px；浮层/抽屉仅顶部 18px（`border-radius: 18px 18px 0 0`）。
-- **Background (Light):** `#FFFFFF`（内容卡片）或 `#F3F5F6`（嵌套容器）。不使用相同背景色的嵌套卡片。
-- **Background (Dark):** `#232630`（卡片）嵌于 `#0A0E19`（页面背景）。
-- **Shadow Strategy:** 静止无阴影；hover 时出现 Card 级阴影。
-- **Border:** `1px solid #E6E7E8`（Light）/ `1px solid #2C3039`（Dark）。当卡片背景与页面背景有对比时可省略边框。
-- **Internal Padding:** 标准 16px；紧凑列表 8px；宽松展示 24px。
+### Information Density
 
-### Inputs / Fields
+Financial views operate at higher density than general SaaS products. Acceptable minimum row height for data tables is 32px (`{spacing.8}`) with 8px (`{spacing.2}`) vertical cell padding. Hover states reveal inline actions to avoid permanent clutter.
 
-- **Style:** 背景 `#F3F5F6`，`border-radius: 6px`，无描边（静止态）。
-- **Focus:** `1px solid #00B8B8`，轻微品牌色 glow `0 0 0 3px rgba(0,184,184,0.12)`，过渡 200ms ease。
-- **Placeholder:** 颜色 `#A9ABAE`（Subdued Chalk），不使用 italic。
-- **Error:** `1px solid #F7415F`，提示文字 `#F7415F`，12px，输入框下方 4px 间距显示。
-- **Disabled:** `opacity: 0.5`，`pointer-events: none`。
+---
 
-### Navigation
+## Elevation & Depth
 
-首页使用双行自定义导航栏（HomeNavbar）；文档内页使用 VitePress 默认侧边栏。
+Depth is expressed through background color contrast and controlled shadow use. The light/dark shadow scales are calibrated separately — dark mode surfaces cast slightly heavier shadows because the contrast between surface and shadow is lower.
 
-- **Top Bar (HomeNavbar Row 1, height 52px):** 背景 `var(--vp-c-bg)`，底部 `1px solid rgba(0,0,0,0.06)`。Logo + 搜索/AI 中心区 + 登录注册。
-- **Bottom Bar (Row 2, height 40px):** 主题标签页 + 外部链接。标签默认色 `#666`，激活色 `#18e299`（亮绿），底部 2px 激活线。
-- **Active State:** 字重 500 + 2px 底线，颜色使用 `#18e299`（与品牌 Teal 形成场景区分，更亮、可辨度更高的激活信号）。
-- **Mobile (≤768px):** 底行隐藏，精简为 Logo + 搜索图标 + 登录按钮。
+### Shadow Scale
 
-### AI Feature Components
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `{shadows.card-light}` / `{shadows.card-dark}` | `0px 2px 8px rgba(0,0,0,0.08)` | `0px 2px 8px rgba(0,0,0,0.24)` | Data cards, widget panels |
+| `{shadows.collapsed-light}` / `{shadows.collapsed-dark}` | `0px 1px 4px rgba(0,0,0,0.06)` | `0px 1px 4px rgba(0,0,0,0.18)` | Collapsed/minimized panels |
+| `{shadows.dropdown-light}` / `{shadows.dropdown-dark}` | `0px 4px 12px rgba(0,0,0,0.12)` | `0px 4px 12px rgba(0,0,0,0.32)` | Dropdowns, select menus, tooltips |
 
-AI 场景固定使用深色配色，即使系统处于 Light 模式。这是品牌策略：AI 是长桥的差异化功能，需要独立视觉语言以传递「进入了一个不同的模式」。
+### Z-Index Stack
 
-- **AI 卡片:** 背景 `#232630`，`border-radius: 12px`，`1px solid #2C3039`。
-- **AI 按钮/高亮:** `#00F0C4`（Longbridge Mint）。
-- **AI 对话文字:** 主文字 `#FFFFFF`，次文字 `#9D9FA3`。
-- **AI 分隔线:** `0.5px solid #3B3E47`。
+| Token | Value | Layer |
+|---|---|---|
+| `{zIndex.base}` | 0 | Normal document flow |
+| `{zIndex.dropdown}` | 10 | Dropdowns, tooltips, popovers |
+| `{zIndex.sticky}` | 20 | Sticky table headers, sticky nav bars |
+| `{zIndex.fixed}` | 30 | Fixed navigation, persistent sidebars |
+| `{zIndex.overlay}` | 40 | Modal backdrops, drawer backdrops |
+| `{zIndex.modal}` | 50 | Modals, sheets, toasts (shadcn dialog default) |
+
+### Elevation Philosophy
+
+- **Color-block first**: Background color difference between `bg-primary` and `bg-secondary` conveys the first elevation step without shadows.
+- **Shadows for floating elements**: Only dropdowns, tooltips, and modals use shadow. Cards sitting in normal flow use background color, not shadow.
+- **No hover shadows**: Interactive cards signal hover through a background tint shift or border color change — not shadow growth.
+
+---
+
+## Shapes
+
+Longbridge UX 5.0 uses only three border-radius values, each with a precise semantic assignment.
+
+### Border Radius Scale
+
+| Token | Value | Exclusive Use |
+|---|---|---|
+| `{rounded.sm}` | 6px | Buttons, inputs, tabs, dropdowns, data cards, charts, badges |
+| `{rounded.md}` | 12px | **AI scenario cards only** — do not use for general UI |
+| `{rounded.lg}` | 18px | **Sheet / drawer top corners only** |
+
+**Do not introduce intermediate values** (e.g., 8px, 10px, 14px). The constraint is intentional — a uniform corner radius across all standard UI elements creates a coherent, disciplined visual rhythm appropriate for a financial product.
+
+The AI card's 12px radius visually distinguishes the AI module from standard data surfaces at a glance, even before reading the content. The sheet 18px rounds only the top two corners (bottom corners are flush with the viewport edge).
+
+---
+
+## Motion
+
+### Duration Tokens
+
+All animation durations must stay at or below `{motion.duration-max}` (500ms). Per-element stagger increments must not exceed `{motion.stagger-max}` (100ms).
+
+| Token | Value | Use |
+|---|---|---|
+| `{motion.duration-fast}` | 150ms | Hover micro-interactions, icon state changes |
+| `{motion.duration-base}` | 200ms | Standard transitions — the shadcn default |
+| `{motion.duration-slow}` | 300ms | Modals opening, page-level transitions |
+| `{motion.duration-max}` | 500ms | **Official UX 5.0 hard ceiling** — never exceed |
+| `{motion.stagger-max}` | 100ms | **Official UX 5.0 per-step stagger ceiling** |
+
+### Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `{motion.easing-standard}` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default for all transitions (Tailwind ease-in-out) |
+| `{motion.easing-emphasized}` | `cubic-bezier(0.2, 0, 0, 1)` | Sheets, drawers — expressive deceleration |
+
+### Principles
+
+- Real-time price tick animations must use `{motion.duration-fast}` (150ms) or less — slower ticks feel laggy on volatile data.
+- Prefer opacity + transform over layout-affecting animations to avoid reflow on dense table views.
+- Never animate background-color changes on rows in a live order book — the performance cost is too high.
+
+---
+
+## Components
+
+### Primary Buttons
+
+The primary button carries the teal brand color and signals the highest-priority action on a surface. Only one primary button should be visible in a single viewport region.
+
+**`button-primary-xl`** — Height 52px. Used for modal main actions (e.g., "Confirm Order", "Deposit"). Padding 0 24px. Font 16px / 600.
+
+**`button-primary-lg`** — Height 44px. Used for form submit actions at page level (e.g., "Place Order", "Continue"). Padding 10px 16px. Font 16px / 500.
+
+**`button-primary-md`** — Height 36px. Used for in-context operations on list or table rows (e.g., "Buy", "Sell"). Padding 8px 16px. Font 14px / 500.
+
+**`button-primary-sm`** — Height 28px. Used for secondary inline actions where space is constrained (e.g., within a watchlist row). Padding 5px 12px. Font 14px / 500.
+
+**Pressed state** — All primary sizes: `overlay: rgba(10,14,25,0.05)` darkens the background on press. No separate pressed-color token needed.
+
+**Disabled state** — Background shifts to `{colors.bg-secondary-light}` / `{colors.bg-secondary-dark}`, text shifts to `{colors.text-tertiary-light}` / `{colors.text-tertiary-dark}`, opacity 0.7.
+
+### Secondary Buttons (Outline)
+
+Secondary buttons carry a transparent fill with a 1px divider-color border. Used alongside a primary button to offer a lower-emphasis alternative (e.g., "Cancel" next to "Confirm Order").
+
+**`button-secondary-lg`** — Height 44px. Padding 10px 16px. Font 16px / 500.
+
+**`button-secondary-sm`** — Height 28px. Padding 5px 12px. Font 14px / 500.
+
+**Pressed state** — Border shifts to #DBDCDE plus `rgba(10,14,25,0.05)` overlay.
+
+**Disabled state** — Same pattern as primary disabled.
+
+### Tertiary Buttons (Filled Secondary)
+
+Tertiary buttons use the secondary background color as their fill — no border. Used for low-emphasis actions that do not compete with a primary button (e.g., "Filter", "Export").
+
+**`button-tertiary-lg`** — Height 44px. Background `{colors.bg-secondary-light}`. Padding 10px 16px. Font 16px / 500.
+
+**`button-tertiary-sm`** — Height 28px. Background `{colors.bg-secondary-light}`. Padding 5px 12px. Font 14px / 500.
+
+### Ghost Buttons (Brand Outline)
+
+Ghost buttons have a transparent fill with a teal brand-color border and teal text. Available in SM size only. Used for secondary brand-emphasis actions (e.g., "Learn More", "View Details" on marketing-adjacent surfaces).
+
+**`button-ghost-sm`** — Height 28px. Border `{colors.brand-light}`. Text `{colors.brand-light}`. Padding 5px 12px. Font 14px / 500.
 
 ### Form Controls
 
-- **Switch (32×32 容器，16×16 滑块):** On 态：滑块 `#00B8B8`，轨道 `rgba(0,184,184,0.25)`；Off 态：滑块 `#6C6E75`，轨道 `rgba(108,110,117,0.25)`。轨道圆角 10px，过渡 200ms ease。禁用时整组件 `opacity: 0.5`。
-- **Checkbox (20×20):** 选中背景 `#00B8B8`，勾 `#FFFFFF`，`border-radius: 4px`；未选中 `1px solid #E6E7E8`；禁用选中背景 `#A9ABAE`。
-- **Radio (20×20):** 外圈 `2px solid #00B8B8`；内实心圆 `#00B8B8`，`border-radius: 50%`；未选中外圈 `1px solid #E6E7E8`。
+**`switch`** — Toggle between two states. Track 32px wide, knob 16px diameter. On-state: track `rgba(0,184,184,0.25)` + knob `{colors.brand-light}`. Off-state: track `rgba(108,110,117,0.25)` + knob `{colors.text-secondary-light}`. Transition `200ms cubic-bezier(0.4,0,0.2,1)`.
 
-## 6. Do's and Don'ts
+**`checkbox`** — 20px hit area. Checked: background `{colors.brand-light}`, white check icon, `border-radius: 1px` (nearly square). Unchecked: opacity 0.3. Disabled checked: background #A9ABAE.
 
-### Do:
-- **Do** 使用 UX 5.0 token 名称（如 `--lbus-brand`、`--lbus-text-secondary`），不自造同义色值。
-- **Do** 保持分隔线 `0.5px`、描边 `1px`，全站统一不漂移。
-- **Do** 确保正文 `line-height ≥ 1.7`，手机端中文阅读是主要场景。
-- **Do** 在 AI 场景（对话、AI 功能模块）固定使用深色底，即使系统处于 Light 模式。
-- **Do** 让阴影回应状态：hover 卡片出现 Card 阴影，静止卡片无阴影。
-- **Do** 限制 Primary 按钮数量：同屏最多一个大型 Primary 按钮。
-- **Do** 浮层/抽屉仅顶部使用 18px 圆角，底部圆角为 0。
-- **Do** 触摸目标不低于 44px（高度），确保手机端可靠触达。
-- **Do** 在 `prefers-reduced-motion` 媒体查询下禁用动画，仅保留即时状态切换。
+**`radio`** — 20px hit area. Selected: 2px border `{colors.brand-light}` + inner dot `{colors.brand-light}`. Unselected: opacity 0.3. Always fully circular.
 
-### Don't:
-- **Don't** 使用传统银行官网的密集蓝灰配色和多级官僚导航——这是第一反例，明确禁止。
-- **Don't** 让设计退化为 Notion/Confluence 极简白底工具风，品牌辨识度为零。
-- **Don't** 引入券商营销页的红绿配色或大 Banner 促销视觉——长桥帮助中心不是营销页。
-- **Don't** 使用 `background-clip: text` + 渐变制造彩虹/金属渐变文字——AI 生成感的典型特征，禁止。
-- **Don't** 使用玻璃态（backdrop-filter blur）作为默认卡片装饰——此为 glassmorphism 滥用，除非有明确交互意图且极度克制。
-- **Don't** 创建相同尺寸的图标卡片格（icon + heading + text 重复 N 次）——这是「AI 做的」的视觉证据，重新设计版块结构。
-- **Don't** 使用 `border-left` 或 `border-right` 大于 1px 的彩色条纹装饰卡片或列表项——这是被明确禁止的 side-stripe 模式。
-- **Don't** 在卡片嵌套中使用相同背景色——嵌套卡片必须有至少一个层级的背景色差异，否则删除嵌套层。
-- **Don't** 引入第四层阴影级别——最多三层（collapsed/card/dropdown），超出时重审信息架构。
-- **Don't** 对 AI 卡片使用 Light 模式配色——AI 场景强制深色，这是品牌差异化决策，不是主题跟随。
+---
+
+## Do's and Don'ts
+
+### Do
+
+- **Match every -light token with a -dark counterpart.** If you add a new surface color, provide both variants before shipping. Asymmetric theming is a regression.
+- **Use `{colors.brand-light}` / `{colors.brand-dark}` for interactive affordances only** — buttons, active states, focus rings, interactive links. Never use teal as a decorative background on arbitrary cards.
+- **Use `ai-*` tokens exclusively within AI-designated surfaces.** Do not use `bg-secondary-dark` on an AI card — use `ai-bg-secondary` instead, even if they currently resolve to the same hex.
+- **Use `text-secondary-*` for metadata and supporting text.** Reserve `text-primary-*` for the actual data value (price, name, quantity) the user came to read.
+- **Apply `{motion.easing-emphasized}` for sheets and drawers** — deceleration reads as the surface sliding into place, not popping.
+- **Stick to `{rounded.sm}` (6px) for all standard UI.** Only use `{rounded.md}` (12px) for AI scenario cards and `{rounded.lg}` (18px) for sheet top corners.
+- **Use SF Pro Display for all financial numbers in comparison contexts** — watchlists, order books, P&L columns. Consistent digit width prevents misread when scanning.
+
+### Don't
+
+- **Don't use `text-tertiary-*` for body copy or data values.** It's reserved for placeholder text and the lowest-priority annotations. The contrast ratio is insufficient for any content the user needs to read.
+- **Don't mix `-light` and `-dark` tokens in the same theme context.** Never write `bg-secondary-dark` on a light-mode page to achieve a "darker look" — use `bg-secondary-light` and adjust the value system-wide if needed.
+- **Don't override the AI module with the current theme.** AI surfaces must remain on the dark palette regardless of the user's preference. Do not apply `bg-primary-light` inside an AI card.
+- **Don't use status colors for brand decoration.** `status-up` (teal-green) must not substitute for `brand-light` — they exist for semantic roles (price direction) and will confuse users who rely on those colors for trading signals.
+- **Don't animate live data rows at every tick.** Animate the delta indicator, not the row background — animating full rows on an active order book causes paint thrashing.
+- **Don't exceed `{motion.duration-max}` (500ms) for any transition.** Financial users expect a snappy interface; long animations signal a slow product.
+- **Don't introduce new border-radius values.** If a design calls for 8px or 10px, use `{rounded.sm}` (6px) and raise the discrepancy with the design lead.
+
+---
+
+## Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|---|---|---|
+| Mobile | < 768px | Bottom-tab navigation; sidebar collapses to sheet; data tables scroll horizontally; watchlist shows 2-column layout; buttons full-width in modal footers |
+| Tablet | 768–1023px | Split-panel layout with collapsible sidebar; 2-up card grids; chart area expands to full width on tap |
+| Desktop | 1024–1440px | Full three-pane layout: sidebar + main + optional detail drawer; 3-up card grids; all table columns visible |
+| Wide | ≥1440px | Same as desktop, content max-width capped at 1440px; wider gutter breathing room |
+
+### Touch Targets
+
+- All buttons (`button-primary-*`, `button-secondary-*`, `button-tertiary-*`) have a minimum touch target of 44 × 44px via padding extension, even when the visual height is 28px (sm size).
+- `{component.switch}` — 32px visual, at least 44px touch target via invisible padding wrapper.
+- `{component.checkbox}` and `{component.radio}` — 20px visual, 44px touch target.
+- Table row tap area: full row width, minimum 44px height on mobile.
+
+### Collapsing Strategy
+
+- **Sidebar** collapses to an icon rail at tablet, to a bottom sheet at mobile.
+- **Data tables** on mobile: sticky first column (instrument name / symbol), remaining columns scroll horizontally. Do not truncate numeric columns — scroll is preferred over data loss.
+- **Charts** expand to full available width at all breakpoints; time-axis labels reduce density at smaller widths.
+- **Order entry forms** collapse to a bottom sheet on mobile, triggered by a sticky "Buy / Sell" bar at the screen bottom.
+
+### Density Adaptation
+
+Mobile views relax the data density — row height increases from 32px to 44px for thumb-friendliness. Desktop views may reduce to 28px rows in compact mode for power users.
+
+---
+
+## Iteration Guide
+
+1. **Color tokens always need a -light and -dark pair.** The only exceptions are `status-*` and `ai-*` tokens, which are theme-invariant by design. If you add a new semantic color, provide both variants.
+
+2. **Don't inline hex values — always use token references.** Write `{colors.brand-light}`, not `#00B8B8`. This ensures theme switching works without manual find-replace.
+
+3. **Component variants** (`-pressed`, `-disabled`) live as separate entries in `components:`. Never describe hover state — Longbridge components document Default and Pressed/Active states only.
+
+4. **AI module additions** use only `ai-*` tokens in their definitions. If the AI team introduces a new AI component, all color references inside it must pull from `{colors.ai-*}` exclusively.
+
+5. **Button sizes are fixed.** The four heights (52 / 44 / 36 / 28px) are official. Do not create intermediate sizes (e.g., 40px) — if a layout requires a different height, flag it for system review.
+
+6. **Financial number styles use SF Pro Display.** Any new component displaying a price, quantity, percentage, or monetary value should reference `{typography.number-*}` rather than `{typography.body-*}`.
+
+7. **Test both themes before shipping any component.** Light-only testing is a known source of dark-mode regressions. The dual-theme constraint is non-negotiable.
+
+8. **Shadows follow the light/dark naming pattern.** Always add both `{shadows.*-light}` and `{shadows.*-dark}` when defining a new elevation level.
+
+---
+
+## Known Gaps
+
+- **Cera Pro** is a licensed commercial typeface not available as a public web font. The official Longbridge product uses a licensed distribution. In development or prototyping environments, substitute with **Inter** at the corresponding weight — the geometric character is lost but legibility is maintained.
+
+- **SF Pro Display** is a system font available on Apple platforms (macOS, iOS). On Windows and Android, the typeface falls back to **Inter**. To preserve column alignment of financial numbers across platforms, apply `font-variant-numeric: tabular-nums` on the fallback font.
+
+- **⚠️ Tailwind-recommended values**: The following token values are sourced from Tailwind CSS defaults rather than explicit Longbridge UX 5.0 specifications. They may change if official specifications are issued:
+  - `typography.*` — font sizes and line heights (Tailwind text-scale)
+  - `spacing.*` — all spacing values (Tailwind spacing scale)
+  - `motion.duration-*` (except `duration-max` and `stagger-max`, which are official)
+  - `motion.easing-standard` (Tailwind ease-in-out)
+  - `zIndex.*` (Tailwind z-index scale)
+
+- **Monospace / Code token not declared.** The system does not define a `code` or `mono` typography token. If a component requires monospace text (e.g., a transaction hash, API key display), use the platform system mono font and raise a token request.
+
+- **Dark-mode status color contrast** is not formally audited in this version. `status-down` (#FF3A75) and `status-up` (#00ADA2) should pass AA contrast on `bg-primary-dark` (#0A0E19) — verify before use on smaller text sizes.
+
+- **Animation specifications** for live data streaming (tick flash, price change highlight, orderbook depth animation) are out of scope in this document. These belong in the component-specific motion spec.
+
+- **Form validation states** beyond disabled are not extracted in this version. Error, warning, and success input states require a dedicated form token set.
