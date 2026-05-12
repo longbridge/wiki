@@ -1110,7 +1110,7 @@ html.ai-resizing #VPContent {
 
   /* ─── HomeNavbar.vue（全部使用 token，无 .dark 硬编码覆盖）─── */
   .hn-root { position: sticky; top: 0; z-index: 100; background: var(--vp-c-bg); border-bottom: 1px solid var(--vp-c-divider); }
-  .hn-top-bar { height: 52px; display: flex; align-items: center; }
+  .hn-top-bar { height: 64px; display: flex; align-items: center; }
   .hn-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .hn-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
   .hn-logo-icon { width: 24px; height: 24px; object-fit: contain; }
@@ -1122,6 +1122,7 @@ html.ai-resizing #VPContent {
     align-items: center;
     gap: 8px;
     height: 33px;
+    min-width: 220px;
     padding: 0 13px;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
@@ -1216,7 +1217,7 @@ html.ai-resizing #VPContent {
     transition: opacity 0.15s;
   }
   .hn-register:hover { opacity: 0.85; }
-  .hn-bottom-bar { height: 40px; }
+  .hn-bottom-bar { height: 48px; }
   .hn-bottom-inner {
     width: 100%;
     max-width: 1551px;
@@ -1232,7 +1233,7 @@ html.ai-resizing #VPContent {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    height: 40px;
+    height: 48px;
     font-size: 13px;
     color: var(--vp-c-text-2);
     text-decoration: none;
@@ -1243,7 +1244,7 @@ html.ai-resizing #VPContent {
     box-sizing: border-box;
   }
   .hn-tab:hover { color: var(--vp-c-text-1); }
-  .hn-tab--active { color: var(--vp-c-brand-1); border-bottom-color: var(--vp-c-brand-1); font-weight: 500; }
+  .hn-tab--active { color: var(--vp-c-text-1); border-bottom-color: var(--vp-c-text-1); font-weight: 500; }
   .hn-extra-links { display: flex; align-items: center; gap: 4px; }
   .hn-extra-btn {
     display: flex;
@@ -1611,7 +1612,7 @@ html.ai-resizing #VPContent {
 
 /* F.2 — 三栏布局尺寸 */
 :root {
-  --hn-height: 96px;
+  --hn-height: 112px;
   --vp-sidebar-width: 272px;
   --vp-aside-width: 272px;
 }
