@@ -128,10 +128,10 @@
 }
 .custom-nav-layout .VPSidebar {
   top: 0;
-  padding-top: var(--hn-height, 96px);
+  padding-top: var(--hn-height, 112px);
 }
 .custom-nav-layout .VPLocalNav {
-  top: var(--hn-height, 96px);
+  top: var(--hn-height, 112px);
 }
 
 /* 首页额外隐藏 VPNav（兼容旧逻辑，custom-nav-layout 已涵盖） */
@@ -1116,7 +1116,7 @@ html.ai-resizing #VPContent {
   .hn-logo-icon { width: 24px; height: 24px; object-fit: contain; }
   .hn-logo-text { font-size: 17px; font-weight: 700; color: var(--vp-c-text-1); letter-spacing: -0.5px; white-space: nowrap; line-height: 1; }
   .hn-logo-docs { font-weight: 400; color: var(--vp-c-text-2); }
-  .hn-center { display: flex; align-items: center; gap: 6px; }
+  .hn-center { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .hn-search-btn {
     display: flex;
     align-items: center;
