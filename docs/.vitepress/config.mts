@@ -384,6 +384,20 @@ export default defineConfig({
     footer: {
       message: '© 2026 Longbridge. All rights reserved.',
     },
+
+    outline: { level: [2, 3], label: '本页内容' },
+
+    lastUpdated: {
+      text: '最近更新',
+      formatOptions: { dateStyle: 'medium' },
+    },
+
+    editLink: {
+      pattern: 'https://github.com/longbridge/docs/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
+
+    docFooter: { prev: '上一篇', next: '下一篇' },
   },
 
   markdown: {

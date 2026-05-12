@@ -5,6 +5,9 @@ import DefaultTheme from 'vitepress/theme'
 import Breadcrumb from '../components/Breadcrumb/index.vue'
 import DocBackground from '../components/DocBackground.vue'
 import HomeNavbar from '../components/HomeNavbar.vue'
+import PageHero from '../components/PageHero.vue'
+import AsideAI from '../components/AsideAI.vue'
+import PageFeedback from '../components/PageFeedback.vue'
 import TweakPanel from '../components/TweakPanel.vue'
 import AiChatDrawer from '../components/AiChatDrawer.vue'
 import { useAIModal } from '../composables/useAIModal'
@@ -22,15 +25,21 @@ const isHomePage = computed(() => frontmatter.value.layout === 'page')
 
 const { modalOpen, initialQuery, openAIModal } = useAIModal()
 
-// 首页时在 <html> 上添加 home-page-layout class，以便全局 CSS 隐藏默认 VPNav
-function syncClass(val: boolean) {
+// 所有页面隐藏 VPNav，由 HomeNavbar 接管
+function syncHomeClass(val: boolean) {
   if (!inBrowser) return
   document.documentElement.classList.toggle('home-page-layout', val)
 }
-watch(isHomePage, syncClass, { immediate: true })
-onMounted(() => syncClass(isHomePage.value))
+watch(isHomePage, syncHomeClass, { immediate: true })
+onMounted(() => {
+  if (!inBrowser) return
+  document.documentElement.classList.add('custom-nav-layout')
+  syncHomeClass(isHomePage.value)
+})
 onBeforeUnmount(() => {
-  if (inBrowser) document.documentElement.classList.remove('home-page-layout')
+  if (!inBrowser) return
+  document.documentElement.classList.remove('custom-nav-layout')
+  document.documentElement.classList.remove('home-page-layout')
 })
 
 // 抽屉开关时推动主内容区域
@@ -43,20 +52,27 @@ watch(modalOpen, (open) => {
 <template>
   <DefaultTheme.Layout>
     <template #layout-top>
-      <HomeNavbar v-if="isHomePage" />
+      <HomeNavbar />
       <DocBackground v-if="isDocPage" />
     </template>
     <template #doc-before>
       <Breadcrumb />
+      <PageHero v-if="isDocPage" />
+    </template>
+    <template #aside-outline-after>
+      <AsideAI v-if="isDocPage" />
+    </template>
+    <template #doc-after>
+      <PageFeedback v-if="isDocPage" />
     </template>
     <template #layout-bottom>
       <TweakPanel v-if="isDev" />
       <!-- 全局 AI 助手抽屉 -->
       <AiChatDrawer v-model="modalOpen" :initial-query="initialQuery" />
-      <!-- 非首页浮动触发按钮 -->
+      <!-- 非首页浮动触发按钮（移动端保留，桌面端由 AsideAI 卡片承担） -->
       <button
         v-if="!isHomePage"
-        class="fixed bottom-7 right-7 w-12 h-12 rounded-full bg-[#00b8b8] text-white border-0 cursor-pointer flex items-center justify-center shadow-[0_4px_16px_rgba(0,184,184,0.45)] z-[999] transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,184,184,0.55)]"
+        class="ai-fab-mobile fixed bottom-7 right-7 w-12 h-12 rounded-full bg-[#00b8b8] text-white border-0 cursor-pointer flex items-center justify-center shadow-[0_4px_16px_rgba(0,184,184,0.45)] z-[999] transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,184,184,0.55)]"
         @click="openAIModal()"
         aria-label="打开 AI 助手"
       >

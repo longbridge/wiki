@@ -57,18 +57,11 @@ function openSearch() {
               <path d="M8 1v3M8 12v3M1 8h3M12 8h3M3.22 3.22l2.12 2.12M10.66 10.66l2.12 2.12M3.22 12.78l2.12-2.12M10.66 5.34l2.12-2.12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </button>
-          <button class="hn-icon-btn" aria-label="历史记录">
-            <svg class="hn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="8" cy="8" r="6.5"/>
-              <path d="M8 5v3.5l2 1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
         </div>
 
-        <!-- 登录 + 注册 -->
+        <!-- 登录 -->
         <div class="hn-auth">
-          <a href="https://longbridgeapp.com/login" class="hn-login" target="_blank" rel="noopener">登录</a>
-          <a href="https://longbridgeapp.com/register" class="hn-register" target="_blank" rel="noopener">免费注册</a>
+          <a href="https://longbridgeapp.com/login" class="hn-register" target="_blank" rel="noopener">登录</a>
         </div>
       </div>
     </div>
