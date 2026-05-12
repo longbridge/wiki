@@ -121,11 +121,11 @@
 
 /* 全站使用自定义 HomeNavbar，隐藏 VitePress 默认导航栏 */
 .custom-nav-layout .VPNav {
-  display: none !important;
+  @apply !hidden;
 }
 
 .custom-nav-layout .VPContent {
-  padding-top: 0 !important;
+  @apply !pt-0;
 }
 
 .custom-nav-layout .VPSidebar {
@@ -139,7 +139,7 @@
 
 /* 首页额外隐藏 VPNav（兼容旧逻辑，custom-nav-layout 已涵盖） */
 .home-page-layout .VPNav {
-  display: none !important;
+  @apply !hidden;
 }
 
 /* ============================================================
@@ -158,8 +158,7 @@
 
   /* h2: default is margin: 48px 0 16px + padding-top: 24px = 72px total gap */
   .vp-doc h2 {
-    @apply mt-8 mb-3;
-    padding-top: 16px;
+    @apply mt-8 mb-3 pt-4;
   }
 
   /* h3: default is margin: 32px 0 0 */
@@ -211,36 +210,31 @@
   /* Remove default group separator lines and add chapter spacing */
   .VPSidebar .group+.group {
     border-top: none !important;
-    padding-top: 0;
-    margin-top: 20px;
+    @apply pt-0 mt-5;
   }
 
   /* Remove sub-item left border, normalise indentation */
   .VPSidebar .items {
     border-left: none !important;
-    padding-left: 8px !important;
+    @apply !pl-2;
   }
 
   /* ─── Top-level section headers (level-0) ───────────────── */
 
   .VPSidebarItem.level-0>.item {
-    padding: 0 4px;
+    @apply py-0 px-1;
   }
 
   .VPSidebarItem.level-0>.item>.link,
   .VPSidebarItem.level-0>.item>.text {
-    padding: 6px 10px;
+    @apply py-1.5 px-2.5 font-semibold text-sm flex items-center;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 14px;
     color: var(--vp-c-text-1);
-    display: flex;
-    align-items: center;
   }
 
   /* Fixed expand: hide top-level caret */
   .VPSidebarItem.level-0>.item>.caret {
-    display: none;
+    @apply hidden;
   }
 
   /* Top-level hover: subtle gray, no brand fill */
@@ -258,18 +252,14 @@
   /* ─── Level-1 group headers ──────────────────────────────── */
 
   .VPSidebarItem.level-1>.item {
-    padding: 0 4px;
+    @apply py-0 px-1;
   }
 
   .VPSidebarItem.level-1>.item>.link,
   .VPSidebarItem.level-1>.item>.text {
-    padding: 5px 10px;
+    @apply py-1.5 px-2.5 font-medium text-sm flex items-center;
     border-radius: 8px;
-    font-weight: 500;
-    font-size: 13px;
     color: var(--vp-c-text-2);
-    display: flex;
-    align-items: center;
   }
 
   /* Lighter caret for level-1 */
@@ -287,19 +277,15 @@
   /* ─── Icons ──────────────────────────────────────────────── */
 
   .sidebar-item-icon {
-    display: inline-flex;
-    align-items: center;
+    @apply inline-flex items-center mr-2.5;
     flex-shrink: 0;
-    margin-right: 10px;
     color: var(--vp-c-text-3);
     vertical-align: middle;
   }
 
   .sidebar-item-icon--sub {
-    display: inline-flex;
-    align-items: center;
+    @apply inline-flex items-center mr-2;
     flex-shrink: 0;
-    margin-right: 8px;
     color: var(--vp-c-text-3);
     vertical-align: middle;
   }
@@ -318,18 +304,13 @@
 
   .VPSidebarItem .VPLink {
     border-radius: 10px;
-    padding: 6px 12px 6px 16px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
+    @apply pt-1.5 pr-3 pb-1.5 pl-4 flex items-center text-sm;
     color: var(--vp-c-text-2);
     transition: background 0.12s, color 0.12s;
   }
 
   .VPSidebarItem.is-link .VPLink>p {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0;
+    @apply pt-0 pb-0 m-0;
   }
 
   .VPSidebarItem .VPLink:hover {
@@ -374,7 +355,7 @@
   }
 
   html.ai-drawer-open .VPDocAside {
-    display: none !important;
+    @apply !hidden;
   }
 }
 
@@ -406,7 +387,7 @@ html.ai-resizing #VPContent {
       0 0 0 1px rgba(0, 0, 0, 0.06),
       0 20px 60px rgba(0, 0, 0, 0.14) !important;
     overflow: hidden;
-    max-width: 600px !important;
+    @apply !max-w-96;
     width: calc(100vw - 60px) !important;
   }
 
@@ -419,7 +400,7 @@ html.ai-resizing #VPContent {
     border-bottom: 1px solid var(--vp-c-divider) !important;
     box-shadow: none !important;
     outline: none !important;
-    padding: 0 !important;
+    @apply !p-0;
   }
 
   .VPLocalSearchBox .search-bar:focus-within {
@@ -432,8 +413,7 @@ html.ai-resizing #VPContent {
   }
 
   .VPLocalSearchBox .search-bar input {
-    font-size: 16px !important;
-    font-weight: 400 !important;
+    @apply !text-base !font-normal;
     color: var(--vp-c-text-1) !important;
     caret-color: var(--vp-c-text-2) !important;
     background: transparent !important;
@@ -467,8 +447,7 @@ html.ai-resizing #VPContent {
 
   /* Results list */
   .VPLocalSearchBox .results {
-    padding: 3px 8px 4px;
-    gap: 2px !important;
+    @apply pt-1 px-2 pb-1 !gap-0.5;
     background: transparent !important;
   }
 
@@ -476,8 +455,7 @@ html.ai-resizing #VPContent {
     border: none !important;
     border-radius: 10px !important;
     background: transparent !important;
-    margin-bottom: 1px;
-    padding: 4px 10px !important;
+    @apply mb-0.5 !py-1 px-2.5;
     outline: none !important;
     transition: background 0.1s;
   }
@@ -495,31 +473,23 @@ html.ai-resizing #VPContent {
 
   /* Titles — breadcrumb stacked above main title */
   .VPLocalSearchBox .titles {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0px !important;
+    @apply !flex !flex-col !items-start !gap-0;
   }
 
   /* Hide the # icon */
   .VPLocalSearchBox .title-icon {
-    display: none !important;
+    @apply !hidden;
   }
 
   /* Breadcrumb path */
   .VPLocalSearchBox .title:not(.main) {
-    font-size: 11px !important;
+    @apply !text-xs !font-normal !flex !items-center !gap-1;
     color: var(--vp-c-text-3) !important;
-    font-weight: 400 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 3px !important;
   }
 
   /* Main title */
   .VPLocalSearchBox .title.main {
-    font-size: 14px !important;
-    font-weight: 600 !important;
+    @apply !text-sm !font-semibold;
     color: var(--vp-c-text-1) !important;
   }
 
@@ -529,10 +499,8 @@ html.ai-resizing #VPContent {
 
   /* Excerpt */
   .VPLocalSearchBox .excerpt {
-    font-size: 12px !important;
+    @apply !text-xs !mt-0.5 !leading-normal;
     color: var(--vp-c-text-2) !important;
-    margin-top: 2px !important;
-    line-height: 1.5 !important;
   }
 
   /* Custom blocks inside excerpts */
@@ -541,27 +509,24 @@ html.ai-resizing #VPContent {
     border: none !important;
     border-left: 2px solid var(--vp-c-divider) !important;
     border-radius: 0 3px 3px 0 !important;
-    padding: 1px 6px !important;
-    margin: 2px 0 !important;
+    @apply !py-0.5 px-1.5 !my-0.5 mx-0;
   }
 
   .VPLocalSearchBox .excerpt .custom-block-title {
-    display: none !important;
+    @apply !hidden;
   }
 
   .VPLocalSearchBox .excerpt .custom-block p,
   .VPLocalSearchBox .excerpt .custom-block li {
     color: var(--vp-c-text-2) !important;
-    margin: 0 !important;
-    font-size: 12px !important;
+    @apply !m-0 !text-xs;
   }
 
   /* Steps container */
   .VPLocalSearchBox .excerpt .steps {
     background: transparent !important;
     border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    @apply !p-0 !m-0;
   }
 
   .VPLocalSearchBox .excerpt .steps>ol {
@@ -572,31 +537,27 @@ html.ai-resizing #VPContent {
   /* Lists inside excerpts */
   .VPLocalSearchBox .excerpt ol,
   .VPLocalSearchBox .excerpt ul {
-    padding-left: 14px !important;
-    margin: 1px 0 !important;
+    @apply !pl-3.5 !my-0.5 mx-0;
   }
 
   .VPLocalSearchBox .excerpt li {
-    margin: 0 !important;
-    font-size: 12px !important;
+    @apply !m-0 !text-xs;
     color: var(--vp-c-text-2) !important;
   }
 
   /* Code blocks in excerpts */
   .VPLocalSearchBox .excerpt pre {
-    display: none !important;
+    @apply !hidden;
   }
 
   /* Tables in excerpts */
   .VPLocalSearchBox .excerpt table {
-    font-size: 11px !important;
-    margin: 2px 0 !important;
-    width: auto !important;
+    @apply !text-xs !my-0.5 mx-0 !w-auto;
   }
 
   .VPLocalSearchBox .excerpt th,
   .VPLocalSearchBox .excerpt td {
-    padding: 1px 6px !important;
+    @apply !py-0.5 px-1.5;
     background: transparent !important;
     border-color: var(--vp-c-divider) !important;
   }
@@ -606,8 +567,7 @@ html.ai-resizing #VPContent {
     background: transparent !important;
     color: var(--vp-c-brand-1) !important;
     border-radius: 0 !important;
-    padding: 0 !important;
-    font-weight: 600 !important;
+    @apply !p-0 !font-semibold;
   }
 
   /* Search action buttons */
@@ -617,7 +577,7 @@ html.ai-resizing #VPContent {
     background: transparent !important;
     border: none !important;
     color: var(--vp-c-text-3) !important;
-    position: relative;
+    @apply relative;
   }
 
   .VPLocalSearchBox .clear-button .vpi-delete,
@@ -636,14 +596,12 @@ html.ai-resizing #VPContent {
   .VPLocalSearchBox .toggle-layout-button::after,
   .VPLocalSearchBox .clear-button::after {
     content: attr(title);
-    position: absolute;
+    @apply absolute text-xs py-1 px-2;
     top: calc(100% + 6px);
     left: 50%;
     transform: translateX(-50%);
     background: var(--vp-c-text-1);
     color: var(--vp-c-bg);
-    font-size: 11px;
-    padding: 4px 8px;
     border-radius: 6px;
     white-space: nowrap;
     pointer-events: none;
@@ -660,38 +618,23 @@ html.ai-resizing #VPContent {
 
   /* Footer shortcuts */
   .VPLocalSearchBox .search-keyboard-shortcuts {
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 14px !important;
-    padding: 10px 20px !important;
+    @apply !flex !items-center !flex-wrap !gap-3.5 !py-2.5 px-5;
     background: var(--vp-c-bg-soft) !important;
     border-top: 1px solid var(--vp-c-divider) !important;
   }
 
   .VPLocalSearchBox .search-keyboard-shortcuts span {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    font-size: 11px !important;
+    @apply !inline-flex !items-center !gap-1 !text-xs !leading-none;
     color: var(--vp-c-text-3) !important;
     white-space: nowrap !important;
-    line-height: 1 !important;
   }
 
   .VPLocalSearchBox kbd {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 20px !important;
-    height: 20px !important;
-    padding: 0 4px !important;
+    @apply !inline-flex !items-center !justify-center !min-w-5 !h-5 !py-0 px-1 !text-xs !leading-none;
     background: var(--vp-c-bg-soft) !important;
     border: 1px solid var(--vp-c-divider) !important;
     color: var(--vp-c-text-3) !important;
     border-radius: 4px !important;
-    font-size: 11px !important;
-    line-height: 1 !important;
   }
 }
 
@@ -702,9 +645,7 @@ html.ai-resizing #VPContent {
 
   /* ─── Tabs.vue ─── */
   .tab-line-btn {
-    padding: 0.3rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
+    @apply py-1 px-3 text-sm font-medium;
     white-space: nowrap;
     cursor: pointer;
     background: transparent;
@@ -733,23 +674,21 @@ html.ai-resizing #VPContent {
 
   .tab-item ul {
     list-style-type: disc;
-    padding-left: 1.25rem;
-    margin: 0.75rem 0;
+    @apply pl-5 my-3 mx-0;
   }
 
   .tab-item ol {
     list-style-type: decimal;
-    padding-left: 1.25rem;
-    margin: 0.75rem 0;
+    @apply pl-5 my-3 mx-0;
   }
 
   .tab-item li {
-    margin: 0.25rem 0;
+    @apply my-1 mx-0;
   }
 
   /* ─── DocBackground.vue ─── */
   .doc-bg {
-    position: fixed;
+    @apply fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
@@ -757,7 +696,7 @@ html.ai-resizing #VPContent {
   }
 
   .doc-bg .orb {
-    position: absolute;
+    @apply absolute;
     border-radius: 50%;
     will-change: transform;
   }
@@ -792,7 +731,7 @@ html.ai-resizing #VPContent {
 
   /* ─── HomeBackground.vue ─── */
   .mesh-bg {
-    position: absolute;
+    @apply absolute;
     inset: 0;
     overflow: hidden;
     pointer-events: none;
@@ -809,7 +748,7 @@ html.ai-resizing #VPContent {
 
   .mesh-bg::before {
     content: '';
-    position: absolute;
+    @apply absolute;
     inset: 0;
     background-image: radial-gradient(circle, rgba(0, 240, 196, 0.10) 1px, transparent 1px);
     background-size: 28px 28px;
@@ -817,7 +756,7 @@ html.ai-resizing #VPContent {
   }
 
   .mesh-bg .orb {
-    position: absolute;
+    @apply absolute;
     border-radius: 50%;
     aspect-ratio: 1;
     will-change: transform;
@@ -852,27 +791,21 @@ html.ai-resizing #VPContent {
 
   /* ─── LinkGraph.vue ─── */
   .link-graph-container {
-    position: relative;
-    width: 100%;
+    @apply relative w-full min-h-96;
     height: 75vh;
-    min-height: 480px;
     background: var(--vp-c-bg-soft);
     border-radius: 8px;
     overflow: hidden;
   }
 
   .link-graph-container canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+    @apply block w-full h-full;
   }
 
   .graph-tooltip {
-    position: absolute;
+    @apply absolute text-xs py-1 px-2;
     background: rgba(0, 0, 0, 0.75);
     color: #fff;
-    font-size: 12px;
-    padding: 4px 8px;
     border-radius: 4px;
     pointer-events: none;
     white-space: nowrap;
@@ -880,22 +813,18 @@ html.ai-resizing #VPContent {
   }
 
   .graph-controls {
-    position: absolute;
+    @apply absolute flex gap-1.5;
     top: 12px;
     right: 12px;
-    display: flex;
-    gap: 6px;
   }
 
   .graph-controls button {
     background: var(--vp-c-bg);
     border: 1px solid var(--vp-c-divider);
     border-radius: 4px;
-    padding: 4px 8px;
+    @apply py-1 px-2 text-base leading-none;
     cursor: pointer;
-    font-size: 16px;
     color: var(--vp-c-text-1);
-    line-height: 1;
   }
 
   .graph-controls button:hover {
@@ -903,42 +832,33 @@ html.ai-resizing #VPContent {
   }
 
   .graph-legend {
-    position: absolute;
     bottom: 12px;
     left: 12px;
-    display: flex;
-    flex-wrap: wrap;
     gap: 6px 14px;
-    @apply max-w-md;
+    @apply max-w-md absolute flex flex-wrap;
   }
 
   .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
+    @apply flex items-center gap-1.5 text-xs;
     color: var(--vp-c-text-2);
   }
 
   .legend-dot {
-    width: 8px;
-    height: 8px;
+    @apply w-2 h-2;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
   /* ─── HeroSection.vue ─── */
   .hero {
-    position: relative;
-    padding: 80px 24px 72px;
-    text-align: center;
+    @apply relative pt-20 px-6 pb-20 text-center;
     overflow: hidden;
     background: var(--vp-c-bg);
   }
 
   .hero::before {
     content: '';
-    position: absolute;
+    @apply absolute;
     inset: -56px;
     background-image: radial-gradient(circle, rgba(0, 184, 184, 0.08) 1.5px, transparent 1.5px);
     background-size: 28px 28px;
@@ -949,7 +869,7 @@ html.ai-resizing #VPContent {
 
   .hero::after {
     content: '';
-    position: absolute;
+    @apply absolute;
     inset: 0;
     background: radial-gradient(ellipse 90% 70% at 50% 45%, transparent 35%, var(--vp-c-bg) 88%);
     pointer-events: none;
@@ -957,29 +877,21 @@ html.ai-resizing #VPContent {
   }
 
   .hero-inner {
-    position: relative;
     z-index: 1;
-    @apply max-w-3xl;
-    margin: 0 auto;
+    @apply max-w-3xl relative mx-auto;
   }
 
   .hero-badge {
-    display: inline-block;
-    font-size: 13px;
+    @apply inline-block text-sm py-1 px-3.5 mb-6 font-medium;
     color: var(--vp-c-brand-1);
     background: var(--vp-c-brand-soft);
-    padding: 4px 14px;
     border-radius: 6px;
-    margin-bottom: 24px;
-    font-weight: 500;
   }
 
   .hero-h1 {
     font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 800;
-    line-height: 1.15;
+    @apply font-extrabold leading-tight mt-0 mx-0 mb-5;
     color: var(--vp-c-text-1);
-    margin: 0 0 20px;
     letter-spacing: -0.02em;
   }
 
@@ -988,15 +900,12 @@ html.ai-resizing #VPContent {
   }
 
   .hero-sub {
-    font-size: 16px;
+    @apply text-base leading-relaxed mt-0 mx-0 mb-9;
     color: var(--vp-c-text-2);
-    line-height: 1.7;
-    margin: 0 0 36px;
   }
 
   .hero-search-wrap {
-    display: flex;
-    @apply max-w-xl;
+    @apply max-w-xl flex;
     margin: 0 auto 24px;
     background: var(--vp-c-bg);
     border: 1px solid var(--vp-c-divider);
@@ -1014,8 +923,7 @@ html.ai-resizing #VPContent {
     flex: 1;
     border: none;
     outline: none;
-    padding: 14px 18px;
-    font-size: 15px;
+    @apply py-3.5 px-5 text-base;
     background: transparent;
     color: var(--vp-c-text-1);
   }
@@ -1024,28 +932,21 @@ html.ai-resizing #VPContent {
     background: var(--vp-c-brand-1);
     color: white;
     border: none;
-    padding: 0 24px;
-    font-size: 15px;
-    font-weight: 600;
+    @apply py-0 px-6 text-base font-semibold;
     cursor: pointer;
     white-space: nowrap;
   }
 
   .hero-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    @apply max-sm:flex-col max-sm:items-center;
+    @apply max-sm:flex-col max-sm:items-center flex gap-3 justify-center;
   }
 
   .hero-btn-primary {
     background: var(--vp-c-brand-1);
     color: white;
     border: none;
-    padding: 12px 28px;
+    @apply py-3 px-7 text-base font-semibold;
     border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
     cursor: pointer;
     transition: opacity .15s;
   }
@@ -1058,10 +959,8 @@ html.ai-resizing #VPContent {
     background: transparent;
     color: var(--vp-c-brand-1);
     border: 1px solid var(--vp-c-brand-1);
-    padding: 12px 28px;
+    @apply py-3 px-7 text-base font-semibold;
     border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
     cursor: pointer;
     transition: background .15s;
   }
@@ -1072,70 +971,59 @@ html.ai-resizing #VPContent {
 
   /* ─── FindWaysSection.vue ─── */
   .quick-topics {
-    padding: 64px 24px;
+    @apply py-16 px-6;
     border-top: 1px solid var(--vp-c-divider);
     border-bottom: 1px solid var(--vp-c-divider);
   }
 
   .qt-inner {
-    @apply max-w-4xl;
-    margin: 0 auto;
+    @apply max-w-4xl mx-auto;
   }
 
   .qt-title {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
+    @apply text-center text-2xl font-bold mt-0 mx-0 mb-10;
     color: var(--vp-c-text-1);
-    margin: 0 0 40px;
   }
 
   .qt-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    @apply max-md:grid-cols-1 max-md:gap-8;
+    @apply max-md:grid-cols-1 max-md:gap-8 grid-cols-3 gap-0;
   }
 
   .qt-col {
-    padding: 0 32px;
+    @apply py-0 px-8;
     border-right: 1px solid var(--vp-c-divider);
   }
 
   .qt-col:first-child {
-    padding-left: 0;
+    @apply pl-0;
   }
 
   .qt-col:last-child {
-    padding-right: 0;
+    @apply pr-0;
     border-right: none;
   }
 
   .qt-cat {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
+    @apply block text-xs font-bold mb-4;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--vp-c-text-3);
-    margin-bottom: 16px;
   }
 
   .qt-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 16px;
+    @apply p-0 mt-0 mx-0 mb-4;
   }
 
   .qt-list li {
-    padding: 5px 0;
+    @apply py-1.5 px-0;
   }
 
   .qt-list a {
-    font-size: 0.9rem;
+    @apply text-sm leading-normal;
     color: var(--vp-c-text-2);
     text-decoration: none;
-    line-height: 1.5;
     transition: color 0.15s;
   }
 
@@ -1144,8 +1032,7 @@ html.ai-resizing #VPContent {
   }
 
   .qt-more {
-    font-size: 0.85rem;
-    font-weight: 600;
+    @apply text-sm font-semibold;
     color: var(--vp-c-brand-1);
     text-decoration: none;
   }
@@ -1156,68 +1043,50 @@ html.ai-resizing #VPContent {
 
   /* ─── AIFeatureSection.vue ─── */
   .ai-feature {
-    padding: 80px 24px;
+    @apply py-20 px-6;
     background: var(--vp-c-bg-soft);
   }
 
   .ai-feature-inner {
-    @apply max-w-5xl max-md:grid-cols-1;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+    @apply max-w-5xl max-md:grid-cols-1 mx-auto grid-cols-2 gap-12 items-center;
   }
 
   .af-label {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
+    @apply inline-block text-sm font-semibold py-1 px-3 mb-4;
     color: var(--vp-c-brand-1);
     background: var(--vp-c-brand-soft);
-    padding: 4px 12px;
     border-radius: 6px;
-    margin-bottom: 16px;
   }
 
   .af-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    line-height: 1.3;
+    @apply text-3xl font-extrabold leading-tight mt-0 mx-0 mb-5;
     color: var(--vp-c-text-1);
-    margin: 0 0 20px;
   }
 
   .af-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 28px;
+    @apply p-0 mt-0 mx-0 mb-7;
   }
 
   .af-list li {
-    padding: 6px 0 6px 24px;
-    position: relative;
+    @apply pt-1.5 pr-0 pb-1.5 pl-6 relative text-base leading-relaxed;
     color: var(--vp-c-text-2);
-    font-size: 15px;
-    line-height: 1.6;
   }
 
   .af-list li::before {
     content: '✓';
-    position: absolute;
+    @apply absolute font-bold;
     left: 0;
     color: var(--vp-c-brand-1);
-    font-weight: 700;
   }
 
   .af-btn {
     background: var(--vp-c-brand-1);
     color: white;
     border: none;
-    padding: 12px 28px;
+    @apply py-3 px-7 text-base font-semibold;
     border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
     cursor: pointer;
     transition: opacity 0.15s;
   }
@@ -1234,70 +1103,56 @@ html.ai-resizing #VPContent {
   .chat-window {
     background: var(--lb-ai-bg);
     border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    @apply p-5 flex flex-col gap-3;
   }
 
   .chat-bubble {
     max-width: 88%;
-    padding: 10px 14px;
+    @apply py-2.5 px-3.5 text-sm leading-relaxed;
     border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.6;
   }
 
   .chat-bubble--user {
-    align-self: flex-end;
+    @apply self-end;
     background: var(--lb-ai-bubble-user-bg);
     color: var(--lb-ai-bubble-user-fg);
   }
 
   .chat-bubble--ai {
-    align-self: flex-start;
+    @apply self-start;
     background: var(--lb-ai-bubble-ai-bg);
     color: var(--lb-ai-bubble-ai-fg);
   }
 
   /* ─── FooterCTA.vue ─── */
   .footer-cta {
-    padding: 80px 24px;
-    text-align: center;
+    @apply py-20 px-6 text-center;
     background: var(--vp-c-bg-soft);
   }
 
   .footer-cta-inner {
-    @apply max-w-xl;
-    margin: 0 auto;
+    @apply max-w-xl mx-auto;
   }
 
   .fc-title {
     font-size: clamp(1.5rem, 4vw, 2.1rem);
-    font-weight: 800;
+    @apply font-extrabold leading-tight mt-0 mx-0 mb-4;
     color: var(--vp-c-text-1);
-    line-height: 1.3;
-    margin: 0 0 16px;
   }
 
   .fc-sub {
-    font-size: 15px;
+    @apply text-base leading-relaxed mt-0 mx-0 mb-8;
     color: var(--vp-c-text-2);
-    line-height: 1.7;
-    margin: 0 0 32px;
   }
 
   .fc-btn {
     background: var(--vp-c-brand-1);
     color: white;
     border: none;
-    padding: 14px 36px;
     border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
     cursor: pointer;
     transition: opacity 0.15s;
-    @apply max-sm:w-full;
+    @apply max-sm:w-full py-3.5 px-9 text-base font-semibold;
   }
 
   .fc-btn:hover {
@@ -1311,34 +1166,25 @@ html.ai-resizing #VPContent {
 
   /* ─── TopicsGrid.vue ─── */
   .topics {
-    padding: 80px 24px;
+    @apply py-20 px-6;
   }
 
   .topics-inner {
-    @apply max-w-5xl;
-    margin: 0 auto;
+    @apply max-w-5xl mx-auto;
   }
 
   .topics-title {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 700;
+    @apply text-center text-3xl font-bold mt-0 mx-0 mb-10;
     color: var(--vp-c-text-1);
-    margin: 0 0 40px;
   }
 
   .topics-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    @apply max-md:grid-cols-2 max-sm:grid-cols-1;
+    @apply max-md:grid-cols-2 max-sm:grid-cols-1 grid-cols-3 gap-4;
   }
 
   .topic-card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 24px 20px;
+    @apply flex flex-col gap-2 py-6 px-5;
     border-radius: 12px;
     border: 1px solid var(--vp-c-divider);
     background: var(--vp-c-bg);
@@ -1353,34 +1199,26 @@ html.ai-resizing #VPContent {
   }
 
   .topic-icon-wrap {
-    width: 44px;
-    height: 44px;
+    @apply w-11 h-11 flex items-center justify-center;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     color: var(--vp-c-text-3);
   }
 
   .topic-name {
-    font-size: 1rem;
-    font-weight: 700;
+    @apply text-base font-bold m-0;
     color: var(--vp-c-text-1);
-    margin: 0;
   }
 
   .topic-count {
-    font-size: 0.8rem;
+    @apply text-xs;
     color: var(--vp-c-text-3);
     margin: 0 0 auto;
   }
 
   .topic-link {
-    font-size: 0.85rem;
+    @apply text-sm font-medium mt-1;
     color: var(--vp-c-text-3);
-    font-weight: 500;
-    margin-top: 4px;
   }
 
   .topic-card:hover .topic-link {
@@ -1388,17 +1226,12 @@ html.ai-resizing #VPContent {
   }
 
   .featured-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 28px 32px;
     border-radius: 18px;
     border: 1px solid var(--vp-c-divider);
     background: var(--vp-c-bg);
     text-decoration: none;
-    margin-bottom: 16px;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    @apply max-md:p-5 max-sm:flex-col max-sm:items-start;
+    @apply max-md:p-5 max-sm:flex-col max-sm:items-start flex items-center gap-5 py-7 px-8 mb-4;
   }
 
   .featured-card:hover {
@@ -1408,54 +1241,40 @@ html.ai-resizing #VPContent {
   }
 
   .featured-icon-wrap {
-    width: 68px;
-    height: 68px;
+    @apply w-16 h-16 flex items-center justify-center;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     color: var(--vp-c-text-3);
   }
 
   .featured-body {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    @apply flex flex-col gap-1;
   }
 
   .featured-badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
+    @apply inline-block text-xs font-semibold py-0.5 px-2 w-fit;
     color: var(--lb-c-warning);
     background: color-mix(in srgb, var(--lb-c-warning) 10%, transparent);
     border-radius: 4px;
-    padding: 2px 8px;
-    width: fit-content;
     letter-spacing: 0.03em;
   }
 
   .featured-name {
-    font-size: 1.3rem;
-    font-weight: 700;
+    @apply text-xl font-bold m-0;
     color: var(--vp-c-text-1);
-    margin: 0;
   }
 
   .featured-count {
-    font-size: 0.85rem;
+    @apply text-sm m-0;
     color: var(--vp-c-text-2);
-    margin: 0;
   }
 
   .featured-arrow {
-    font-size: 1.4rem;
     color: var(--vp-c-text-3);
     flex-shrink: 0;
     transition: color 0.2s;
-    @apply max-sm:hidden;
+    @apply max-sm:hidden text-2xl;
   }
 
   .featured-card:hover .featured-arrow {
@@ -1464,17 +1283,11 @@ html.ai-resizing #VPContent {
 
   .small-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    @apply max-md:grid-cols-2;
+    @apply max-md:grid-cols-2 grid-cols-4 gap-3;
   }
 
   .small-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 18px 16px;
+    @apply flex flex-col items-start gap-1.5 py-5 px-4;
     border-radius: 12px;
     border: 1px solid var(--vp-c-divider);
     background: var(--vp-c-bg);
@@ -1489,29 +1302,23 @@ html.ai-resizing #VPContent {
   }
 
   .small-icon-wrap {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply w-9 h-9 flex items-center justify-center;
     color: var(--vp-c-text-3);
   }
 
   .small-name {
-    font-size: 0.88rem;
-    font-weight: 600;
+    @apply text-sm font-semibold leading-tight;
     color: var(--vp-c-text-1);
-    line-height: 1.3;
   }
 
   .small-count {
-    font-size: 0.75rem;
+    @apply text-xs;
     color: var(--vp-c-text-3);
   }
 
   /* ─── HomeNavbar.vue（全部使用 token，无 .dark 硬编码覆盖）─── */
   .hn-root {
-    position: sticky;
+    @apply sticky;
     top: 0;
     z-index: 100;
     background: var(--vp-c-bg);
@@ -1519,71 +1326,48 @@ html.ai-resizing #VPContent {
   }
 
   .hn-top-bar {
-    height: 64px;
-    display: flex;
-    align-items: center;
+    @apply h-16 flex items-center;
   }
 
   .hn-container {
-    width: 100%;
-    @apply max-w-7xl;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    @apply max-w-7xl w-full mx-auto py-0 px-6 flex items-center justify-between gap-4;
   }
 
   .hn-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @apply flex items-center gap-2;
     text-decoration: none;
     flex-shrink: 0;
   }
 
   .hn-logo-icon {
-    width: 24px;
-    height: 24px;
+    @apply w-6 h-6;
     object-fit: contain;
   }
 
   .hn-logo-text {
-    font-size: 17px;
-    font-weight: 700;
+    @apply text-lg font-bold leading-none;
     color: var(--vp-c-text-1);
     letter-spacing: -0.5px;
     white-space: nowrap;
-    line-height: 1;
   }
 
   .hn-logo-docs {
-    font-weight: 400;
+    @apply font-normal;
     color: var(--vp-c-text-2);
   }
 
   .hn-center {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @apply flex items-center gap-1.5;
     flex-shrink: 0;
   }
 
   .hn-search-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 33px;
-    min-width: 220px;
-    padding: 0 13px;
+    @apply flex items-center gap-2 h-8 min-w-56 py-0 px-3.5 text-sm font-medium;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
     border-radius: 6px;
     cursor: pointer;
     color: var(--vp-c-text-3);
-    font-size: 13px;
-    font-weight: 500;
     white-space: nowrap;
     transition: border-color 0.15s;
   }
@@ -1593,39 +1377,25 @@ html.ai-resizing #VPContent {
   }
 
   .hn-search-label {
-    font-size: 13px;
-    @apply max-md:hidden;
+    @apply max-md:hidden text-sm;
   }
 
   .hn-kbd {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 17px;
-    min-width: 18px;
-    padding: 0 4px;
+    @apply inline-flex items-center justify-center h-4 min-w-5 py-0 px-1 text-xs font-medium;
     background: var(--vp-c-default-soft);
     border-radius: 5px;
     font-family: 'Geist Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
     color: var(--vp-c-text-3);
     letter-spacing: 0.2px;
   }
 
   .hn-askai-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    height: 33px;
-    padding: 0 13px;
+    @apply flex items-center gap-1.5 h-8 py-0 px-3.5 text-sm font-medium;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
     border-radius: 6px;
     cursor: pointer;
     color: var(--vp-c-text-1);
-    font-size: 13px;
-    font-weight: 500;
     white-space: nowrap;
     transition: border-color 0.15s;
   }
@@ -1639,17 +1409,12 @@ html.ai-resizing #VPContent {
   }
 
   .hn-icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
+    @apply flex items-center justify-center w-8 h-8 p-0;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
     border-radius: 6px;
     cursor: pointer;
     color: var(--vp-c-text-2);
-    padding: 0;
     transition: border-color 0.15s;
   }
 
@@ -1664,32 +1429,22 @@ html.ai-resizing #VPContent {
   }
 
   .hn-icon {
-    width: 14px;
-    height: 14px;
+    @apply w-3.5 h-3.5;
     flex-shrink: 0;
   }
 
   .hn-actions {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @apply flex items-center gap-1.5;
     flex-shrink: 0;
   }
 
   .hn-dev-platform {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    height: 32px;
-    padding: 0 10px;
     border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
     color: var(--vp-c-text-2);
     text-decoration: none;
     white-space: nowrap;
     transition: color 0.15s, background 0.15s;
-    @apply max-md:hidden;
+    @apply max-md:hidden flex items-center gap-1 h-8 py-0 px-2.5 text-sm font-medium;
   }
 
   .hn-dev-platform:hover {
@@ -1698,17 +1453,12 @@ html.ai-resizing #VPContent {
   }
 
   .hn-login {
-    height: 32px;
-    padding: 0 14px;
+    @apply h-8 py-0 px-3.5 text-sm font-medium flex items-center;
     border-radius: 6px;
     border: none;
     background: transparent;
     color: var(--vp-c-text-2);
-    font-size: 13px;
-    font-weight: 500;
     text-decoration: none;
-    display: flex;
-    align-items: center;
     transition: color 0.15s;
   }
 
@@ -1717,17 +1467,12 @@ html.ai-resizing #VPContent {
   }
 
   .hn-register {
-    height: 33px;
-    padding: 0 17px;
+    @apply h-8 py-0 px-4 text-sm font-medium flex items-center;
     border-radius: 6px;
     border: 1px solid var(--lb-cta-border);
     background: var(--lb-cta-bg);
     color: var(--lb-cta-fg);
-    font-size: 13px;
-    font-weight: 500;
     text-decoration: none;
-    display: flex;
-    align-items: center;
     white-space: nowrap;
     transition: opacity 0.15s;
   }
@@ -1737,38 +1482,24 @@ html.ai-resizing #VPContent {
   }
 
   .hn-bottom-bar {
-    height: 48px;
-    @apply flex items-center max-md:hidden;
+    @apply flex items-center max-md:hidden h-12;
   }
 
   .hn-bottom-inner {
-    width: 100%;
-    @apply max-w-screen-2xl max-lg:px-6 px-3;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @apply max-w-screen-2xl max-lg:px-6 px-3 w-full h-full flex items-center justify-between;
   }
 
   .hn-tabs {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    @apply max-lg:gap-0 max-lg:overflow-x-auto;
+    @apply max-lg:gap-0 max-lg:overflow-x-auto flex items-center h-full;
   }
 
   .hn-tab {
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    height: 48px;
-    font-size: 13px;
+    @apply flex items-center py-0 px-3 h-12 text-sm font-normal;
     color: var(--vp-c-text-2);
     text-decoration: none;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     transition: color 0.15s;
-    font-weight: 400;
     box-sizing: border-box;
   }
 
@@ -1779,24 +1510,16 @@ html.ai-resizing #VPContent {
   .hn-tab--active {
     color: var(--vp-c-text-1);
     border-bottom-color: var(--vp-c-text-1);
-    font-weight: 500;
+    @apply font-medium;
   }
 
   .hn-extra-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @apply flex items-center gap-1;
   }
 
   .hn-extra-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    height: 28px;
-    padding: 0 8px;
+    @apply flex items-center gap-1 h-7 py-0 px-2 text-sm font-medium;
     border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
     color: var(--vp-c-text-2);
     text-decoration: none;
     transition: background 0.15s, color 0.15s;
@@ -1809,40 +1532,31 @@ html.ai-resizing #VPContent {
 
   /* ─── HomeCards_A.vue ─── */
   .home-wrap {
-    @apply max-w-6xl;
-    margin: 0 auto;
-    padding: 48px 24px 64px;
+    @apply max-w-6xl mx-auto pt-12 px-6 pb-16;
   }
 
   .home-hero {
-    text-align: center;
-    margin-bottom: 56px;
+    @apply text-center mb-14;
   }
 
   .home-hero .hero-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    @apply text-4xl font-bold mt-0 mx-0 mb-4;
     color: var(--vp-c-text-1);
     letter-spacing: -0.02em;
-    margin: 0 0 16px;
   }
 
   .home-hero .hero-sub {
-    font-size: 1.125rem;
+    @apply text-lg m-0;
     color: var(--vp-c-text-2);
-    margin: 0;
   }
 
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    @apply max-lg:grid-cols-2 max-sm:grid-cols-1;
+    @apply max-lg:grid-cols-2 max-sm:grid-cols-1 grid-cols-3 gap-5;
   }
 
   .card {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
     border-radius: 12px;
     border: 1px solid var(--vp-c-divider);
     background: var(--vp-c-bg);
@@ -1858,191 +1572,140 @@ html.ai-resizing #VPContent {
   }
 
   .card-accent {
-    height: 4px;
-    width: 100%;
+    @apply h-1 w-full;
     flex-shrink: 0;
   }
 
   .card-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    @apply p-6 flex flex-col gap-2.5;
     flex: 1;
   }
 
   .card-icon-wrap {
-    width: 44px;
-    height: 44px;
+    @apply w-11 h-11 flex items-center justify-center;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
   }
 
   .card-icon {
-    width: 22px;
-    height: 22px;
+    @apply w-6 h-6;
   }
 
   .card-title {
-    font-size: 1rem;
-    font-weight: 600;
+    @apply text-base font-semibold m-0;
     color: var(--vp-c-text-1);
-    margin: 0;
   }
 
   .card-intro {
-    font-size: 0.875rem;
+    @apply text-sm leading-relaxed m-0;
     color: var(--vp-c-text-2);
-    line-height: 1.6;
-    margin: 0;
     flex: 1;
   }
 
   .card-link {
-    font-size: 0.8125rem;
+    @apply text-sm font-medium mt-1;
     color: var(--vp-c-brand-1);
-    font-weight: 500;
-    margin-top: 4px;
   }
 
   /* ─── HomeCards_B.vue ─── */
   .home-b {
-    @apply max-w-6xl;
-    margin: 0 auto;
-    padding: 0 24px 80px;
+    @apply max-w-6xl mx-auto pt-0 px-6 pb-20;
   }
 
   .home-b .hero {
-    padding: 72px 0 56px;
+    @apply pt-20 px-0 pb-14 mb-14 text-left;
     border-bottom: 1px solid var(--vp-c-divider);
-    margin-bottom: 56px;
-    text-align: left;
     overflow: visible;
     background: transparent;
   }
 
   .home-b .hero::before,
   .home-b .hero::after {
-    display: none;
+    @apply hidden;
   }
 
   .home-b .hero-inner {
-    @apply max-w-xl;
-    position: static;
+    @apply max-w-xl static;
     z-index: auto;
   }
 
   .home-b .hero-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
+    @apply inline-block text-xs font-semibold py-1 px-3 mb-5;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--vp-c-brand-1);
     background: var(--vp-c-brand-soft);
-    padding: 4px 12px;
     border-radius: 100px;
-    margin-bottom: 20px;
   }
 
   .home-b .hero-title {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.15;
+    @apply text-5xl font-extrabold leading-tight mt-0 mx-0 mb-5;
     letter-spacing: -0.03em;
     color: var(--vp-c-text-1);
-    margin: 0 0 20px;
   }
 
   .hero-desc {
-    font-size: 1.0625rem;
+    @apply text-lg leading-relaxed mt-0 mx-0 mb-9;
     color: var(--vp-c-text-2);
-    line-height: 1.7;
-    margin: 0 0 36px;
   }
 
   .hero-stats {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+    @apply flex items-center gap-6;
   }
 
   .home-b .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    @apply flex flex-col gap-0.5;
   }
 
   .home-b .stat-num {
-    font-size: 1.5rem;
-    font-weight: 700;
+    @apply text-2xl font-bold leading-none;
     color: var(--vp-c-text-1);
-    line-height: 1;
   }
 
   .home-b .stat-label {
-    font-size: 0.8125rem;
+    @apply text-sm;
     color: var(--vp-c-text-3);
   }
 
   .stat-divider {
-    width: 1px;
-    height: 32px;
+    @apply w-0.5 h-8;
     background: var(--vp-c-divider);
   }
 
   .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
+    @apply flex flex-col gap-12;
   }
 
   .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    @apply flex items-center gap-3 mb-4;
   }
 
   .section-line {
-    display: block;
-    width: 3px;
-    height: 18px;
+    @apply block w-1 h-5;
     background: var(--vp-c-brand-1);
     border-radius: 2px;
   }
 
   .section-label {
-    font-size: 0.875rem;
-    font-weight: 600;
+    @apply text-sm font-semibold m-0;
     color: var(--vp-c-text-2);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    margin: 0;
   }
 
   .section-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
     border: 1px solid var(--vp-c-divider);
     border-radius: 12px;
     overflow: hidden;
     background: var(--vp-c-divider);
-    @apply max-md:grid-cols-1;
+    display: grid;
+    @apply max-md:grid-cols-1 grid-cols-2 gap-0.5;
   }
 
   .item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 24px;
+    @apply flex items-center justify-between py-5 px-6 gap-4;
     background: var(--vp-c-bg);
     text-decoration: none;
-    gap: 16px;
     transition: background 0.15s;
   }
 
@@ -2051,39 +1714,30 @@ html.ai-resizing #VPContent {
   }
 
   .item-left {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    @apply flex items-start gap-4 min-w-0;
     flex: 1;
-    min-width: 0;
   }
 
   .item-num {
-    font-size: 0.75rem;
-    font-weight: 700;
+    @apply text-xs font-bold pt-0.5;
     color: var(--vp-c-text-3);
     font-variant-numeric: tabular-nums;
-    padding-top: 2px;
     flex-shrink: 0;
     font-family: monospace;
   }
 
   .item-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
+    @apply text-base font-semibold mb-1;
     color: var(--vp-c-text-1);
-    margin-bottom: 4px;
   }
 
   .item-intro {
-    font-size: 0.8125rem;
+    @apply text-sm leading-normal;
     color: var(--vp-c-text-2);
-    line-height: 1.5;
   }
 
   .item-arrow {
-    width: 16px;
-    height: 16px;
+    @apply w-4 h-4;
     color: var(--vp-c-text-3);
     flex-shrink: 0;
     transition: color 0.15s, transform 0.15s;
@@ -2102,43 +1756,36 @@ html.ai-resizing #VPContent {
   .banner {
     background: var(--vp-c-bg-soft);
     border-bottom: 1px solid var(--vp-c-divider);
-    padding: 64px 24px 56px;
+    @apply pt-16 px-6 pb-14;
   }
 
   .banner-inner {
-    @apply max-w-6xl;
-    margin: 0 auto;
+    @apply max-w-6xl mx-auto;
   }
 
   .banner-title {
-    font-size: 2.25rem;
-    font-weight: 700;
+    @apply text-4xl font-bold mt-0 mx-0 mb-3;
     color: var(--vp-c-text-1);
     letter-spacing: -0.025em;
-    margin: 0 0 12px;
   }
 
   .banner-sub {
-    font-size: 1rem;
+    @apply text-base m-0;
     color: var(--vp-c-text-2);
-    margin: 0;
   }
 
   .home-c .content {
-    @apply max-w-6xl;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
+    @apply max-w-6xl mx-auto pt-10 px-6 pb-20;
   }
 
   .home-c .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: var(--gap);
-    @apply max-lg:grid-cols-2 max-sm:grid-cols-1;
+    display: grid;
+    @apply max-lg:grid-cols-2 max-sm:grid-cols-1 grid-cols-3;
   }
 
   .tile {
-    display: block;
+    @apply block;
     text-decoration: none;
     border-radius: 10px;
     border: 1px solid var(--vp-c-divider);
@@ -2152,66 +1799,49 @@ html.ai-resizing #VPContent {
   }
 
   .tile-inner {
-    padding: 22px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 100%;
+    @apply p-6 flex flex-col gap-2 h-full;
   }
 
   .tile-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 2px;
+    @apply flex items-center gap-2 mb-0.5;
   }
 
   .tile-dot {
-    width: 8px;
-    height: 8px;
+    @apply w-2 h-2;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
   .tile-category {
-    font-size: 0.75rem;
-    font-weight: 500;
+    @apply text-xs font-medium;
     color: var(--vp-c-text-3);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   .tile-title {
-    font-size: 1rem;
-    font-weight: 600;
+    @apply text-base font-semibold leading-snug;
     color: var(--vp-c-text-1);
-    line-height: 1.4;
   }
 
   .tile-intro {
-    font-size: 0.875rem;
+    @apply text-sm leading-relaxed;
     color: var(--vp-c-text-2);
-    line-height: 1.6;
     flex: 1;
   }
 
   .tile-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-    padding-top: 12px;
+    @apply flex items-center justify-between mt-2 pt-3;
     border-top: 1px solid var(--vp-c-divider);
   }
 
   .tile-count {
-    font-size: 0.8125rem;
+    @apply text-sm;
     color: var(--vp-c-text-3);
   }
 
   .tile-arrow {
-    width: 16px;
-    height: 16px;
+    @apply w-4 h-4;
     color: var(--vp-c-text-3);
     transition: color 0.15s, transform 0.15s;
   }
@@ -2242,39 +1872,31 @@ html.ai-resizing #VPContent {
   }
 
   .home .hero {
-    position: relative;
+    @apply relative flex items-center min-h-96 mx-auto text-left;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    min-height: 480px;
     padding: var(--section-gap) var(--gutter);
     max-width: var(--max-w);
-    margin: 0 auto;
-    text-align: left;
     background: transparent;
   }
 
   .home .hero::before,
   .home .hero::after {
-    display: none;
+    @apply hidden;
   }
 
   .hero-text {
-    position: relative;
     z-index: 1;
-    @apply max-w-xl max-md:max-w-full;
+    @apply max-w-xl max-md:max-w-full relative;
   }
 
   .feat {
-    display: grid;
     grid-template-columns: 1fr 38%;
-    align-items: center;
     gap: clamp(32px, 5vw, 96px);
     padding: var(--section-gap) var(--gutter);
     max-width: var(--max-w);
-    margin: 0 auto;
     border-top: 1px solid var(--vp-c-divider);
-    @apply max-md:grid-cols-1;
+    display: grid;
+    @apply max-md:grid-cols-1 items-center mx-auto;
   }
 
   .feat--reverse {
@@ -2291,20 +1913,16 @@ html.ai-resizing #VPContent {
   }
 
   .hero-eyebrow {
-    font-size: 0.75rem;
-    font-weight: 600;
+    @apply text-xs font-semibold mt-0 mx-0 mb-5;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--brand);
-    margin: 0 0 20px;
   }
 
   .home .hero-h1 {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.1;
+    @apply font-extrabold leading-none mt-0 mx-0 mb-5;
     letter-spacing: -0.04em;
-    margin: 0 0 20px;
   }
 
   .shimmer-text {
@@ -2322,68 +1940,53 @@ html.ai-resizing #VPContent {
     -webkit-text-fill-color: transparent;
     color: transparent;
     animation: shimmer-sweep 4s ease-in-out infinite;
-    display: inline-block;
+    @apply inline-block;
     padding-bottom: 0.18em;
   }
 
   .stats-band {
     border-top: 1px solid var(--vp-c-divider);
     border-bottom: 1px solid var(--vp-c-divider);
-    padding: 28px 0;
+    @apply py-7 px-0;
   }
 
   .stats-inner {
-    @apply max-w-5xl max-sm:grid-cols-2 max-sm:gap-y-5 max-sm:gap-x-0;
-    margin: 0 auto;
-    padding: 0 32px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    @apply max-w-5xl max-sm:grid-cols-2 max-sm:gap-y-5 max-sm:gap-x-0 mx-auto py-0 px-8 grid-cols-4 gap-0;
   }
 
   .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding: 0 24px;
-    position: relative;
+    @apply flex flex-col items-center gap-1.5 py-0 px-6 relative;
   }
 
   .stat-item+.stat-item::before {
     content: '';
-    position: absolute;
+    @apply absolute h-4/5 w-0.5;
     left: 0;
     top: 10%;
-    height: 80%;
-    width: 1px;
     background: var(--vp-c-divider);
   }
 
   .stat-value {
     font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 700;
+    @apply font-bold leading-none;
     letter-spacing: -0.03em;
     color: var(--vp-c-text-1);
-    line-height: 1;
   }
 
   .home .stat-label {
-    font-size: 0.75rem;
+    @apply text-xs font-medium;
     color: var(--vp-c-text-3);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    font-weight: 500;
   }
 
   .stat-markets {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @apply flex items-center gap-1.5;
   }
 
   .flag-icon {
-    display: inline-flex;
+    @apply inline-flex;
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.25);
@@ -2392,33 +1995,23 @@ html.ai-resizing #VPContent {
   }
 
   .flag-icon svg {
-    display: block;
-    width: 28px;
-    height: 19px;
+    @apply block w-7 h-5;
   }
 
   .home .hero-sub {
     font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
     color: var(--vp-c-text-2);
-    line-height: 1.75;
-    margin: 0 0 36px;
+    @apply leading-relaxed mt-0 mx-0 mb-9;
   }
 
   .hero-cta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    @apply flex items-center gap-3 flex-wrap;
   }
 
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    padding: 11px 24px;
+    @apply inline-flex items-center py-3 px-6 text-base font-semibold;
     background: var(--brand);
     color: white;
-    font-size: 0.9375rem;
-    font-weight: 600;
     border-radius: 8px;
     text-decoration: none;
     transition: opacity 0.15s, transform 0.15s;
@@ -2430,13 +2023,9 @@ html.ai-resizing #VPContent {
   }
 
   .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    padding: 11px 24px;
+    @apply inline-flex items-center py-3 px-6 text-base font-medium;
     border: 1px solid var(--vp-c-divider);
     color: var(--vp-c-text-1);
-    font-size: 0.9375rem;
-    font-weight: 500;
     border-radius: 8px;
     text-decoration: none;
     transition: border-color 0.15s, background 0.15s;
@@ -2449,52 +2038,39 @@ html.ai-resizing #VPContent {
 
   .hero-visual svg,
   .feat-visual svg {
-    width: 100%;
-    height: auto;
-    display: block;
+    @apply w-full h-auto block;
   }
 
   .feat-tag {
-    display: inline-block;
-    font-size: 0.6875rem;
-    font-weight: 700;
+    @apply inline-block text-xs font-bold py-1 px-2.5 mb-4;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--brand);
     background: var(--brand-soft);
-    padding: 3px 10px;
     border-radius: 100px;
-    margin-bottom: 16px;
   }
 
   .feat-h2 {
     font-size: clamp(1.375rem, 2.5vw, 1.875rem);
-    font-weight: 700;
+    @apply font-bold leading-tight mt-0 mx-0 mb-3.5;
     letter-spacing: -0.025em;
-    line-height: 1.25;
     color: var(--vp-c-text-1);
-    margin: 0 0 14px;
   }
 
   .feat-bar {
-    width: 28px;
-    height: 3px;
+    @apply w-7 h-1 mb-5;
     background: var(--brand);
     border-radius: 2px;
-    margin-bottom: 18px;
   }
 
   .feat-desc {
-    font-size: 1rem;
+    @apply text-base leading-relaxed mt-0 mx-0 mb-6;
     color: var(--vp-c-text-2);
-    line-height: 1.75;
-    margin: 0 0 24px;
   }
 
   .feat-links {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    @apply m-0 p-0;
   }
 
   .feat-links li {
@@ -2506,12 +2082,7 @@ html.ai-resizing #VPContent {
   }
 
   .feat-links a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-    font-size: 0.9375rem;
-    font-weight: 500;
+    @apply flex items-center justify-between py-3 px-0 text-base font-medium;
     color: var(--vp-c-text-1);
     text-decoration: none;
     transition: color 0.15s;
@@ -2522,7 +2093,7 @@ html.ai-resizing #VPContent {
     color: var(--vp-c-text-3);
     transition: color 0.15s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     flex-shrink: 0;
-    margin-left: 8px;
+    @apply ml-2;
   }
 
   .feat-links a:hover {
@@ -2535,21 +2106,15 @@ html.ai-resizing #VPContent {
   }
 
   .hero-onboard {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
     background: var(--brand-soft);
     border: 1px solid var(--vp-c-brand-soft);
     border-radius: 10px;
-    flex-wrap: wrap;
-    @apply max-md:flex-col max-md:items-start max-md:gap-2.5;
+    @apply max-md:flex-col max-md:items-start max-md:gap-2.5 inline-flex items-center gap-4 py-3 px-4 flex-wrap;
   }
 
   .onboard-label {
-    font-size: 0.875rem;
+    @apply text-sm font-medium;
     color: var(--vp-c-text-2);
-    font-weight: 500;
   }
 
   .tasks {
@@ -2560,48 +2125,38 @@ html.ai-resizing #VPContent {
 
   .tasks-inner {
     max-width: var(--max-w);
-    margin: 0 auto;
+    @apply mx-auto;
     padding: clamp(36px, 5vw, 64px) var(--gutter);
   }
 
   .tasks-hd {
-    margin-bottom: 24px;
+    @apply mb-6;
   }
 
   .tasks-label {
-    font-size: 0.6875rem;
-    font-weight: 700;
+    @apply text-xs font-bold;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--brand);
   }
 
   .tasks-sub {
-    font-size: 1rem;
+    @apply text-base mt-2 mx-0 mb-0;
     color: var(--vp-c-text-2);
-    margin: 8px 0 0;
   }
 
   .tasks-grid {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
     border: 1px solid var(--vp-c-divider);
     border-radius: 12px;
     overflow: hidden;
     background: var(--vp-c-divider);
-    @apply max-md:grid-cols-1;
+    display: grid;
+    @apply max-md:grid-cols-1 m-0 p-0 grid-cols-2 gap-0.5;
   }
 
   .task-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 20px;
+    @apply flex items-center justify-between gap-3 py-4 px-5;
     background: var(--vp-c-bg);
     text-decoration: none;
     transition: background 0.15s;
@@ -2612,9 +2167,8 @@ html.ai-resizing #VPContent {
   }
 
   .task-q {
-    font-size: 0.9375rem;
+    @apply text-base font-medium;
     color: var(--vp-c-text-1);
-    font-weight: 500;
     transition: color 0.15s;
   }
 
@@ -2623,8 +2177,7 @@ html.ai-resizing #VPContent {
   }
 
   .task-arrow {
-    width: 16px;
-    height: 16px;
+    @apply w-4 h-4;
     color: var(--vp-c-text-3);
     flex-shrink: 0;
     transition: color 0.15s, transform 0.15s;
@@ -2670,34 +2223,32 @@ html.ai-resizing #VPContent {
   /* ─── Responsive ─── */
   @media (max-width: 1024px) {
     .home-hero .hero-title {
-      font-size: 2rem;
+      @apply text-3xl;
     }
   }
 
   @media (max-width: 768px) {
     .qt-col {
-      padding: 0;
+      @apply p-0 pb-8;
       border-right: none;
       border-bottom: 1px solid var(--vp-c-divider);
-      padding-bottom: 32px;
     }
 
     .qt-col:last-child {
       border-bottom: none;
-      padding-bottom: 0;
+      @apply pb-0;
     }
 
     .featured-icon-wrap {
-      width: 52px;
-      height: 52px;
+      @apply w-14 h-14;
     }
 
     .home-b .hero-title {
-      font-size: 2.25rem;
+      @apply text-4xl;
     }
 
     .home-b {
-      padding: 0 16px 60px;
+      @apply pt-0 px-4 pb-16;
     }
 
     .feat--reverse .feat-text,
@@ -2710,41 +2261,41 @@ html.ai-resizing #VPContent {
     }
 
     .hn-actions .hn-register {
-      display: none;
+      @apply hidden;
     }
   }
 
   @media (max-width: 640px) {
     .hero {
-      padding: 60px 20px 52px;
+      @apply pt-16 px-5 pb-14;
     }
 
     .hero-sub br {
-      display: none;
+      @apply hidden;
     }
 
     .stat-item:nth-child(odd)+.stat-item::before {
-      display: none;
+      @apply hidden;
     }
 
     .stat-item:nth-child(even)::before {
-      display: block !important;
+      @apply !block;
     }
 
     .home-wrap {
-      padding: 32px 16px 48px;
+      @apply pt-8 px-4 pb-12;
     }
 
     .home-hero .hero-title {
-      font-size: 1.75rem;
+      @apply text-3xl;
     }
 
     .banner-title {
-      font-size: 1.75rem;
+      @apply text-3xl;
     }
 
     .home-c .content {
-      padding: 24px 16px 60px;
+      @apply pt-6 px-4 pb-16;
     }
   }
 
@@ -2882,47 +2433,34 @@ html.ai-resizing #VPContent {
 
 /* F.3 — Hero 标题区 */
 .lb-doc-hero {
-  margin: 8px 0 28px;
+  @apply mt-2 mx-0 mb-7;
 }
 
 .lb-doc-hero .lb-eyebrow {
-  font-size: 12px;
+  @apply text-xs font-semibold mb-2.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
-  font-weight: 600;
-  margin-bottom: 10px;
 }
 
 .lb-doc-hero .lb-title {
-  font-size: 34px;
-  line-height: 1.15;
-  font-weight: 700;
+  @apply text-4xl leading-tight font-bold m-0;
   letter-spacing: -0.01em;
   color: var(--vp-c-text-1);
-  margin: 0;
 }
 
 .lb-title-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 0 0 12px;
+  @apply flex items-start gap-2 mt-0 mx-0 mb-3;
 }
 
 .lb-title-row .lb-title {
-  margin: 0;
+  @apply m-0;
   flex: 1;
 }
 
 .lb-copy-btn {
   flex-shrink: 0;
-  margin-top: 8px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply mt-2 w-7 h-7 flex items-center justify-center;
   border-radius: 6px;
   border: 1px solid var(--vp-c-border);
   background: transparent;
@@ -2937,43 +2475,41 @@ html.ai-resizing #VPContent {
 }
 
 .lb-doc-hero .lb-lead {
-  font-size: 16px;
-  line-height: 1.6;
+  @apply text-base leading-relaxed m-0;
   color: var(--vp-c-text-2);
   max-width: 60ch;
-  margin: 0;
 }
 
 /* 隐藏 markdown 首 H1，由 PageHero 接管 */
 .vp-doc>div>h1:first-child {
-  display: none;
+  @apply hidden;
 }
 
 /* F.4 — 正文排版节奏 */
 .vp-doc h2 {
-  padding-top: 24px;
+  @apply pt-6;
   border-top: 1px solid var(--vp-c-divider);
 }
 
 .vp-doc p,
 .vp-doc li {
-  line-height: 1.75;
+  @apply leading-relaxed;
 }
 
 .vp-doc table {
-  font-size: 14px;
+  @apply text-sm;
 }
 
 .vp-doc th {
   background: transparent !important;
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .vp-doc .custom-block {
   border: 1px solid var(--vp-c-divider);
   border-left-width: 3px;
   border-radius: 6px;
-  padding: 12px 16px;
+  @apply py-3 px-4;
 }
 
 .vp-doc .custom-block.tip {
@@ -2990,20 +2526,18 @@ html.ai-resizing #VPContent {
 
 /* F.5 — 右栏 TOC 紧凑风格 */
 .VPDocAside {
-  font-size: 13px;
+  @apply text-sm;
 }
 
 .VPDocAside .outline-title {
-  font-size: 11px;
+  @apply text-xs font-semibold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
-  font-weight: 600;
 }
 
 .VPDocOutlineItem .outline-link {
-  position: relative;
-  padding-left: 12px;
+  @apply relative pl-3;
   color: var(--vp-c-text-2);
   border-left: 2px solid transparent;
   transition: color .15s, border-color .15s;
@@ -3033,16 +2567,15 @@ html.ai-resizing #VPContent {
 .VPSidebarItem.is-active>.item>.VPLink {
   background: transparent !important;
   border-radius: 0;
-  position: relative;
+  @apply relative;
 }
 
 .VPSidebarItem.is-active>.item>.VPLink::before {
   content: "";
-  position: absolute;
+  @apply absolute w-0.5;
   left: 0;
   top: 4px;
   bottom: 4px;
-  width: 2px;
   background: var(--vp-c-brand-1);
   border-radius: 2px;
 }
@@ -3053,13 +2586,8 @@ html.ai-resizing #VPContent {
 
 /* PageFeedback */
 .lb-page-feedback {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 40px;
-  padding: 20px 0;
+  @apply flex items-center gap-3 mt-10 py-5 px-0 text-sm;
   border-top: 1px solid var(--vp-c-divider);
-  font-size: 14px;
   color: var(--vp-c-text-2);
 }
 
@@ -3069,11 +2597,10 @@ html.ai-resizing #VPContent {
 }
 
 .lb-pfb-btn {
-  padding: 6px 14px;
+  @apply py-1.5 px-3.5 text-sm;
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   background: transparent;
-  font-size: 13px;
   cursor: pointer;
   color: var(--vp-c-text-1);
   transition: border-color .15s, background .15s;

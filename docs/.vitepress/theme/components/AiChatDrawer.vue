@@ -103,6 +103,7 @@ watch(
         submitText(props.initialQuery)
       } else {
         inputRef.value?.focus()
+        inputRef.value?.focus()
       }
     })
   }
@@ -162,8 +163,10 @@ async function submitText(text: string) {
             : (parsed.delta?.content ?? parsed.content ?? parsed.text ?? '')
         } else {
           piece = String(parsed)
+          piece = String(parsed)
         }
       } catch {
+        piece = event.data
         piece = event.data
       }
 
@@ -189,6 +192,8 @@ async function submitText(text: string) {
     assistantMsg.final = true
   } finally {
     isLoading.value = false
+    currentController.value = null
+    currentController.value = null
     currentController.value = null
   }
 }
@@ -399,41 +404,33 @@ function toggleExpand() {
 <style scoped>
 /* ── Drawer shell ─────────────────────────────────────────── */
 .ai-drawer {
-  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   /* width is set via :style binding; fallback here for safety */
   width: var(--ai-drawer-width, 380px);
-  max-width: 100vw;
   background: var(--vp-c-bg);
   border-left: 1px solid var(--vp-c-border);
-  display: flex;
-  flex-direction: column;
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
   /* Higher than VPNav (z-index:20) and HomeNavbar (z-index:100) so the drawer
      properly covers the top-right corner without pushing nav bars. */
   z-index: 200;
-  @apply max-sm:w-screen;
+  max-width: 100vw;
+  @apply max-sm:w-screen fixed flex flex-col;
 }
 
 /* Resize handle — left edge, dash indicator on hover */
 .ai-resize-handle {
-  position: absolute;
+  @apply absolute w-3 flex items-center justify-center;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 12px;
   cursor: col-resize;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .ai-resize-handle::after {
   content: '';
-  width: 3px;
-  height: 32px;
+  @apply w-1 h-8;
   border-radius: 99px;
   background: transparent;
   transition: background 0.2s;
@@ -445,20 +442,12 @@ function toggleExpand() {
 
 /* ── Header ──────────────────────────────────────────────── */
 .ai-drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  height: 52px;
+  @apply flex items-center justify-between py-0 px-5 h-14;
   border-bottom: 0.5px solid var(--vp-c-divider);
   flex-shrink: 0;
 }
 .ai-drawer-title {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-weight: 600;
-  font-size: 15px;
+  @apply flex items-center gap-2 font-semibold text-base;
   color: var(--vp-c-text-1);
   letter-spacing: -0.01em;
 }
@@ -466,12 +455,8 @@ function toggleExpand() {
 
 /* Disclaimer */
 .ai-disclaimer {
-  margin: 0;
-  padding: 10px 20px 12px;
-  font-size: 12px;
-  line-height: 1.5;
+  @apply m-0 pt-2.5 px-5 pb-3 text-xs leading-normal text-center;
   color: var(--vp-c-text-3);
-  text-align: center;
   border-bottom: 0.5px solid var(--vp-c-divider);
   flex-shrink: 0;
 }
@@ -481,11 +466,8 @@ function toggleExpand() {
   border: none;
   cursor: pointer;
   color: var(--vp-c-text-3);
-  padding: 6px;
+  @apply p-1.5 flex items-center leading-none;
   border-radius: 6px;
-  display: flex;
-  align-items: center;
-  line-height: 1;
   transition: background 0.15s, color 0.15s;
 }
 .ai-header-btn:hover { background: var(--vp-c-bg-mute); color: var(--vp-c-text-1); }
@@ -494,10 +476,7 @@ function toggleExpand() {
 .ai-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 20px 20px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  @apply pt-5 px-5 pb-2 flex flex-col gap-4;
   scrollbar-width: thin;
   scrollbar-color: var(--vp-c-border) transparent;
 }
@@ -513,46 +492,38 @@ function toggleExpand() {
 
 .user .ai-msg-bubble {
   max-width: 75%;
-  padding: 10px 14px;
+  @apply py-2.5 px-3.5 text-sm leading-relaxed;
   border-radius: 16px 16px 4px 16px;
   background: var(--vp-c-brand-1);
   color: #fff;
-  font-size: 14px;
-  line-height: 1.6;
   white-space: pre-wrap;
 }
 
 .assistant .ai-msg-bubble {
   max-width: 90%;
-  padding: 4px 0;
-  font-size: 14px;
-  line-height: 1.7;
+  @apply py-1 px-0 text-sm leading-relaxed flex flex-col gap-2;
   color: var(--vp-c-text-1);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 /* Hide markstream-vue scroll-to-bottom button */
 .assistant .ai-msg-bubble :deep([class*="scroll"]),
 .assistant .ai-msg-bubble :deep([class*="goto"]) {
-  display: none !important;
+  @apply !hidden;
 }
 
 /* Markdown overrides */
 .assistant .ai-msg-bubble :deep(.markstream-vue) { font-size: 14px; line-height: 1.7; color: var(--vp-c-text-1); }
 .assistant .ai-msg-bubble :deep(pre) {
   border-radius: 8px;
-  font-size: 13px;
+  @apply text-sm;
   background: var(--vp-c-bg-soft) !important;
   border: 1px solid var(--vp-c-border);
 }
 .assistant .ai-msg-bubble :deep(code:not(pre code)) {
   background: var(--vp-c-bg-mute);
   color: var(--vp-c-brand-1);
-  padding: 2px 5px;
+  @apply py-0.5 px-1.5 text-sm;
   border-radius: 4px;
-  font-size: 13px;
 }
 .assistant .ai-msg-bubble :deep(p) { margin: 0 0 8px; color: var(--vp-c-text-1); }
 .assistant .ai-msg-bubble :deep(p:last-child) { margin-bottom: 0; }
@@ -565,14 +536,13 @@ function toggleExpand() {
 .assistant .ai-msg-bubble :deep(strong) { color: var(--vp-c-text-1); }
 .assistant .ai-msg-bubble :deep(blockquote) {
   border-left: 3px solid var(--vp-c-border);
-  padding-left: 12px;
+  @apply pl-3 my-2 mx-0;
   color: var(--vp-c-text-2);
-  margin: 8px 0;
 }
 .assistant .ai-msg-bubble :deep(hr) {
   border: none;
   border-top: 0.5px solid var(--vp-c-divider);
-  margin: 12px 0;
+  @apply my-3 mx-0;
 }
 .assistant .ai-msg-bubble :deep(table) { width: 100%; border-collapse: collapse; font-size: 13px; }
 .assistant .ai-msg-bubble :deep(th),
@@ -581,10 +551,7 @@ function toggleExpand() {
 
 /* Thinking state */
 .ai-thinking {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 0;
+  @apply inline-flex items-center gap-1.5 py-1 px-0;
 }
 .ai-thinking-star {
   color: var(--vp-c-brand-1);
@@ -592,19 +559,15 @@ function toggleExpand() {
   animation: ai-star-pulse 2s ease-in-out infinite;
 }
 .ai-thinking-text {
-  font-size: 13px;
+  @apply text-sm;
   color: var(--vp-c-text-2);
   animation: ai-text-breathe 2s ease-in-out infinite;
 }
 .ai-thinking-dots {
-  display: inline-flex;
-  gap: 2px;
-  align-items: center;
-  padding-bottom: 1px;
+  @apply inline-flex gap-0.5 items-center pb-0.5;
 }
 .ai-thinking-dots span {
-  width: 3px;
-  height: 3px;
+  @apply w-1 h-1;
   background: var(--vp-c-text-3);
   border-radius: 50%;
   animation: ai-dot-wave 1.4s ease-in-out infinite;
@@ -627,30 +590,23 @@ function toggleExpand() {
 /* Message actions */
 .ai-msg-actions { display: flex; gap: 4px; align-self: flex-start; }
 .ai-action-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply relative inline-flex items-center justify-center p-1.5 leading-none;
   background: none;
   border: 1px solid transparent;
   cursor: pointer;
   color: var(--vp-c-text-3);
-  padding: 5px;
   border-radius: 6px;
-  line-height: 1;
   transition: color .15s, border-color .15s, background .15s;
 }
 .ai-action-btn:hover { color: var(--vp-c-text-1); border-color: var(--vp-c-border); background: var(--vp-c-bg-mute); }
 .ai-action-btn.copied { color: var(--lb-c-success); }
 .ai-action-tooltip {
-  position: absolute;
+  @apply absolute text-xs py-1 px-2;
   bottom: calc(100% + 6px);
   left: 50%;
   transform: translateX(-50%);
   background: var(--vp-c-text-1);
   color: var(--vp-c-bg);
-  font-size: 11px;
-  padding: 3px 7px;
   border-radius: 4px;
   white-space: nowrap;
   pointer-events: none;
@@ -661,17 +617,14 @@ function toggleExpand() {
 
 /* ── Input area ──────────────────────────────────────────── */
 .ai-input-wrap {
-  padding: 12px 16px 20px;
+  @apply pt-3 px-4 pb-5;
   flex-shrink: 0;
 }
 .ai-input-box {
   border: 1px solid var(--vp-c-border);
   border-radius: 16px;
   background: var(--vp-c-bg);
-  padding: 12px 14px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @apply pt-3 px-3.5 pb-2.5 flex flex-col gap-2;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   transition: border-color .15s, box-shadow .15s;
 }
@@ -680,44 +633,32 @@ function toggleExpand() {
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
 }
 .ai-input {
-  width: 100%;
+  @apply w-full text-sm leading-normal min-h-6 max-h-32;
   resize: none;
   border: none;
   background: transparent;
   color: var(--vp-c-text-1);
-  font-size: 14px;
   font-family: inherit;
-  line-height: 1.5;
   outline: none;
-  min-height: 24px;
-  max-height: 120px;
   overflow-y: auto;
 }
 .ai-input::placeholder { color: var(--vp-c-text-3); }
 .ai-input-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @apply flex justify-between items-center;
 }
 .ai-attach-btn {
   background: none;
   border: none;
   cursor: default;
   color: var(--vp-c-text-3);
-  padding: 4px;
-  display: flex;
-  align-items: center;
+  @apply p-1 flex items-center;
   opacity: 0.5;
 }
 .ai-send-btn {
-  width: 30px;
-  height: 30px;
+  @apply w-8 h-8 flex items-center justify-center;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--vp-c-text-1);
   color: var(--vp-c-bg);
   transition: opacity .15s;
@@ -730,20 +671,15 @@ function toggleExpand() {
 
 /* Scroll to latest button */
 .ai-scroll-latest {
-  position: absolute;
+  @apply absolute pt-1.5 pr-3 pb-1.5 pl-2.5 text-xs flex items-center gap-1.5;
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-border);
   border-radius: 20px;
-  padding: 5px 12px 5px 10px;
-  font-size: 12px;
   color: var(--vp-c-text-2);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--vp-c-divider);
   white-space: nowrap;
   z-index: 10;
