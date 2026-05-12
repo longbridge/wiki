@@ -414,6 +414,7 @@ function toggleExpand() {
   /* Higher than VPNav (z-index:20) and HomeNavbar (z-index:100) so the drawer
      properly covers the top-right corner without pushing nav bars. */
   z-index: 200;
+  @apply max-sm:w-screen;
 }
 
 /* Resize handle — left edge, dash indicator on hover */
@@ -764,11 +765,6 @@ function toggleExpand() {
 .drawer-leave-active { transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1); }
 .drawer-enter-from,
 .drawer-leave-to { transform: translateX(100%); }
-
-/* Mobile */
-@media (max-width: 480px) {
-  .ai-drawer { width: 100vw; }
-}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
