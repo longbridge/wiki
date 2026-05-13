@@ -7,6 +7,7 @@ import MarkdownRender from 'markstream-vue'
 import { useAIModal } from '../composables/useAIModal'
 import RiveThinkingIcon from './RiveThinkingIcon.vue'
 import { useI18n } from '../../i18n/useI18n'
+import { Trash2, Maximize2, Minimize2, X } from 'lucide-vue-next'
 
 import { AI_ENDPOINT, AI_HEADERS } from '../config/ai'
 
@@ -250,26 +251,15 @@ function toggleExpand() {
             :title="t('ai.clearChat')"
             @click="clearMessages"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 6 5 6 21 6" />
-              <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
-              <path d="M10 11v6M14 11v6" />
-              <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" />
-            </svg>
+            <Trash2 :size="14" />
           </button>
           <!-- Expand / shrink -->
           <button class="ai-header-btn" :title="drawerWidth >= MAX_WIDTH ? t('ai.collapse') : t('ai.expand')" @click="toggleExpand">
-            <svg v-if="drawerWidth < MAX_WIDTH" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
-            <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 14h6v6M20 10h-6V4M10 20l-7-7M21 3l-7 7" />
-            </svg>
+            <Maximize2 v-if="drawerWidth < MAX_WIDTH" :size="14" />
+            <Minimize2 v-else :size="14" />
           </button>
           <button class="ai-header-btn" @click="close" :aria-label="t('ai.close')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
+            <X :size="15" />
           </button>
         </div>
       </div>
