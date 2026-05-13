@@ -3,15 +3,17 @@ import { inject } from 'vue'
 import type { Ref } from 'vue'
 import SegmentedControl from '../ui/SegmentedControl.vue'
 import { markets, type Market } from '../../data/journey'
+import { useI18n } from '../../../i18n/useI18n'
 
 const activeMarket = inject<Ref<Market>>('journeyMarket')!
+const { t } = useI18n()
 </script>
 
 <template>
   <div class="journey-header">
     <div class="journey-header__inner">
       <div class="journey-header__top">
-        <h2 class="journey-header__title">一键找到你要做的事。</h2>
+        <h2 class="journey-header__title">{{ t('journey.heading') }}</h2>
         <SegmentedControl
           v-model="activeMarket"
           :tabs="markets"

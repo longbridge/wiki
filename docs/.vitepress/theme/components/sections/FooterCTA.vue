@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { inject } from 'vue'
+import { useI18n } from '../../../i18n/useI18n'
 
 const openAIModal = inject<(query?: string) => void>('openAIModal')
+const { t } = useI18n()
 
 function callOpenAI() {
   openAIModal?.()
@@ -11,10 +13,10 @@ function callOpenAI() {
 <template>
   <section class="footer-cta">
     <div class="footer-cta-inner">
-      <h2 class="fc-title">还有其他问题？AI 助手随时在</h2>
-      <p class="fc-sub">用自然语言提问，长桥 AI 在 2,400+ 专业文档中为你检索，秒级给出可执行答案。</p>
+      <h2 class="fc-title">{{ t('footerCta.headline') }}</h2>
+      <p class="fc-sub">{{ t('footerCta.subhead') }}</p>
       <button type="button" class="fc-btn" @click="callOpenAI">
-        立即向 AI 提问
+        {{ t('footerCta.askAi') }}
       </button>
     </div>
   </section>

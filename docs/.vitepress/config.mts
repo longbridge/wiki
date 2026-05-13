@@ -4,6 +4,9 @@ import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
 import { NAV_TABS } from './tabs.config'
+import zhCN from './i18n/locales/zh-CN'
+import en from './i18n/locales/en'
+import zhHK from './i18n/locales/zh-HK'
 
 // 读取 docs/.env.local（不入 git）中的私密配置
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -83,51 +86,6 @@ function extractTitle(filePath: string, fallback: string): string {
   return fallback
 }
 
-// 目录显示名称映射（英文目录名 → 中文显示名）
-const dirDisplayNames: Record<string, string> = {
-  'getting-started': '新手入门',
-  'app-guide': 'App 导览',
-  'account': '开户与账户',
-  'deposit': '入金',
-  'withdrawal': '出金',
-  'transfers-and-fx': '资金划转与换汇',
-  'stock-trading': '股票交易',
-  'derivatives': '衍生品',
-  'ipo': '新股认购',
-  'margin': '融资融券',
-  'funds-and-wealth': '基金与理财',
-  'market-data': '行情数据',
-  'portfolio-and-statements': '资产与账单',
-  'rewards': '活动与奖励',
-  'compliance-and-tax': '合规与税务',
-  'troubleshooting': '故障排查',
-  // account 子目录
-  'opening': '开户',
-  'account-types': '账户类型',
-  'fees-and-privileges': '费率与权益',
-  // deposit 子目录
-  'setup': '入金前准备',
-  'hk-methods': '香港账户入金',
-  'sg-methods': '新加坡账户入金',
-  // derivatives 子目录
-  'options': '期权',
-  // funds-and-wealth 子目录
-  'funds': '基金投资',
-  'cash-plus': '余额通',
-  // rewards 子目录
-  'task-center': '任务中心',
-  'referral': '邀请与推荐',
-  'activities': '活动',
-  'rewards-mall': '奖励与兑换',
-  // stock-trading 子目录
-  'trading-hours-and-rules': '交易时间与规则',
-  'trading-fees': '交易费用',
-  'corporate-actions': '公司行动',
-  'desktop-tools': '桌面端工具',
-  'stock-transfer': '股票转仓',
-  'order-types': '订单类型',
-}
-
 // 顶级分类图标（Lucide SVG inline，stroke="currentColor" 自动继承主题色）
 const SIDEBAR_ICONS: Record<string, string> = {
   'getting-started':         `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>`,
@@ -189,7 +147,7 @@ function loadOrder(dir: string): string[] {
 
 // 递归扫描目录生成侧边栏 items
 // depth=0：顶级分类的直接子目录（二级），展开；depth>=1：三级及以下，折叠
-function generateSidebarItemsFromDir(dir: string, base: string, depth = 0): any[] {
+function generateSidebarItemsFromDir(dir: string, base: string, dirNames: Record<string, string>, depth = 0): any[] {
   const items: any[] = []
 
   try {
@@ -212,8 +170,8 @@ function generateSidebarItemsFromDir(dir: string, base: string, depth = 0): any[
       const stat = fs.statSync(fullPath)
 
       if (stat.isDirectory()) {
-        const subItems = generateSidebarItemsFromDir(fullPath, `${base}/${entry}`, depth + 1)
-        const displayName = dirDisplayNames[entry] || entry
+        const subItems = generateSidebarItemsFromDir(fullPath, `${base}/${entry}`, dirNames, depth + 1)
+        const displayName = dirNames[entry] || entry
         const hasIndex = fs.existsSync(path.join(fullPath, 'index.md'))
 
         let text = displayName
@@ -268,15 +226,20 @@ const categoryOrder = [
 ]
 
 // 生成侧边栏配置（从 zh-CN 读取，按 tab 路径前缀返回多套 sidebar）
-function generateSidebar() {
+function generateSidebar(localeDir: string, dirNames: Record<string, string>) {
+  const contentRoot = localeDir === 'zh-CN' ? './docs/zh-CN' : `./docs/${localeDir}`
+  // en 和 zh-HK 目前无内容，fallback 到 zh-CN
   const zhCNRoot = './docs/zh-CN'
+  const effectiveRoot = fs.existsSync(contentRoot) && localeDir !== 'en' && localeDir !== 'zh-HK'
+    ? contentRoot
+    : zhCNRoot
 
   const topDirs = (() => {
     try {
-      return fs.readdirSync(zhCNRoot)
+      return fs.readdirSync(effectiveRoot)
         .filter(e => {
           if (skipDirs.has(e)) return false
-          const fullPath = path.join(zhCNRoot, e)
+          const fullPath = path.join(effectiveRoot, e)
           return fs.statSync(fullPath).isDirectory() && !e.startsWith('.')
         })
         .sort()
@@ -287,12 +250,12 @@ function generateSidebar() {
   const itemByCategory: Record<string, object> = {}
   for (const dir of categoryOrder) {
     if (!topDirs.includes(dir)) continue
-    const dirPath = path.join(zhCNRoot, dir)
-    const items = generateSidebarItemsFromDir(dirPath, `/${dir}`)
+    const dirPath = path.join(effectiveRoot, dir)
+    const items = generateSidebarItemsFromDir(dirPath, `/${dir}`, dirNames)
     const iconSvg = SIDEBAR_ICONS[dir]
     const iconHtml = iconSvg ? `<span class="sidebar-item-icon">${iconSvg}</span>` : ''
     itemByCategory[dir] = {
-      text: `${iconHtml}${dirDisplayNames[dir] || dir}`,
+      text: `${iconHtml}${dirNames[dir] || dir}`,
       link: `/${dir}/`,
       collapsed: false,
       items,
@@ -310,9 +273,21 @@ function generateSidebar() {
   return sidebar
 }
 
+const sidebarZhCN = generateSidebar('zh-CN', zhCN.data.dirNames)
+const sidebarEn   = generateSidebar('en',    ((en as any).data?.dirNames ?? {}) as Record<string, string>)
+const sidebarZhHK = generateSidebar('zh-HK', ((zhHK as any).data?.dirNames ?? {}) as Record<string, string>)
+
+const sharedNav = [
+  { text: '首页', link: '/' },
+  { text: '文档', link: '/docs/' },
+  { text: 'Developers', link: 'https://open.longbridge.com', target: '_blank' },
+]
+
+const editLinkPattern = 'https://github.com/longbridge/docs/edit/main/docs/:path'
+
 export default defineConfig({
-  title: 'Longbridge Docs',
-  description: 'Longbridge Docs',
+  title: zhCN.vp.title,
+  description: zhCN.vp.description,
   base: '/',
   appearance: 'light',
   ignoreDeadLinks: true,
@@ -333,16 +308,74 @@ export default defineConfig({
     root: {
       label: '简体中文',
       lang: 'zh-CN',
+      link: '/',
+      title: zhCN.vp.title,
+      description: zhCN.vp.description,
+      themeConfig: {
+        nav: sharedNav,
+        sidebar: sidebarZhCN,
+        outline: { level: [2, 4], label: zhCN.vp.outline },
+        lastUpdated: {
+          text: zhCN.vp.lastUpdated,
+          formatOptions: { dateStyle: 'medium' },
+        },
+        editLink: {
+          pattern: editLinkPattern,
+          text: zhCN.vp.editLink,
+        },
+        docFooter: {
+          prev: zhCN.vp.prev,
+          next: zhCN.vp.next,
+        },
+        footer: {
+          message: zhCN.vp.footerMessage,
+        },
+      },
     },
     en: {
       label: 'English',
       lang: 'en',
       link: '/en/',
+      title: 'Longbridge Docs',
+      description: 'Longbridge Docs',
+      themeConfig: {
+        nav: sharedNav,
+        sidebar: sidebarEn,
+        outline: { level: [2, 4], label: 'On this page' },
+        lastUpdated: {
+          text: 'Last updated',
+          formatOptions: { dateStyle: 'medium' },
+        },
+        editLink: {
+          pattern: editLinkPattern,
+          text: 'Edit this page on GitHub',
+        },
+        docFooter: { prev: 'Previous', next: 'Next' },
+      },
     },
     'zh-HK': {
       label: '繁體中文',
       lang: 'zh-HK',
       link: '/zh-HK/',
+      title: 'Longbridge Docs',
+      description: 'Longbridge Docs',
+      themeConfig: {
+        nav: sharedNav,
+        sidebar: sidebarZhHK,
+        outline: { level: [2, 4], label: '本頁內容' },
+        lastUpdated: {
+          text: '最近更新',
+          formatOptions: { dateStyle: 'medium' },
+        },
+        editLink: {
+          pattern: editLinkPattern,
+          text: '在 GitHub 上編輯此頁',
+        },
+        docFooter: { prev: '上一篇', next: '下一篇' },
+        footer: {
+          message: '© 2026 Longbridge. All rights reserved.',
+        },
+      },
     },
   },
 
@@ -352,25 +385,74 @@ export default defineConfig({
       alt: 'Longbridge',
     },
 
-    sidebar: generateSidebar(),
-
     search: {
       provider: 'local',
       options: {
+        miniSearch: {
+          options: {
+            storeFields: ['title', 'titles', 'text'],
+          },
+        },
         locales: {
           root: {
             translations: {
               button: {
-                buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档',
+                buttonText: zhCN.vp.search.buttonText,
+                buttonAriaLabel: zhCN.vp.search.buttonAriaLabel,
               },
               modal: {
-                noResultsText: '无法找到相关结果',
-                resetButtonTitle: '清除查询条件',
+                displayDetails: zhCN.vp.search.displayDetails,
+                resetButtonTitle: zhCN.vp.search.resetButtonTitle,
+                backButtonTitle: zhCN.vp.search.backButtonTitle,
+                noResultsText: zhCN.vp.search.noResultsText,
                 footer: {
-                  selectText: '选择',
-                  navigateText: '切换',
-                  closeText: '关闭',
+                  selectText: zhCN.vp.search.footer.selectText,
+                  selectKeyAriaLabel: zhCN.vp.search.footer.selectKeyAriaLabel,
+                  navigateText: zhCN.vp.search.footer.navigateText,
+                  navigateUpKeyAriaLabel: zhCN.vp.search.footer.navigateUpKeyAriaLabel,
+                  navigateDownKeyAriaLabel: zhCN.vp.search.footer.navigateDownKeyAriaLabel,
+                  closeText: zhCN.vp.search.footer.closeText,
+                  closeKeyAriaLabel: zhCN.vp.search.footer.closeKeyAriaLabel,
+                },
+              },
+            },
+          },
+          en: {
+            translations: {
+              button: { buttonText: 'Search', buttonAriaLabel: 'Search' },
+              modal: {
+                displayDetails: 'Display detailed list',
+                resetButtonTitle: 'Reset search',
+                backButtonTitle: 'Close search',
+                noResultsText: 'No results for',
+                footer: {
+                  selectText: 'to select',
+                  selectKeyAriaLabel: 'Enter',
+                  navigateText: 'to navigate',
+                  navigateUpKeyAriaLabel: 'Up arrow',
+                  navigateDownKeyAriaLabel: 'Down arrow',
+                  closeText: 'to close',
+                  closeKeyAriaLabel: 'Escape',
+                },
+              },
+            },
+          },
+          'zh-HK': {
+            translations: {
+              button: { buttonText: '搜尋文件', buttonAriaLabel: '搜尋文件' },
+              modal: {
+                displayDetails: '顯示詳細列表',
+                resetButtonTitle: '清除查詢',
+                backButtonTitle: '關閉搜尋',
+                noResultsText: '無法找到相關結果',
+                footer: {
+                  selectText: '選擇',
+                  selectKeyAriaLabel: 'Enter',
+                  navigateText: '切換',
+                  navigateUpKeyAriaLabel: '方向鍵上',
+                  navigateDownKeyAriaLabel: '方向鍵下',
+                  closeText: '關閉',
+                  closeKeyAriaLabel: 'Escape',
                 },
               },
             },
@@ -379,33 +461,9 @@ export default defineConfig({
       },
     },
 
-    nav: [
-      { text: '首页', link: '/' },
-      { text: '文档', link: '/docs/' },
-      { text: 'Developers', link: 'https://open.longbridge.com', target: '_blank' },
-    ],
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/longbridge/docs' },
     ],
-
-    footer: {
-      message: '© 2026 Longbridge. All rights reserved.',
-    },
-
-    outline: { level: [2, 3], label: '本页内容' },
-
-    lastUpdated: {
-      text: '最近更新',
-      formatOptions: { dateStyle: 'medium' },
-    },
-
-    editLink: {
-      pattern: 'https://github.com/longbridge/docs/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页',
-    },
-
-    docFooter: { prev: '上一篇', next: '下一篇' },
   },
 
   markdown: {

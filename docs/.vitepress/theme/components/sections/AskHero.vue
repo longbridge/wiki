@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref, inject, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import { hotSearchTags } from '../../data/featured-asks'
 import UiInput from '../ui/Input.vue'
 import UiButton from '../ui/Button.vue'
+import HeroGridBg from '../HeroGridBg.vue'
+import { useI18n } from '../../../i18n/useI18n'
 
 const openAIModal = inject<(q: string) => void>('openAIModal', () => {})
 const router = useRouter()
+const { t } = useI18n()
 
 const inputValue = ref('')
-const searchPlaceholder = '输入关键词或直接提问，如"港股交易费用怎么算"'
+const searchPlaceholder = computed(() => t('askHero.placeholder'))
 
 function submit() {
   const q = inputValue.value.trim()
@@ -36,20 +39,19 @@ function browseAllDocs() {
 
 <template>
   <section class="ask-hero">
-    <!-- 背景渐变装饰 -->
+    <!-- 环境光晕渐变 -->
     <div class="ask-hero__bg" aria-hidden="true" />
+    <!-- 科技感网格动画 -->
+    <HeroGridBg />
 
     <div class="ask-hero__inner">
       <!-- 主标题：两行 -->
       <div class="ask-hero__heading">
         <h1 class="ask-hero__title">
-          <span class="ask-hero__title-dark">有问题，直接问</span>
-          <span class="ask-hero__title-brand">答案在这里</span>
+          <span class="ask-hero__title-dark">{{ t('askHero.title') }}</span>
+          <span class="ask-hero__title-brand">{{ t('askHero.titleEm') }}</span>
         </h1>
-        <p class="ask-hero__subtitle">
-          覆盖港股、美股、新加坡等市场的专业文档库，搭配<br />
-          AI 问答助手，让每一个金融问题都有迹可查。
-        </p>
+        <p class="ask-hero__subtitle">{{ t('askHero.subtitle') }}</p>
       </div>
 
       <!-- 搜索区 -->
@@ -82,7 +84,7 @@ function browseAllDocs() {
             class="ask-hero__search-btn"
             @click="submit"
           >
-            搜索
+            {{ t('askHero.search') }}
           </UiButton>
         </div>
 
@@ -103,7 +105,7 @@ function browseAllDocs() {
             <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
             <polyline points="17 6 23 6 23 12" />
           </svg>
-          <span class="ask-hero__hot-label">热搜：</span>
+          <span class="ask-hero__hot-label">{{ t('askHero.hotSearchLabel') }}</span>
           <UiButton
             v-for="tag in hotSearchTags"
             :key="tag.q"
@@ -111,7 +113,7 @@ function browseAllDocs() {
             size="pill-sm"
             @click="askHot(tag)"
           >
-            {{ tag.q }}
+            {{ t(tag.q) }}
           </UiButton>
         </div>
       </div>
@@ -122,7 +124,7 @@ function browseAllDocs() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" />
           </svg>
-          向 AI 提问
+          {{ t('askHero.askAi') }}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
@@ -134,7 +136,7 @@ function browseAllDocs() {
             <rect x="3" y="14" width="7" height="7" rx="1" />
             <rect x="14" y="14" width="7" height="7" rx="1" />
           </svg>
-          浏览所有文档
+          {{ t('askHero.browse') }}
         </UiButton>
       </div>
     </div>

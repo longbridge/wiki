@@ -1,25 +1,27 @@
 <script setup lang="ts">
 import { inject } from 'vue'
+import { useI18n } from '../../../i18n/useI18n'
 
 const openAIModal = inject<(q: string) => void>('openAIModal', () => {})
+const { t } = useI18n()
 </script>
 
 <template>
   <footer class="footer-mini">
     <div class="footer-mini__inner">
       <div class="footer-mini__cta">
-        <span class="footer-mini__label">没找到答案？</span>
+        <span class="footer-mini__label">{{ t('footerMini.notFound') }}</span>
         <button class="footer-mini__ask-btn" @click="openAIModal('')">
-          问 AI
+          {{ t('footerMini.askAi') }}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
       </div>
-      <nav class="footer-mini__links" aria-label="底部链接">
-        <a href="https://longbridgeapp.com" target="_blank" rel="noopener noreferrer">长桥官网</a>
-        <a href="/zh-CN/compliance-and-tax/privacy-policy">隐私政策</a>
-        <a href="/zh-CN/compliance-and-tax/">合规与税务</a>
+      <nav class="footer-mini__links" :aria-label="t('footerMini.navAriaLabel')">
+        <a href="https://longbridgeapp.com" target="_blank" rel="noopener noreferrer">{{ t('footerMini.official') }}</a>
+        <a href="/zh-CN/compliance-and-tax/privacy-policy">{{ t('footerMini.privacy') }}</a>
+        <a href="/zh-CN/compliance-and-tax/">{{ t('footerMini.compliance') }}</a>
       </nav>
     </div>
   </footer>
@@ -84,7 +86,7 @@ const openAIModal = inject<(q: string) => void>('openAIModal', () => {})
 }
 
 .footer-mini__links a:hover {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-brand-1);
 }
 
 @media (max-width: 640px) {

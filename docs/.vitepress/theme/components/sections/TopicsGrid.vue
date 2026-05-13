@@ -5,19 +5,22 @@ import {
   Zap, User, ArrowDownCircle, ArrowUpCircle, ArrowLeftRight,
   TrendingUp, Shield, Gift, ClipboardList,
 } from 'lucide-vue-next'
+import { useI18n } from '../../../i18n/useI18n'
+
+const { t } = useI18n()
 
 const topicCounts = _topicCountsRaw as TopicCounts
 
-const TOPICS: { key: TopicKey; icon: typeof Zap; label: string; path: string }[] = [
-  { key: 'getting-started',          icon: Zap,             label: '新手入门',       path: '/getting-started/'        },
-  { key: 'account',                  icon: User,            label: '开户与账户',     path: '/account/'                },
-  { key: 'deposit',                  icon: ArrowDownCircle, label: '入金',           path: '/deposit/'                },
-  { key: 'withdrawal',               icon: ArrowUpCircle,   label: '出金',           path: '/withdrawal/'             },
-  { key: 'transfers-and-fx',         icon: ArrowLeftRight,  label: '资金划转与换汇', path: '/transfers-and-fx/'       },
-  { key: 'stock-trading',            icon: TrendingUp,      label: '股票交易',       path: '/stock-trading/'          },
-  { key: 'compliance-and-tax',       icon: Shield,          label: '合规与税务',     path: '/compliance-and-tax/'     },
-  { key: 'rewards',                  icon: Gift,            label: '活动与奖励',     path: '/rewards/'                },
-  { key: 'portfolio-and-statements', icon: ClipboardList,   label: '资产与账单',     path: '/portfolio-and-statements/' },
+const TOPICS: { key: TopicKey; icon: typeof Zap; path: string }[] = [
+  { key: 'getting-started',          icon: Zap,             path: '/getting-started/'          },
+  { key: 'account',                  icon: User,            path: '/account/'                  },
+  { key: 'deposit',                  icon: ArrowDownCircle, path: '/deposit/'                  },
+  { key: 'withdrawal',               icon: ArrowUpCircle,   path: '/withdrawal/'               },
+  { key: 'transfers-and-fx',         icon: ArrowLeftRight,  path: '/transfers-and-fx/'         },
+  { key: 'stock-trading',            icon: TrendingUp,      path: '/stock-trading/'            },
+  { key: 'compliance-and-tax',       icon: Shield,          path: '/compliance-and-tax/'       },
+  { key: 'rewards',                  icon: Gift,            path: '/rewards/'                  },
+  { key: 'portfolio-and-statements', icon: ClipboardList,   path: '/portfolio-and-statements/' },
 ]
 
 const featuredTopic = TOPICS[0]
@@ -27,17 +30,17 @@ const restTopics = TOPICS.slice(1)
 <template>
   <section id="topics-section" class="topics">
     <div class="topics-inner">
-      <h2 class="topics-title">9 大专题，系统覆盖</h2>
+      <h2 class="topics-title">{{ t('topics.heading') }}</h2>
 
       <!-- 首位精选大卡 -->
-      <a :href="featuredTopic.path" class="featured-card" :aria-label="`${featuredTopic.label}，${topicCounts[featuredTopic.key]} 篇文档`">
+      <a :href="featuredTopic.path" class="featured-card" :aria-label="`${t('data.topics.' + featuredTopic.key)}，${topicCounts[featuredTopic.key]} 篇文档`">
         <span class="featured-icon-wrap">
           <component :is="featuredTopic.icon" :size="36" :stroke-width="1.5" />
         </span>
         <div class="featured-body">
-          <div class="featured-badge">重点推荐</div>
-          <h3 class="featured-name">{{ featuredTopic.label }}</h3>
-          <p class="featured-count">{{ topicCounts[featuredTopic.key] }} 篇文档，从这里开始</p>
+          <div class="featured-badge">{{ t('topics.recommended') }}</div>
+          <h3 class="featured-name">{{ t('data.topics.' + featuredTopic.key) }}</h3>
+          <p class="featured-count">{{ topicCounts[featuredTopic.key] }}{{ t('topics.fromHereCount') }}</p>
         </div>
         <span class="featured-arrow">→</span>
       </a>
@@ -45,17 +48,17 @@ const restTopics = TOPICS.slice(1)
       <!-- 其余 8 个，4 列小网格 -->
       <div class="small-grid">
         <a
-          v-for="t in restTopics"
-          :key="t.key"
-          :href="t.path"
+          v-for="topic in restTopics"
+          :key="topic.key"
+          :href="topic.path"
           class="small-card"
-          :aria-label="`${t.label}，${topicCounts[t.key]} 篇文档`"
+          :aria-label="`${t('data.topics.' + topic.key)}，${topicCounts[topic.key]} 篇文档`"
         >
           <span class="small-icon-wrap">
-            <component :is="t.icon" :size="22" :stroke-width="1.5" />
+            <component :is="topic.icon" :size="22" :stroke-width="1.5" />
           </span>
-          <span class="small-name">{{ t.label }}</span>
-          <span class="small-count">{{ topicCounts[t.key] }} 篇</span>
+          <span class="small-name">{{ t('data.topics.' + topic.key) }}</span>
+          <span class="small-count">{{ topicCounts[topic.key] }}{{ t('topics.docCountSuffix') }}</span>
         </a>
       </div>
     </div>

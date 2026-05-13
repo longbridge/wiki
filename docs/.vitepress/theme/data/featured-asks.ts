@@ -4,12 +4,12 @@ export interface FeaturedAsk {
 }
 
 export const hotSearchTags: FeaturedAsk[] = [
-  { q: '港股交易', initialPrompt: '港股交易规则和常见手续费是什么？' },
-  { q: 'FPS 入金', initialPrompt: 'FPS 转数快如何入金到长桥？' },
-  { q: '期权开通', initialPrompt: '长桥期权功能怎么开通？有什么条件要求？' },
-  { q: 'W-8BEN', initialPrompt: '美股 W-8BEN 表格怎么填写和提交？' },
-  { q: '融资融券', initialPrompt: '长桥融资融券保证金规则和风控机制是什么？' },
-  { q: '活钱通', initialPrompt: '活钱通是什么，购买和赎回流程怎么操作？' },
+  { q: 'data.featuredAsks.hot.hkTrading', initialPrompt: '港股交易规则和常见手续费是什么？' },
+  { q: 'data.featuredAsks.hot.fps', initialPrompt: 'FPS 转数快如何入金到长桥？' },
+  { q: 'data.featuredAsks.hot.options', initialPrompt: '长桥期权功能怎么开通？有什么条件要求？' },
+  { q: 'data.featuredAsks.hot.w8ben', initialPrompt: '美股 W-8BEN 表格怎么填写和提交？' },
+  { q: 'data.featuredAsks.hot.margin', initialPrompt: '长桥融资融券保证金规则和风控机制是什么？' },
+  { q: 'data.featuredAsks.hot.cashPlus', initialPrompt: '活钱通是什么，购买和赎回流程怎么操作？' },
 ]
 
 export const featuredAsks: FeaturedAsk[] = [

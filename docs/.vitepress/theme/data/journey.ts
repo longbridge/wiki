@@ -24,8 +24,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'account',
     num: '01',
-    title: '开户',
-    desc: '下载 App，完成身份验证，选择适合你的账户类型',
+    title: 'data.journey.account.title',
+    desc: 'data.journey.account.desc',
     docCount: 13,
     aiContext: '长桥开户流程和账户类型',
     docs: {
@@ -39,8 +39,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'deposit',
     num: '02',
-    title: '入金',
-    desc: '绑定银行账户，选择最适合的入金方式完成首次入金',
+    title: 'data.journey.deposit.title',
+    desc: 'data.journey.deposit.desc',
     docCount: 17,
     aiContext: '长桥入金方式和操作流程',
     docs: {
@@ -64,8 +64,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'trade',
     num: '03',
-    title: '首次交易',
-    desc: '了解交易时段、下单方式和常见费用，完成第一笔买入',
+    title: 'data.journey.trade.title',
+    desc: 'data.journey.trade.desc',
     docCount: 11,
     aiContext: '长桥首次买入股票，交易规则和时段',
     docs: {
@@ -89,8 +89,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'portfolio',
     num: '04',
-    title: '持仓与对账',
-    desc: '查看持仓总览、盈亏分析，定期核对对账单',
+    title: 'data.journey.portfolio.title',
+    desc: 'data.journey.portfolio.desc',
     docCount: 9,
     aiContext: '长桥持仓查看和对账单',
     docs: {
@@ -104,8 +104,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'withdrawal',
     num: '05',
-    title: '出金',
-    desc: '将账户资金安全提取到银行，了解到账时效',
+    title: 'data.journey.withdrawal.title',
+    desc: 'data.journey.withdrawal.desc',
     docCount: 6,
     aiContext: '长桥出金到银行卡',
     docs: {
@@ -129,8 +129,8 @@ export const journeySteps: JourneyStep[] = [
   {
     id: 'advanced',
     num: '06',
-    title: '进阶 & 答疑',
-    desc: '期权、融资、IPO、合规税务，以及常见问题排查',
+    title: 'data.journey.advanced.title',
+    desc: 'data.journey.advanced.desc',
     docCount: 24,
     aiContext: '长桥进阶交易功能和常见问题',
     docs: {
@@ -144,9 +144,9 @@ export const journeySteps: JourneyStep[] = [
 ]
 
 export const markets: { value: Market; label: string }[] = [
-  { value: 'hk', label: '港股' },
-  { value: 'us', label: '美股' },
-  { value: 'sg', label: '新加坡' },
+  { value: 'hk', label: 'data.markets.hk' },
+  { value: 'us', label: 'data.markets.us' },
+  { value: 'sg', label: 'data.markets.sg' },
 ]
 
 export function getStepDocs(step: JourneyStep, market: Market): DocLink[] {

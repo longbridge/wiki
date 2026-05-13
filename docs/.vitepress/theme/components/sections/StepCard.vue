@@ -3,6 +3,9 @@ import { computed, inject, ref } from 'vue'
 import type { Ref } from 'vue'
 import { useRouter } from 'vitepress'
 import { type JourneyStep, type Market, getStepDocs } from '../../data/journey'
+import { useI18n } from '../../../i18n/useI18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   step: JourneyStep
@@ -17,7 +20,7 @@ const docs = computed(() => getStepDocs(props.step, activeMarket.value))
 const isEmpty = computed(() => docs.value.length === 0)
 
 function askAI() {
-  openAIModal(`关于长桥的${props.step.title}：${props.step.aiContext}`)
+  openAIModal(t('journey.askTemplate', { title: t(props.step.title), context: props.step.aiContext }))
 }
 
 function navigate(path: string) {
@@ -32,12 +35,12 @@ function navigate(path: string) {
 
     <!-- 标题 + 文档数 -->
     <div class="step-card__head">
-      <h3 class="step-card__title">{{ step.title }}</h3>
-      <span class="step-card__count">{{ step.docCount }} 篇</span>
+      <h3 class="step-card__title">{{ t(step.title) }}</h3>
+      <span class="step-card__count">{{ step.docCount }}{{ t('journey.docCountSuffix') }}</span>
     </div>
 
     <!-- 说明 -->
-    <p class="step-card__desc">{{ step.desc }}</p>
+    <p class="step-card__desc">{{ t(step.desc) }}</p>
 
     <!-- 文档链接 or 空状态 -->
     <ul v-if="!isEmpty" class="step-card__docs">
@@ -50,14 +53,14 @@ function navigate(path: string) {
         </button>
       </li>
     </ul>
-    <p v-else class="step-card__empty-hint">该市场暂未覆盖，欢迎问 AI</p>
+    <p v-else class="step-card__empty-hint">{{ t('journey.marketEmpty') }}</p>
 
     <!-- Ask AI 按钮 -->
     <button class="step-card__ai-btn" @click.stop="askAI">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
-      问 AI 这一步
+      {{ t('journey.askThisStep') }}
     </button>
   </article>
 </template>

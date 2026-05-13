@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TabsRoot, TabsList, TabsTrigger, TabsContent } from 'radix-vue'
+import { useI18n } from '../../../i18n/useI18n'
 
 defineProps<{
   modelValue: string
@@ -9,6 +10,8 @@ defineProps<{
 defineEmits<{
   'update:modelValue': [value: string]
 }>()
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -18,7 +21,7 @@ defineEmits<{
   >
     <TabsList
       class="inline-flex items-center rounded-[10px] bg-vp-bg-soft p-[3px] gap-[2px]"
-      aria-label="市场切换"
+      :aria-label="t('market.switchAriaLabel')"
     >
       <TabsTrigger
         v-for="tab in tabs"
@@ -32,7 +35,7 @@ defineEmits<{
           data-[state=active]:bg-vp-bg data-[state=active]:text-brand data-[state=active]:shadow-sm
         "
       >
-        {{ tab.label }}
+        {{ t(tab.label) }}
       </TabsTrigger>
     </TabsList>
     <slot />

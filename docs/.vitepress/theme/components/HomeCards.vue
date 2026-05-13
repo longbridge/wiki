@@ -6,15 +6,15 @@
       <HomeBackground />
       <ClientOnly><HomeGraphBg /></ClientOnly>
       <div class="hero-text">
-        <p class="hero-eyebrow">账户 · 资金 · 交易 · 产品功能</p>
+        <p class="hero-eyebrow">{{ t('data.home.eyebrow') }}</p>
         <h1 class="hero-h1"><span class="shimmer-text">Longbridge Docs</span></h1>
         <p class="hero-sub">
           账户开设、资金进出、交易规则——每一步操作都有说明
         </p>
         <!-- 新用户专属入口 -->
         <div class="hero-onboard">
-          <div class="onboard-label">第一次使用长桥？</div>
-          <a :href="withBase('/getting-started/')"  class="btn-primary">从新手指引开始 →</a>
+          <div class="onboard-label">{{ t('data.home.newUserLabel') }}</div>
+          <a :href="withBase('/getting-started/')"  class="btn-primary">{{ t('data.home.newUserBtn') }}</a>
         </div>
       </div>
     </section>
@@ -29,7 +29,7 @@
             </div>
           </template>
           <span v-else class="stat-value">{{ stat.value }}</span>
-          <span class="stat-label">{{ stat.label }}</span>
+          <span class="stat-label">{{ t(stat.label) }}</span>
         </div>
       </div>
     </section>
@@ -38,13 +38,13 @@
     <section class="tasks">
       <div class="tasks-inner">
         <div class="tasks-hd">
-          <span class="tasks-label">常见任务</span>
-          <p class="tasks-sub">直接跳转到你需要做的事情</p>
+          <span class="tasks-label">{{ t('data.home.statsLabel') }}</span>
+          <p class="tasks-sub">{{ t('data.home.statsSub') }}</p>
         </div>
         <ul class="tasks-grid">
           <li v-for="task in tasks" :key="task.path">
             <a :href="withBase(task.path)" class="task-link">
-              <span class="task-q">{{ task.q }}</span>
+              <span class="task-q">{{ t(task.q) }}</span>
               <svg class="task-arrow" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -59,16 +59,16 @@
     <!-- 1. 账户与入门 -->
     <section class="feat">
       <div class="feat-text">
-        <span class="feat-tag">入门与账户</span>
-        <h2 class="feat-h2">开立账户，完成第一笔交易</h2>
+        <span class="feat-tag">{{ t('data.home.feat1.tag') }}</span>
+        <h2 class="feat-h2">{{ t('data.home.feat1.title') }}</h2>
         <div class="feat-bar"></div>
         <p class="feat-desc">
-          跟着新手指引，你可以在 30 分钟内完成注册、通过 KYC 身份核验、完成入金并买入第一只股票。
+          {{ t('data.home.feat1.desc') }}
         </p>
         <ul class="feat-links">
-          <li><a :href="withBase('/getting-started/')" >如何完成开户与首笔交易</a></li>
-          <li><a :href="withBase('/account/')" >香港 / 新加坡开户的要求是什么</a></li>
-          <li><a :href="withBase('/account/')" >如何修改账户安全设置</a></li>
+          <li><a :href="withBase('/getting-started/')" >{{ t('data.home.feat1.link1') }}</a></li>
+          <li><a :href="withBase('/account/')" >{{ t('data.home.feat1.link2') }}</a></li>
+          <li><a :href="withBase('/account/')" >{{ t('data.home.feat1.link3') }}</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -137,16 +137,16 @@
     <!-- 2. 资金管理 (reverse) -->
     <section class="feat feat--reverse">
       <div class="feat-text">
-        <span class="feat-tag">资金</span>
-        <h2 class="feat-h2">入金、出金与换汇</h2>
+        <span class="feat-tag">{{ t('data.home.feat2.tag') }}</span>
+        <h2 class="feat-h2">{{ t('data.home.feat2.title') }}</h2>
         <div class="feat-bar"></div>
         <p class="feat-desc">
-          需要存钱进来、把钱取出去，或在账户间转账换汇？这里有 eDDA、FPS、电汇等所有入金方式的操作步骤，以及出金到账时间和多币种兑换说明。
+          {{ t('data.home.feat2.desc') }}
         </p>
         <ul class="feat-links">
-          <li><a :href="withBase('/deposit/')" >如何从银行卡向账户入金</a></li>
-          <li><a :href="withBase('/withdrawal/')" >出金到账需要多久，如何操作</a></li>
-          <li><a :href="withBase('/transfers-and-fx/')" >如何进行账户间划转或外币换汇</a></li>
+          <li><a :href="withBase('/deposit/')" >{{ t('data.home.feat2.link1') }}</a></li>
+          <li><a :href="withBase('/withdrawal/')" >{{ t('data.home.feat2.link2') }}</a></li>
+          <li><a :href="withBase('/transfers-and-fx/')" >{{ t('data.home.feat2.link3') }}</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -208,17 +208,17 @@
     <!-- 3. 交易与投资 -->
     <section class="feat">
       <div class="feat-text">
-        <span class="feat-tag">交易</span>
-        <h2 class="feat-h2">港股、美股与衍生品交易</h2>
+        <span class="feat-tag">{{ t('data.home.feat3.tag') }}</span>
+        <h2 class="feat-h2">{{ t('data.home.feat3.title') }}</h2>
         <div class="feat-bar"></div>
         <p class="feat-desc">
-          无论是买入第一只股票，还是参与 IPO 认购、使用期权策略或融资杠杆，这里涵盖各类市场和产品的完整操作步骤与核心规则。
+          {{ t('data.home.feat3.desc') }}
         </p>
         <ul class="feat-links">
-          <li><a :href="withBase('/stock-trading/')" >如何下单买卖港股 / 美股</a></li>
-          <li><a :href="withBase('/derivatives/')" >如何交易期权、窝轮或牛熊证</a></li>
-          <li><a :href="withBase('/ipo/')" >如何参与新股认购（IPO）</a></li>
-          <li><a :href="withBase('/margin/')" >什么是 Margin Call，如何避免爆仓</a></li>
+          <li><a :href="withBase('/stock-trading/')" >{{ t('data.home.feat3.link1') }}</a></li>
+          <li><a :href="withBase('/derivatives/')" >{{ t('data.home.feat3.link2') }}</a></li>
+          <li><a :href="withBase('/ipo/')" >{{ t('data.home.feat3.link3') }}</a></li>
+          <li><a :href="withBase('/margin/')" >{{ t('data.home.feat3.link4') }}</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -272,17 +272,17 @@
     <!-- 4. 财富与合规 (reverse) -->
     <section class="feat feat--reverse">
       <div class="feat-text">
-        <span class="feat-tag">财富 · 合规</span>
-        <h2 class="feat-h2">理财、行情与税务合规</h2>
+        <span class="feat-tag">{{ t('data.home.feat4.tag') }}</span>
+        <h2 class="feat-h2">{{ t('data.home.feat4.title') }}</h2>
         <div class="feat-bar"></div>
         <p class="feat-desc">
-          想让闲置资金产生收益、订阅深度行情，或在报税前搞清楚 CRS、FATCA 要求？这里有具体的操作方法和合规说明。
+          {{ t('data.home.feat4.desc') }}
         </p>
         <ul class="feat-links">
-          <li><a :href="withBase('/funds-and-wealth/')" >如何使用余额通或开始基金定投</a></li>
-          <li><a :href="withBase('/market-data/')" >如何订阅深度行情或使用 AI 助手</a></li>
-          <li><a :href="withBase('/compliance-and-tax/')" >CRS 和 FATCA 要求我做什么</a></li>
-          <li><a :href="withBase('/rewards/')" >如何查询和使用活动奖励与卡券</a></li>
+          <li><a :href="withBase('/funds-and-wealth/')" >{{ t('data.home.feat4.link1') }}</a></li>
+          <li><a :href="withBase('/market-data/')" >{{ t('data.home.feat4.link2') }}</a></li>
+          <li><a :href="withBase('/compliance-and-tax/')" >{{ t('data.home.feat4.link3') }}</a></li>
+          <li><a :href="withBase('/rewards/')" >{{ t('data.home.feat4.link4') }}</a></li>
         </ul>
       </div>
       <div class="feat-visual" aria-hidden="true">
@@ -344,6 +344,9 @@
 import { withBase } from 'vitepress'
 import HomeBackground from './HomeBackground.vue'
 import HomeGraphBg from './HomeGraphBg.vue'
+import { useI18n } from '../../i18n/useI18n'
+
+const { t } = useI18n()
 
 const flagSvgs: Record<string, string> = {
   sg: `<svg width="28" height="19" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="新加坡"><rect width="24" height="8" fill="#EF3340"/><rect y="8" width="24" height="8" fill="#fff"/><circle cx="6" cy="4" r="3.2" fill="#fff"/><circle cx="7.5" cy="4" r="2.5" fill="#EF3340"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(13.5,1.5) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(15.2,3) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(14.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(12.5,5.2) scale(0.62)"/><polygon fill="#fff" points="0,-1 0.235,-0.324 0.951,-0.309 0.381,0.124 0.588,0.809 0,0.4 -0.588,0.809 -0.381,0.124 -0.951,-0.309 -0.235,-0.324" transform="translate(11.8,3) scale(0.62)"/></svg>`,
@@ -358,20 +361,20 @@ const markets = [
 ]
 
 const stats = [
-  { value: '17',   label: '知识主题' },
-  { value: '165+', label: '操作指南' },
-  { value: '3',    label: '语言版本' },
-  { isMarkets: true, label: '覆盖市场' },
+  { value: '17',   label: 'data.home.stat1' },
+  { value: '165+', label: 'data.home.stat2' },
+  { value: '3',    label: 'data.home.stat3' },
+  { isMarkets: true, label: 'data.home.stat4' },
 ]
 
 const tasks = [
-  { q: '如何从银行卡向账户入金？', path: '/deposit/' },
-  { q: '出金需要多长时间，如何操作？', path: '/withdrawal/' },
-  { q: '如何下单买卖港股 / 美股？', path: '/stock-trading/' },
-  { q: '登录遇到问题或忘记密码？', path: '/troubleshooting/' },
-  { q: '如何参与新股认购（IPO）？', path: '/ipo/' },
-  { q: '什么是 Margin Call，如何应对？', path: '/margin/' },
-  { q: '需要提交哪些税务申报材料？', path: '/compliance-and-tax/' },
-  { q: '如何在账户间划转资金或换汇？', path: '/transfers-and-fx/' },
+  { q: 'data.home.tasks.0', path: '/deposit/' },
+  { q: 'data.home.tasks.1', path: '/withdrawal/' },
+  { q: 'data.home.tasks.2', path: '/stock-trading/' },
+  { q: 'data.home.tasks.3', path: '/troubleshooting/' },
+  { q: 'data.home.tasks.4', path: '/ipo/' },
+  { q: 'data.home.tasks.5', path: '/margin/' },
+  { q: 'data.home.tasks.6', path: '/compliance-and-tax/' },
+  { q: 'data.home.tasks.7', path: '/transfers-and-fx/' },
 ]
 </script>

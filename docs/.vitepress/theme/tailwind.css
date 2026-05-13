@@ -149,13 +149,19 @@
   @apply !hidden;
 }
 
+/* 告知 VitePress 真实 navbar 高度，使 .aside sticky top 计算正确 */
+.custom-nav-layout {
+  --vp-nav-height: var(--hn-height, 112px);
+}
+
 .custom-nav-layout .VPContent {
   @apply !pt-0;
 }
 
 .custom-nav-layout .VPSidebar {
-  top: 0;
-  padding-top: var(--hn-height, 112px);
+  top: var(--hn-height, 112px);
+  /* 滚动区域从 header 底部开始，内容 padding 只保留间距 */
+  padding-top: 48px;
 }
 
 .custom-nav-layout .VPLocalNav {
@@ -347,20 +353,23 @@
   /* ─── Active leaf ────────────────────────────────────────── */
 
   .VPSidebarItem.is-active > .item > .link {
-    background: var(--vp-c-brand-soft);
-    border-radius: 10px;
-  }
-
-  .VPSidebarItem.is-active .VPLink {
-    color: var(--vp-c-brand-1);
-    text-shadow:
-      -0.2px 0 0 currentColor,
-      0.2px 0 0 currentColor;
-  }
-
-  .VPSidebarItem.is-active .VPLink:hover {
     background: transparent;
-    color: var(--vp-c-brand-1);
+    border-radius: 0;
+  }
+
+  .VPSidebar .VPSidebarItem.is-active .VPLink,
+  .VPSidebar .VPSidebarItem.is-active > .item > .VPLink {
+    background: var(--vp-c-default-soft) !important;
+    color: var(--vp-c-text-1) !important;
+    font-weight: 600;
+    border-radius: 10px !important;
+    text-shadow: none;
+  }
+
+  .VPSidebar .VPSidebarItem.is-active .VPLink:hover,
+  .VPSidebar .VPSidebarItem.is-active > .item > .VPLink:hover {
+    background: var(--vp-c-default-soft) !important;
+    color: var(--vp-c-text-1) !important;
   }
 
   .VPSidebarItem.is-active .sidebar-item-icon,
@@ -1438,6 +1447,11 @@ html.ai-resizing .hn-root {
     @apply flex items-center gap-2;
     text-decoration: none;
     flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+
+  .hn-logo:hover .hn-logo-text {
+    color: var(--vp-c-brand-1);
   }
 
   .hn-logo-icon {
@@ -1458,55 +1472,59 @@ html.ai-resizing .hn-root {
   }
 
   .hn-center {
-    @apply flex items-center gap-1.5;
+    @apply flex items-center gap-2;
     flex-shrink: 0;
   }
 
   .hn-search-btn {
-    @apply flex items-center gap-2 h-8 min-w-56 py-0 px-3.5 text-sm font-medium;
+    @apply flex items-center gap-2 h-9 min-w-[272px] py-0 px-4 text-sm;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
     border-radius: 99px;
     cursor: pointer;
     color: var(--vp-c-text-3);
     white-space: nowrap;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .hn-search-btn:hover {
-    border-color: var(--vp-c-divider);
+    border-color: var(--vp-c-brand-1);
+    box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
   }
 
   .hn-search-label {
     @apply max-md:hidden text-sm;
+    flex: 1;
   }
 
   .hn-kbd {
-    @apply inline-flex items-center justify-center h-4 min-w-5 py-0 px-1 text-xs font-medium;
-    background: var(--vp-c-default-soft);
-    border-radius: 5px;
-    font-family: "Geist Mono", monospace;
+    @apply ml-auto text-xs;
     color: var(--vp-c-text-3);
-    letter-spacing: 0.2px;
+    font-family: ui-monospace, "SF Mono", monospace;
+    letter-spacing: -0.2px;
+    opacity: 0.7;
   }
 
   .hn-askai-btn {
-    @apply flex items-center gap-1.5 h-8 py-0 px-3.5 text-sm font-medium;
-    background: var(--vp-c-bg-soft);
+    @apply flex items-center gap-1.5 h-9 py-0 px-4 text-sm font-medium;
+    background: transparent;
     border: 1px solid var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: 99px;
     cursor: pointer;
     color: var(--vp-c-text-1);
     white-space: nowrap;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
   }
 
   .hn-askai-btn:hover {
-    border-color: var(--vp-c-divider);
+    border-color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
+    box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
   }
 
   .hn-sparkle {
     color: var(--vp-c-brand-1);
+    flex-shrink: 0;
   }
 
   .hn-icon-btn {
@@ -1551,8 +1569,8 @@ html.ai-resizing .hn-root {
   }
 
   .hn-dev-platform:hover {
-    color: var(--vp-c-text-1);
-    background: var(--vp-c-default-soft);
+    color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
   }
 
   .hn-login {
@@ -1607,7 +1625,7 @@ html.ai-resizing .hn-root {
   }
 
   .hn-tab:hover {
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-brand-1);
   }
 
   .hn-tab--active {
@@ -1676,7 +1694,7 @@ html.ai-resizing .hn-root {
   .card:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transform: translateY(-3px);
-    border-color: transparent;
+    border-color: var(--vp-c-brand-1);
   }
 
   .card-accent {
@@ -1818,7 +1836,11 @@ html.ai-resizing .hn-root {
   }
 
   .item:hover {
-    background: var(--vp-c-bg-soft);
+    background: var(--vp-c-brand-soft);
+  }
+
+  .item:hover .item-title {
+    color: var(--vp-c-brand-1);
   }
 
   .item-left {
@@ -2551,7 +2573,7 @@ html.ai-resizing .hn-root {
 }
 
 .VPDoc .content-container .content {
-  @apply lg:!max-w-3xl;
+  @apply lg:!max-w-[45rem]; /* 720px — 对齐 Claude Code Docs 实测宽度 */
 }
 
 /* F.3 — Hero 标题区 */
@@ -2563,11 +2585,12 @@ html.ai-resizing .hn-root {
   @apply text-xs font-semibold mb-2.5;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-brand-1); /* brand 色强化品牌识别，替代 Claude 的中性灰 */
 }
 
 .lb-doc-hero .lb-title {
-  @apply text-4xl leading-tight font-bold m-0;
+  @apply leading-snug font-semibold m-0;
+  font-size: 30px; /* 对齐 Claude Code Docs H1：30px / sans-600 ≈ serif-400 视觉重量 */
   letter-spacing: -0.01em;
   color: var(--vp-c-text-1);
 }
@@ -2600,9 +2623,11 @@ html.ai-resizing .hn-root {
 }
 
 .lb-doc-hero .lb-lead {
-  @apply text-base leading-relaxed m-0;
+  @apply text-base m-0;
+  line-height: 1.6;
   color: var(--vp-c-text-2);
   max-width: 60ch;
+  margin-top: 12px !important;
 }
 
 /* 隐藏 markdown 首 H1，由 PageHero 接管 */
@@ -2610,10 +2635,12 @@ html.ai-resizing .hn-root {
   @apply hidden;
 }
 
-/* F.4 — 正文排版节奏 */
+/* F.4 — 正文排版节奏：靠间距区隔章节，不用 border */
 .vp-doc h2 {
-  @apply pt-6;
-  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 3.5rem; /* 56px */
+  margin-bottom: 1rem;
+  padding-top: 0;
+  border-top: none;
 }
 
 .vp-doc p,
@@ -2649,40 +2676,97 @@ html.ai-resizing .hn-root {
   border-left-color: var(--lb-c-danger);
 }
 
-/* F.5 — 右栏 TOC 紧凑风格 */
+/* ============================================================
+ * F.5 — 右栏 TOC — Claude Code Docs 风格
+ * 设计原则：层级靠字重 + 缩进，不靠 indicator / pill / 竖条
+ * ============================================================ */
+
 .VPDocAside {
   @apply text-sm;
 }
 
+/* "本页内容" header：icon + semibold + text-1 */
 .VPDocAside .outline-title {
-  @apply text-xs font-semibold;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--vp-c-text-1);
+  line-height: 1.4;
+  padding-bottom: 4px;
 }
 
+/* lucide align-justify 18px，currentColor 跟随文字色，dark 自动 */
+.VPDocAside .outline-title::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='6' x2='21' y2='6'/><line x1='3' y1='12' x2='21' y2='12'/><line x1='3' y1='18' x2='21' y2='18'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='6' x2='21' y2='6'/><line x1='3' y1='12' x2='21' y2='12'/><line x1='3' y1='18' x2='21' y2='18'/></svg>") no-repeat center / contain;
+}
+
+/* 移除 VitePress 默认浮动 marker 竖线 */
+.VPDocAsideOutline .outline-marker {
+  display: none !important;
+}
+
+/* 所有层级共享基础 */
 .VPDocOutlineItem .outline-link {
-  @apply relative pl-3;
-  color: var(--vp-c-text-2);
-  border-left: 2px solid transparent;
-  transition:
-    color 0.15s,
-    border-color 0.15s;
+  display: block;
+  padding: 6px 0;
+  line-height: 1.5;
+  border-left: none;
+  background: transparent;
+  transition: color 0.15s ease;
 }
 
+/* L2（顶层 H2）：bold + text-1，无左缩进 */
+.VPDocOutlineItem.root > .outline-link {
+  padding-left: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+/* L3（H3）：normal + text-2，缩进 14px */
+.VPDocOutlineItem.root > ul > .VPDocOutlineItem > .outline-link {
+  padding-left: 14px;
+  font-weight: 400;
+  color: var(--vp-c-text-2);
+}
+
+/* L4（H4）：normal + text-2，缩进 28px */
+.VPDocOutlineItem.root > ul > .VPDocOutlineItem > ul > .VPDocOutlineItem > .outline-link {
+  padding-left: 28px;
+  font-weight: 400;
+  color: var(--vp-c-text-2);
+}
+
+/* Hover：统一抬到 text-1，不加背景、不位移 */
 .VPDocOutlineItem .outline-link:hover {
   color: var(--vp-c-text-1);
 }
 
+/* Active：仅切 brand 文字色，无背景、无竖条 */
 .VPDocOutlineItem .outline-link.active {
   color: var(--vp-c-brand-1);
-  border-left-color: var(--vp-c-brand-1);
   background: transparent;
+  border-left: none;
 }
 
 .dark .VPDocOutlineItem .outline-link.active {
   color: var(--vp-c-brand-2);
-  border-left-color: var(--vp-c-brand-2);
+}
+
+/* L2 active 保持 bold，避免视觉"变轻" */
+.VPDocOutlineItem.root > .outline-link.active {
+  font-weight: 600;
 }
 
 /* F.7 — 移动端浮动 FAB 桌面隐藏 */
@@ -2690,25 +2774,10 @@ html.ai-resizing .hn-root {
   @apply lg:hidden;
 }
 
-/* F.8 — Sidebar active 由 pill 改为左竖条 */
+/* F.8 — Sidebar active: 对齐 Claude Code Docs，无 pill 无竖条，只用 bold + 深色 */
 .VPSidebarItem.is-active > .item > .VPLink {
   background: transparent !important;
   border-radius: 0;
-  @apply relative;
-}
-
-.VPSidebarItem.is-active > .item > .VPLink::before {
-  content: "";
-  @apply absolute w-0.5;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  background: var(--vp-c-brand-1);
-  border-radius: 2px;
-}
-
-.dark .VPSidebarItem.is-active > .item > .VPLink::before {
-  background: var(--vp-c-brand-2);
 }
 
 /* PageFeedback */

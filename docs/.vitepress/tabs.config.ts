@@ -8,7 +8,7 @@ export interface NavTab {
 export const NAV_TABS: NavTab[] = [
   {
     key: 'getting-started',
-    label: '快速开始',
+    label: 'data.navTabs.getting-started',
     path: '/getting-started/',
     categories: [
       'getting-started', 'app-guide', 'account', 'troubleshooting',
@@ -17,31 +17,31 @@ export const NAV_TABS: NavTab[] = [
   },
   {
     key: 'stock-trading',
-    label: '股票投资',
+    label: 'data.navTabs.stock-trading',
     path: '/stock-trading/',
     categories: ['stock-trading', 'ipo', 'margin', 'portfolio-and-statements'],
   },
   {
     key: 'derivatives',
-    label: '期权衍生品',
+    label: 'data.navTabs.derivatives',
     path: '/derivatives/',
     categories: ['derivatives'],
   },
   {
     key: 'funds-and-wealth',
-    label: '基金与ETF',
+    label: 'data.navTabs.funds-and-wealth',
     path: '/funds-and-wealth/',
     categories: ['funds-and-wealth', 'rewards'],
   },
   {
     key: 'compliance-and-tax',
-    label: '合规监管',
+    label: 'data.navTabs.compliance-and-tax',
     path: '/compliance-and-tax/',
     categories: ['compliance-and-tax'],
   },
   {
     key: 'market-data',
-    label: '量化与数据',
+    label: 'data.navTabs.market-data',
     path: '/market-data/',
     categories: ['market-data'],
   },

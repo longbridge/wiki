@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import { useRouter } from 'vitepress'
 import { categoryGroups } from '../../data/category-groups'
+import { useI18n } from '../../../i18n/useI18n'
 
 const router = useRouter()
+const { t } = useI18n()
 </script>
 
 <template>
   <section class="category-groups">
     <div class="category-groups__inner">
-      <h2 class="category-groups__title">按产品类目</h2>
+      <h2 class="category-groups__title">{{ t('category.heading') }}</h2>
       <div class="category-groups__list">
         <div
           v-for="group in categoryGroups"
           :key="group.name"
           class="category-groups__row"
         >
-          <span class="category-groups__group-name">{{ group.name }}</span>
+          <span class="category-groups__group-name">{{ t(group.name) }}</span>
           <div class="category-groups__chips">
             <button
               v-for="item in group.items"
@@ -23,7 +25,7 @@ const router = useRouter()
               class="category-groups__chip"
               @click="router.go(item.path)"
             >
-              {{ item.label }}
+              {{ t(item.label) }}
             </button>
           </div>
         </div>

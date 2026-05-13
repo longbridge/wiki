@@ -8,12 +8,12 @@
       {{ tooltip.text }}
     </div>
     <div class="graph-controls">
-      <button @click="resetView" title="重置视图">⟳</button>
+      <button @click="resetView" :title="t('graph.resetView')">⟳</button>
     </div>
     <div class="graph-legend">
       <div v-for="(color, cat) in visibleCategories" :key="cat" class="legend-item">
         <span class="legend-dot" :style="{ background: color }" />
-        <span>{{ categoryLabels[cat] || cat }}</span>
+        <span>{{ categoryLabel(cat) }}</span>
       </div>
     </div>
   </div>
@@ -24,6 +24,9 @@ import { ref, onMounted, onUnmounted, reactive, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import graphDataRaw from '../../link-graph.json'
 import { CATEGORY_COLORS } from '../colors'
+import { useI18n } from '../../i18n/useI18n'
+
+const { t } = useI18n()
 
 // ------- 类型 -------
 
@@ -50,24 +53,7 @@ interface SimEdge {
 
 // CATEGORY_COLORS imported from ../colors.ts
 
-const CATEGORY_LABELS: Record<string, string> = {
-  'getting-started':      '新手入门',
-  'app-guide':            'App 导览',
-  'account':              '账户',
-  'deposit':              '入金',
-  'withdrawal':           '出金',
-  'transfers-and-fx':     '换汇',
-  'stock-trading':        '股票交易',
-  'derivatives':          '衍生品',
-  'ipo':                  '新股认购',
-  'margin':               '融资融券',
-  'funds-and-wealth':     '基金理财',
-  'market-data':          '行情数据',
-  'portfolio-and-statements': '资产账单',
-  'rewards':              '活动奖励',
-  'compliance-and-tax':   '合规税务',
-  'troubleshooting':      '故障排查',
-}
+const categoryLabel = (cat: string) => t('graph.categoryLabels.' + cat) || cat
 
 // 力导向参数
 const REPULSION = 3000
@@ -85,7 +71,6 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 const router = useRouter()
 
 const tooltip = reactive({ visible: false, x: 0, y: 0, text: '' })
-const categoryLabels = CATEGORY_LABELS
 
 // 画布尺寸（设备像素）
 let canvasW = 0
