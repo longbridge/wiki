@@ -49,7 +49,7 @@ export default {
         },
       },
       borderRadius: {
-        pill: '10px',
+        pill: '12px',
         card: '12px',
       },
     },

@@ -107,6 +107,10 @@
   --lb-cta-bg: #0d0d0d;
   --lb-cta-fg: #ffffff;
   --lb-cta-border: rgba(0, 0, 0, 0.12);
+
+  /* ── Inline code ── */
+  --lb-inline-code-bg: rgba(238, 238, 238, 0.5);
+  --lb-inline-code-fg: #166534;
 }
 
 .dark {
@@ -142,6 +146,10 @@
   --lb-cta-bg: #f0f0f0;
   --lb-cta-fg: #0d0d0d;
   --lb-cta-border: rgba(255, 255, 255, 0.12);
+
+  /* ── Inline code ── */
+  --lb-inline-code-bg: rgba(50, 50, 50, 0.4);
+  --lb-inline-code-fg: #86efac;
 }
 
 /* 全站使用自定义 HomeNavbar，隐藏 VitePress 默认导航栏 */
@@ -191,14 +199,14 @@
     @apply mt-8 mb-3 pt-4;
   }
 
-  /* h3: default is margin: 32px 0 0 */
+  /* h3: 48px top — 与参考站一致，强化章节节奏 */
   .vp-doc h3 {
-    @apply mt-5;
+    @apply mt-12 mb-3;
   }
 
-  /* h4: default is margin: 24px 0 0 */
+  /* h4: 24px top */
   .vp-doc h4 {
-    @apply mt-4;
+    @apply mt-6;
   }
 
   .vp-doc p {
@@ -230,7 +238,7 @@
 
   .VPSidebar {
     outline: none;
-    border-right: 1px solid var(--vp-c-divider);
+    background: transparent !important;
   }
 
   .VPNavBarTitle.has-sidebar .title {
@@ -304,41 +312,19 @@
     color: var(--vp-c-text-1);
   }
 
-  /* ─── Icons ──────────────────────────────────────────────── */
-
-  .sidebar-item-icon {
-    @apply inline-flex items-center mr-2.5;
-    flex-shrink: 0;
-    color: var(--vp-c-text-3);
-    vertical-align: middle;
-  }
-
-  .sidebar-item-icon--sub {
-    @apply inline-flex items-center mr-2;
-    flex-shrink: 0;
-    color: var(--vp-c-text-3);
-    vertical-align: middle;
-  }
-
-  .VPSidebarItem.level-0 > .item > .link:hover .sidebar-item-icon,
-  .VPSidebarItem.level-0.is-active > .item > .link .sidebar-item-icon {
-    color: var(--vp-c-brand-1);
-  }
-
-  .VPSidebarItem.level-1 > .item > .link:hover .sidebar-item-icon--sub,
-  .VPSidebarItem.level-1.is-active > .item > .link .sidebar-item-icon--sub {
-    color: var(--vp-c-brand-1);
-  }
-
   /* ─── Leaf links (VPLink) ────────────────────────────────── */
 
   .VPSidebarItem .VPLink {
-    border-radius: 10px;
+    border-radius: 12px;
     @apply pt-1.5 pr-3 pb-1.5 pl-4 flex items-center text-sm;
-    color: var(--vp-c-text-2);
+    color: #3e3e3e;
     transition:
       background 0.12s,
       color 0.12s;
+  }
+
+  .dark .VPSidebarItem .VPLink {
+    color: var(--vp-c-text-2);
   }
 
   .VPSidebarItem.is-link .VPLink > p {
@@ -346,7 +332,7 @@
   }
 
   .VPSidebarItem .VPLink:hover {
-    background: var(--vp-c-default-soft);
+    background: rgba(75, 85, 99, 0.07);
     color: var(--vp-c-text-1);
   }
 
@@ -357,24 +343,25 @@
     border-radius: 0;
   }
 
-  .VPSidebar .VPSidebarItem.is-active .VPLink,
-  .VPSidebar .VPSidebarItem.is-active > .item > .VPLink {
-    background: var(--vp-c-default-soft) !important;
-    color: var(--vp-c-text-1) !important;
-    font-weight: 600;
-    border-radius: 10px !important;
-    text-shadow: none;
+  /* 只高亮真正的叶节点链接（level-1+），且用直接子选择器防止蔓延到子 section */
+  .VPSidebar .VPSidebarItem.is-active.is-link:not(.level-0) > .item > .VPLink {
+    background: var(--vp-c-brand-soft) !important;
+    color: var(--vp-c-brand-1) !important;
+    font-weight: 500;
+    border-radius: 12px !important;
   }
 
-  .VPSidebar .VPSidebarItem.is-active .VPLink:hover,
-  .VPSidebar .VPSidebarItem.is-active > .item > .VPLink:hover {
-    background: var(--vp-c-default-soft) !important;
-    color: var(--vp-c-text-1) !important;
+  .VPSidebar .VPSidebarItem.is-active.is-link:not(.level-0) > .item > .VPLink:hover {
+    background: var(--vp-c-brand-soft) !important;
+    color: var(--vp-c-brand-1) !important;
   }
 
-  .VPSidebarItem.is-active .sidebar-item-icon,
-  .VPSidebarItem.is-active .sidebar-item-icon--sub {
-    color: var(--vp-c-brand-1);
+  /* level-0 section header 即使是链接且 active，也不高亮 */
+  .VPSidebar .VPSidebarItem.level-0.is-active > .item > .VPLink,
+  .VPSidebar .VPSidebarItem.level-0.is-active > .item > .link {
+    background: transparent !important;
+    color: var(--vp-c-text-1) !important;
+    text-shadow: none !important;
   }
 }
 
@@ -2568,8 +2555,9 @@ html.ai-resizing .hn-root {
 /* F.2 — 三栏布局尺寸 */
 :root {
   --hn-height: 112px;
-  --vp-sidebar-width: 272px;
+  --vp-sidebar-width: 288px;
   --vp-aside-width: 272px;
+  --vp-sidebar-bg-color: transparent;
 }
 
 .VPDoc .content-container .content {
@@ -2589,9 +2577,9 @@ html.ai-resizing .hn-root {
 }
 
 .lb-doc-hero .lb-title {
-  @apply leading-snug font-semibold m-0;
-  font-size: 30px; /* 对齐 Claude Code Docs H1：30px / sans-600 ≈ serif-400 视觉重量 */
-  letter-spacing: -0.01em;
+  @apply leading-snug font-bold m-0;
+  font-size: 30px;
+  letter-spacing: -0.025em;
   color: var(--vp-c-text-1);
 }
 
@@ -2637,7 +2625,7 @@ html.ai-resizing .hn-root {
 
 /* F.4 — 正文排版节奏：靠间距区隔章节，不用 border */
 .vp-doc h2 {
-  margin-top: 3.5rem; /* 56px */
+  margin-top: 3rem; /* 48px — 对齐参考站 */
   margin-bottom: 1rem;
   padding-top: 0;
   border-top: none;
@@ -2659,21 +2647,28 @@ html.ai-resizing .hn-root {
 
 .vp-doc .custom-block {
   border: 1px solid var(--vp-c-divider);
-  border-left-width: 3px;
-  border-radius: 6px;
-  @apply py-3 px-4;
+  border-radius: 16px;
+  @apply py-4 px-5;
 }
 
 .vp-doc .custom-block.tip {
-  border-left-color: var(--vp-c-brand-1);
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.dark .vp-doc .custom-block.tip {
+  background: rgba(0, 240, 196, 0.06);
+  border-color: rgba(0, 240, 196, 0.2);
 }
 
 .vp-doc .custom-block.warning {
-  border-left-color: var(--lb-c-warning);
+  background: rgba(255, 151, 40, 0.06);
+  border-color: rgba(255, 151, 40, 0.3);
 }
 
 .vp-doc .custom-block.danger {
-  border-left-color: var(--lb-c-danger);
+  background: rgba(247, 65, 95, 0.06);
+  border-color: rgba(247, 65, 95, 0.3);
 }
 
 /* ============================================================
@@ -2683,6 +2678,12 @@ html.ai-resizing .hn-root {
 
 .VPDocAside {
   @apply text-sm;
+  padding-right: 32px;
+}
+
+.VPDocAside .content {
+  border-left: none !important;
+  padding-left: 0 !important;
 }
 
 /* "本页内容" header：icon + semibold + text-1 */
@@ -2774,11 +2775,6 @@ html.ai-resizing .hn-root {
   @apply lg:hidden;
 }
 
-/* F.8 — Sidebar active: 对齐 Claude Code Docs，无 pill 无竖条，只用 bold + 深色 */
-.VPSidebarItem.is-active > .item > .VPLink {
-  background: transparent !important;
-  border-radius: 0;
-}
 
 /* PageFeedback */
 .lb-page-feedback {
@@ -2807,4 +2803,81 @@ html.ai-resizing .hn-root {
 .lb-pfb-btn:hover {
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
+}
+
+/* ============================================================
+   Inline code — 对齐参考站（绿字 + 浅灰底）
+   ============================================================ */
+
+.vp-doc :not(pre) > code {
+  font-size: 0.875em;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--lb-inline-code-bg);
+  color: var(--lb-inline-code-fg);
+  border: none;
+}
+
+/* ============================================================
+   代码块外框 — rounded-2xl + 1px border
+   ============================================================ */
+
+.vp-doc div[class*='language-'] {
+  border-radius: 1rem;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  overflow: hidden;
+}
+
+.dark .vp-doc div[class*='language-'] {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.vp-doc div[class*='language-'] pre {
+  padding: 14px 16px;
+}
+
+.vp-doc div[class*='language-'] code {
+  font-size: 14px;
+  line-height: 1.714;
+}
+
+/* ============================================================
+   侧边栏图标隐藏 — 放在 @layer 外确保生效
+   ============================================================ */
+
+.sidebar-item-icon {
+  display: none;
+}
+
+.sidebar-item-icon--sub {
+  display: none;
+}
+
+/* ============================================================
+   右侧 TOC — 取消文字截断，允许换行
+   ============================================================ */
+
+.VPDocAside .outline-link {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* ============================================================
+   侧边栏 section header h2 字号强制 14px（覆盖浏览器 h2 默认值）
+   ============================================================ */
+
+.VPSidebarItem.level-0 > .item > .link .text,
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   侧边栏叶节点左缩进与参考站对齐（减少 pl 使左边距统一）
+   ============================================================ */
+
+.VPSidebarItem .VPLink {
+  padding-left: 10px !important;
 }
