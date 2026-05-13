@@ -7,6 +7,7 @@ import HomeNavbar from '../components/HomeNavbar.vue'
 import PageHero from '../components/PageHero.vue'
 import PageFeedback from '../components/PageFeedback.vue'
 import AiChatDrawer from '../components/AiChatDrawer.vue'
+import SearchDialog from '../components/SearchDialog.vue'
 import { useAIModal } from '../composables/useAIModal'
 
 const { frontmatter } = useData()
@@ -55,6 +56,7 @@ watch(modalOpen, (open) => {
       <PageFeedback v-if="isDocPage" />
     </template>
     <template #layout-bottom>
+      <SearchDialog />
       <AiChatDrawer v-model="modalOpen" :initial-query="initialQuery" />
       <button
         v-if="!isHomePage"

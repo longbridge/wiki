@@ -84,7 +84,7 @@ const openAIModal = inject<(q: string) => void>('openAIModal', () => {})
 }
 
 .footer-mini__links a:hover {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-brand-1);
 }
 
 @media (max-width: 640px) {

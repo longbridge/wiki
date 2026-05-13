@@ -357,6 +357,11 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        miniSearch: {
+          options: {
+            storeFields: ['title', 'titles', 'text'],
+          },
+        },
         locales: {
           root: {
             translations: {

@@ -5,6 +5,7 @@ import { useLocalStorage } from '@vueuse/core'
 import { stream } from 'fetch-event-stream'
 import MarkdownRender from 'markstream-vue'
 import { useAIModal } from '../composables/useAIModal'
+import RiveThinkingIcon from './RiveThinkingIcon.vue'
 
 const AI_ENDPOINT = import.meta.env.VITE_AI_API_ENDPOINT || '/api/ai/v1/invoke'
 
@@ -241,8 +242,9 @@ function toggleExpand() {
       <!-- Header -->
       <div class="ai-drawer-header">
         <div class="ai-drawer-title">
-          <svg class="ai-star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="ai-star-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M7.111 2.34728C7.29334 1.80026 8.06709 1.80026 8.24942 2.34728L9.5054 6.1152C9.56512 6.29437 9.70571 6.43496 9.88487 6.49468L13.6528 7.75065C14.1998 7.93299 14.1998 8.70673 13.6528 8.88907L9.88487 10.145C9.70571 10.2048 9.56512 10.3454 9.5054 10.5245L8.24942 14.2924C8.06709 14.8395 7.29334 14.8395 7.111 14.2924L5.85503 10.5245C5.79531 10.3454 5.65472 10.2048 5.47556 10.145L1.70763 8.88907C1.16061 8.70673 1.16061 7.93299 1.70763 7.75065L5.47556 6.49468C5.65472 6.43496 5.79531 6.29437 5.85503 6.1152L7.111 2.34728Z" fill="currentColor"/>
+            <path d="M13.0648 1.0138C13.1937 0.665555 13.6862 0.665555 13.8151 1.0138L14.0676 1.69612C14.1081 1.80561 14.1944 1.89194 14.3039 1.93245L14.9862 2.18493C15.3345 2.31379 15.3345 2.80635 14.9862 2.93521L14.3039 3.18769C14.1944 3.22821 14.1081 3.31453 14.0676 3.42402L13.8151 4.10634C13.6862 4.45459 13.1937 4.45459 13.0648 4.10634L12.8123 3.42402C12.7718 3.31453 12.6855 3.22821 12.576 3.18769L11.8937 2.93521C11.5454 2.80635 11.5454 2.31379 11.8937 2.18493L12.576 1.93245C12.6855 1.89194 12.7718 1.80561 12.8123 1.69612L13.0648 1.0138Z" fill="currentColor"/>
           </svg>
           <span>Assistant</span>
         </div>
@@ -293,11 +295,10 @@ function toggleExpand() {
             <template v-if="msg.role === 'user'">{{ msg.content }}</template>
             <template v-else>
               <div v-if="msg.loading && !msg.content" class="ai-thinking">
-                <svg class="ai-thinking-star" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z" />
-                </svg>
+                <ClientOnly>
+                  <RiveThinkingIcon :size="16" />
+                </ClientOnly>
                 <span class="ai-thinking-text">思考中</span>
-                <span class="ai-thinking-dots"><span /><span /><span /></span>
               </div>
               <ClientOnly v-else>
                 <MarkdownRender
@@ -442,7 +443,6 @@ function toggleExpand() {
 /* ── Header ──────────────────────────────────────────────── */
 .ai-drawer-header {
   @apply flex items-center justify-between py-0 px-5 h-14;
-  border-bottom: 0.5px solid var(--vp-c-divider);
   flex-shrink: 0;
 }
 .ai-drawer-title {
@@ -456,7 +456,6 @@ function toggleExpand() {
 .ai-disclaimer {
   @apply m-0 pt-2.5 px-5 pb-3 text-xs leading-normal text-center;
   color: var(--vp-c-text-3);
-  border-bottom: 0.5px solid var(--vp-c-divider);
   flex-shrink: 0;
 }
 .ai-drawer-header-actions { display: flex; align-items: center; gap: 4px; }
@@ -552,38 +551,18 @@ function toggleExpand() {
 .ai-thinking {
   @apply inline-flex items-center gap-1.5 py-1 px-0;
 }
-.ai-thinking-star {
-  color: var(--vp-c-brand-1);
+.ai-thinking-rive {
   flex-shrink: 0;
-  animation: ai-star-pulse 2s ease-in-out infinite;
+  display: block;
 }
 .ai-thinking-text {
   @apply text-sm;
   color: var(--vp-c-text-2);
   animation: ai-text-breathe 2s ease-in-out infinite;
 }
-.ai-thinking-dots {
-  @apply inline-flex gap-0.5 items-center pb-0.5;
-}
-.ai-thinking-dots span {
-  @apply w-1 h-1;
-  background: var(--vp-c-text-3);
-  border-radius: 50%;
-  animation: ai-dot-wave 1.4s ease-in-out infinite;
-}
-.ai-thinking-dots span:nth-child(2) { animation-delay: .15s; }
-.ai-thinking-dots span:nth-child(3) { animation-delay: .3s; }
-@keyframes ai-star-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
-}
 @keyframes ai-text-breathe {
   0%, 100% { opacity: 0.45; }
   50% { opacity: 0.85; }
-}
-@keyframes ai-dot-wave {
-  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
-  30% { opacity: 0.8; transform: translateY(-2px); }
 }
 
 /* Message actions */
@@ -705,8 +684,6 @@ function toggleExpand() {
 @media (prefers-reduced-motion: reduce) {
   .drawer-enter-active,
   .drawer-leave-active { transition: none; }
-  .ai-thinking-star,
-  .ai-thinking-text,
-  .ai-thinking-dots span { animation: none; opacity: 0.6; }
+  .ai-thinking-text { animation: none; opacity: 0.6; }
 }
 </style>

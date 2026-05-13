@@ -1438,6 +1438,11 @@ html.ai-resizing .hn-root {
     @apply flex items-center gap-2;
     text-decoration: none;
     flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+
+  .hn-logo:hover .hn-logo-text {
+    color: var(--vp-c-brand-1);
   }
 
   .hn-logo-icon {
@@ -1458,55 +1463,59 @@ html.ai-resizing .hn-root {
   }
 
   .hn-center {
-    @apply flex items-center gap-1.5;
+    @apply flex items-center gap-2;
     flex-shrink: 0;
   }
 
   .hn-search-btn {
-    @apply flex items-center gap-2 h-8 min-w-56 py-0 px-3.5 text-sm font-medium;
+    @apply flex items-center gap-2 h-9 min-w-[272px] py-0 px-4 text-sm;
     background: var(--vp-c-bg-soft);
     border: 1px solid var(--vp-c-border);
     border-radius: 99px;
     cursor: pointer;
     color: var(--vp-c-text-3);
     white-space: nowrap;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .hn-search-btn:hover {
-    border-color: var(--vp-c-divider);
+    border-color: var(--vp-c-brand-1);
+    box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
   }
 
   .hn-search-label {
     @apply max-md:hidden text-sm;
+    flex: 1;
   }
 
   .hn-kbd {
-    @apply inline-flex items-center justify-center h-4 min-w-5 py-0 px-1 text-xs font-medium;
-    background: var(--vp-c-default-soft);
-    border-radius: 5px;
-    font-family: "Geist Mono", monospace;
+    @apply ml-auto text-xs;
     color: var(--vp-c-text-3);
-    letter-spacing: 0.2px;
+    font-family: ui-monospace, "SF Mono", monospace;
+    letter-spacing: -0.2px;
+    opacity: 0.7;
   }
 
   .hn-askai-btn {
-    @apply flex items-center gap-1.5 h-8 py-0 px-3.5 text-sm font-medium;
-    background: var(--vp-c-bg-soft);
+    @apply flex items-center gap-1.5 h-9 py-0 px-4 text-sm font-medium;
+    background: transparent;
     border: 1px solid var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: 99px;
     cursor: pointer;
     color: var(--vp-c-text-1);
     white-space: nowrap;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
   }
 
   .hn-askai-btn:hover {
-    border-color: var(--vp-c-divider);
+    border-color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
+    box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
   }
 
   .hn-sparkle {
     color: var(--vp-c-brand-1);
+    flex-shrink: 0;
   }
 
   .hn-icon-btn {
@@ -1551,8 +1560,8 @@ html.ai-resizing .hn-root {
   }
 
   .hn-dev-platform:hover {
-    color: var(--vp-c-text-1);
-    background: var(--vp-c-default-soft);
+    color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
   }
 
   .hn-login {
@@ -1607,7 +1616,7 @@ html.ai-resizing .hn-root {
   }
 
   .hn-tab:hover {
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-brand-1);
   }
 
   .hn-tab--active {
@@ -1676,7 +1685,7 @@ html.ai-resizing .hn-root {
   .card:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transform: translateY(-3px);
-    border-color: transparent;
+    border-color: var(--vp-c-brand-1);
   }
 
   .card-accent {
@@ -1818,7 +1827,11 @@ html.ai-resizing .hn-root {
   }
 
   .item:hover {
-    background: var(--vp-c-bg-soft);
+    background: var(--vp-c-brand-soft);
+  }
+
+  .item:hover .item-title {
+    color: var(--vp-c-brand-1);
   }
 
   .item-left {
