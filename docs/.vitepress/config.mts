@@ -270,6 +270,16 @@ function generateSidebar(localeDir: string, dirNames: Record<string, string>) {
       .map(cat => itemByCategory[cat])
   }
 
+  // 为每个分类单独注册路径前缀，避免 URL 与 tab.path 不一致时无侧边栏
+  for (const tab of NAV_TABS) {
+    for (const cat of tab.categories) {
+      const catPath = `/${cat}/`
+      if (catPath !== tab.path) {
+        sidebar[catPath] = sidebar[tab.path]
+      }
+    }
+  }
+
   return sidebar
 }
 
