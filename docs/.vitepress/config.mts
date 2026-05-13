@@ -414,6 +414,10 @@ export default defineConfig({
 
   vite: {
     plugins: [rawMarkdownPlugin()],
+    ssr: {
+      // @rive-app/canvas is CJS-only; bundle it during SSR so named imports work
+      noExternal: ['@rive-app/canvas'],
+    },
     server: {
       proxy: {
         '/api/ai': {
