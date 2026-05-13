@@ -11,7 +11,7 @@ const router = useRouter()
 const { lang } = useData()
 const { isOpen, close } = useSearchDialog()
 const { results, isSearching, search, clear } = useDocsSearch()
-const { history, addToHistory, removeFromHistory } = useSearchHistory()
+const { history, addToHistory, removeFromHistory, clearHistory } = useSearchHistory()
 const { openAIModal } = useAIModal()
 
 const query = ref('')
@@ -34,6 +34,9 @@ const activeList = computed<DocSearchItem[]>(() => {
 const totalItems = computed(() =>
   activeList.value.length + (hasAiRow.value ? 1 : 0)
 )
+
+// AI row is at index 0 when present; results start at offset 1
+const resultOffset = computed(() => (hasAiRow.value ? 1 : 0))
 
 const showBody = computed(
   () =>
@@ -84,10 +87,13 @@ function handleKeydown(e: KeyboardEvent) {
   } else if (e.key === 'Enter') {
     e.preventDefault()
     const i = selectedIndex.value
-    if (!isHistoryMode.value && i === results.value.length && hasAiRow.value) {
+    if (!isHistoryMode.value && i === 0 && hasAiRow.value) {
       askAI()
-    } else if (i >= 0 && i < activeList.value.length) {
-      navigateTo(activeList.value[i])
+    } else {
+      const itemIndex = i - resultOffset.value
+      if (itemIndex >= 0 && itemIndex < activeList.value.length) {
+        navigateTo(activeList.value[itemIndex])
+      }
     }
   }
 }
@@ -196,6 +202,7 @@ onBeforeUnmount(() => {
             <template v-if="isHistoryMode">
               <div class="sdlg-section-header">
                 <span>Recent searches</span>
+                <button type="button" class="sdlg-clear-btn" @click="clearHistory">Clear all</button>
               </div>
               <div ref="listRef" class="sdlg-list">
                 <a
@@ -239,16 +246,32 @@ onBeforeUnmount(() => {
 
             <!-- ── Search results mode ── -->
             <template v-else>
+              <!-- AI row: always first -->
+              <div v-if="hasAiRow" class="sdlg-ai-section">
+                <span class="sdlg-ai-label">Ask AI assistant</span>
+                <button
+                  type="button"
+                  class="sdlg-ai-item"
+                  :class="{ 'sdlg-ai-item--active': selectedIndex === 0 }"
+                  :data-sel="selectedIndex === 0 ? 'true' : undefined"
+                  @click="askAI"
+                  @mouseenter="selectedIndex = 0"
+                >
+                  <Sparkles :size="14" class="sdlg-sparkle" aria-hidden="true" />
+                  <span>Can you tell me about {{ query }} ?</span>
+                </button>
+              </div>
+
               <div ref="listRef" class="sdlg-list">
                 <a
                   v-for="(item, i) in results"
                   :key="item.id"
                   class="sdlg-item"
-                  :class="{ 'sdlg-item--active': selectedIndex === i }"
-                  :data-sel="selectedIndex === i ? 'true' : undefined"
+                  :class="{ 'sdlg-item--active': selectedIndex === i + resultOffset }"
+                  :data-sel="selectedIndex === i + resultOffset ? 'true' : undefined"
                   :href="item.id"
                   @click.prevent="navigateTo(item)"
-                  @mouseenter="selectedIndex = i"
+                  @mouseenter="selectedIndex = i + resultOffset"
                 >
                   <!-- col 1: hash gutter (grid-row spans 1/3) -->
                   <Hash :size="13" class="sdlg-hash" aria-hidden="true" />
@@ -277,7 +300,7 @@ onBeforeUnmount(() => {
                   <ChevronRight
                     :size="14"
                     class="sdlg-chevron"
-                    :style="{ visibility: selectedIndex === i ? 'visible' : 'hidden' }"
+                    :style="{ visibility: selectedIndex === i + resultOffset ? 'visible' : 'hidden' }"
                     aria-hidden="true"
                   />
                 </a>
@@ -285,22 +308,6 @@ onBeforeUnmount(() => {
                 <div v-if="results.length === 0 && query.trim() && !isSearching" class="sdlg-empty">
                   无法找到相关结果
                 </div>
-              </div>
-
-              <!-- AI fallback -->
-              <div v-if="hasAiRow" class="sdlg-ai-section">
-                <span class="sdlg-ai-label">Ask AI assistant</span>
-                <button
-                  type="button"
-                  class="sdlg-ai-item"
-                  :class="{ 'sdlg-ai-item--active': selectedIndex === results.length }"
-                  :data-sel="selectedIndex === results.length ? 'true' : undefined"
-                  @click="askAI"
-                  @mouseenter="selectedIndex = results.length"
-                >
-                  <Sparkles :size="14" class="sdlg-sparkle" aria-hidden="true" />
-                  <span>Can you tell me about {{ query }} ?</span>
-                </button>
               </div>
             </template>
 
@@ -416,6 +423,24 @@ onBeforeUnmount(() => {
   letter-spacing: 0.01em;
 }
 
+/* Clear all button */
+.sdlg-clear-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.1s, background 0.1s;
+}
+
+.sdlg-clear-btn:hover {
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-alt);
+}
+
 /* ── Result list ── */
 .sdlg-list {
   padding: 4px 0;
@@ -477,6 +502,8 @@ onBeforeUnmount(() => {
   grid-row: 2;
   display: flex;
   align-items: flex-start;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .sdlg-item-text {
@@ -562,7 +589,7 @@ onBeforeUnmount(() => {
 
 /* ── AI section ── */
 .sdlg-ai-section {
-  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
   padding-bottom: 6px;
 }
 

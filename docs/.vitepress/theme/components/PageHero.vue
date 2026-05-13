@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { useData, inBrowser } from 'vitepress'
 import { useBreadcrumb } from '../composables/useBreadcrumb'
+import DocBreadcrumb from './Breadcrumb/index.vue'
 
 const { frontmatter, page } = useData()
 const { breadcrumbItems } = useBreadcrumb()
@@ -25,6 +26,7 @@ function copyLink() {
 
 <template>
   <header class="lb-doc-hero" v-if="title">
+    <DocBreadcrumb />
     <div v-if="eyebrow" class="lb-eyebrow">{{ eyebrow }}</div>
     <div class="lb-title-row">
       <h1 class="lb-title">{{ title }}</h1>
