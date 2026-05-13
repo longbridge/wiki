@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { categories } from '../../data/journey'
 import CategoryTabs from './CategoryTabs.vue'
 import TaskGrid from './TaskGrid.vue'
-import AskAiBanner from './AskAiBanner.vue'
 
 const activeCategory = ref('all')
 </script>
@@ -17,7 +16,6 @@ const activeCategory = ref('all')
         @update:active-category="activeCategory = $event"
       />
       <TaskGrid :category-id="activeCategory" />
-      <AskAiBanner />
     </div>
   </div>
 </template>

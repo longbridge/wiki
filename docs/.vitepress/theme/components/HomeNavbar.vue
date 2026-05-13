@@ -140,8 +140,6 @@ onBeforeUnmount(() => {
             </Transition>
           </div>
 
-          <!-- 登录 -->
-          <a href="https://longbridgeapp.com/login" class="hn-register" target="_blank" rel="noopener">{{ t('brand.login') }}</a>
         </div>
       </div>
     </div>

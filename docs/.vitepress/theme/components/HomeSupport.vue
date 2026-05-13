@@ -2,6 +2,8 @@
 import { provide } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 import AskHero from './sections/AskHero.vue'
+import AnswerShowcase from './sections/AnswerShowcase.vue'
+import NewUserPath from './sections/NewUserPath.vue'
 import JourneyHeader from './sections/JourneyHeader.vue'
 import TaskIndex from './sections/TaskIndex.vue'
 import CategoryGroups from './sections/CategoryGroups.vue'
@@ -18,10 +20,16 @@ provide('journeyMarket', activeMarket)
 
 <template>
   <div class="min-h-screen">
-    <!-- V1 首屏：Ask-First 对话台 -->
+    <!-- 首屏：Ask-First 对话台 -->
     <AskHero />
 
-    <!-- 视觉断层 + V2 主体：Journey 旅程 -->
+    <!-- AI 价值证明 -->
+    <AnswerShowcase />
+
+    <!-- 新手专属通道 -->
+    <NewUserPath />
+
+    <!-- 老手通道：Journey 旅程 -->
     <div class="home-journey-section">
       <JourneyHeader />
       <TaskIndex />
@@ -37,7 +45,8 @@ provide('journeyMarket', activeMarket)
 
 <style scoped>
 .home-journey-section {
-  background: var(--vp-c-bg-alt);
+  background: var(--vp-c-bg);
   padding-top: 96px;
+  border-top: 1px solid var(--vp-c-divider);
 }
 </style>

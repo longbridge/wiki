@@ -251,6 +251,13 @@ function browseAllDocs() {
   flex-shrink: 0;
   border-radius: 99px !important;
   font-weight: 600;
+  transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+.ask-hero__search-btn:hover {
+  background: var(--vp-c-brand-1) !important;
+  color: #fff !important;
+  opacity: 1 !important;
 }
 
 /* ─── 热搜行 ─── */
