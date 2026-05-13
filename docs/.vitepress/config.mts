@@ -472,6 +472,12 @@ export default defineConfig({
 
   vite: {
     plugins: [rawMarkdownPlugin()],
+    define: {
+      __VUE_PROD_DEVTOOLS__: false,
+    },
+    ssr: {
+      noExternal: ['@rive-app/canvas', 'vue-i18n', '@intlify/core-base', '@intlify/message-compiler'],
+    },
     server: {
       proxy: {
         '/api/ai': {
