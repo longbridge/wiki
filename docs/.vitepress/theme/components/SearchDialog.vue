@@ -456,13 +456,9 @@ onBeforeUnmount(() => {
   padding: 8px 14px 9px 0;
   text-decoration: none;
   color: inherit;
-  border-bottom: 1px solid var(--vp-c-divider);
   cursor: pointer;
+  border-radius: 8px;
   transition: background 0.08s;
-}
-
-.sdlg-item:last-child {
-  border-bottom: none;
 }
 
 .sdlg-item--active {
