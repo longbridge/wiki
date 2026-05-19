@@ -1371,33 +1371,32 @@ html.ai-resizing .hn-root {
     flex-shrink: 0;
   }
 
+  /* 精致紧凑型搜索 chip,对齐 docs.cdp.coinbase.com 视觉
+   * - rounded-xl 矩形 + 1px 灰描边
+   * - 内容靠左:icon → label → ⌘K key cap,紧凑均匀
+   * - 不要 flex:1 把文字撑开 */
   .hn-search-btn {
-    @apply flex items-center gap-2 h-9 min-w-[272px] py-0 px-4 text-sm max-md:min-w-0 max-md:w-9 max-md:px-2.5 max-md:justify-center;
-    background: var(--vp-c-bg-soft);
-    border: 1px solid var(--vp-c-border);
-    border-radius: 99px;
-    cursor: pointer;
-    color: var(--vp-c-text-3);
-    white-space: nowrap;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-
-  .hn-search-btn:hover {
-    border-color: var(--vp-c-brand-1);
-    box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+    @apply flex items-center gap-2 h-8 w-[220px] py-0 pl-3 pr-1.5 text-sm max-md:w-9 max-md:px-2 max-md:justify-center;
   }
 
   .hn-search-label {
     @apply max-md:hidden text-sm;
-    flex: 1;
+    color: var(--vp-c-text-3);
   }
 
   .hn-kbd {
-    @apply ml-auto text-xs max-md:hidden;
+    @apply ml-auto inline-flex items-center justify-center max-md:hidden;
+    height: 22px;
+    min-width: 28px;
+    padding: 0 6px;
+    border: 1px solid var(--vp-c-border);
+    border-radius: 6px;
+    background: var(--vp-c-bg);
     color: var(--vp-c-text-3);
     font-family: ui-monospace, "SF Mono", monospace;
+    font-size: 11px;
+    line-height: 1;
     letter-spacing: -0.2px;
-    opacity: 0.7;
   }
 
   .hn-askai-btn {
@@ -2404,16 +2403,20 @@ html.ai-resizing .hn-root {
    ============================================================ */
 .hn-search-btn {
   background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 99px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
   cursor: pointer;
   color: var(--vp-c-text-3);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, background 0.15s;
 }
 
 .hn-search-btn:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+  background: var(--vp-c-bg);
+  border-color: var(--vp-c-border);
+}
+
+.hn-search-btn:hover .hn-search-label {
+  color: var(--vp-c-text-2);
 }
 
 .hn-askai-btn {
