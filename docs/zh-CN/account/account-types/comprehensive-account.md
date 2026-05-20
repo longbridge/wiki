@@ -30,6 +30,10 @@ sidebar: true
 
 **新加坡综合账户**：PayNow、DDA、网银与电汇、Wise
 
+## 对账单
+
+只要该月有交易行为，月末将提供一份详细的账户月结单。可在长桥 App 内查看历史对账单。
+
 ## 相关页面
 
 - [如何开通综合账户](/account/opening/open-account) — 开户资格、认证流程、注销

@@ -43,6 +43,7 @@ sidebar: true
 
 ## 相关文档
 
+- [期权交易条款与条件](/derivatives/options/options-terms) — 开通期权交易时须确认的 16 项条款
 - [期权基础](/derivatives/期权基础)
 - [期权买方](/derivatives/期权买方)
 - [期权卖方](/derivatives/期权卖方)

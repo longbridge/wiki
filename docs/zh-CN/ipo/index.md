@@ -11,3 +11,7 @@ sidebar: true
 
 - [暗盘交易](/ipo/grey-market-trading)
 - [新股申购](/ipo/subscription)
+- [港股融资打新预约](/ipo/ipo-prebooking)
+- [新股认购常见问题](/ipo/subscription-faq)
+- [证券新股认购声明](/ipo/ipo-declaration)
+- [国际配售认购声明](/ipo/ipo-placement-declaration)

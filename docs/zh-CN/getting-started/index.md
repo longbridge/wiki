@@ -11,6 +11,7 @@ sidebar: true
 
 ### App 准备
 
+- [交易平台](/getting-started/trading-platforms) — App、桌面端、Web Trade、OpenAPI 概览
 - [下载 App](/getting-started/download-app)
 - [登录注册](/getting-started/login-and-register)
 

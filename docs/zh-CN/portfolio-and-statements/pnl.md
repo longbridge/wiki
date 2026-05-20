@@ -10,7 +10,12 @@ sidebar: true
 ## 入口
 
 - 点击资产总览页面的空白处，选择「盈亏分析」
+
+![入口一：资产总览](https://pub.pbkrs.com/uploads/2025/dad8f05593395d8f8bcbab46adb2b073)
+
 - 长桥 App → 资产 → 全部功能 → 盈亏分析
+
+![入口二：全部功能](https://pub.pbkrs.com/uploads/2025/041a9d1cfe29c77ad3b20dd960bdb0d3)
 
 ## 功能概述
 
@@ -20,6 +25,8 @@ sidebar: true
 - **每日收益**：按日展示收益明细（收益日历）
 - **个股收益**：各标的盈亏明细，实时更新
 - **资产变动**：资金存取、转仓等资产变动记录
+
+![盈亏分析页面总览](https://pub.pbkrs.com/uploads/2025/e19eef4a4be71268d4d9a2f36adaeb7a)
 
 ## 盈亏字段说明
 

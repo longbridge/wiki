@@ -27,7 +27,21 @@ sidebar: true
 ## 操作步骤
 
 1. 填写支票：正面收款人填写 **Long Bridge HK Limited**；反面填写**长桥综合账户 + 你的账户号码**（如「长桥综合账户（H10057829）」），并拍摄正反面照片
+
+   支票正面示例：
+   ![支票正面](https://pub.pbkrs.com/uploads/2025/5b4f2cdeefb2e05dbf1552a4262c76c7)
+
+   支票反面示例：
+   ![支票反面](https://pub.pbkrs.com/uploads/2025/c50fda0531f3f7dbbb7862c2dacd10fa)
+
 2. 将支票递交至银行柜台或存支票机，保留转账凭证截图
+
+   存支票机转账凭证示例：
+   ![存支票机凭证](https://pub.pbkrs.com/uploads/2025/c846435a941786b61ece1fb77a6d7964)
+
+   柜台转账凭证示例：
+   ![柜台转账凭证](https://pub.pbkrs.com/uploads/2025/2076200e29c60a5caaa555f8a7a0bfca)
+
 3. 打开长桥 App，进入**资产 → 存入资金 → 支票转账**，上传支票正面、反面截图和转账凭证
 
 > 完成后请立即上传所有凭证，否则影响入金进度。

@@ -51,6 +51,11 @@ sidebar: true
 **多张期权但正股不足时如何组合？**
 系统会动态选取保证金要求较高的期权进行组合，使账户占用购买力最小。
 
+示例：持有 100 股正股，卖出一张价外 Short Call（期权 A，保证金需 500 USD），期权 A 被组合后账户期权保证金为 0。后续再卖出一张价内 Short Call（期权 B，保证金需 600 USD），期权 B 成交后，系统动态将保证金更高的期权 B 纳入组合，期权 A 变为裸卖空，账户实际保证金只收 500 USD（A 的保证金，B 被组合减免）。
+
+**Margin Call 对组合保证金有影响吗？**
+无论是组合保证金模式还是传统保证金模式，Margin Call 均按统一公式在账户级别计算，衡量账户整体保证金是否足够维持要求，与使用哪种模式无关。
+
 **平仓组合期权时为什么出现较大损失？**
 组合期权在流动性不足时买卖盘价差可能明显放大，无法以理想价格成交，这属于期权交易的流动性风险。
 
@@ -66,6 +71,8 @@ sidebar: true
 - 最大亏损：股票全部亏损 - 权利金收入
 - 特点：牺牲上涨潜力换取权利金保护
 
+详细说明（含 Covered Put / Protective Call / Protective Put 策略与案例）：[Covered Stock 股票担保策略详解](/derivatives/options/covered-stock-strategies)
+
 ### Vertical Spread（垂直策略）
 
 - 构成：同时买入和卖出相同标的、相同到期日但不同行权价的期权
@@ -79,6 +86,8 @@ sidebar: true
 - 最大亏损：净权利金成本
 - 特点：通过卖出期权对冲买入成本，盈亏均有上限
 
+详细说明（含四种变体的特点图、构成图与案例）：[Vertical Spread 垂直策略详解](/derivatives/options/vertical-spread-strategy)
+
 ### Collar（领式策略）
 
 - 构成：持有标的股票 + 买入看跌期权 + 卖出看涨期权
@@ -86,6 +95,8 @@ sidebar: true
 - 最大盈利：卖出 Call 行权价处封顶
 - 最大亏损：买入 Put 行权价处托底
 - 特点：用卖 Call 收入部分抵消买 Put 成本，平衡保护成本
+
+详细说明（含 Long Collar / Short Collar 区别与案例）：[Collar 领式策略详解](/derivatives/options/collar-strategy)
 
 ### Straddle（跨式策略）
 
@@ -95,6 +106,8 @@ sidebar: true
 - 最大亏损：两张期权权利金总和
 - 特点：捕捉任何方向的大幅波动，成本较高
 
+详细说明（含 Long Straddle / Short Straddle 区别与案例）：[Straddle 跨式策略详解](/derivatives/options/straddle-strategy)
+
 ### Strangle（宽跨式策略）
 
 - 构成：买入相同标的、相同到期日但不同行权价的虚值看涨期权和虚值看跌期权
@@ -102,6 +115,8 @@ sidebar: true
 - 最大盈利：无上限
 - 最大亏损：两张期权权利金总和
 - 特点：选择虚值期权降低成本，但需要更大幅度波动才能盈利
+
+详细说明（含 Long Strangle / Short Strangle 区别与案例）：[Strangle 宽跨式策略详解](/derivatives/options/strangle-strategy)
 
 ---
 

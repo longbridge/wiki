@@ -20,14 +20,32 @@ sidebar: true
 **民生香港 App**
 
 1. 打开民生香港 App → **银证** → 搜索「长桥证券（香港）有限公司」→ 点击「关联」
+
+   ![民生 App 搜索长桥](https://pub.pbkrs.com/uploads/2025/3b329a1f1b44ed5429ef38622e75312e)
+
 2. 商户名称确认为「Long Bridge HK Limited」，关联账号填写长桥账户号码，点击「提交」
+
+   ![民生 App 填写关联账号](https://pub.pbkrs.com/uploads/2025/381e18ce77b7f205d7769865e2bc2b43)
+
 3. 提示申请关联成功，等待审核
 
 **民生香港网上银行**
 
-1. 登录民生银行个人网上银行 → **银证转账 → 关联账户维护 → 新增关联账户**
-2. 商户名称选择「长桥证券（香港）有限公司 Long Bridge HK Limited」，关联账号填写长桥综合账户号码（如 H12345678）
-3. 插入 UKEY 并输入密码完成验证，等待审核
+1. 登录民生银行个人网上银行
+
+   ![民生网银登录](https://pub.pbkrs.com/uploads/2025/f8e9327ea74ab8db08f32d980a69b625)
+
+2. 银证转账 → 关联账户维护 → 新增关联账户
+
+   ![新增关联账户](https://pub.pbkrs.com/uploads/2025/6a5875eaee83495a4d4c07260ced70e6)
+
+3. 商户名称选择「长桥证券（香港）有限公司 Long Bridge HK Limited」，关联账号填写长桥综合账户号码（如 H12345678）
+
+   ![选择商户填写账号](https://pub.pbkrs.com/uploads/2025/13791a19c0a2327c0695cf3fbde16e2e)
+
+4. 插入 UKEY 并输入密码完成验证，等待审核
+
+   ![插入 UKEY 验证](https://pub.pbkrs.com/uploads/2025/31897ebc18f457e4b7779d0b85055716)
 
 ## 第二步：发起入金
 
@@ -35,12 +53,20 @@ sidebar: true
 
 1. 打开民生香港 App → **银证**
 2. 选择已关联的「长桥证券（香港）有限公司」→「转账」→「银行转商户」
+
+   ![民生 App 发起银证转账](https://pub.pbkrs.com/uploads/2025/8579cddbcf51ea3878ba15483335c503)
+
 3. 填写扣款账户和转账金额，确认后提交
 
 **民生香港网上银行**
 
 1. 登录网上银行 → **银证转账 → 转出转入 → 银行转至商户**
+
+   ![民生网银银证转账入口](https://pub.pbkrs.com/uploads/2025/15ac0f033c4e421b044d8605f8f5eb8a)
+
 2. 填写扣款账户和转账金额，确认后提交
+
+   ![填写转账信息](https://pub.pbkrs.com/uploads/2025/a4f2f50acc3aac6d8fb7f4799b382da3)
 
 > 民生网银交易时间：香港工作日 09:00–18:00，非工作时间及周六、周日和香港假期不接受转账。
 

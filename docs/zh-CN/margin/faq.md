@@ -11,6 +11,12 @@ sidebar: true
 
 在相应股票的个股详情页 > 行情 > 股票当前价格 > 右侧 icon，即可查看该股票是否支持融资交易及当前保证金系数。
 
+![融资交易查询入口](https://pub.pbkrs.com/uploads/2025/ee940dc8312726d2ab4664ed6450902f)
+
+![融资信息页面](https://pub.pbkrs.com/uploads/2025/3f8d7c05761f7cc02ce55796f86ca991)
+
+![融资系数详情](https://pub.pbkrs.com/uploads/2025/a560d65cca0b1c6c9fc9b8d93ff4ac23)
+
 ## 综合账户融资概述
 
 长桥综合账户支持通过保证金融资提高投资购买力。

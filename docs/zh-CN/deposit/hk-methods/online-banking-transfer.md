@@ -61,12 +61,27 @@ sidebar: true
 ## 操作步骤
 
 1. 打开长桥 App，进入**资产 → 存入资金 → 选择入金币种 → 选择香港银行卡 → 网银转账**，查看收款银行信息
+
+   ![查看收款银行信息](https://pub.pbkrs.com/uploads/2026/ec780b70f9f43604e35b82b21614c9ed)
+
 2. 在银行手机端或网页端完成转账，截图保留汇款凭证
 3. 返回长桥 App，上传汇款凭证截图
 
+   ![上传汇款凭证](https://pub.pbkrs.com/uploads/2026/95031175839b10f4090561efc67dc268)
+
 > 请在汇款完成后立即上传凭证。若有多笔入账，请每笔分别上传凭证。
 
-长桥 App 入金页面提供汇丰银行、恒生银行、中银香港、香港渣打银行、招行香港、民生银行、工银亚洲、众安银行、花旗银行等详细操作步骤。
+各银行操作指引：
+
+- [中银香港网银转账入金](/deposit/hk-methods/ob-boc)
+- [众安银行网银转账入金](/deposit/hk-methods/ob-za)
+- [工银亚洲网银转账入金](/deposit/hk-methods/ob-icbc)
+- [恒生银行网银转账入金](/deposit/hk-methods/ob-hase)
+- [招行香港网银转账入金](/deposit/hk-methods/ob-cmb)
+- [民生银行（香港）网银转账入金](/deposit/hk-methods/ob-minsheng)
+- [汇丰银行网银转账入金](/deposit/hk-methods/ob-hsbc)
+- [花旗银行网银转账入金](/deposit/hk-methods/ob-citi)
+- [香港渣打银行网银转账入金](/deposit/hk-methods/ob-scb)
 
 ## 账户要求与工银多币种说明
 

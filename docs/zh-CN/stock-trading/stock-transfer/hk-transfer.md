@@ -55,12 +55,24 @@ sidebar: true
 **操作流程：**
 
 1. 长桥 App → 资产 → 存入股票 → 提交转入申请
+
+   ![存入股票入口](https://pub.pbkrs.com/uploads/2025/21db1bc327560f62a08e723c03999dac)
+
+   或进入**资产 → 全部功能 → 转入股票**
+
+   ![全部功能 → 转入股票](https://pub.pbkrs.com/uploads/2025/437253cf6572c9552ecac957bf740d40)
+
 2. 选择转出券商，填写信息，添加股票代码及数量
 3. 确认后提交，转仓指引发送至注册邮箱
+
+   ![邮件转仓指引示例](https://pub.pbkrs.com/uploads/2025/343b6dd185cb3b3ba94885105c18b5d3)
+
 4. 按邮件下载申请表，打印签名后发至转出券商申请转出
 5. 等待双方券商确认后完成转移
 
 **成本价说明：** 每股成本价为选填项。未填写时按转仓成功当日收盘价计算；已填写后无法修改，如有疑问请联系客服。
+
+> 若转出券商对接收账户格式有限制，美股可直接填写 UID（如 U11928885）。
 
 各券商转入长桥的详细操作指引请参考[其他券商转入](/stock-trading/stock-transfer/broker-transfer-guide)。
 
@@ -83,8 +95,17 @@ sidebar: true
 **操作流程：**
 
 1. 长桥 App → 资产 → 全部功能 → 转出股票 → 提交转出申请
+
+   ![转出股票入口](https://pub.pbkrs.com/uploads/2025/6a6da607f609119f47c8559f6483b44a)
+
 2. 填写接收券商信息、账户姓名和账户号码
+
+   ![填写接收券商信息](https://pub.pbkrs.com/uploads/2025/03c2bed3c7b7ffe0774874a4a5802dd1)
+
 3. 填写股票信息，确认后提交
+
+   ![确认转出信息提交](https://pub.pbkrs.com/uploads/2025/2b6fa4efb616d2be1a6439af0c67d674)
+
 4. 可在转出记录中查看处理进度
 
 **Interactive Brokers（盈透）：** 需在 IB 端提交申请后联系长桥客服提供转仓订单编号（Reference Number）。填写接收账户时请填写长桥 H 开头的证券账号，不要填写 UID。

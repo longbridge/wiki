@@ -1,0 +1,101 @@
+---
+layout: doc
+sidebar: true
+---
+
+# Collar 领式策略
+
+Collar 领式策略包含 Long Collar 多头领式策略与 Short Collar 空头领式策略，是期权交易中用于风险管理和收益控制的策略，通过期权组合形成类似「领子」的收益上下限结构。
+
+## Long Collar 多头领式策略
+
+### 策略概述
+
+Long Collar 是一种期权策略，通过持有标的资产多头头寸，并同时买入看跌期权（Put）和卖出看涨期权（Call），来对冲标的资产价格下跌的风险，同时限制标的资产价格上涨带来的潜在收益。
+
+### 策略特点
+
+![Long Collar 策略特点](https://pub-canary.lbkrs.com/uploads/2025/28bfeec33674ceddf66c3d7348378f15)
+
+### 策略构成
+
+![Long Collar 策略构成](https://pub-canary.lbkrs.com/uploads/2025/59aa6aa46bbcf0c417fdeb0b96a0c55e)
+
+### 盈利来源
+
+- 持有正股的增值，同时通过「买入 Put」对冲正股下跌的影响
+- 通过「卖出 Call」获得的期权金收入可以抵消部分买 Put 的花费，从而实现用较低成本对冲风险的目的
+
+### 案例解析
+
+假设持有上市公司 TECH 的股票，当前股价为 $50，对其长期看好，但担心市场短期下跌，决定构建 Long Collar 策略：
+
+- 买入或持有 100 股 TECH 股票
+- 买入 1 张行权价为 $48 的看跌期权（Put），权利金为 $4
+- 卖出 1 张行权价为 $60 的看涨期权（Call），权利金为 $2
+
+**成本计算：**
+- 持有 TECH 股票成本：$50 × 100 = $5,000
+- 买入 $48 Put 期权成本：单股 -$4，总计 -$400
+- 卖出 $60 Call 期权收入：单股 +$2，总计 +$200
+- 两张期权净成本：单股 -$2，总计 -$200
+
+![Long Collar 盈亏图示](https://pub-canary.lbkrs.com/uploads/2025/eeac89ef5f93a93ea4ef1ea8e43fa4c1)
+
+![Long Collar 情景分析](https://pub-canary.lbkrs.com/uploads/2025/f58c9e52f519aa08a22826c56444fb7f)
+
+![Long Collar 盈亏详情](https://pub-canary.lbkrs.com/uploads/2025/d72cf0752aac7ccb7034bacd57de1833)
+
+---
+
+## Short Collar 空头领式策略
+
+### 策略概述
+
+Short Collar 是一种期权策略，通过持有标的资产空头头寸，并同时买入看涨期权（Call）和卖出看跌期权（Put），来对冲标的资产价格上涨的风险，同时限制标的资产价格下跌带来的潜在收益。该策略适合在预期标的资产价格波动有限的情况下使用。
+
+### 策略特点
+
+![Short Collar 策略特点](https://pub-canary.lbkrs.com/uploads/2025/534116e06c9a0455c80f2835bf16949d)
+
+### 策略构成
+
+![Short Collar 策略构成](https://pub-canary.lbkrs.com/uploads/2025/2e20e6e3f188edd4670c79a087a7a2a4)
+
+### 盈利来源
+
+- 持有空头头寸的增值，同时通过「买入 Call」对冲空头头寸上涨的影响
+- 通过「卖出 Put」获得的期权金收入可以抵消部分买 Call 的花费，从而实现用较低成本对冲风险的目的
+
+### 案例解析
+
+假设做空或已持有 TECH 股票的空头头寸，当前股价为 $50，担心市场短期上涨，决定构建 Short Collar 策略：
+
+- 卖空或持有 100 股 TECH 股票的空头头寸
+- 买入 1 张行权价为 $60 的看涨期权（Call），权利金为 $4
+- 卖出 1 张行权价为 $48 的看跌期权（Put），权利金为 $2
+
+**成本计算：**
+- 持有 TECH 股票空头头寸成本：$50 × 100 = $5,000
+- 买入 $60 Call 期权成本：单股 -$4，总计 -$400
+- 卖出 $48 Put 期权收入：单股 +$2，总计 +$200
+- 两张期权净成本：单股 -$2，总计 -$200
+
+![Short Collar 盈亏图示](https://pub-canary.lbkrs.com/uploads/2025/e634a06ada0969a57657e949ac7c8bf4)
+
+![Short Collar 情景分析](https://pub-canary.lbkrs.com/uploads/2025/f18a950e73da9e5bea6c821a52f2c5b5)
+
+![Short Collar 盈亏详情](https://pub-canary.lbkrs.com/uploads/2025/740e9d407cfd11d0b66311ba372c395c)
+
+---
+
+*本文内容仅供参考，不构成任何投资建议。*
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [期权策略](/derivatives/options/options-strategies)
+- [衍生品](/derivatives)
+
+<!-- backlinks:end -->

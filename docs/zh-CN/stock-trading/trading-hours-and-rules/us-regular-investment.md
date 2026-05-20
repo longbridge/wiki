@@ -12,7 +12,12 @@ sidebar: true
 ## 功能入口
 
 - 方式一：长桥 App - 个股详情 - 更多 - 定投，创建该股票的定投计划
+
+![个股详情定投入口](https://pub.pbkrs.com/uploads/2026/ce19165cb9de69fbe0090cac63226c28)
+
 - 方式二：长桥 App - 资产 - 全部功能 - 股票定投，进入定投界面
+
+![全部功能定投入口](https://pub.pbkrs.com/uploads/2026/3e2ab67c2f0cad862061f4a14a9a7cca)
 
 ## 创建定投计划
 
@@ -30,6 +35,8 @@ sidebar: true
 
 余额不足（且未开启融资）时，当次定投创建失败，可在定投记录中查看失败原因并收到消息推送。连续失败三次定投计划将自动暂停。
 
+![创建定投计划界面](https://pub.pbkrs.com/uploads/2026/ad72e521433947277c40df07fd9c03ba)
+
 ## 定投计划维护
 
 长桥 App - 资产 - 全部功能 - 股票定投，可进行以下操作：
@@ -40,10 +47,18 @@ sidebar: true
 
 累计盈亏基于所有定投股票的买入成本与当前价值计算，不反映手动卖出操作对盈亏的影响。
 
+![定投计划维护界面](https://assets-canary.lbkrs.com/uploads/1_24651_mh2rqo0x2rspzt9spy5_.jpeg)
+
+![定投详情记录](https://assets-canary.lbkrs.com/uploads/1_24651_mh2rqup3qm2wldn6g0h_.jpeg)
+
 ## 查看定投提醒与订单记录
 
 - 定投通知：长桥 App - 右上角通知 - 股票定投
 - 订单记录：长桥 App - 资产 - 全部功能 - 订单记录（定投订单会有定投标识）
+
+## 免责声明
+
+本文仅供参考，不构成任何投资建议。
 
 ## 相关文档
 

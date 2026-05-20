@@ -19,6 +19,8 @@ sidebar: true
 ## 本节文档
 
 - [图表交易](/stock-trading/desktop-tools/chart-trading) — K 线图设置、技术指标、图表下单
+- [图表交易附加单设置](/stock-trading/desktop-tools/chart-trading-conditional-order) — 止盈止损附加单的价格、价差、档位三种设置方式
 - [市场深度](/stock-trading/desktop-tools/market-depth) — 盘口数据、委单深度、实时报价
-- [自定义布局](/stock-trading/desktop-tools/custom-layout) — 自定义工作区、窗口拼接
+- [自定义布局](/stock-trading/desktop-tools/custom-layout) — 自定义工作区、系统和自适应布局管理
+- [组件拼接](/stock-trading/desktop-tools/component-splicing) — 多组件 Tab 合并、阴影色块操作、Tab 排序与移除
 - [桌面端快捷键](/stock-trading/desktop-tools/keyboard-shortcuts) — 键盘快捷操作速查表

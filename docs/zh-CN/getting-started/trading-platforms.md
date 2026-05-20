@@ -1,0 +1,42 @@
+---
+layout: doc
+sidebar: true
+---
+
+# 交易平台
+
+长桥证券提供多种交易平台，满足不同使用场景的需求。
+
+## Longbridge App
+
+适用于 iOS 和 Android 的移动端交易平台。全球热点资讯、实时市场行情、账户资产与交易操作一体化，随时随地使用。
+
+下载方式详见：[下载 App](/getting-started/download-app)
+
+## Longbridge Pro（桌面端）
+
+面向专业交易者的桌面端平台，适用于 Mac 和 Windows。提供超百种技术指标，联合 TradingView 的 12 种划线工具，支持图表交易、市场深度、自定义布局等专业功能。
+
+下载方式详见：[下载 App](/getting-started/download-app)
+
+## Web Trade
+
+无需下载安装，通过浏览器直接访问。支持全球实时行情查阅、账户资产查看和投资交易操作。
+
+## OpenAPI
+
+面向程序化交易的接口服务，支持多种接入方案，提供稳定、安全的行情与交易接口，适合量化策略开发，提供 7×24 小时客服支持。
+
+了解更多详见 Longbridge 开发者文档。
+
+---
+
+*本文仅供参考，不构成任何投资建议。*
+
+<!-- backlinks:start -->
+
+## 引用此页面的文档
+
+- [新手入门](/getting-started)
+
+<!-- backlinks:end -->
