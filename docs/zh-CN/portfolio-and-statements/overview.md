@@ -111,6 +111,8 @@ sidebar: true
 
 入口：资产页 → 快捷功能栏「全部功能」
 
+![全部功能页面](./images/assets-all-functions.png)
+
 ### 资金
 
 | 功能   | 说明                              |

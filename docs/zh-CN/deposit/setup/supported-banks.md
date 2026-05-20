@@ -92,6 +92,8 @@ sidebar: true
 
 未列出的香港银行可通过网银转账或电汇入金。
 
+![App 显示的香港地区银行列表](./images/banks-hk.png)
+
 ---
 
 ## 海外地区银行
@@ -110,6 +112,8 @@ sidebar: true
 | HSBC Bank                    | MRMDUS33    |
 | 其他银行                         |             |
 
+![App 显示的美国地区银行列表](./images/banks-us.png)
+
 ### 新加坡
 
 | 银行名称                    | SWIFT    |
@@ -121,6 +125,8 @@ sidebar: true
 | Standard Chartered Bank | SCBLSG22 |
 | UOB Bank                | UOVBSGSG |
 | 其他银行                    |          |
+
+![App 显示的新加坡地区银行列表](./images/banks-sg.png)
 
 ### 马来西亚
 
@@ -135,6 +141,8 @@ sidebar: true
 | RHB Bank Berhad        | RHBBMYKL |
 | 其他银行                   |          |
 
+![App 显示的马来西亚地区银行列表](./images/banks-my.png)
+
 ### 澳大利亚
 
 | 银行名称                           | SWIFT       |
@@ -144,6 +152,8 @@ sidebar: true
 | Commonwealth Bank of Australia | CTBAAU2S    |
 | HSBC Bank Australia            | HKBAAU2S    |
 | 其他银行                           |             |
+
+![App 显示的澳大利亚地区银行列表](./images/banks-au.png)
 
 未列出的银行也支持电汇入金，以长桥 App 入金页面为准。
 

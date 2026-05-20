@@ -8,6 +8,8 @@ sidebar: true
 LB Café（LONGBRIDGE Café）是长桥证券在香港的线下实体空间，为长桥用户提供咖啡、会议室和金融活动等服务。App 内提供进入 LB Cafe
 功能区的入口，用于展示用户码、使用咖啡券和预约空间。
 
+![LB Café](./images/lb-cafe.png)
+
 ## 页面入口
 
 「我的」→「LB Café」

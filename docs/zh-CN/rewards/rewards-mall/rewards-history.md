@@ -7,6 +7,8 @@ sidebar: true
 
 奖励记录页用于查看通过参与活动或兑换商城所获得的所有奖励凭证。
 
+![奖励记录](../images/rewards-history.png)
+
 ## 页面入口
 
 「我的」→「奖励记录」

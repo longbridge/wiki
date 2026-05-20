@@ -22,6 +22,8 @@ sidebar: true
 
 **步骤 1**：长桥 App → 市场 → 新股，进入新股认购列表页。
 
+![市场-新股申购入口](./images/ipo-entry.png)
+
 ![新股认购列表页](https://pub.pbkrs.com/uploads/2025/7b965ce3eed477d641905e575a5b3d2e)
 
 **步骤 2**：在认购中的新股点击「立即认购」，选择认购方式和认购股数。
