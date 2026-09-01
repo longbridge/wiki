@@ -4,9 +4,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Zendesk webhook fires this via GitHub API repository_dispatch (event_type: zendesk-sync)
+  repository_dispatch:
+    types: [zendesk-sync]
+  # Fallback if a webhook is missed: sync every 6h (off-hour minute to spread API load)
+  schedule:
+    - cron: '17 */6 * * *'
 
 permissions:
-  contents: read
+  contents: write # sync job commits refreshed content back to main
   pages: write
   id-token: write
 
@@ -23,6 +29,20 @@ jobs:
       - uses: oven-sh/setup-bun@v2
 
       - run: bun install
+
+      # Auto-sync: only on webhook (repository_dispatch) or scheduled fallback.
+      # Runs anonymously (no ZENDESK secrets needed — see scripts/zendesk/client.ts);
+      # if anonymous is ever blocked, add ZENDESK_* repo secrets + an env: block here.
+      - name: Sync US content from Zendesk
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        run: bun run sync:us
+      - name: Commit synced content
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        run: |
+          git config user.name "zendesk-sync[bot]"
+          git config user.email "zendesk-sync[bot]@users.noreply.github.com"
+          git add apps/us/docs/en
+          git diff --cached --quiet || { git commit -m "chore(us): sync zendesk content"; git push; }
 
       # 三个 region app 各自独立构建(monorepo:apps/hk apps/sg apps/us,
       # 共享层在 packages/shared)。每个 app base=/{region}/,产物合并后

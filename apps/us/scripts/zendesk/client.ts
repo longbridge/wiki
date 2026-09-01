@@ -15,8 +15,9 @@ import type {
 
 export interface ZendeskClientOpts {
   subdomain: string
-  email: string
-  token: string
+  /** 认证可选:email + token 同时提供才带 Basic Auth;缺省则匿名请求 (已发布内容可匿名读)。 */
+  email?: string
+  token?: string
   /** 超时 (ms),默认 30s */
   timeoutMs?: number
   /** 单请求最大重试次数 (仅对 429 / 5xx 生效),默认 3 */
@@ -25,18 +26,23 @@ export interface ZendeskClientOpts {
 
 export class ZendeskClient {
   private readonly baseUrl: string
-  private readonly authHeader: string
+  private readonly authHeader: string | null
   private readonly timeoutMs: number
   private readonly maxRetries: number
 
   constructor(opts: ZendeskClientOpts) {
-    if (!opts.subdomain || !opts.email || !opts.token) {
-      throw new Error('ZendeskClient: subdomain / email / token 全部必填')
+    if (!opts.subdomain) {
+      throw new Error('ZendeskClient: subdomain 必填')
     }
     this.baseUrl = `https://${opts.subdomain}.zendesk.com/api/v2/help_center`
-    // 注意 `/token` 是字面后缀，不是变量。用 btoa(全局可用于 Bun / Node 16+),
-    // 避免依赖 Node-only 的 Buffer(项目未装 @types/node)。
-    this.authHeader = 'Basic ' + btoa(`${opts.email}/token:${opts.token}`)
+    // 认证可选:email+token 齐全才带 Basic Auth(`/token` 是字面后缀，不是变量;
+    // 用 btoa 避免依赖 Node-only 的 Buffer)。缺省则匿名——已发布 HC 内容可匿名读取。
+    if (opts.email && opts.token) {
+      this.authHeader = 'Basic ' + btoa(`${opts.email}/token:${opts.token}`)
+    } else {
+      this.authHeader = null
+      console.warn('[sync] running unauthenticated (no ZENDESK email/token) — anonymous read of published content')
+    }
     this.timeoutMs = opts.timeoutMs ?? 30_000
     this.maxRetries = opts.maxRetries ?? 3
   }
@@ -106,8 +112,8 @@ export class ZendeskClient {
     try {
       const res = await fetch(url, {
         headers: {
-          Authorization: this.authHeader,
           Accept: 'application/json',
+          ...(this.authHeader ? { Authorization: this.authHeader } : {}),
         },
         signal: controller.signal,
       })
