@@ -70,8 +70,11 @@ const zendeskId = entry.data.zendesk_article_id
       <!-- Article heading -->
       <h1 class="article-title">{entry.data.title}</h1>
 
-      <!-- Article body (rendered markdown) -->
-      <div class="article-body">
+      <!-- Article body (rendered markdown). data-pagefind-body scopes the
+           Pagefind index to article content only — without it Pagefind indexes
+           every page's full <body> (incl. the mega-menu nav), which pollutes
+           search. Marking article bodies makes overview/home/404 auto-excluded. -->
+      <div class="article-body" data-pagefind-body>
         <slot />
       </div>
 
