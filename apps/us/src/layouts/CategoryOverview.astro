@@ -1,0 +1,18 @@
+---
+// Task 10 will implement the full category overview layout.
+import BaseLayout from './BaseLayout.astro'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  entry: CollectionEntry<'docs'>
+}
+
+const { entry } = Astro.props
+---
+
+<BaseLayout title={entry.data.title}>
+  <div class="container">
+    <h1>{entry.data.title}</h1>
+    <slot />
+  </div>
+</BaseLayout>
