@@ -1,7 +1,7 @@
 /**
  * Header interactions — vanilla TypeScript, no framework.
  * Handles: I1 scroll transition, I2 mega-menu, I11 region switch,
- * theme toggle, I12 mobile menu.
+ * theme toggle.
  */
 
 // ── Scroll transition (I1) ─────────────────────────────────────────────────
@@ -182,44 +182,5 @@
     const current = (window as any).lbGetThemeMode?.() ?? 'light'
     const next = current === 'dark' ? 'light' : 'dark';
     (window as any).lbSetThemeMode?.(next, true)
-  })
-})()
-
-
-// ── Mobile menu (I12) ──────────────────────────────────────────────────────
-;(function initMobileMenu() {
-  const hamburger   = document.querySelector<HTMLButtonElement>('[data-lb-cat-drawer-open]')
-  const mobileMenu  = document.getElementById('lb-mobile-menu')
-  const iconOpen    = hamburger?.querySelector<SVGElement>('.lb-hamburger__icon--open')
-  const iconClose   = hamburger?.querySelector<SVGElement>('.lb-hamburger__icon--close')
-
-  if (!hamburger || !mobileMenu) return
-
-  function openMenu() {
-    mobileMenu!.hidden = false
-    hamburger!.setAttribute('aria-expanded', 'true')
-    hamburger!.setAttribute('aria-label', 'Close menu')
-    iconOpen?.classList.add('is-hidden')
-    iconClose?.classList.remove('is-hidden')
-  }
-
-  function closeMenu() {
-    mobileMenu!.hidden = true
-    hamburger!.setAttribute('aria-expanded', 'false')
-    hamburger!.setAttribute('aria-label', 'Open menu')
-    iconOpen?.classList.remove('is-hidden')
-    iconClose?.classList.add('is-hidden')
-  }
-
-  hamburger.addEventListener('click', () => {
-    const expanded = hamburger.getAttribute('aria-expanded') === 'true'
-    if (expanded) { closeMenu() } else { openMenu() }
-  })
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !mobileMenu.hidden) {
-      closeMenu()
-      hamburger.focus()
-    }
   })
 })()

@@ -3,8 +3,10 @@ import '../styles/tokens.css'
 import '../styles/base.css'
 import '../styles/header.css'
 import '../styles/footer.css'
+import '../styles/side-tree.css'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import CatDrawer from '../components/CatDrawer.astro'
 import themeMode from '../scripts/theme-mode.js?raw'
 
 interface Props {
@@ -32,6 +34,7 @@ const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge H
   <body>
     <a class="skip-navigation" href="#main-content">Skip to main content</a>
     <Header isHome={isHome} />
+    <CatDrawer />
     <main id="main-content">
       <slot />
     </main>

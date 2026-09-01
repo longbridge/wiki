@@ -1,0 +1,80 @@
+---
+import type { NavCategory } from '../lib/nav-core'
+import { withBase } from '../lib/paths'
+import { CAT_ICONS, iconKeyForSlug } from '../lib/cat-icons'
+
+interface Props {
+  nav: NavCategory[]
+  currentPath: string
+}
+
+const { nav, currentPath } = Astro.props
+
+// Normalize for comparison: strip trailing slash (keep bare '/')
+function normPath(p: string) {
+  return p.length > 1 ? p.replace(/\/$/, '') : p
+}
+
+const norm = normPath(currentPath)
+
+const CHEVRON = `<svg class="side-tree__chevron" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>`
+---
+
+<ul class="side-tree__list" role="list">
+  {nav.map((cat) => {
+    // Determine which sections contain the current article
+    const openSecs = new Set(
+      cat.sections
+        .filter((sec) => sec.articles.some((a) => normPath(withBase(a.path)) === norm))
+        .map((sec) => sec.slug)
+    )
+    const catIsOpen = openSecs.size > 0
+
+    return (
+      <li class:list={['side-tree__cat', catIsOpen && 'is-open']}>
+        <button
+          class="side-tree__cat-head"
+          type="button"
+          aria-expanded={catIsOpen ? 'true' : 'false'}
+        >
+          <span class="side-tree__cat-icon" aria-hidden="true" set:html={CAT_ICONS[iconKeyForSlug(cat.slug)]} />
+          <span class="side-tree__cat-label">{cat.title}</span>
+          <span class="side-tree__chevron-wrap" set:html={CHEVRON} />
+        </button>
+        <ul class="side-tree__cat-body" role="list">
+          {cat.sections.map((sec) => {
+            const secIsOpen = openSecs.has(sec.slug)
+            return (
+              <li class:list={['side-tree__sec', secIsOpen && 'is-open']}>
+                <button
+                  class="side-tree__sec-head"
+                  type="button"
+                  aria-expanded={secIsOpen ? 'true' : 'false'}
+                >
+                  <span class="side-tree__sec-label">{sec.title}</span>
+                  <span class="side-tree__chevron-wrap" set:html={CHEVRON} />
+                </button>
+                <ul class="side-tree__sec-body" role="list">
+                  {sec.articles.map((article) => {
+                    const isCurrent = normPath(withBase(article.path)) === norm
+                    return (
+                      <li>
+                        <a
+                          href={withBase(article.path)}
+                          class:list={['side-tree__item', isCurrent && 'is-current']}
+                          aria-current={isCurrent ? 'page' : undefined}
+                        >
+                          {article.title}
+                        </a>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </li>
+            )
+          })}
+        </ul>
+      </li>
+    )
+  })}
+</ul>
