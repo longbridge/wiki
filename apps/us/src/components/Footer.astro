@@ -1,8 +1,13 @@
 ---
 import { withBase } from '../lib/paths'
+
+interface Props {
+  isHome?: boolean
+}
+const { isHome = false } = Astro.props
 ---
 
-<footer class="lb-footer">
+<footer class:list={["lb-footer", { "lb-footer--home": isHome }]}>
   <div class="lb-footer__inner">
     <div class="lb-footer__top">
       <a href={withBase('/')} class="lb-footer__logo-link" aria-label="Longbridge Home">

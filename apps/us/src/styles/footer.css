@@ -84,3 +84,6 @@
     gap: 12px;
   }
 }
+
+/* Home background variant */
+.lb-footer--home { background: var(--lb-footer-bg); }

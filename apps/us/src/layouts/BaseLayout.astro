@@ -35,6 +35,6 @@ const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge H
     <main id="main-content">
       <slot />
     </main>
-    {!hideFooter && <Footer />}
+    {!hideFooter && <Footer isHome={isHome} />}
   </body>
 </html>

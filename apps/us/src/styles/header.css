@@ -11,8 +11,8 @@
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Home transparent state (before scroll) */
-.lb-header--home:not(.is-scrolled) {
+/* Home transparent state — JS adds .header--transparent when a .hero is present */
+.lb-header.header--transparent:not(.is-scrolled) {
   background: transparent;
   border-bottom-color: transparent;
 }
@@ -52,20 +52,26 @@
 .lb-logo--light { display: none; }
 .lb-logo--dark  { display: none; }
 
-/* Transparent home header -> use light logo */
-.lb-header--home:not(.is-scrolled) .lb-logo--default { display: none; }
-.lb-header--home:not(.is-scrolled) .lb-logo--light   { display: block; }
-.lb-header--home:not(.is-scrolled) .lb-logo--dark    { display: none; }
+/* Transparent header -> use light logo */
+.lb-header.header--transparent:not(.is-scrolled) .lb-logo--default { display: none; }
+.lb-header.header--transparent:not(.is-scrolled) .lb-logo--light   { display: block; }
+.lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark    { display: none; }
 
 /* Dark mode */
-html[theme="dark"] .lb-logo--default { display: none; }
-html[theme="dark"] .lb-logo--light   { display: none; }
-html[theme="dark"] .lb-logo--dark    { display: block; }
+html[theme="dark"] .lb-logo--default,
+.theme-dark .lb-logo--default { display: none; }
+html[theme="dark"] .lb-logo--light,
+.theme-dark .lb-logo--light   { display: none; }
+html[theme="dark"] .lb-logo--dark,
+.theme-dark .lb-logo--dark    { display: block; }
 
-/* Dark mode + home transparent: still use dark logo */
-html[theme="dark"] .lb-header--home:not(.is-scrolled) .lb-logo--default { display: none; }
-html[theme="dark"] .lb-header--home:not(.is-scrolled) .lb-logo--light   { display: none; }
-html[theme="dark"] .lb-header--home:not(.is-scrolled) .lb-logo--dark    { display: block; }
+/* Dark mode + transparent: still use dark logo */
+html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--default,
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--default { display: none; }
+html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light,
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light   { display: none; }
+html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark,
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark    { display: block; }
 
 /* ---- Desktop nav ---- */
 .lb-topnav {
@@ -368,8 +374,10 @@ html[theme="dark"] .lb-header--home:not(.is-scrolled) .lb-logo--dark    { displa
 /* Sun: shown in dark mode; Moon: shown in light mode */
 .lb-theme-icon--sun  { display: none; }
 .lb-theme-icon--moon { display: block; }
-html[theme="dark"] .lb-theme-icon--sun  { display: block; }
-html[theme="dark"] .lb-theme-icon--moon { display: none; }
+html[theme="dark"] .lb-theme-icon--sun,
+.theme-dark .lb-theme-icon--sun  { display: block; }
+html[theme="dark"] .lb-theme-icon--moon,
+.theme-dark .lb-theme-icon--moon { display: none; }
 
 /* ---- GitHub link ---- */
 .lb-header__github {

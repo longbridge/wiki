@@ -7,7 +7,13 @@
 // ── Scroll transition (I1) ─────────────────────────────────────────────────
 ;(function initScroll() {
   const header = document.getElementById('lb-header') as HTMLElement | null
-  if (!header || !header.dataset.home) return
+  if (!header) return
+
+  // Transparent state depends on a .hero element being present, not a static attribute
+  const hero = document.querySelector('.hero')
+  if (hero) {
+    header.classList.add('header--transparent')
+  }
 
   const THRESHOLD = 60
   let ticking = false
@@ -157,17 +163,11 @@
       const code = btn.dataset.regionCode
       if (!code) return
 
-      // Set cookie: 1 year, path=/, SameSite=Lax
-      const expires = new Date()
-      expires.setFullYear(expires.getFullYear() + 1)
-      document.cookie = `region=${code}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`
+      // Set cookie: 1 year via max-age (clock-skew-robust), path=/, SameSite=Lax
+      document.cookie = 'region=' + code + ';path=/;max-age=31536000;SameSite=Lax'
 
       // Navigate to region root
-      if (code === 'us') {
-        window.location.assign('/us/')
-      } else {
-        window.location.assign('/' + code + '/')
-      }
+      window.location.assign('/' + code + '/')
     })
   })
 })()
