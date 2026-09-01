@@ -35,7 +35,8 @@ jobs:
           mkdir -p dist
           cp -r apps/hk/docs/.vitepress/dist dist/hk
           cp -r apps/sg/docs/.vitepress/dist dist/sg
-          cp -r apps/us/docs/.vitepress/dist dist/us
+          # us migrated to Astro (outDir apps/us/dist); hk/sg remain VitePress
+          cp -r apps/us/dist dist/us
           # 根 404 兜底(GitHub Pages 只认根 /404.html);hk 产物的 404 引用
           # /hk/assets/* 绝对路径,放到根也能正常工作
           cp apps/hk/docs/.vitepress/dist/404.html dist/404.html
