@@ -3,9 +3,10 @@
  *
  * All card markup is pre-rendered at build time (index.astro SSG).
  * This script handles only:
- *   - tab switching (show/hide grids, update is-active pill)
- *   - CARD_LIMIT enforcement + fade mask
- *   - "Show N more" / "Show less" accordion expand/collapse
+ *   - tab switching (show/hide grids, update is-active pill, scroll-to-center)
+ *   - CARD_LIMIT enforcement + grid fade mask
+ *   - "Show N more" / "Collapse" accordion expand/collapse
+ *   - Horizontal fade mask on tab strip when scrollable (--fade-l / --fade-r)
  */
 
 const CARD_LIMIT = 12
@@ -38,7 +39,7 @@ function buildExpandRows(grid: HTMLElement, extras: HTMLElement[]): void {
     } else {
       extras.forEach((c) => { c.hidden = false })
       grid.classList.remove('catx__fade')
-      btn.textContent = 'Show less'
+      btn.textContent = 'Collapse'
       btn.setAttribute('aria-expanded', 'true')
     }
   })
@@ -63,6 +64,15 @@ function applyFilter(grid: HTMLElement): void {
   buildExpandRows(grid, extras)
 }
 
+/** Update --fade-l / --fade-r custom props to drive horizontal fade mask. */
+function updateFade(tabsWrap: HTMLElement): void {
+  const threshold = 20
+  const scrollLeft = tabsWrap.scrollLeft
+  const scrollRight = tabsWrap.scrollWidth - tabsWrap.clientWidth - scrollLeft
+  tabsWrap.style.setProperty('--fade-l', scrollLeft > threshold ? '32px' : '0px')
+  tabsWrap.style.setProperty('--fade-r', scrollRight > threshold ? '32px' : '0px')
+}
+
 function initCatx(): void {
   const section = document.querySelector<HTMLElement>('.catx-section')
   if (!section) return
@@ -84,6 +94,15 @@ function initCatx(): void {
         t.setAttribute('aria-selected', String(active))
       })
 
+      // Scroll active tab into center of the strip (I3)
+      const tabsWrap = section.querySelector<HTMLElement>('.catx-tabs')
+      if (tabsWrap) {
+        tabsWrap.scrollTo({
+          left: tab.offsetLeft - (tabsWrap.clientWidth - tab.offsetWidth) / 2,
+          behavior: 'smooth',
+        })
+      }
+
       // Show/hide grids and their expand buttons
       grids.forEach((grid) => {
         const isActive = grid.dataset.tab === key
@@ -100,6 +119,14 @@ function initCatx(): void {
       if (activeGrid) applyFilter(activeGrid)
     })
   })
+
+  // Horizontal fade mask for scrollable tab strip (I4)
+  const tabsWrap = section.querySelector<HTMLElement>('.catx-tabs')
+  if (tabsWrap) {
+    updateFade(tabsWrap)
+    tabsWrap.addEventListener('scroll', () => updateFade(tabsWrap), { passive: true })
+    window.addEventListener('resize', () => updateFade(tabsWrap), { passive: true })
+  }
 
   // Initialise: apply filter to first grid, hide the rest
   grids.forEach((grid, i) => {

@@ -89,3 +89,39 @@ export function selectPromotedByCategory(nav: NavCategory[]): Map<string, NavArt
   }
   return out
 }
+
+export interface CatxCard { title: string; path: string; sectionTitle: string }
+
+const CATX_CARD_LIMIT = 12
+
+/**
+ * Promoted-preferred card selection per category.
+ * Falls back to the first up-to-CATX_CARD_LIMIT articles (in _order.json order
+ * as built by buildNavFromRaw) when a category has NO promoted articles — this
+ * ensures all 6 categories appear even when zero articles are promoted.
+ */
+export function selectCatxCards(nav: NavCategory[]): Map<string, CatxCard[]> {
+  const out = new Map<string, CatxCard[]>()
+  for (const cat of nav) {
+    const withSection = cat.sections.flatMap((s) =>
+      s.articles.map((a) => ({ article: a, sectionTitle: s.title }))
+    )
+    const promoted = withSection.filter(({ article }) => article.promoted)
+    const source =
+      promoted.length > 0
+        ? promoted.sort((a, b) => {
+            if (!a.article.updatedAt && !b.article.updatedAt) return 0
+            if (!a.article.updatedAt) return 1
+            if (!b.article.updatedAt) return -1
+            return b.article.updatedAt.localeCompare(a.article.updatedAt)
+          })
+        : withSection // fallback: _order.json order preserved by buildNavFromRaw
+    const cards: CatxCard[] = source.slice(0, CATX_CARD_LIMIT).map(({ article, sectionTitle }) => ({
+      title: article.title,
+      path: article.path,
+      sectionTitle,
+    }))
+    if (cards.length > 0) out.set(cat.slug, cards)
+  }
+  return out
+}

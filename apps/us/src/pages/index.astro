@@ -1,26 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { getNav, getPromotedCards } from '../lib/nav'
+import { getNav, getCatxCards } from '../lib/nav'
 import { withBase } from '../lib/paths'
 import { iconFor } from '../lib/catx-icons'
 import { CATEGORY_ORDER } from '../lib/nav-core'
+import '../styles/home.css'
 
 const HOT_TAGS = ['Crypto', 'Options', 'Fees', 'Login', 'Buying Power'] as const
 
-const [nav, promotedCards] = await Promise.all([getNav(), getPromotedCards()])
+const [nav, catxCards] = await Promise.all([getNav(), getCatxCards()])
 
 // category slug → display title
 const catTitles = new Map(nav.map((c) => [c.slug, c.title]))
 
-// category slug → section slug → section title
-const sectionTitles = new Map(
-  nav.map((c) => [c.slug, new Map(c.sections.map((s) => [s.slug, s.title]))])
-)
-
-// Ordered list of categories that have promoted cards
-const activeCats = CATEGORY_ORDER.filter(
-  (slug) => (promotedCards.get(slug)?.length ?? 0) > 0
-)
+// Ordered list of categories that have catx cards (fallback ensures all 6 appear)
+const activeCats = CATEGORY_ORDER.filter((slug) => (catxCards.get(slug)?.length ?? 0) > 0)
 
 // Pre-compute all card data in the frontmatter to avoid TypeScript generic
 // angle-bracket syntax issues inside JSX expressions.
@@ -28,6 +22,7 @@ interface CardData {
   href: string
   icon: string
   title: string
+  sectionTitle: string
 }
 
 interface TabData {
@@ -37,20 +32,21 @@ interface TabData {
   isFirst: boolean
 }
 
+const ARROW_SVG =
+  '<svg class="catx__card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'
+
 const tabData: TabData[] = activeCats.map((slug, i) => {
-  const articles = promotedCards.get(slug) ?? []
+  const rawCards = catxCards.get(slug) ?? []
   const used: Record<string, boolean> = {}
-  const secMap: Map<string, string> = sectionTitles.get(slug) ?? new Map()
   const catTitle = catTitles.get(slug) ?? slug
 
-  const cards: CardData[] = articles.map((article) => {
-    const secSlug = article.path.split('/')[2] ?? ''
-    const secTitle = secMap.get(secSlug) ?? secSlug
-    const icon = iconFor(secTitle, catTitle, used)
+  const cards: CardData[] = rawCards.map((card) => {
+    const icon = iconFor(card.sectionTitle, catTitle, used)
     return {
-      href: withBase(article.path),
+      href: withBase(card.path),
       icon,
-      title: article.title,
+      title: card.title,
+      sectionTitle: card.sectionTitle,
     }
   })
 
@@ -60,11 +56,11 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
 
 <BaseLayout title="Home" isHome={true}>
   <!-- ── Hero ──────────────────────────────────────────── -->
-  <section class="hero hero--dark" aria-label="Help center search">
+  <section class="section hero hero--dark" aria-label="Help center search">
     <div class="hero__inner">
-      <h1 class="hero-title">How can we help you?</h1>
+      <h1 class="hero-title">How can we <span class="hero-title-accent">help</span> you?</h1>
       <p class="hero-subtitle">
-        Search our knowledge base or browse popular topics below.
+        Browse popular topics or search for anything.
       </p>
 
       <div class="hero-search-wrap">
@@ -88,7 +84,7 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
           class="hero-search-input"
           id="hero-search"
           type="search"
-          placeholder="Search for answers..."
+          placeholder="Search articles and FAQs..."
           aria-label="Search help articles"
           readonly
         />
@@ -127,7 +123,6 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
               </button>
             ))}
           </div>
-          <div class="catx__underline" aria-hidden="true" />
 
           {/* Card grids — one per category, rendered at SSG time */}
           {tabData.map((tab) => (
@@ -146,7 +141,9 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
                   />
                   <span class="catx-card__body">
                     <span class="catx-card__title">{card.title}</span>
+                    <span class="catx-card__sub">{card.sectionTitle}</span>
                   </span>
+                  <span set:html={ARROW_SVG} />
                 </a>
               ))}
             </div>

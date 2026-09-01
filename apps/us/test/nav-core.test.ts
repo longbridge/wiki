@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { orderedMerge, buildNavFromRaw, selectPromotedByCategory, CATEGORY_ORDER } from '../src/lib/nav-core'
+import { orderedMerge, buildNavFromRaw, selectPromotedByCategory, selectCatxCards, CATEGORY_ORDER } from '../src/lib/nav-core'
 import type { NavCategory } from '../src/lib/nav-core'
 
 // 'ghost' 在 order 中但不在 actual 中 → 被跳过（不出现在输出）; extras 按字母序追加
@@ -74,4 +74,42 @@ test('selectPromotedByCategory: 空 updatedAt 排最后', () => {
 test('selectPromotedByCategory: 无 promoted 文章时该分类不出现在 Map 中', () => {
   const nav = makeNav([{ slug: 'art', promoted: false, updatedAt: '2026-01-01' }])
   expect(selectPromotedByCategory(nav).has('cat-a')).toBe(false)
+})
+
+// ── selectCatxCards ──────────────────────────────────────────────────────────
+
+test('selectCatxCards: promoted-preferred — returns only promoted, sorted updatedAt DESC', () => {
+  const nav = makeNav([
+    { slug: 'old-p', promoted: true, updatedAt: '2026-01-01' },
+    { slug: 'new-p', promoted: true, updatedAt: '2026-06-01' },
+    { slug: 'noprm', promoted: false, updatedAt: '2026-09-01' },
+  ])
+  const result = selectCatxCards(nav)
+  expect(result.has('cat-a')).toBe(true)
+  const cards = result.get('cat-a')!
+  expect(cards.map((c) => c.path)).toEqual(['/cat-a/sec-1/new-p', '/cat-a/sec-1/old-p'])
+})
+
+test('selectCatxCards: fallback — returns all articles in _order.json order when none promoted', () => {
+  const nav = makeNav([
+    { slug: 'art-1', promoted: false, updatedAt: '2026-01-01' },
+    { slug: 'art-2', promoted: false, updatedAt: '2026-02-01' },
+    { slug: 'art-3', promoted: false, updatedAt: '2026-03-01' },
+  ])
+  const result = selectCatxCards(nav)
+  expect(result.has('cat-a')).toBe(true)
+  const cards = result.get('cat-a')!
+  expect(cards).toHaveLength(3)
+  expect(cards.map((c) => c.path)).toEqual([
+    '/cat-a/sec-1/art-1',
+    '/cat-a/sec-1/art-2',
+    '/cat-a/sec-1/art-3',
+  ])
+})
+
+test('selectCatxCards: sectionTitle populated from parent section', () => {
+  const nav = makeNav([{ slug: 'a', promoted: false, updatedAt: '2026-01-01' }])
+  const cards = selectCatxCards(nav).get('cat-a')!
+  expect(cards[0].sectionTitle).toBe('Sec 1')
+  expect(cards[0].title).toBe('a')
 })

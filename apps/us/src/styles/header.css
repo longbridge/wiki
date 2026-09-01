@@ -102,12 +102,12 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   background: var(--muted);
 }
 
-/* Transparent header: white text */
+/* Transparent header: keep dark text (hero is light-coloured) */
 .lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link {
-  color: rgba(255, 255, 255, 0.9);
+  color: #0a0e19;
 }
 .lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--muted);
 }
 
 .lb-topnav__chevron {
@@ -301,10 +301,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-region__trigger:hover { background: var(--muted); }
 
 .lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger {
-  color: rgba(255, 255, 255, 0.9);
+  color: #0a0e19;
 }
 .lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--muted);
 }
 
 .lb-region__label { font-size: 13px; font-weight: 600; }
@@ -365,10 +365,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-theme-toggle:hover { background: var(--muted); }
 
 .lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle {
-  color: rgba(255, 255, 255, 0.9);
+  color: #0a0e19;
 }
 .lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--muted);
 }
 
 /* Sun: shown in dark mode; Moon: shown in light mode */
@@ -395,10 +395,10 @@ html[theme="dark"] .lb-theme-icon--moon,
 .lb-header__github:hover { background: var(--muted); }
 
 .lb-header.header--transparent:not(.is-scrolled) .lb-header__github {
-  color: rgba(255, 255, 255, 0.9);
+  color: #0a0e19;
 }
 .lb-header.header--transparent:not(.is-scrolled) .lb-header__github:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--muted);
 }
 
 /* ---- Mobile search ---- */
@@ -439,7 +439,7 @@ html[theme="dark"] .lb-theme-icon--moon,
 
 .lb-header.header--transparent:not(.is-scrolled) .lb-hamburger,
 .lb-header.header--transparent:not(.is-scrolled) .lb-header__mobile-search {
-  color: rgba(255, 255, 255, 0.9);
+  color: #0a0e19;
 }
 
 /* ---- Responsive breakpoints ---- */
@@ -481,15 +481,3 @@ html[theme="dark"] .lb-theme-icon--moon,
 
 .is-hidden { display: none !important; }
 
-/* ── I4: transparent header on home page – keep dark text ── */
-/* On the mint hero background the header stays transparent until
-   the user scrolls, so we force dark text for all interactive
-   elements before `is-scrolled` kicks in.                     */
-.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link,
-.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger,
-.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle,
-.lb-header.header--transparent:not(.is-scrolled) .lb-header__github,
-.lb-header.header--transparent:not(.is-scrolled) .lb-hamburger,
-.lb-header.header--transparent:not(.is-scrolled) .lb-header__mobile-search {
-  color: #0a0e19 !important;
-}
