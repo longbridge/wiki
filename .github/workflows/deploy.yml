@@ -31,10 +31,15 @@ jobs:
       - run: bun install
 
       # Auto-sync: only on webhook (repository_dispatch) or scheduled fallback.
-      # Runs anonymously (no ZENDESK secrets needed — see scripts/zendesk/client.ts);
-      # if anonymous is ever blocked, add ZENDESK_* repo secrets + an env: block here.
+      # Only ZENDESK_SUBDOMAIN is required (the instance host); email/token are
+      # optional — omitted here, so sync runs anonymously (published content is
+      # readable without auth, see scripts/zendesk/client.ts). If anonymous is
+      # ever blocked by Cloudflare, add ZENDESK_EMAIL/ZENDESK_API_TOKEN repo
+      # secrets to the env block below.
       - name: Sync US content from Zendesk
         if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        env:
+          ZENDESK_SUBDOMAIN: longbridgeus
         run: bun run sync:us
       - name: Commit synced content
         if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
