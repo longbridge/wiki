@@ -480,3 +480,16 @@ html[theme="dark"] .lb-theme-icon--moon,
 .skip-navigation:focus { top: 0; }
 
 .is-hidden { display: none !important; }
+
+/* ── I4: transparent header on home page – keep dark text ── */
+/* On the mint hero background the header stays transparent until
+   the user scrolls, so we force dark text for all interactive
+   elements before `is-scrolled` kicks in.                     */
+.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link,
+.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger,
+.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle,
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__github,
+.lb-header.header--transparent:not(.is-scrolled) .lb-hamburger,
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__mobile-search {
+  color: #0a0e19 !important;
+}

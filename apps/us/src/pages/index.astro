@@ -1,10 +1,188 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-// Slot content: Task 7 will replace this with the full home page replica
+import { getNav, getPromotedCards } from '../lib/nav'
+import { withBase } from '../lib/paths'
+import { iconFor } from '../lib/catx-icons'
+import { CATEGORY_ORDER } from '../lib/nav-core'
+
+const HOT_TAGS = ['Crypto', 'Options', 'Fees', 'Login', 'Buying Power'] as const
+
+const [nav, promotedCards] = await Promise.all([getNav(), getPromotedCards()])
+
+// category slug → display title
+const catTitles = new Map(nav.map((c) => [c.slug, c.title]))
+
+// category slug → section slug → section title
+const sectionTitles = new Map(
+  nav.map((c) => [c.slug, new Map(c.sections.map((s) => [s.slug, s.title]))])
+)
+
+// Ordered list of categories that have promoted cards
+const activeCats = CATEGORY_ORDER.filter(
+  (slug) => (promotedCards.get(slug)?.length ?? 0) > 0
+)
+
+// Pre-compute all card data in the frontmatter to avoid TypeScript generic
+// angle-bracket syntax issues inside JSX expressions.
+interface CardData {
+  href: string
+  icon: string
+  title: string
+}
+
+interface TabData {
+  slug: string
+  title: string
+  cards: CardData[]
+  isFirst: boolean
+}
+
+const tabData: TabData[] = activeCats.map((slug, i) => {
+  const articles = promotedCards.get(slug) ?? []
+  const used: Record<string, boolean> = {}
+  const secMap: Map<string, string> = sectionTitles.get(slug) ?? new Map()
+  const catTitle = catTitles.get(slug) ?? slug
+
+  const cards: CardData[] = articles.map((article) => {
+    const secSlug = article.path.split('/')[2] ?? ''
+    const secTitle = secMap.get(secSlug) ?? secSlug
+    const icon = iconFor(secTitle, catTitle, used)
+    return {
+      href: withBase(article.path),
+      icon,
+      title: article.title,
+    }
+  })
+
+  return { slug, title: catTitle, cards, isFirst: i === 0 }
+})
 ---
+
 <BaseLayout title="Home" isHome={true}>
-  <section class="lb-home-placeholder" style="padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto;">
-    <h1>Welcome to Longbridge Help Center</h1>
-    <p>Browse topics from the menu above or search for what you need.</p>
+  <!-- ── Hero ──────────────────────────────────────────── -->
+  <section class="hero hero--dark" aria-label="Help center search">
+    <div class="hero__inner">
+      <h1 class="hero-title">How can we help you?</h1>
+      <p class="hero-subtitle">
+        Search our knowledge base or browse popular topics below.
+      </p>
+
+      <div class="hero-search-wrap">
+        <span class="hero-search-icon" aria-hidden="true">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </span>
+        <input
+          class="hero-search-input"
+          id="hero-search"
+          type="search"
+          placeholder="Search for answers..."
+          aria-label="Search help articles"
+          readonly
+        />
+      </div>
+
+      <div class="hero-hot-tags" role="group" aria-label="Popular search topics">
+        <span class="hero-hot-tags__label">Popular:</span>
+        {
+          HOT_TAGS.map((tag) => (
+            <button class="hero-hot-tag" type="button" data-tag={tag}>
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+    </div>
   </section>
+
+  <!-- ── catx: You might want to know ─────────────────── -->
+  {
+    tabData.length > 0 && (
+      <section class="catx-section" aria-label="You might want to know">
+        <div class="catx-container">
+          <h2 class="catx-title">You might want to know</h2>
+
+          {/* Tab strip */}
+          <div class="catx-tabs" role="tablist" aria-label="Help categories">
+            {tabData.map((tab) => (
+              <button
+                class={`catx__tab${tab.isFirst ? ' is-active' : ''}`}
+                role="tab"
+                aria-selected={tab.isFirst ? 'true' : 'false'}
+                data-key={tab.slug}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+          <div class="catx__underline" aria-hidden="true" />
+
+          {/* Card grids — one per category, rendered at SSG time */}
+          {tabData.map((tab) => (
+            <div
+              class="catx__grid"
+              role="tabpanel"
+              data-tab={tab.slug}
+              hidden={tab.isFirst ? undefined : true}
+            >
+              {tab.cards.map((card) => (
+                <a class="catx-card" href={card.href}>
+                  <span
+                    class="catx-card__icon"
+                    set:html={card.icon}
+                    aria-hidden="true"
+                  />
+                  <span class="catx-card__body">
+                    <span class="catx-card__title">{card.title}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Client-side catx: tabs, accordion, fade mask -->
+  <script>
+    import '../scripts/catx'
+  </script>
+
+  <!-- Hero search: focus → open search modal, hot-tag click → search -->
+  <script>
+    declare global {
+      interface Window {
+        lbOpenSearch?: (query: string) => void
+      }
+    }
+
+    const heroInput = document.getElementById('hero-search') as HTMLInputElement | null
+    if (heroInput) {
+      heroInput.addEventListener('focus', () => {
+        const q = heroInput.value
+        heroInput.blur()
+        window.lbOpenSearch?.(q)
+      })
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.hero-hot-tag').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag ?? btn.textContent?.trim() ?? ''
+        window.lbOpenSearch?.(tag)
+      })
+    })
+  </script>
 </BaseLayout>

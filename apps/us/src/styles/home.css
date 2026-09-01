@@ -1,0 +1,390 @@
+/* ============================================================
+   home.css – hero mint section + "You might want to know" catx
+   Task 7 – US VitePress→Astro migration (2026-09-01)
+   ============================================================ */
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero.hero--dark {
+  background-color: #C2FFF7;
+  color: #0a0e19;
+  min-height: 320px;
+  background-image: url("https://assets.lbkrs.com/uploads/962fe7f1-bbf1-462c-80b8-35f72d462e18/hero-bg3.png");
+  background-repeat: no-repeat;
+}
+
+/* Gradient top-edge overlay */
+.hero.hero--dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.10), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Sun-glow pseudo-bg */
+.hero.hero--dark::after {
+  content: "";
+  position: absolute;
+  top: -14vw;
+  left: -12vw;
+  width: 37vw;
+  height: 37vw;
+  background-image: url("https://assets.lbkrs.com/uploads/d07e860c-e88d-4309-9fb4-b735618f0868/sun.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Desktop: bg illustration sizing */
+@media (min-width: 901px) {
+  .hero.hero--dark {
+    background-size: 815px auto;
+    background-position: calc(50% + 235px) -64px;
+  }
+}
+
+/* Mobile: bg illustration sizing */
+@media (max-width: 900px) {
+  .hero.hero--dark {
+    background-size: auto 60%;
+    background-position: right -16px top 0;
+    min-height: 0 !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* Hero inner – centred content container */
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 24px 64px;
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    padding: 48px 20px 32px;
+  }
+}
+
+/* Hero title */
+.hero-title {
+  font-family: var(--lb-font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0a0e19;
+  margin: 0 0 12px;
+}
+
+/* Hero subtitle */
+.hero-subtitle {
+  font-size: 16px;
+  color: rgba(10, 14, 25, 0.7);
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+/* Hero search bar */
+.hero-search-wrap {
+  position: relative;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+
+.hero-search-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px 0 46px;
+  border-radius: 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.90);
+  color: #0a0e19;
+  font-size: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  outline: none;
+  cursor: pointer;
+  caret-color: transparent;
+}
+
+.hero-search-input:hover {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.hero-search-input:focus {
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.13);
+}
+
+.hero-search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(10, 14, 25, 0.45);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Hot tags row */
+.hero-hot-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-hot-tags__label {
+  font-size: 13px;
+  color: rgba(10, 14, 25, 0.55);
+  flex-shrink: 0;
+}
+
+.hero-hot-tag {
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 18px;
+  background: var(--accent-teal);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.hero-hot-tag:hover {
+  background: var(--accent-teal-hover);
+}
+
+/* ── catx – You might want to know ─────────────────────── */
+.catx-section {
+  padding: 60px 0 80px;
+}
+
+@media (max-width: 768px) {
+  .catx-section {
+    padding: 40px 0 60px;
+  }
+}
+
+.catx-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .catx-container {
+    padding: 0 16px;
+  }
+}
+
+/* Section heading */
+.catx-title {
+  font-family: var(--lb-font-display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 28px;
+}
+
+/* Tab strip */
+.catx-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.catx-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .catx-tabs {
+    gap: 20px;
+  }
+}
+
+.catx__tab {
+  position: relative;
+  padding: 0 2px 16px;
+  border: none;
+  background: none;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.catx__tab:hover {
+  color: var(--foreground);
+}
+
+.catx__tab.is-active {
+  color: var(--foreground);
+}
+
+/* Active tab pill indicator */
+.catx__tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 3px;
+  background: var(--accent-teal);
+  border-radius: 50px;
+}
+
+/* Compat: hide Zendesk-style sliding underline */
+.catx__underline {
+  display: none !important;
+}
+
+/* Card grid */
+.catx__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .catx__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.catx-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 92px;
+  padding: 32px 20px;
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.catx-card:hover {
+  border-color: var(--accent-teal);
+  box-shadow: 0 4px 20px rgba(0, 184, 184, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Icon badge */
+.catx-card__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(0, 184, 184, 0.10);
+  color: var(--accent-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catx-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.catx-card__title {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+
+.catx-card__excerpt {
+  display: block;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Fade mask – visible when extras are hidden */
+.catx__fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Expand / collapse button */
+.catx-expand-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: none;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.catx-expand-btn:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+/* ── Dark-mode card overrides ──────────────────────────── */
+html[theme="dark"] .catx-card,
+.theme-dark .catx-card {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([theme="light"]):not(.theme-light) .catx-card {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+  }
+}
+
+html[theme="dark"] .catx-card__icon,
+.theme-dark .catx-card__icon {
+  background: rgba(0, 240, 196, 0.12);
+  color: var(--accent-teal);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([theme="light"]):not(.theme-light) .catx-card__icon {
+    background: rgba(0, 240, 196, 0.12);
+    color: var(--accent-teal);
+  }
+}
