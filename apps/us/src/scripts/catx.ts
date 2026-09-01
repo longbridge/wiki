@@ -69,8 +69,8 @@ function updateFade(tabsWrap: HTMLElement): void {
   const threshold = 20
   const scrollLeft = tabsWrap.scrollLeft
   const scrollRight = tabsWrap.scrollWidth - tabsWrap.clientWidth - scrollLeft
-  tabsWrap.style.setProperty('--fade-l', scrollLeft > threshold ? '32px' : '0px')
-  tabsWrap.style.setProperty('--fade-r', scrollRight > threshold ? '32px' : '0px')
+  tabsWrap.style.setProperty('--fade-l', scrollLeft > threshold ? '24px' : '0px')
+  tabsWrap.style.setProperty('--fade-r', scrollRight > threshold ? '24px' : '0px')
 }
 
 function initCatx(): void {

@@ -58,9 +58,9 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
   <!-- ── Hero ──────────────────────────────────────────── -->
   <section class="section hero hero--dark" aria-label="Help center search">
     <div class="hero__inner">
-      <h1 class="hero-title">How can we <span class="hero-title-accent">help</span> you?</h1>
-      <p class="hero-subtitle">
-        Browse popular topics or search for anything.
+      <h1 class="hero-title"><span class="hero-title-line"><span class="hero-title-accent">Hi,</span> how can we help?</span></h1>
+      <p class="hero-sub">
+        Whatever you're wondering, from account setup to placing a trade, we've got you covered.
       </p>
 
       <div class="hero-search-wrap">
@@ -84,7 +84,7 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
           class="hero-search-input"
           id="hero-search"
           type="search"
-          placeholder="Search articles and FAQs..."
+          placeholder="Find your answer"
           aria-label="Search help articles"
           readonly
         />
@@ -141,7 +141,7 @@ const tabData: TabData[] = activeCats.map((slug, i) => {
                   />
                   <span class="catx-card__body">
                     <span class="catx-card__title">{card.title}</span>
-                    <span class="catx-card__sub">{card.sectionTitle}</span>
+                    {card.sectionTitle !== card.title && <span class="catx-card__sub">{card.sectionTitle}</span>}
                   </span>
                   <span set:html={ARROW_SVG} />
                 </a>

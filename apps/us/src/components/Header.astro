@@ -4,10 +4,10 @@ import { withBase } from '../lib/paths'
 import { CAT_ICONS, iconKeyForSlug } from '../lib/cat-icons'
 
 interface Props {
-  isHome?: boolean
+  // intentionally empty – isHome removed; transparent state is JS/hero-driven
 }
 
-const { isHome = false } = Astro.props
+const {} = Astro.props
 const nav = await getNav()
 
 // Logo URLs
