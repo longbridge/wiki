@@ -121,7 +121,9 @@ function recordCurrentArticle(): void {
 }
 
 function renderRecentArticles(): void {
-  const list = document.querySelector<HTMLElement>('.article-recent ul')
+  const section = document.querySelector<HTMLElement>('[data-recent-articles]')
+  if (!section) return
+  const list = section.querySelector<HTMLElement>('ul')
   if (!list) return
 
   const meta = document.querySelector<HTMLElement>('[data-article-path]')
@@ -129,8 +131,7 @@ function renderRecentArticles(): void {
 
   const items = loadRecent().filter((a) => a.path !== selfPath)
   if (items.length === 0) {
-    const section = list.closest<HTMLElement>('.article-recent')
-    if (section) section.hidden = true
+    // Section stays hidden (default); nothing to show
     return
   }
 
@@ -140,6 +141,8 @@ function renderRecentArticles(): void {
         `<li><a href="${escapeAttr(a.path)}">${escapeHtml(a.title)}</a></li>`,
     )
     .join('')
+  // Reveal only when there is at least one entry
+  section.hidden = false
 }
 
 function escapeAttr(s: string): string {

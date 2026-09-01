@@ -122,8 +122,8 @@ const zendeskId = entry.data.zendesk_article_id
         </section>
       )}
 
-      <!-- Recently viewed (client-rendered by article.ts) -->
-      <section class="article-recent" aria-label="Recently viewed">
+      <!-- Recently viewed (client-rendered by article.ts; hidden until entries exist) -->
+      <section class="article-recent" data-recent-articles hidden aria-label="Recently viewed">
         <h2 class="article-recent__title">Recently Viewed</h2>
         <ul></ul>
       </section>
@@ -131,7 +131,7 @@ const zendeskId = entry.data.zendesk_article_id
       <!-- GitHub edit link -->
       <p class="article-edit">
         <a href={editHref} target="_blank" rel="noopener noreferrer">
-          Edit this article on GitHub
+          Edit this page on GitHub
         </a>
       </p>
     </main>

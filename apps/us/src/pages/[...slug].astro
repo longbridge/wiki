@@ -22,7 +22,7 @@ const { Content, headings } = await render(entry)
 const segs = entry.id.split('/')
 const lastSeg = segs[segs.length - 1]
 const isCategoryOverview = lastSeg === 'overview' && segs.length === 2
-const isSectionOverview  = lastSeg === 'overview' && segs.length >= 3
+const isSectionOverview  = lastSeg === 'overview' && segs.length === 3 // {cat}/{sec}/overview — exactly 3 segments
 ---
 
 {isCategoryOverview ? (
