@@ -103,10 +103,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 }
 
 /* Transparent header: white text */
-.lb-header--home:not(.is-scrolled) .lb-topnav__link {
+.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link {
   color: rgba(255, 255, 255, 0.9);
 }
-.lb-header--home:not(.is-scrolled) .lb-topnav__link:hover {
+.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -300,10 +300,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 
 .lb-region__trigger:hover { background: var(--muted); }
 
-.lb-header--home:not(.is-scrolled) .lb-region__trigger {
+.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger {
   color: rgba(255, 255, 255, 0.9);
 }
-.lb-header--home:not(.is-scrolled) .lb-region__trigger:hover {
+.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -364,10 +364,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 
 .lb-theme-toggle:hover { background: var(--muted); }
 
-.lb-header--home:not(.is-scrolled) .lb-theme-toggle {
+.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle {
   color: rgba(255, 255, 255, 0.9);
 }
-.lb-header--home:not(.is-scrolled) .lb-theme-toggle:hover {
+.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -394,10 +394,10 @@ html[theme="dark"] .lb-theme-icon--moon,
 
 .lb-header__github:hover { background: var(--muted); }
 
-.lb-header--home:not(.is-scrolled) .lb-header__github {
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__github {
   color: rgba(255, 255, 255, 0.9);
 }
-.lb-header--home:not(.is-scrolled) .lb-header__github:hover {
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__github:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
@@ -437,8 +437,8 @@ html[theme="dark"] .lb-theme-icon--moon,
 
 .lb-hamburger:hover { background: var(--muted); }
 
-.lb-header--home:not(.is-scrolled) .lb-hamburger,
-.lb-header--home:not(.is-scrolled) .lb-header__mobile-search {
+.lb-header.header--transparent:not(.is-scrolled) .lb-hamburger,
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__mobile-search {
   color: rgba(255, 255, 255, 0.9);
 }
 

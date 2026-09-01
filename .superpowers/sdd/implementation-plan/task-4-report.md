@@ -95,3 +95,17 @@ skip-nav, and inline theme-mode script are present in the built output.
 - `bun run check`: 0 errors, 0 warnings, 1 hint (unrelated deprecated `addListener` in theme-mode.js)
 - `bunx astro build`: Clean, 1 page built
 - GitHub URL confirmed in `dist/index.html`
+
+## Fix Round 2 — Finish I4 transparent-header migration (2026-09-01)
+
+### N1 — Remaining lb-header--home rules migrated
+- Migrated 9 rules in `header.css` (topnav link text/hover, region trigger text/hover, theme-toggle text/hover, github icon text/hover, hamburger+mobile-search text) from `.lb-header--home:not(.is-scrolled)` to `.lb-header.header--transparent:not(.is-scrolled)`.
+- `grep -n "lb-header--home" src/styles/header.css`: (empty — 0 matches)
+- Removed orphaned markup from `Header.astro`: `class={lb-header--home conditional}` → `class="lb-header"`, dropped `data-home` attribute.
+- `grep -rn "lb-header--home|data-home|dataset.home" src/`: (empty — 0 matches)
+- Default `.lb-topnav__link { color: <dark> }` base rule confirmed present at line 84 (non-transparent pages keep dark text).
+- `.is-hidden` exists in one place only (`header.css:519`) — no duplicate found in other style files.
+
+### Verification
+- `bun run check`: 0 errors, 0 warnings, 2 hints (pre-existing)
+- `bunx astro build`: Clean, 1 page built
