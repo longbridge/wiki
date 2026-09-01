@@ -1,0 +1,16 @@
+/*
+ * whale.css — Minimal Whale App (is-whale-app) scoping
+ *
+ * When the page is loaded inside the Longbridge App WebView, theme-mode.js
+ * detects "lbcommitid" in the User-Agent and adds `html.is-whale-app`.
+ * These rules hide the web header, TOC, and floating TOC elements that the
+ * native App shell already provides.
+ */
+
+html.is-whale-app .lb-header,
+html.is-whale-app .header,
+html.is-whale-app .lb-toc,
+html.is-whale-app .toc-fab,
+html.is-whale-app .toc-drawer {
+  display: none !important;
+}
