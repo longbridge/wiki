@@ -1,0 +1,84 @@
+/* Base styles — fonts, resets, typography, utilities
+   Source: /Users/tangyu/Downloads/Longbridge_us/style.css */
+
+/* ── Font faces ─────────────────────────────────────────────────── */
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 400; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/q47zaKFmKJ8opU6e/sf-pro-display-regular-4013122.ttf") format("truetype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 500; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/UYrcVnbNWvHwTDZP/sf-pro-display-regular-4013122_min.ttf") format("truetype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 600; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/7hyEGwUkDD6Snrma/SF-Pro-Display-Semibold-4013127.ttf") format("truetype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 700; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/PhJWN4xNho2UAo1V/SFProDisplay-Bold.ttf") format("truetype"); }
+@font-face { font-family: "SF Pro Display"; font-style: normal; font-weight: 900; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/bBwcDToyT3J3bTij/SF-Pro-Display-Black.otf") format("opentype"); }
+@font-face { font-family: "Source Han Sans CN"; font-style: normal; font-weight: 400; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/NUBBU2M5D4mL24hY/SourceHanSansCN-Regular-min.ttf") format("truetype"); }
+@font-face { font-family: "Source Han Sans CN"; font-style: normal; font-weight: 500; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/RKuUXiYkVXUGpR1T/SourceHanSansCN-Medium-min.ttf") format("truetype"); }
+@font-face { font-family: "Source Han Sans CN"; font-style: normal; font-weight: 700; font-display: swap; src: url("https://pub.lbkrs.com/files/202512/4MPGtwRHsEJKQKv7/SourceHanSansCN-Bold-min.ttf") format("truetype"); }
+
+/* ── Box model reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ── Body reset ─────────────────────────────────────────────────── */
+body {
+  margin: 0;
+  font-family: var(--lb-font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ── Headings ───────────────────────────────────────────────────── */
+h1 { font-size: 32px; }
+h2 { font-size: 22px; }
+h3 { font-size: 18px; font-weight: 600; }
+h4 { font-size: 16px; }
+
+/* ── Links ──────────────────────────────────────────────────────── */
+a {
+  color: var(--accent-teal);
+}
+
+/* ── Utility: visually hidden (accessibility) ───────────────────── */
+.visibility-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+/* ── Utility: skip navigation ───────────────────────────────────── */
+.skip-navigation {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  left: -999px;
+  margin: 20px;
+  padding: 20px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  z-index: -999;
+}
+[dir=rtl] .skip-navigation { left: initial; right: -999px; }
+.skip-navigation:focus,
+.skip-navigation:active {
+  left: auto;
+  overflow: auto;
+  text-align: center;
+  text-decoration: none;
+  top: auto;
+  z-index: 999;
+}
+[dir=rtl] .skip-navigation:focus,
+[dir=rtl] .skip-navigation:active { left: initial; right: auto; }
