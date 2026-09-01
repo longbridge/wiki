@@ -442,47 +442,11 @@ html[theme="dark"] .lb-theme-icon--moon,
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* ---- Mobile menu (drawer) ---- */
-.lb-mobile-menu {
-  display: none;
-  border-top: 1px solid var(--border);
-  padding: 12px 0 16px;
-  background: var(--background);
-}
-
-.lb-mobile-menu[hidden] { display: none !important; }
-
-.lb-mobile-menu__list {
-  list-style: none;
-  margin: 0;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.lb-mobile-menu__link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--foreground);
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.12s;
-}
-
-.lb-mobile-menu__link:hover { background: var(--muted); }
-.lb-mobile-menu__cat-icon { flex-shrink: 0; color: var(--muted-foreground); }
-
 /* ---- Responsive breakpoints ---- */
 @media (max-width: 768px) {
   /* Show mobile elements */
   .lb-header__mobile-search { display: inline-flex; }
   .lb-hamburger              { display: inline-flex; }
-  .lb-mobile-menu            { display: block; }
 
   /* Hide desktop elements */
   .lb-topnav      { display: none; }
@@ -497,7 +461,6 @@ html[theme="dark"] .lb-theme-icon--moon,
   /* Ensure mobile UI is always hidden on desktop */
   .lb-header__mobile-search { display: none !important; }
   .lb-hamburger { display: none !important; }
-  .lb-mobile-menu { display: none !important; }
 }
 
 /* ---- Skip navigation ---- */

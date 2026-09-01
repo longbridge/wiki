@@ -1,49 +1,43 @@
 /**
  * Side Tree interactions — vanilla TypeScript, no framework.
- * Handles: cat/sec fold/unfold, aria-expanded sync, scrollIntoView for current item.
+ * Handles: cat/sec fold/unfold, aria-expanded sync, container-scoped scroll for current item.
  *
  * Designed to work on any `.side-tree` container (desktop sidebar or mobile drawer).
  * Called once per host element — safe to call multiple times on different hosts.
  */
 
 export function initSideTree(host: Element): void {
-  // ── Category toggle ──────────────────────────────────────────────────────
-  host.querySelectorAll<HTMLButtonElement>('.side-tree__cat-head').forEach((btn) => {
-    btn.addEventListener('click', () => {
+  // ── Chevron toggle (category + section) ─────────────────────────────────
+  // Chevron buttons are separate from the navigable head links.
+  // Must preventDefault+stopPropagation to fold without triggering the link.
+  host.querySelectorAll<HTMLButtonElement>('.side-tree__chevron-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+
       const cat = btn.closest<HTMLElement>('.side-tree__cat')
-      if (!cat) return
-
-      const willOpen = !cat.classList.contains('is-open')
-      cat.classList.toggle('is-open', willOpen)
-      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false')
-    })
-  })
-
-  // ── Section toggle ───────────────────────────────────────────────────────
-  host.querySelectorAll<HTMLButtonElement>('.side-tree__sec-head').forEach((btn) => {
-    btn.addEventListener('click', () => {
       const sec = btn.closest<HTMLElement>('.side-tree__sec')
-      if (!sec) return
+      // sec is always inside cat, so check sec first
+      const target = sec ?? cat
+      if (!target) return
 
-      const willOpen = !sec.classList.contains('is-open')
-      sec.classList.toggle('is-open', willOpen)
+      const willOpen = !target.classList.contains('is-open')
+      target.classList.toggle('is-open', willOpen)
       btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false')
     })
   })
 
-  // ── Scroll current item into view (container-scoped) ────────────────────
+  // ── Scroll current item into view (container-scoped, no page jump) ──────
+  // Use scrollTop math against the scroll container to avoid scrolling the page.
+  const container = (host.closest<HTMLElement>('.side-tree') ?? host) as HTMLElement
   const cur = host.querySelector<HTMLElement>('.side-tree__item.is-current')
-  if (cur) {
-    // Use requestAnimationFrame to ensure layout is complete before scrolling
+  if (container && cur) {
     requestAnimationFrame(() => {
-      try {
-        cur.scrollIntoView({ block: 'center', behavior: 'auto' })
-      } catch (_e) {
-        // Fallback for browsers that don't support scrollIntoView options
-        const scrollContainer = host.closest<HTMLElement>('.side-tree') ?? (host as HTMLElement)
-        if (cur.offsetTop > scrollContainer.clientHeight - 80) {
-          scrollContainer.scrollTop = cur.offsetTop - 120
-        }
+      const cRect = container.getBoundingClientRect()
+      const curRect = cur.getBoundingClientRect()
+      if (curRect.top < cRect.top || curRect.bottom > cRect.bottom) {
+        container.scrollTop +=
+          curRect.top - cRect.top - container.clientHeight / 2 + curRect.height / 2
       }
     })
   }

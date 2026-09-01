@@ -6,23 +6,26 @@
   padding: 0;
 }
 
-/* Category row */
+/* Category row — div container with navigable link + chevron button */
 .side-tree__cat-head {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 8px;
-  cursor: pointer;
   border-radius: 8px;
-  width: 100%;
-  background: transparent;
-  border: 0;
-  text-align: left;
   transition: background 0.15s;
 }
 
 .side-tree__cat-head:hover {
   background: rgba(15, 23, 42, 0.04);
+}
+
+.side-tree__cat-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 12px 8px;
+  flex: 1;
+  text-decoration: none;
+  min-width: 0;
 }
 
 .side-tree__cat-icon {
@@ -40,25 +43,37 @@
   font-weight: 600;
   color: #0a0e19;
   flex: 1;
+  min-width: 0;
 }
 
-.side-tree__chevron-wrap {
+/* Chevron toggle button (shared by cat + sec) */
+.side-tree__chevron-btn {
   flex-shrink: 0;
-  color: #64748b;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 4px;
 }
 
-.side-tree__chevron {
+.side-tree__chevron-btn:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.side-tree__chevron-btn svg {
   transform: rotate(-90deg);
   transition: transform 0.2s ease;
 }
 
-.side-tree__cat.is-open > .side-tree__cat-head .side-tree__chevron {
+.side-tree__cat.is-open > .side-tree__cat-head .side-tree__chevron-btn svg {
   transform: rotate(0deg);
 }
 
-.side-tree__sec.is-open > .side-tree__sec-head .side-tree__chevron {
+.side-tree__sec.is-open > .side-tree__sec-head .side-tree__chevron-btn svg {
   transform: rotate(0deg);
 }
 
@@ -132,7 +147,7 @@
 
 .side-tree__item.is-current {
   color: #00b8b8 !important;
-  background: rgba(0, 184, 184, 0.14) !important;
+  background: rgba(0, 184, 184, 0.12) !important;
   font-weight: 600 !important;
 }
 

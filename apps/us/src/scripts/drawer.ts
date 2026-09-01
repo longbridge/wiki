@@ -11,6 +11,17 @@ function getDrawer(): HTMLElement | null {
   return document.getElementById(DRAWER_ID)
 }
 
+function getTriggers(): NodeListOf<HTMLElement> {
+  return document.querySelectorAll<HTMLElement>('[data-lb-cat-drawer-open]')
+}
+
+function setTriggerState(open: boolean): void {
+  getTriggers().forEach((btn) => {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false')
+    btn.classList.toggle('is-open', open)
+  })
+}
+
 function openDrawer(): void {
   const drawer = getDrawer()
   if (!drawer) return
@@ -18,6 +29,7 @@ function openDrawer(): void {
   drawer.removeAttribute('hidden')
   drawer.setAttribute('aria-hidden', 'false')
   document.documentElement.classList.add(SCROLL_LOCK_CLASS)
+  setTriggerState(true)
 
   // Focus first interactive element inside panel for accessibility
   const firstFocusable = drawer.querySelector<HTMLElement>(
@@ -33,6 +45,7 @@ function closeDrawer(): void {
   drawer.setAttribute('hidden', '')
   drawer.setAttribute('aria-hidden', 'true')
   document.documentElement.classList.remove(SCROLL_LOCK_CLASS)
+  setTriggerState(false)
 }
 
 // ── Open trigger ─────────────────────────────────────────────────────────────
