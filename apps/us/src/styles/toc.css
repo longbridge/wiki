@@ -1,0 +1,150 @@
+/* Article TOC — desktop right rail (.lb-toc, JS-positioned) + mobile FAB/drawer.
+   Ported from Zendesk style.css (.lb-toc ~8318, .toc-fab/.toc-drawer ~5420).
+   Accent uses #00b8b8 (--accent-teal) directly, NOT var(--primary) (spec §5.3 trap). */
+
+/* ── Desktop rail (position/width set by toc.ts; hidden until positioned) ── */
+.lb-toc {
+  position: fixed;
+  top: 96px;
+  z-index: 40;
+  display: none;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding: 2px 0;
+}
+.lb-toc__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  margin: 0 0 12px;
+  padding-left: 15px;
+}
+.lb-toc__list { list-style: none; margin: 0; padding: 0; }
+.lb-toc__item { margin: 0; }
+.lb-toc__item > a {
+  display: block;
+  padding: 6px 15px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.lb-toc__item > a:hover { color: var(--foreground); }
+.lb-toc__item--sub > a { padding-left: 29px; font-size: 12.5px; }
+.lb-toc__item.is-active > a {
+  color: #00b8b8;
+  border-left-color: #00b8b8;
+  font-weight: 600;
+}
+
+/* When the rail is shown, widen the article container so body copy isn't cramped
+   while the rail occupies the right margin (Zendesk style.css:8913). */
+html.lb-has-toc .article-page { max-width: 1396px; }
+
+/* ── Mobile FAB (bottom-left) — shown ≤1023px; replaces the sticky aside ── */
+.toc-fab {
+  position: fixed;
+  left: 16px;
+  bottom: 28px;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.toc-fab:active { transform: scale(0.94); }
+.toc-fab.is-hidden { opacity: 0; pointer-events: none; }
+@media (max-width: 1023px) {
+  .toc-fab { display: flex; }
+  .article-page__aside { display: none; }
+}
+@media (min-width: 1024px) {
+  .toc-fab, .toc-drawer { display: none !important; }
+}
+
+/* ── Mobile drawer (current section's articles) ── */
+.toc-drawer { position: fixed; inset: 0; z-index: 1000; }
+.toc-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.toc-drawer__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: var(--background);
+  color: var(--foreground);
+  overflow-y: auto;
+  padding: 24px 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  transform: translateX(-100%);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toc-drawer.is-open .toc-drawer__backdrop { opacity: 1; }
+.toc-drawer.is-open .toc-drawer__panel { transform: translateX(0); }
+.toc-drawer__cat {
+  display: block;
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.toc-drawer__section {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+.toc-drawer__list { list-style: none; margin: 0; padding: 0; }
+.toc-drawer__item {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  text-decoration: none;
+}
+.toc-drawer__item:hover { background: var(--muted); color: var(--foreground); }
+.toc-drawer__item.is-current {
+  background: rgba(0, 184, 184, 0.1);
+  color: #00b8b8;
+  font-weight: 600;
+}
+
+/* Whale App: no floating TOC affordances */
+html.is-whale-app .toc-fab,
+html.is-whale-app .toc-drawer { display: none !important; }
+
+/* Dark: current-item accent uses the dark teal */
+html[theme="dark"] .lb-toc__item.is-active > a,
+.theme-dark .lb-toc__item.is-active > a {
+  color: #22e5cf;
+  border-left-color: #22e5cf;
+}
+html[theme="dark"] .toc-drawer__item.is-current,
+.theme-dark .toc-drawer__item.is-current {
+  color: #22e5cf;
+  background: rgba(34, 229, 207, 0.12);
+}

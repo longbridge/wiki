@@ -6,6 +6,7 @@ import { getNav } from '../lib/nav'
 import { withBase } from '../lib/paths'
 import type { CollectionEntry } from 'astro:content'
 import '../styles/article.css'
+import '../styles/toc.css'
 
 interface Props {
   entry: CollectionEntry<'docs'>
@@ -139,8 +140,41 @@ const zendeskId = entry.data.zendesk_article_id
     <!-- Col 2 row 2: footer auto-placed by grid -->
     <Footer />
   </div>
+
+  <!-- Mobile TOC: floating FAB + drawer listing this section's articles (≤1023px) -->
+  {sec && (
+    <Fragment>
+      <button type="button" class="toc-fab" id="toc-fab" aria-label="Articles in this section">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="21" x2="3" y1="6" y2="6" />
+          <line x1="15" x2="3" y1="12" y2="12" />
+          <line x1="17" x2="3" y1="18" y2="18" />
+        </svg>
+      </button>
+      <div class="toc-drawer" id="toc-drawer" hidden>
+        <div class="toc-drawer__backdrop" data-toc-close></div>
+        <nav class="toc-drawer__panel" aria-label="Articles in this section">
+          {cat && <a class="toc-drawer__cat" href={withBase(cat.firstArticlePath)}>{cat.title}</a>}
+          <h3 class="toc-drawer__section">{sec.title}</h3>
+          <ul class="toc-drawer__list">
+            {sec.articles.map((a) => (
+              <li>
+                <a
+                  href={withBase(a.path)}
+                  class:list={['toc-drawer__item', { 'is-current': a.slug === selfSlug }]}
+                  aria-current={a.slug === selfSlug ? 'page' : undefined}
+                >{a.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </Fragment>
+  )}
 </BaseLayout>
 
 <script>
   import '../scripts/article.ts'
+  import '../scripts/toc.ts'
+  import '../scripts/toc-drawer.ts'
 </script>
