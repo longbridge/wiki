@@ -1,5 +1,10 @@
 ---
-// 占位: Task 7 重写为 Zendesk home 复刻
+import BaseLayout from '../layouts/BaseLayout.astro'
+// Slot content: Task 7 will replace this with the full home page replica
 ---
-<html lang="en"><head><meta charset="utf-8" /><title>Longbridge Help Center</title></head>
-<body><h1>US Astro scaffold OK</h1></body></html>
+<BaseLayout title="Home" isHome={true}>
+  <section class="lb-home-placeholder" style="padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto;">
+    <h1>Welcome to Longbridge Help Center</h1>
+    <p>Browse topics from the menu above or search for what you need.</p>
+  </section>
+</BaseLayout>

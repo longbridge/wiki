@@ -507,3 +507,5 @@ html[theme="dark"] .lb-theme-icon--moon { display: none; }
   font-size: 14px;
 }
 .skip-navigation:focus { top: 0; }
+
+.is-hidden { display: none !important; }

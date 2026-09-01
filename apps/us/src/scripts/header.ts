@@ -199,16 +199,16 @@
     mobileMenu!.hidden = false
     hamburger!.setAttribute('aria-expanded', 'true')
     hamburger!.setAttribute('aria-label', 'Close menu')
-    if (iconOpen)  iconOpen.hidden  = true
-    if (iconClose) iconClose.hidden = false
+    iconOpen?.classList.add('is-hidden')
+    iconClose?.classList.remove('is-hidden')
   }
 
   function closeMenu() {
     mobileMenu!.hidden = true
     hamburger!.setAttribute('aria-expanded', 'false')
     hamburger!.setAttribute('aria-label', 'Open menu')
-    if (iconOpen)  iconOpen.hidden  = false
-    if (iconClose) iconClose.hidden = true
+    iconOpen?.classList.remove('is-hidden')
+    iconClose?.classList.add('is-hidden')
   }
 
   hamburger.addEventListener('click', () => {
