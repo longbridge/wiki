@@ -1,0 +1,37 @@
+---
+// SearchModal.astro — Zendesk-style search modal backed by Pagefind (Task 6)
+// HTML mirroring header.hbs:151-163; JS in search.ts
+---
+
+<div id="lb-search-modal" class="lb-search-modal" hidden aria-hidden="true">
+  <div class="lb-search-modal__backdrop" data-close></div>
+  <div class="lb-search-modal__panel" role="dialog" aria-modal="true" aria-label="Search Longbridge help center">
+    <div class="lb-search-modal__head">
+      <svg class="lb-search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <input
+        type="search"
+        id="lb-search-input"
+        class="lb-search-modal__input"
+        placeholder="Find your answer"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search"
+      />
+      <button type="button" class="lb-search-modal__close" data-close aria-label="Close search">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="lb-search-modal__body" id="lb-search-results">
+      <div class="lb-search-modal__hint">Type to search articles...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/search.ts'
+</script>
