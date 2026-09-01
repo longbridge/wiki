@@ -11,3 +11,4 @@ test('根相对内链加 /us 前缀', () => expect(run('/trading-and-investing/a
 test('已带 /us 幂等', () => expect(run('/us/x')).toBe('/us/x'))
 test('绝对外链不动', () => expect(run('https://longbridgeus.zendesk.com/x')).toBe('https://longbridgeus.zendesk.com/x'))
 test('协议相对不动', () => expect(run('//cdn.example.com/x')).toBe('//cdn.example.com/x'))
+test('裸 /us base 不动 — href === BASE 守卫', () => expect(run('/us')).toBe('/us'))

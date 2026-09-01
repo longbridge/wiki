@@ -71,3 +71,21 @@ export function buildNavFromRaw(docs: RawDoc[], orders: Record<string, string[]>
   }
   return cats
 }
+
+/** Pure: filter promoted articles per category, sorted by updatedAt DESC (empty string sorts last). */
+export function selectPromotedByCategory(nav: NavCategory[]): Map<string, NavArticle[]> {
+  const out = new Map<string, NavArticle[]>()
+  for (const cat of nav) {
+    const promoted = cat.sections
+      .flatMap((s) => s.articles)
+      .filter((a) => a.promoted)
+      .sort((a, b) => {
+        if (!a.updatedAt && !b.updatedAt) return 0
+        if (!a.updatedAt) return 1  // empty string sorts last
+        if (!b.updatedAt) return -1
+        return b.updatedAt.localeCompare(a.updatedAt) // DESC
+      })
+    if (promoted.length) out.set(cat.slug, promoted)
+  }
+  return out
+}

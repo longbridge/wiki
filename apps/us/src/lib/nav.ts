@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content'
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
-import { buildNavFromRaw, type NavCategory, type NavArticle, type RawDoc } from './nav-core'
+import { buildNavFromRaw, selectPromotedByCategory, type NavCategory, type NavArticle, type RawDoc } from './nav-core'
 
 const DOCS_DIR = new URL('../../docs/en', import.meta.url).pathname
 let cache: NavCategory[] | null = null
@@ -31,12 +31,5 @@ export async function getNav(): Promise<NavCategory[]> {
 }
 
 export async function getPromotedCards(): Promise<Map<string, NavArticle[]>> {
-  const nav = await getNav()
-  const out = new Map<string, NavArticle[]>()
-  for (const cat of nav) {
-    const promoted = cat.sections.flatMap((s) => s.articles).filter((a) => a.promoted)
-      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
-    if (promoted.length) out.set(cat.slug, promoted)
-  }
-  return out
+  return selectPromotedByCategory(await getNav())
 }
