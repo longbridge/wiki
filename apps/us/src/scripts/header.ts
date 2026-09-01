@@ -1,0 +1,225 @@
+/**
+ * Header interactions — vanilla TypeScript, no framework.
+ * Handles: I1 scroll transition, I2 mega-menu, I11 region switch,
+ * theme toggle, I12 mobile menu.
+ */
+
+// ── Scroll transition (I1) ─────────────────────────────────────────────────
+;(function initScroll() {
+  const header = document.getElementById('lb-header') as HTMLElement | null
+  if (!header || !header.dataset.home) return
+
+  const THRESHOLD = 60
+  let ticking = false
+
+  function update() {
+    if (window.scrollY > THRESHOLD) {
+      header!.classList.add('is-scrolled')
+    } else {
+      header!.classList.remove('is-scrolled')
+    }
+    ticking = false
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update)
+      ticking = true
+    }
+  }, { passive: true })
+
+  update()
+})()
+
+
+// ── Mega menu (I2) ─────────────────────────────────────────────────────────
+;(function initMega() {
+  const trigger = document.querySelector<HTMLButtonElement>('[data-lb-dropdown-trigger]')
+  const panel   = document.getElementById('lb-mega-menu')
+  if (!trigger || !panel) return
+
+  let hoverTimer: ReturnType<typeof setTimeout> | null = null
+  let closeTimer: ReturnType<typeof setTimeout> | null = null
+
+  function openMega() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+    panel!.hidden = false
+    trigger!.setAttribute('aria-expanded', 'true')
+  }
+
+  function closeMega() {
+    panel!.hidden = true
+    trigger!.setAttribute('aria-expanded', 'false')
+  }
+
+  // Hover open with 200ms delay
+  trigger.addEventListener('mouseenter', () => {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+    hoverTimer = setTimeout(openMega, 200)
+  })
+  trigger.addEventListener('mouseleave', () => {
+    if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null }
+    closeTimer = setTimeout(closeMega, 120)
+  })
+  panel.addEventListener('mouseenter', () => {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+  })
+  panel.addEventListener('mouseleave', () => {
+    closeTimer = setTimeout(closeMega, 120)
+  })
+
+  // Click toggle
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const expanded = trigger.getAttribute('aria-expanded') === 'true'
+    if (expanded) { closeMega() } else { openMega() }
+  })
+
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !panel.hidden) {
+      closeMega()
+      trigger.focus()
+    }
+  })
+
+  // Outside click
+  document.addEventListener('click', (e) => {
+    if (!panel.hidden && !panel.contains(e.target as Node) && e.target !== trigger) {
+      closeMega()
+    }
+  })
+
+  // Category hover: left-column button → right panel
+  const catBtns = document.querySelectorAll<HTMLButtonElement>('[data-lb-cat-btn]')
+
+  function activateCat(btn: HTMLButtonElement) {
+    const cat = btn.dataset.cat
+    if (!cat) return
+
+    catBtns.forEach((b) => {
+      b.classList.toggle('is-active', b === btn)
+      b.setAttribute('aria-expanded', b === btn ? 'true' : 'false')
+    })
+
+    document.querySelectorAll<HTMLElement>('.lb-mega__panel').forEach((p) => {
+      const match = p.dataset.cat === cat
+      p.classList.toggle('is-active', match)
+      p.hidden = !match
+    })
+  }
+
+  catBtns.forEach((btn) => {
+    btn.addEventListener('mouseenter', () => activateCat(btn))
+    btn.addEventListener('click', () => activateCat(btn))
+  })
+})()
+
+
+// ── Region switch (I11) ────────────────────────────────────────────────────
+;(function initRegion() {
+  const trigger = document.querySelector<HTMLButtonElement>('[data-lb-region-trigger]')
+  const menu    = document.getElementById('lb-region-menu')
+  if (!trigger || !menu) return
+
+  function openRegion() {
+    menu!.hidden = false
+    trigger!.setAttribute('aria-expanded', 'true')
+  }
+
+  function closeRegion() {
+    menu!.hidden = true
+    trigger!.setAttribute('aria-expanded', 'false')
+  }
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const expanded = trigger.getAttribute('aria-expanded') === 'true'
+    if (expanded) { closeRegion() } else { openRegion() }
+  })
+
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !menu.contains(e.target as Node) && e.target !== trigger) {
+      closeRegion()
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      closeRegion()
+      trigger.focus()
+    }
+  })
+
+  // Region option click — set cookie + navigate
+  document.querySelectorAll<HTMLButtonElement>('[data-lb-region-option]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const code = btn.dataset.regionCode
+      if (!code) return
+
+      // Set cookie: 1 year, path=/, SameSite=Lax
+      const expires = new Date()
+      expires.setFullYear(expires.getFullYear() + 1)
+      document.cookie = `region=${code}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`
+
+      // Navigate to region root
+      if (code === 'us') {
+        window.location.assign('/us/')
+      } else {
+        window.location.assign('/' + code + '/')
+      }
+    })
+  })
+})()
+
+
+// ── Theme toggle ───────────────────────────────────────────────────────────
+;(function initTheme() {
+  const btn = document.querySelector<HTMLButtonElement>('[data-lb-theme-toggle]')
+  if (!btn) return
+
+  btn.addEventListener('click', () => {
+    const current = (window as any).lbGetThemeMode?.() ?? 'light'
+    const next = current === 'dark' ? 'light' : 'dark';
+    (window as any).lbSetThemeMode?.(next, true)
+  })
+})()
+
+
+// ── Mobile menu (I12) ──────────────────────────────────────────────────────
+;(function initMobileMenu() {
+  const hamburger   = document.querySelector<HTMLButtonElement>('[data-lb-cat-drawer-open]')
+  const mobileMenu  = document.getElementById('lb-mobile-menu')
+  const iconOpen    = hamburger?.querySelector<SVGElement>('.lb-hamburger__icon--open')
+  const iconClose   = hamburger?.querySelector<SVGElement>('.lb-hamburger__icon--close')
+
+  if (!hamburger || !mobileMenu) return
+
+  function openMenu() {
+    mobileMenu!.hidden = false
+    hamburger!.setAttribute('aria-expanded', 'true')
+    hamburger!.setAttribute('aria-label', 'Close menu')
+    if (iconOpen)  iconOpen.hidden  = true
+    if (iconClose) iconClose.hidden = false
+  }
+
+  function closeMenu() {
+    mobileMenu!.hidden = true
+    hamburger!.setAttribute('aria-expanded', 'false')
+    hamburger!.setAttribute('aria-label', 'Open menu')
+    if (iconOpen)  iconOpen.hidden  = false
+    if (iconClose) iconClose.hidden = true
+  }
+
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true'
+    if (expanded) { closeMenu() } else { openMenu() }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.hidden) {
+      closeMenu()
+      hamburger.focus()
+    }
+  })
+})()

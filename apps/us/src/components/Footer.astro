@@ -1,0 +1,38 @@
+---
+import { withBase } from '../lib/paths'
+---
+
+<footer class="lb-footer">
+  <div class="lb-footer__inner">
+    <div class="lb-footer__top">
+      <a href={withBase('/')} class="lb-footer__logo-link" aria-label="Longbridge Home">
+        <img src={withBase('/assets/footer-logo.png')} alt="Longbridge" class="lb-footer__logo" width="140" height="36" />
+      </a>
+      <p class="lb-footer__tagline">Explore. Inspire. Trade.</p>
+    </div>
+
+    <div class="lb-footer__meta">
+      <p>Member FINRA / SIPC · © 2026 Long Bridge Securities LLC.</p>
+    </div>
+
+    <div class="lb-footer__disclaimers">
+      <p>
+        Long Bridge Securities LLC ("Longbridge") is a Member of{' '}
+        <a href="https://brokercheck.finra.org" target="_blank" rel="noopener noreferrer">FINRA</a>
+        {' '}and SIPC. Check the background of Longbridge on{' '}
+        <a href="https://brokercheck.finra.org" target="_blank" rel="noopener noreferrer">FINRA's BrokerCheck</a>.
+        Investing involves risk. The value of your investment will fluctuate, and you may gain or lose money.
+        Past performance of a security or financial product does not guarantee future results or returns.
+        All investments involve risk, including loss of principal. There is no guarantee that any investment
+        strategy will achieve its objectives.
+      </p>
+      <p>
+        Longbridge AI Technologies LLC is an affiliate of Long Bridge Securities LLC.
+        Longbridge AI Technologies LLC is not a registered broker-dealer or investment adviser.
+        Any information or content provided by Longbridge AI Technologies LLC is for informational
+        purposes only and does not constitute investment advice, solicitation, or an offer to buy
+        or sell any securities.
+      </p>
+    </div>
+  </div>
+</footer>

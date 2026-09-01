@@ -1,0 +1,40 @@
+---
+import '../styles/tokens.css'
+import '../styles/base.css'
+import '../styles/header.css'
+import '../styles/footer.css'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import themeMode from '../scripts/theme-mode.js?raw'
+
+interface Props {
+  title: string
+  description?: string
+  isHome?: boolean
+  hideFooter?: boolean
+}
+
+const { title, description, isHome = false, hideFooter = false } = Astro.props
+const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge Help Center`
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" href="https://assets.wbrks.com/assets/logo/logo1.png" type="image/png" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <!-- Anti-FOUC: theme applied before first paint -->
+    <script is:inline set:html={themeMode} />
+  </head>
+  <body>
+    <a class="skip-navigation" href="#main-content">Skip to main content</a>
+    <Header isHome={isHome} />
+    <main id="main-content">
+      <slot />
+    </main>
+    {!hideFooter && <Footer />}
+  </body>
+</html>
