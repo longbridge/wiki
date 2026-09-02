@@ -1,15 +1,24 @@
 /* Header styles */
 
-/* ---- Base header ---- */
+:root { --lb-header-h: 56px; }
+
+/* ---- Base header: FIXED, full-bleed bar overlaying content (Zendesk parity) ---- */
 .lb-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 200;
+  left: 0;
+  right: 0;
   width: 100%;
+  z-index: 200;
+  min-height: var(--lb-header-h);
   background: var(--background);
   border-bottom: 1px solid var(--border);
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Fixed header offset: content clears the bar; home hero fills up under it. */
+main#main-content { padding-top: var(--lb-header-h); }
+main#main-content:has(.hero) { padding-top: 0; }
 
 /* Home transparent state — JS adds .header--transparent when a .hero is present */
 .lb-header.header--transparent:not(.is-scrolled) {
@@ -28,18 +37,19 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 60px;
+  width: 100%;
+  padding: 0 30px;
+  height: var(--lb-header-h);
 }
+@media (max-width: 1023px) { .lb-header__inner { padding: 0 24px; } }
+@media (max-width: 640px)  { .lb-header__inner { padding: 0 16px; } }
 
-/* ---- Logo ---- */
+/* ---- Logo (far left; margin-right:auto pushes nav + actions to the right) ---- */
 .lb-header__logo {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  margin-right: 8px;
+  margin-right: auto;
   text-decoration: none;
 }
 
@@ -73,12 +83,12 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--li
 html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark,
 .theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark    { display: block; }
 
-/* ---- Desktop nav ---- */
+/* ---- Desktop nav (sits in the right cluster, not stretched) ---- */
 .lb-topnav {
   display: flex;
   align-items: center;
   gap: 4px;
-  flex: 1;
+  flex: none;
 }
 
 .lb-topnav__link {
@@ -118,8 +128,17 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   transform: rotate(180deg);
 }
 
+/* Zendesk header search is an icon-only affordance — hide the text label */
 .lb-topnav__search-label {
-  font-size: 14px;
+  display: none;
+}
+/* Transparent (mint hero) state: search icon gets a subtle tinted chip (Zendesk style.css:9020) */
+.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn {
+  background: rgba(15, 23, 42, 0.06);
+}
+.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn,
+.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn svg {
+  color: #0a0e19;
 }
 
 /* ---- Dropdown container ---- */
@@ -274,7 +293,8 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-left: auto;
+  /* no margin-left:auto — logo's margin-right:auto already pushes nav+actions
+     together to the right (Zendesk clusters everything but the logo on the right) */
   flex-shrink: 0;
 }
 
