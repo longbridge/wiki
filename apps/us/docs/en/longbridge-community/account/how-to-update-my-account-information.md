@@ -2,10 +2,10 @@
 title: How to update my account information
 zendesk_article_id: 14925943260815
 zendesk_section_id: 14925844023183
-zendesk_updated_at: '2026-05-29T10:40:46Z'
+zendesk_updated_at: '2026-08-10T07:24:18Z'
 zendesk_edited_at: '2026-01-19T07:46:08Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/14925943260815-How-to-update-my-account-information'
-promoted: false
+promoted: true
 position: 0
 ---
 The following is the operation guide for updating your account details.

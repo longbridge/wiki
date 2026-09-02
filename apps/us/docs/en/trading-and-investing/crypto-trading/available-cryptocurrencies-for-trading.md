@@ -2,10 +2,10 @@
 title: Available Cryptocurrencies for Trading
 zendesk_article_id: 15330166030991
 zendesk_section_id: 15003348738319
-zendesk_updated_at: '2026-06-22T07:08:25Z'
-zendesk_edited_at: '2026-06-22T07:08:25Z'
+zendesk_updated_at: '2026-08-21T02:51:58Z'
+zendesk_edited_at: '2026-08-21T02:51:58Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/15330166030991-Available-Cryptocurrencies-for-Trading'
-promoted: false
+promoted: true
 position: 1
 labels:
   - key_lbus_trading_investing_crypto_trading_002

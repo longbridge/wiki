@@ -2,10 +2,10 @@
 title: 'How to withdraw crypto from your Longbridge account?'
 zendesk_article_id: 16703966079759
 zendesk_section_id: 15003292497935
-zendesk_updated_at: '2026-07-09T10:08:19Z'
+zendesk_updated_at: '2026-08-10T07:23:29Z'
 zendesk_edited_at: '2026-07-09T10:08:19Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/16703966079759-How-to-withdraw-crypto-from-your-Longbridge-account'
-promoted: false
+promoted: true
 position: 0
 ---
 Transfer supported tokens from your Longbridge account to an external wallet by following the steps below.

@@ -2,10 +2,10 @@
 title: 'Why didn’t I receive my SMS verification code?'
 zendesk_article_id: 16511520516111
 zendesk_section_id: 16511552522383
-zendesk_updated_at: '2026-06-22T03:44:45Z'
+zendesk_updated_at: '2026-08-10T07:10:03Z'
 zendesk_edited_at: '2026-06-22T02:30:55Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/16511520516111-Why-didn-t-I-receive-my-SMS-verification-code'
-promoted: false
+promoted: true
 position: 0
 ---
 If you cannot receive the SMS verification code, it can be due to various factors. To help you resolve the issue, we've compiled the most effective solutions below. Please try these steps based on your specific situation.

@@ -2,10 +2,10 @@
 title: Buying power and margin call
 zendesk_article_id: 15164525272079
 zendesk_section_id: 15003293699343
-zendesk_updated_at: '2026-06-22T07:15:43Z'
-zendesk_edited_at: '2026-06-22T07:15:43Z'
+zendesk_updated_at: '2026-08-21T02:03:57Z'
+zendesk_edited_at: '2026-08-21T02:03:57Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/15164525272079-Buying-power-and-margin-call'
-promoted: false
+promoted: true
 position: 0
 ---
 ## **Buying power** 

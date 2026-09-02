@@ -2,10 +2,10 @@
 title: 'How to deposit crypto into your Longbridge account?'
 zendesk_article_id: 16703968594447
 zendesk_section_id: 15003308456591
-zendesk_updated_at: '2026-07-03T05:56:04Z'
-zendesk_edited_at: '2026-07-03T05:56:04Z'
+zendesk_updated_at: '2026-08-10T07:23:48Z'
+zendesk_edited_at: '2026-08-07T02:35:57Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/16703968594447-How-to-deposit-crypto-into-your-Longbridge-account'
-promoted: false
+promoted: true
 position: 0
 ---
 Transfer supported tokens from an external wallet into your Longbridge account by following the steps below.

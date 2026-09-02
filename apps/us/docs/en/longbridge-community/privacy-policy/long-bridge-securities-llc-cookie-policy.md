@@ -2,7 +2,7 @@
 title: Long Bridge Securities LLC Cookie Policy
 zendesk_article_id: 14864745184399
 zendesk_section_id: 14864612550159
-zendesk_updated_at: '2026-06-22T07:14:22Z'
+zendesk_updated_at: '2026-08-07T06:19:51Z'
 zendesk_edited_at: '2026-06-22T07:14:22Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/14864745184399-Long-Bridge-Securities-LLC-Cookie-Policy'
 promoted: false
