@@ -58,7 +58,7 @@ main#main-content:has(.hero) { padding-top: 0; }
    - light: shown when header is transparent (home top) or dark mode
    - dark: shown only in dark mode on white bg
 */
-.lb-logo { height: 32px; width: auto; object-fit: contain; display: block; }
+.lb-logo { height: 30px; width: auto; object-fit: contain; display: block; }
 .lb-logo--light { display: none; }
 .lb-logo--dark  { display: none; }
 
@@ -128,11 +128,21 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   transform: rotate(180deg);
 }
 
-/* Zendesk header search is an icon-only affordance — hide the text label */
-.lb-topnav__search-label {
-  display: none;
+/* Zendesk header search is an icon-only CIRCLE affordance (36×36, radius 50%).
+   Override the inherited .lb-topnav__link rectangle styling. */
+.lb-topnav__search-label { display: none; }
+.lb-header-search-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  gap: 0;
 }
-/* Transparent (mint hero) state: search icon gets a subtle tinted chip (Zendesk style.css:9020) */
+.lb-header-search-btn:hover { background: var(--border); color: var(--foreground); }
+.lb-header-search-btn svg { width: 20px; height: 20px; display: block; }
+/* Transparent (mint hero) state: search chip gets a subtle dark tint (Zendesk style.css:9020) */
 .lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn {
   background: rgba(15, 23, 42, 0.06);
 }
