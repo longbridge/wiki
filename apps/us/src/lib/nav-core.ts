@@ -11,13 +11,16 @@ export interface NavCategory { slug: string; title: string; overviewPath: string
 
 // 顶级分类顺序：同旧 NAV_TABS_US(packages/shared/src/config/tabs.config.ts:69-106),写死。
 // Verified against tabs.config.ts: categories match exactly in this order.
+// 分类展示顺序，对齐 Zendesk 线上 category.position(mega / sidebar 共用)。
 export const CATEGORY_ORDER = [
-  'opening-an-account',
+  'ai-related',
   'trading-and-investing',
-  'funding-your-account-withdrawals-and-transfer',
   'account-and-security',
+  'promotions',
+  'documents-and-taxes',
+  'funding-your-account-withdrawals-and-transfer',
+  'opening-an-account',
   'longbridge-community',
-  'campaigns',
 ]
 
 export function orderedMerge(order: string[], actual: string[]): string[] {
@@ -107,15 +110,15 @@ export function selectCatxCards(nav: NavCategory[]): Map<string, CatxCard[]> {
       s.articles.map((a) => ({ article: a, sectionTitle: s.title }))
     )
     const promoted = withSection.filter(({ article }) => article.promoted)
-    const source =
-      promoted.length > 0
-        ? promoted.sort((a, b) => {
-            if (!a.article.updatedAt && !b.article.updatedAt) return 0
-            if (!a.article.updatedAt) return 1
-            if (!b.article.updatedAt) return -1
-            return b.article.updatedAt.localeCompare(a.article.updatedAt)
-          })
-        : withSection // fallback: _order.json order preserved by buildNavFromRaw
+    // Zendesk catx 只显示含 promoted 文章的分类 (promoted-only，无 fallback)。
+    // 无 promoted 的分类不出现在 Helpful Topics(仍存在于 mega / 侧栏)。
+    if (promoted.length === 0) continue
+    const source = promoted.sort((a, b) => {
+      if (!a.article.updatedAt && !b.article.updatedAt) return 0
+      if (!a.article.updatedAt) return 1
+      if (!b.article.updatedAt) return -1
+      return b.article.updatedAt.localeCompare(a.article.updatedAt)
+    })
     const cards: CatxCard[] = source.slice(0, CATX_CARD_LIMIT).map(({ article, sectionTitle }) => ({
       title: article.title,
       path: article.path,

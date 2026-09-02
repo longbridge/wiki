@@ -51,6 +51,9 @@
     if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
     panel!.hidden = false
     trigger!.setAttribute('aria-expanded', 'true')
+    // Panels have no layout while the menu is hidden → fit the active one once visible
+    const active = panel!.querySelector<HTMLElement>('.lb-mega__panel.is-active')
+    if (active) requestAnimationFrame(() => fitArts(active))
   }
 
   function closeMega() {
@@ -96,28 +99,49 @@
     }
   })
 
-  // Category hover: left-column button → right panel
-  const catBtns = document.querySelectorAll<HTMLButtonElement>('[data-lb-cat-btn]')
+  // Category tabs: hover/focus switches the right panel; the tab is itself a link
+  // to that category's first article (data-idx pairs tab ↔ panel by DOM order).
+  const tabs = Array.from(panel.querySelectorAll<HTMLElement>('[data-lb-cat-tab]'))
+  const panels = Array.from(panel.querySelectorAll<HTMLElement>('.lb-mega__panel'))
 
-  function activateCat(btn: HTMLButtonElement) {
-    const cat = btn.dataset.cat
-    if (!cat) return
-
-    catBtns.forEach((b) => {
-      b.classList.toggle('is-active', b === btn)
-      b.setAttribute('aria-expanded', b === btn ? 'true' : 'false')
-    })
-
-    document.querySelectorAll<HTMLElement>('.lb-mega__panel').forEach((p) => {
-      const match = p.dataset.cat === cat
-      p.classList.toggle('is-active', match)
-      p.hidden = !match
-    })
+  // Trim the article list to what fits the panel height (Zendesk parity: no inner scroll)
+  function fitArts(p: HTMLElement | null) {
+    if (!p) return
+    const ul = p.querySelector<HTMLElement>('.lb-mega__arts')
+    if (!ul) return
+    const items = Array.from(ul.children) as HTMLElement[]
+    items.forEach((li) => { li.style.display = '' })
+    const ulBottom = ul.getBoundingClientRect().bottom
+    // 容差吸收亚像素取整边界：每条约 40px，末条只超几 px 时 (渲染取整所致)
+    // 仍算“放得下”,超出部分由 ul 的 overflow:hidden 裁掉 padding，不切字。
+    // 10px 远小于一条高度，不会多塞进一整条。
+    const SLACK = 10
+    for (let i = 1; i < items.length; i++) {
+      if (items[i].getBoundingClientRect().bottom > ulBottom + SLACK) {
+        for (let j = i; j < items.length; j++) items[j].style.display = 'none'
+        break
+      }
+    }
   }
 
-  catBtns.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => activateCat(btn))
-    btn.addEventListener('click', () => activateCat(btn))
+  function activate(idx: number) {
+    tabs.forEach((t, i) => {
+      t.classList.toggle('is-active', i === idx)
+      t.setAttribute('aria-selected', i === idx ? 'true' : 'false')
+    })
+    panels.forEach((p, i) => p.classList.toggle('is-active', i === idx))
+    fitArts(panels[idx])
+    requestAnimationFrame(() => fitArts(panels[idx]))
+  }
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('mouseenter', () => activate(i))
+    t.addEventListener('focus', () => activate(i))
+  })
+
+  window.addEventListener('resize', () => {
+    const act = panel!.querySelector<HTMLElement>('.lb-mega__panel.is-active')
+    if (act) fitArts(act)
   })
 })()
 

@@ -3,7 +3,10 @@
    Task 7 – US VitePress→Astro migration (2026-09-01)
    ============================================================ */
 
-/* ── Hero ───────────────────────────────────────────────── */
+/* ── Hero (一比一复刻 Zendesk mint 主题 2026-08-31) ───────────
+   #C2FFF7 底 + 左上 sun 光晕 (::after) + 顶部渐变阴影 (::before) +
+   右侧 hero-bg3 插图;标题 80px display，副标题 20px，白搜索框+teal 圆按钮，
+   实心 teal pill，左对齐，margin 序列 12/28/24。 */
 .hero {
   position: relative;
   overflow: hidden;
@@ -12,25 +15,26 @@
 .hero.hero--dark {
   background-color: #C2FFF7;
   color: #0a0e19;
-  min-height: 320px;
+  min-height: 480px;
   background-image: url("https://assets.lbkrs.com/uploads/962fe7f1-bbf1-462c-80b8-35f72d462e18/hero-bg3.png");
   background-repeat: no-repeat;
+  isolation: isolate;
 }
 
-/* Gradient top-edge overlay */
+/* 顶部渐变阴影 (navbar → 内容过渡) */
 .hero.hero--dark::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   height: 230px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.10), transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
-/* Sun-glow pseudo-bg */
+/* 左上角 sun 光晕 */
 .hero.hero--dark::after {
   content: "";
   position: absolute;
@@ -38,137 +42,175 @@
   left: -12vw;
   width: 37vw;
   height: 37vw;
-  background-image: url("https://assets.lbkrs.com/uploads/d07e860c-e88d-4309-9fb4-b735618f0868/sun.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: url("https://assets.lbkrs.com/uploads/d07e860c-e88d-4309-9fb4-b735618f0868/sun.png") center/contain no-repeat;
   z-index: 1;
+  opacity: 0.95;
   pointer-events: none;
 }
 
-/* Desktop: bg illustration sizing */
+/* 右侧 3D 插图定位 */
 @media (min-width: 901px) {
   .hero.hero--dark {
     background-size: 815px auto;
-    background-position: calc(50% + 235px) -64px;
+    background-position: calc(50% + 235px) -104px;
   }
 }
-
-/* Mobile: bg illustration sizing */
 @media (max-width: 900px) {
   .hero.hero--dark {
     background-size: auto 60%;
     background-position: right -16px top 0;
-    min-height: 0 !important;
-    padding-bottom: 40px !important;
+    min-height: 0;
+    padding-bottom: 40px;
   }
 }
 
-/* Hero inner – centred content container */
+/* Hero inner – 左对齐内容容器。复刻 Zendesk:大屏 width:90% + 左右无 padding
+   (max-width 1200 居中),小屏回退 5% 侧边距。 */
 .hero__inner {
   position: relative;
   z-index: 3;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 72px 24px 64px;
+  padding: 159px 5% 256px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
-
+@media (min-width: 1160px) {
+  .hero__inner {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media (max-width: 900px) {
   .hero__inner {
-    padding: 48px 20px 32px;
+    padding: 88px 20px 32px;
   }
 }
 
-/* Hero title */
+/* Title 80px, 系统无衬线 (全局统一) */
 .hero-title {
-  font-family: var(--lb-font-display);
-  font-size: clamp(28px, 4vw, 48px);
+  margin: 0;
+  font-family: var(--lb-font-sans);
+  font-size: clamp(40px, 7vw, 80px);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.125;
+  letter-spacing: -0.01em;
   color: #0a0e19;
-  margin: 0 0 12px;
 }
+.hero-title-accent { color: #00b8b8; }
 
-/* Hero subtitle */
+/* Subtitle 20px */
 .hero-sub {
-  font-size: 16px;
-  color: rgba(10, 14, 25, 0.7);
-  margin: 0 0 28px;
-  max-width: 480px;
+  margin: 12px 0 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  /* 固定灰，不随明暗主题变 (hero 底始终 mint 浅色) */
+  color: #6c6e75 !important;
+  max-width: calc(100vw - 115px);
+}
+@media (max-width: 900px) {
+  .hero-sub {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
 }
 
-/* Hero search bar */
+/* Search: 白色胶囊 (radius 66, h72) + teal 圆按钮 */
 .hero-search-wrap {
-  position: relative;
-  max-width: 480px;
-  margin-bottom: 20px;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 820px;
+  height: 72px;
+  padding: 4px 6px 4px 28px;
+  background: #fff;
+  border-radius: 66px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .hero-search-wrap {
+    height: 56px;
+    padding: 4px 4px 4px 20px;
+    border-radius: 999px;
+  }
 }
 
 .hero-search-input {
-  width: 100%;
-  height: 48px;
-  padding: 0 20px 0 46px;
-  border-radius: 24px;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 60px;
+  padding: 0;
   border: none;
-  background: rgba(255, 255, 255, 0.90);
+  background: transparent;
   color: #0a0e19;
-  font-size: 15px;
-  box-sizing: border-box;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  font-size: 20px;
   outline: none;
   cursor: pointer;
   caret-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.hero-search-input::placeholder { color: #afb3b6; font-weight: 400; }
+@media (max-width: 900px) {
+  .hero-search-input { height: 48px; font-size: 17px; }
 }
 
-.hero-search-input:hover {
-  background: rgba(255, 255, 255, 0.96);
+.hero-search-btn {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 0;
+  background: #00f0c4;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s;
+}
+.hero-search-btn:hover { background: #1ac7c7; }
+.hero-search-btn svg { display: block; }
+@media (max-width: 900px) {
+  .hero-search-btn { width: 48px; height: 48px; }
+  .hero-search-btn svg { width: 22px; height: 22px; }
 }
 
-.hero-search-input:focus {
-  background: #fff;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.13);
-}
-
-.hero-search-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(10, 14, 25, 0.45);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-}
-
-/* Hot tags row */
+/* Hot tags: 实心 teal 胶囊 */
 .hero-hot-tags {
+  margin-top: 24px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 14px;
 }
-
-.hero-hot-tags__label {
-  font-size: 13px;
-  color: rgba(10, 14, 25, 0.55);
-  flex-shrink: 0;
-}
-
 .hero-hot-tag {
+  display: inline-flex;
+  align-items: center;
   height: 36px;
   padding: 0 14px;
-  border: none;
-  border-radius: 18px;
-  background: var(--accent-teal);
-  color: #fff;
-  font-size: 13px;
+  border: 0;
+  border-radius: 999px;
+  background: #00b8b8;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.15s;
 }
-
-.hero-hot-tag:hover {
-  background: var(--accent-teal-hover);
+.hero-hot-tag:hover { background: #00a5a5; }
+@media (max-width: 900px) {
+  .hero-hot-tags { gap: 10px; }
+  .hero-hot-tag { padding: 0 16px; font-size: 14px; }
 }
 
 /* ── catx – You might want to know ─────────────────────── */
@@ -182,90 +224,100 @@
   }
 }
 
+/* 与 .hero__inner 完全相同的水平定位，保证 hero 内容与 Helpful Topics 左右对齐 */
 .catx-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 5%;
 }
-
-@media (max-width: 768px) {
+@media (min-width: 1160px) {
   .catx-container {
-    padding: 0 16px;
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 900px) {
+  .catx-container {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 /* Section heading */
 .catx-title {
-  font-family: var(--lb-font-display);
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-family: var(--lb-font-sans);
+  font-size: 28px;
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--foreground);
-  margin: 0 0 28px;
+  margin: 0 0 24px;
+}
+@media (max-width: 768px) {
+  .catx-title { font-size: 24px; }
 }
 
-/* Tab strip */
+/* Tab strip — 底边线 + 滑动下划线 (Zendesk) */
 .catx-tabs {
+  position: relative;
   display: flex;
   gap: 40px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 28px;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 24px;
   overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  /* 横向滚动两侧渐隐 (JS 设 --fade-l/r,Zendesk 8909) */
   --fade-l: 0px;
   --fade-r: 0px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0px, black var(--fade-l), black calc(100% - var(--fade-r)), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0px, black var(--fade-l), black calc(100% - var(--fade-r)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
 }
-
 .catx-tabs::-webkit-scrollbar {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .catx-tabs {
-    gap: 20px;
-  }
-}
-
 .catx__tab {
-  position: relative;
-  padding: 0 2px 16px;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 0;
+  border: 0;
   background: none;
   color: var(--muted-foreground);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.15s;
+  transition: color 0.2s;
   flex-shrink: 0;
 }
-
 .catx__tab:hover {
   color: var(--foreground);
 }
-
 .catx__tab.is-active {
   color: var(--foreground);
+  font-weight: 600;
 }
 
-/* Active tab pill indicator */
-.catx__tab.is-active::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 2px;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 3px;
-  background: var(--accent-teal);
-  border-radius: 50px;
-}
-
-/* Compat: hide Zendesk-style sliding underline */
+/* 滑动下划线:JS 更新 left/width,CSS 过渡 */
 .catx__underline {
-  display: none !important;
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent-teal);
+  transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.catx__underline[hidden] {
+  display: none;
 }
 
 /* Card grid */
@@ -274,95 +326,103 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+/* [hidden] 必须胜过 display:grid / 卡片的 display:flex —— 否则切 tab 与 CARD_LIMIT
+   的 element.hidden 不生效，所有 tab 卡片会一次性全显示、切换无反应。 */
+.catx__grid[hidden],
+.catx-card[hidden] {
+  display: none !important;
+}
 
 @media (max-width: 1024px) {
   .catx__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media (max-width: 768px) {
   .catx__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 480px) {
   .catx__grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Card */
+/* Card — icon 左 / body / arrow 右 (Zendesk card v2) */
 .catx-card {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   gap: 12px;
   min-height: 92px;
+  box-sizing: border-box;
   padding: 32px 20px;
   border: 0.5px solid var(--border);
   border-radius: 8px;
   background: var(--card);
   color: var(--foreground);
   text-decoration: none;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
 }
-
 .catx-card:hover {
+  box-shadow: 0 6px 24px rgba(43, 62, 92, 0.14);
   border-color: var(--accent-teal);
-  box-shadow: 0 4px 20px rgba(0, 184, 184, 0.12);
   transform: translateY(-2px);
 }
+.catx-card:active {
+  transform: translateY(0) scale(0.98);
+}
 
-/* Icon badge */
+/* Icon — 纯 teal 图标，无底 (Zendesk) */
 .catx-card__icon {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(0, 184, 184, 0.10);
-  color: var(--accent-teal);
-  display: flex;
+  align-self: center;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--accent-teal);
+}
+.catx-card__icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .catx-card__body {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
-
 .catx-card__title {
   display: block;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.3;
   color: var(--foreground);
+  overflow-wrap: anywhere;
 }
-
-.catx-card__excerpt {
-  display: block;
-  font-size: 13px;
+/* 卡片箭头 (Zendesk 灰) */
+.catx__card-arrow {
+  flex-shrink: 0;
   color: var(--muted-foreground);
-  margin-top: 4px;
-  line-height: 1.5;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
-
+/* 二级标题隐藏 (对齐 Zendesk 卡片) */
 .catx-card__sub {
-  display: block;
-  font-size: 12px;
-  color: var(--muted-foreground);
-  margin-top: 2px;
+  display: none;
 }
 
-/* Fade mask – visible when extras are hidden */
-.catx__fade {
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+/* Tab 切换淡入动画 (Zendesk catx-fade) */
+@keyframes catx-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.catx__grid--enter {
+  animation: catx-fade 0.28s cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 /* Expand / collapse button */

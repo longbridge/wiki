@@ -64,15 +64,6 @@ function applyFilter(grid: HTMLElement): void {
   buildExpandRows(grid, extras)
 }
 
-/** Update --fade-l / --fade-r custom props to drive horizontal fade mask. */
-function updateFade(tabsWrap: HTMLElement): void {
-  const threshold = 20
-  const scrollLeft = tabsWrap.scrollLeft
-  const scrollRight = tabsWrap.scrollWidth - tabsWrap.clientWidth - scrollLeft
-  tabsWrap.style.setProperty('--fade-l', scrollLeft > threshold ? '24px' : '0px')
-  tabsWrap.style.setProperty('--fade-r', scrollRight > threshold ? '24px' : '0px')
-}
-
 function initCatx(): void {
   const section = document.querySelector<HTMLElement>('.catx-section')
   if (!section) return
@@ -82,20 +73,44 @@ function initCatx(): void {
 
   if (tabs.length === 0 || grids.length === 0) return
 
+  const underline = section.querySelector<HTMLElement>('.catx__underline')
+  const tabsWrap = section.querySelector<HTMLElement>('.catx-tabs')
+
+  // 下划线：固定 32×3，居中在 active tab 文字下 (CSS 负责 left 过渡动画)
+  const UNDERLINE_W = 32
+  function moveUnderline(): void {
+    const active = tabs.find((t) => t.classList.contains('is-active'))
+    if (!underline || !active) return
+    underline.hidden = false
+    underline.style.width = `${UNDERLINE_W}px`
+    underline.style.left = `${active.offsetLeft + active.offsetWidth / 2 - UNDERLINE_W / 2}px`
+  }
+
+  // 横向滚动两侧渐隐：按滚动位置设 --fade-l/r (Zendesk)
+  function updateFade(): void {
+    if (!tabsWrap) return
+    const threshold = 20
+    const scrollLeft = tabsWrap.scrollLeft
+    const scrollRight = tabsWrap.scrollWidth - tabsWrap.clientWidth - scrollLeft
+    tabsWrap.style.setProperty('--fade-l', scrollLeft > threshold ? '24px' : '0px')
+    tabsWrap.style.setProperty('--fade-r', scrollRight > threshold ? '24px' : '0px')
+  }
+
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const key = tab.dataset.key
       if (!key) return
 
-      // Update active tab pill
+      // Update active tab
       tabs.forEach((t) => {
         const active = t.dataset.key === key
         t.classList.toggle('is-active', active)
         t.setAttribute('aria-selected', String(active))
       })
 
+      moveUnderline()
+
       // Scroll active tab into center of the strip (I3)
-      const tabsWrap = section.querySelector<HTMLElement>('.catx-tabs')
       if (tabsWrap) {
         tabsWrap.scrollTo({
           left: tab.offsetLeft - (tabsWrap.clientWidth - tab.offsetWidth) / 2,
@@ -113,28 +128,32 @@ function initCatx(): void {
         }
       })
 
-      // Apply filter to the newly active grid
+      // Apply filter + replay fade-in on the newly active grid
       const escapedKey = key.replace(/[^\w-]/g, '')
       const activeGrid = section.querySelector<HTMLElement>(`.catx__grid[data-tab="${escapedKey}"]`)
-      if (activeGrid) applyFilter(activeGrid)
+      if (activeGrid) {
+        applyFilter(activeGrid)
+        activeGrid.classList.remove('catx__grid--enter')
+        void activeGrid.offsetWidth
+        activeGrid.classList.add('catx__grid--enter')
+      }
     })
   })
 
-  // Horizontal fade mask for scrollable tab strip (I4)
-  const tabsWrap = section.querySelector<HTMLElement>('.catx-tabs')
-  if (tabsWrap) {
-    updateFade(tabsWrap)
-    tabsWrap.addEventListener('scroll', () => updateFade(tabsWrap), { passive: true })
-    window.addEventListener('resize', () => updateFade(tabsWrap), { passive: true })
-  }
+  // Reposition underline + refresh fade on resize / after web fonts load
+  window.addEventListener('resize', () => { moveUnderline(); updateFade() }, { passive: true })
+  if (document.fonts?.ready) document.fonts.ready.then(moveUnderline)
 
-  // Initialise: apply filter to first grid, hide the rest
+  // Tab strip edge fade while scrolling
+  if (tabsWrap) tabsWrap.addEventListener('scroll', updateFade, { passive: true })
+
+  // Initialise: apply filter to first grid, hide the rest, place underline + fade
   grids.forEach((grid, i) => {
-    if (i > 0) {
-      grid.hidden = true
-    }
+    if (i > 0) grid.hidden = true
   })
   if (grids[0]) applyFilter(grids[0])
+  moveUnderline()
+  updateFade()
 }
 
 document.addEventListener('DOMContentLoaded', initCatx)

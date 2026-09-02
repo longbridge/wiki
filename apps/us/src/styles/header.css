@@ -53,35 +53,24 @@ main#main-content:has(.hero) { padding-top: 0; }
   text-decoration: none;
 }
 
-/* Logo visibility logic:
-   - default: shown on white/scrolled bg
-   - light: shown when header is transparent (home top) or dark mode
-   - dark: shown only in dark mode on white bg
-*/
+/* Logo 显隐：主题驱动 (仿 HK 双 logo 模型 + Zendesk 最终意图)。
+   - --light(深色墨) 在浅色主题恒显:mint hero 与滚动后白底都能读，无需按滚动切换
+   - --dark(浅色墨) 仅深色主题显 */
 .lb-logo { height: 30px; width: auto; object-fit: contain; display: block; }
-.lb-logo--light { display: none; }
-.lb-logo--dark  { display: none; }
+.lb-logo--dark { display: none; }
 
-/* Transparent header -> use light logo */
-.lb-header.header--transparent:not(.is-scrolled) .lb-logo--default { display: none; }
-.lb-header.header--transparent:not(.is-scrolled) .lb-logo--light   { display: block; }
-.lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark    { display: none; }
-
-/* Dark mode */
-html[theme="dark"] .lb-logo--default,
-.theme-dark .lb-logo--default { display: none; }
 html[theme="dark"] .lb-logo--light,
-.theme-dark .lb-logo--light   { display: none; }
+.theme-dark .lb-logo--light { display: none; }
 html[theme="dark"] .lb-logo--dark,
-.theme-dark .lb-logo--dark    { display: block; }
+.theme-dark .lb-logo--dark  { display: block; }
 
-/* Dark mode + transparent: still use dark logo */
-html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--default,
-.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--default { display: none; }
+/* 深色模式 + 透明 hero(home 顶部，mint 浅底):仍用深墨 logo(--light)。
+   mint 是浅色，浅墨看不清;只有深色底 (非 home / 滚动后) 才用浅墨。特异性高于上面
+   的 dark 规则，故覆盖之。 */
 html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light,
-.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light   { display: none; }
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light { display: block; }
 html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark,
-.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark    { display: block; }
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark { display: none; }
 
 /* ---- Desktop nav (sits in the right cluster, not stretched) ---- */
 .lb-topnav {
@@ -133,7 +122,10 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-topnav__search-label { display: none; }
 
 /* ---- Unified right-side icon button (search / region / theme / github) ----
-   Clean bare icon, transparent bg, subtle hover — matches hk/sg .hn-icon-btn. */
+   透明底方格 + 轻 hover。颜色用 --foreground(浅色=#0a0e19，与 mint hero 上已认可
+   的图标色及导航文字一致),避免滚动到白底后变成 muted 灰而显得「变淡」。
+   注：本行是 4 个无文字图标的簇，与 Zendesk 单个带标签的搜索图标 (muted) 语境不同，
+   故此处不套用 Zendesk 的 muted 搜索色。 */
 .lb-icon-btn {
   display: inline-grid;
   place-items: center;
@@ -143,7 +135,7 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   border: 1px solid transparent;
   border-radius: 8px;
   background: transparent;
-  color: var(--muted-foreground);
+  color: var(--foreground);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.15s, background 0.15s;
@@ -159,147 +151,177 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   position: relative;
 }
 
-/* ---- Mega menu panel ---- */
+/* ---- Mega menu panel (Zendesk parity) ----
+   fixed + 右对齐到 header 内容右缘 → 永不溢出视口 (触发器偏左时旧的 left:-16px
+   会把 780px 面板推出右边)。宽度、两栏、内部样式 1:1 复刻 Zendesk，配色走本仓
+   token;淡色叠加用 rgba(var(--foreground-rgb), x) 以自动跟随明暗主题。 */
 .lb-mega {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: -16px;
-  display: flex;
-  width: min(900px, calc(100vw - 48px));
-  background: var(--background);
+  position: fixed;
+  top: calc(var(--lb-header-h) + 8px);
+  right: 30px;
+  width: min(780px, calc(100vw - 48px));
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: var(--card);
+  color: var(--foreground);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px 6px rgba(0, 0, 0, 0.14);
   overflow: hidden;
   z-index: 300;
 }
-
+@media (max-width: 1023px) { .lb-mega { right: 24px; } }
 .lb-mega[hidden] { display: none; }
 
-/* Left column: category list */
-.lb-mega__cats {
+/* Left: category tab rail */
+.lb-mega__left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-right: 1px solid var(--border);
   list-style: none;
   margin: 0;
-  padding: 8px 0;
-  width: 240px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--border);
-  overflow-y: auto;
 }
-
-.lb-mega__cat-btn {
+.lb-mega__cat {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--foreground);
-  background: none;
-  border: none;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 12px;
   cursor: pointer;
-  text-align: left;
-  transition: background 0.12s;
-  border-radius: 0;
+  background: transparent;
+  color: rgba(var(--foreground-rgb), 0.7);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
 }
-
-.lb-mega__cat-btn:hover,
-.lb-mega__cat-btn.is-active {
-  background: var(--muted);
-  color: var(--accent-teal);
+.lb-mega__cat:hover,
+.lb-mega__cat.is-active {
+  background: rgba(var(--foreground-rgb), 0.07);
+  color: var(--foreground);
 }
-
 .lb-mega__cat-icon {
-  flex-shrink: 0;
-  color: var(--muted-foreground);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: rgba(var(--foreground-rgb), 0.5);
 }
-.lb-mega__cat-btn.is-active .lb-mega__cat-icon,
-.lb-mega__cat-btn:hover .lb-mega__cat-icon {
-  color: var(--accent-teal);
-}
-
+.lb-mega__cat:hover .lb-mega__cat-icon,
+.lb-mega__cat.is-active .lb-mega__cat-icon { color: var(--accent-teal); }
+.lb-mega__cat-icon svg { width: 18px; height: 18px; display: block; }
 .lb-mega__cat-name {
   flex: 1;
-  font-size: 13px;
-  line-height: 1.3;
-}
-
-.lb-mega__cat-count {
-  font-size: 11px;
-  color: var(--muted-foreground);
-  white-space: nowrap;
-}
-
-/* Right column: article panels */
-.lb-mega__panels {
-  flex: 1;
   min-width: 0;
-  overflow-y: auto;
-  max-height: 420px;
-}
-
-.lb-mega__panel {
-  display: none;
-  padding: 20px 24px;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.lb-mega__panel.is-active { display: flex; }
-.lb-mega__panel[hidden]   { display: none !important; }
-
-.lb-mega__section {
-  min-width: 180px;
-  flex: 1;
-}
-
-.lb-mega__section-title {
   font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted-foreground);
-  margin: 0 0 10px;
+  font-weight: 500;
+  line-height: 1.4;
 }
+.lb-mega__cat-badge {
+  flex: none;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: rgba(0, 184, 184, 0.16);
+  color: var(--accent-teal);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.lb-mega__cat-count {
+  flex: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11.5px;
+  color: rgba(var(--foreground-rgb), 0.4);
+}
+.lb-mega__cat:hover .lb-mega__cat-count,
+.lb-mega__cat.is-active .lb-mega__cat-count { color: rgba(var(--foreground-rgb), 0.6); }
 
-.lb-mega__article-list {
+/* Right: category panels */
+.lb-mega__right {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 24px;
+  background: rgba(var(--foreground-rgb), 0.02);
+  position: relative;
+  min-width: 0;
+}
+.lb-mega__panel { display: none; flex-direction: column; flex: 1; min-height: 0; min-width: 0; }
+.lb-mega__panel.is-active { display: flex; }
+.lb-mega__head { display: flex; align-items: center; gap: 14px; }
+.lb-mega__head-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0, 184, 184, 0.14);
+  color: var(--accent-teal);
+}
+.lb-mega__head-icon svg { width: 18px; height: 18px; }
+.lb-mega__head-name { font-size: 17px; font-weight: 700; color: var(--foreground); letter-spacing: -0.01em; }
+.lb-mega__desc {
+  margin: 14px 0 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.lb-mega__arts {
   list-style: none;
-  margin: 0;
+  margin: 20px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
 }
-
-.lb-mega__article-link {
-  display: block;
-  font-size: 13px;
-  color: var(--foreground);
+.lb-mega__arts li { margin: 0; padding: 0; min-width: 0; }
+.lb-mega__arts a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgba(var(--foreground-rgb), 0.85);
   text-decoration: none;
-  line-height: 1.4;
-  transition: color 0.12s;
+  transition: background 0.12s ease, color 0.12s ease;
+  min-width: 0;
 }
-
-.lb-mega__article-link:hover {
-  color: var(--accent-teal);
+.lb-mega__arts a::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-teal);
 }
-
+.lb-mega__arts a:hover {
+  background: rgba(var(--foreground-rgb), 0.06);
+  color: var(--foreground);
+}
+.lb-mega__art-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .lb-mega__view-all {
+  /* 无 margin-top:auto —— 由 .lb-mega__arts 的 flex:1 撑满把它顶到底部。
+     两者同用会争抢剩余空间，导致 arts 不满高、fitArts 少算一条。 */
+  padding-top: 24px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--accent-teal);
   text-decoration: none;
-  margin-top: 16px;
-  width: 100%;
+  flex: none;
 }
-
-.lb-mega__view-all:hover {
-  text-decoration: underline;
-}
+.lb-mega__view-all svg { width: 16px; height: 16px; }
+.lb-mega__view-all:hover { filter: brightness(1.15); }
 
 /* ---- Right action bar ---- */
 .lb-header__actions {
@@ -323,7 +345,7 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  min-width: 240px;
+  min-width: 264px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -339,6 +361,7 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   letter-spacing: 0.06em;
   color: var(--muted-foreground);
   padding: 4px 12px 8px;
+  white-space: nowrap;
 }
 .lb-region__option {
   display: flex;
@@ -360,13 +383,16 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-region__option.is-active { background: var(--muted); font-weight: 500; }
 .lb-region__check { color: var(--accent-teal); flex-shrink: 0; }
 
-/* ---- Theme toggle icons: sun (dark mode) / moon (light mode) ---- */
-.lb-theme-icon--sun  { display: none; }
-.lb-theme-icon--moon { display: block; }
-html[theme="dark"] .lb-theme-icon--sun,
-.theme-dark .lb-theme-icon--sun  { display: block; }
-html[theme="dark"] .lb-theme-icon--moon,
-.theme-dark .lb-theme-icon--moon { display: none; }
+/* ---- Theme toggle icons: sun (dark mode) / moon (light mode) ----
+   Scoped to .lb-theme-toggle (0,2,0) so these beat the blanket
+   `.lb-icon-btn svg { display:block }` rule (0,1,1); otherwise the sun is
+   force-shown and both icons stack. */
+.lb-theme-toggle .lb-theme-icon--sun  { display: none; }
+.lb-theme-toggle .lb-theme-icon--moon { display: block; }
+html[theme="dark"] .lb-theme-toggle .lb-theme-icon--sun,
+.theme-dark .lb-theme-toggle .lb-theme-icon--sun  { display: block; }
+html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
+.theme-dark .lb-theme-toggle .lb-theme-icon--moon { display: none; }
 
 /* ---- Mobile search ---- */
 .lb-header__mobile-search {
