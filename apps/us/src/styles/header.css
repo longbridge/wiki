@@ -131,25 +131,28 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 /* Zendesk header search is an icon-only CIRCLE affordance (36×36, radius 50%).
    Override the inherited .lb-topnav__link rectangle styling. */
 .lb-topnav__search-label { display: none; }
-.lb-header-search-btn {
-  width: 36px;
-  height: 36px;
+
+/* ---- Unified right-side icon button (search / region / theme / github) ----
+   Clean bare icon, transparent bg, subtle hover — matches hk/sg .hn-icon-btn. */
+.lb-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
   padding: 0;
-  border-radius: 50%;
-  background: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
   color: var(--muted-foreground);
-  gap: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
 }
-.lb-header-search-btn:hover { background: var(--border); color: var(--foreground); }
-.lb-header-search-btn svg { width: 20px; height: 20px; display: block; }
-/* Transparent (mint hero) state: search chip gets a subtle dark tint (Zendesk style.css:9020) */
-.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn {
-  background: rgba(15, 23, 42, 0.06);
-}
-.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn,
-.lb-header.header--transparent:not(.is-scrolled) .lb-header-search-btn svg {
-  color: #0a0e19;
-}
+.lb-icon-btn:hover { color: var(--foreground); background: var(--muted); }
+.lb-icon-btn svg { display: block; }
+/* Transparent (mint hero) state: dark icons + subtle tinted hover */
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn { color: #0a0e19; }
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn:hover { background: rgba(15, 23, 42, 0.06); }
 
 /* ---- Dropdown container ---- */
 .lb-topnav__dropdown {
@@ -308,128 +311,62 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   flex-shrink: 0;
 }
 
-/* ---- Region switch ---- */
-.lb-region {
-  position: relative;
+/* ---- Region switch (globe .lb-icon-btn + popover) ---- */
+.lb-region { position: relative; }
+[data-lb-region-trigger][aria-expanded="true"] { color: var(--foreground); background: var(--muted); }
+.lb-header.header--transparent:not(.is-scrolled) [data-lb-region-trigger][aria-expanded="true"] {
+  background: rgba(15, 23, 42, 0.06);
 }
 
-.lb-region__trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--foreground);
-  background: none;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.lb-region__trigger:hover { background: var(--muted); }
-
-.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger {
-  color: #0a0e19;
-}
-.lb-header.header--transparent:not(.is-scrolled) .lb-region__trigger:hover {
-  background: var(--muted);
-}
-
-.lb-region__label { font-size: 13px; font-weight: 600; }
-.lb-region__chevron { flex-shrink: 0; transition: transform 0.15s; }
-[data-lb-region-trigger][aria-expanded="true"] .lb-region__chevron { transform: rotate(180deg); }
-
+/* Region popover — mirrors the hk/sg region/language panel (single card, section title, rows) */
 .lb-region__menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   right: 0;
-  min-width: 180px;
-  background: var(--background);
+  min-width: 240px;
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-  padding: 6px 0;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  padding: 14px 12px;
   z-index: 300;
-  list-style: none;
-  margin: 0;
 }
-
 .lb-region__menu[hidden] { display: none; }
-
+.lb-region__section-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  padding: 4px 12px 8px;
+}
 .lb-region__option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
-  padding: 9px 16px;
-  font-size: 14px;
+  padding: 10px 12px;
+  font-size: 15px;
   color: var(--foreground);
   background: none;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s;
 }
-
 .lb-region__option:hover { background: var(--muted); }
-.lb-region__flag { font-size: 18px; line-height: 1; }
+.lb-region__option.is-active { background: var(--muted); font-weight: 500; }
+.lb-region__check { color: var(--accent-teal); flex-shrink: 0; }
 
-/* ---- Theme toggle ---- */
-.lb-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: none;
-  border-radius: 6px;
-  background: none;
-  color: var(--foreground);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.lb-theme-toggle:hover { background: var(--muted); }
-
-.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle {
-  color: #0a0e19;
-}
-.lb-header.header--transparent:not(.is-scrolled) .lb-theme-toggle:hover {
-  background: var(--muted);
-}
-
-/* Sun: shown in dark mode; Moon: shown in light mode */
+/* ---- Theme toggle icons: sun (dark mode) / moon (light mode) ---- */
 .lb-theme-icon--sun  { display: none; }
 .lb-theme-icon--moon { display: block; }
 html[theme="dark"] .lb-theme-icon--sun,
 .theme-dark .lb-theme-icon--sun  { display: block; }
 html[theme="dark"] .lb-theme-icon--moon,
 .theme-dark .lb-theme-icon--moon { display: none; }
-
-/* ---- GitHub link ---- */
-.lb-header__github {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  color: var(--foreground);
-  text-decoration: none;
-  transition: background 0.15s;
-}
-
-.lb-header__github:hover { background: var(--muted); }
-
-.lb-header.header--transparent:not(.is-scrolled) .lb-header__github {
-  color: #0a0e19;
-}
-.lb-header.header--transparent:not(.is-scrolled) .lb-header__github:hover {
-  background: var(--muted);
-}
 
 /* ---- Mobile search ---- */
 .lb-header__mobile-search {
