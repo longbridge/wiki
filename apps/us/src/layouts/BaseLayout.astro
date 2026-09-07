@@ -7,6 +7,7 @@ import '../styles/side-tree.css'
 import '../styles/search.css'
 import '../styles/whale.css'
 import Header from '../components/Header.astro'
+import AppNavbar from '../components/AppNavbar.astro'
 import Footer from '../components/Footer.astro'
 import CatDrawer from '../components/CatDrawer.astro'
 import SearchModal from '../components/SearchModal.astro'
@@ -31,11 +32,64 @@ const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge H
     <link rel="icon" href="https://assets.wbrks.com/assets/logo/logo1.png" type="image/png" />
     <title>{pageTitle}</title>
     {description && <meta name="description" content={description} />}
-    <!-- Anti-FOUC: theme applied before first paint -->
+    <!-- Anti-FOUC: theme applied before first paint(内含 UA lbcommitid → html.is-whale-app) -->
     <script is:inline set:html={themeMode} />
+    <!-- App WebView 内禁用双指/双击缩放(对齐 Zendesk document_head.hbs:2) -->
+    <script is:inline>
+      ;(function () {
+        var ua = navigator.userAgent || ''
+        if (!/longbridge|whale|_dsbridge/i.test(ua)) return
+        var m = document.querySelector('meta[name="viewport"]')
+        if (!m) return
+        var c = m.getAttribute('content') || ''
+        if (c.indexOf('user-scalable') > -1) return
+        m.setAttribute('content', c + ', user-scalable=no, maximum-scale=1.0, minimum-scale=1.0')
+      })()
+    </script>
+    {
+      import.meta.env.DEV && (
+        <script is:inline>
+          /* 仅 dev：?lb-whale=1 在普通浏览器 / 模拟器 Safari 里模拟 App 环境；?lb-debug=1 屏幕上打印顶部间距读数 */
+          ;(function () {
+            var q = location.search
+            if (/[?&]lb-whale=1/.test(q)) document.documentElement.classList.add('is-whale-app')
+            if (!/[?&]lb-debug=1/.test(q)) return
+            addEventListener('load', function () {
+              var cs = function (el, p) { return el ? getComputedStyle(el).getPropertyValue(p) : 'n/a' }
+              var top = function (el) { return el ? Math.round(el.getBoundingClientRect().top) : 'n/a' }
+              var probe = document.createElement('div')
+              probe.style.cssText = 'position:fixed;padding-top:env(safe-area-inset-top,0px);visibility:hidden'
+              document.body.appendChild(probe)
+              var html = document.documentElement
+              var rows = [
+                ['ua', navigator.userAgent.slice(-60)],
+                ['html.class', html.className],
+                ['env(safe-top)', cs(probe, 'padding-top')],
+                ['--lb-safe-top', cs(html, '--lb-safe-top')],
+                ['viewport', innerWidth + 'x' + innerHeight + ' scale ' + (visualViewport ? visualViewport.scale : '?')],
+                ['navbar bottom', document.querySelector('.lb-app-navbar') ? Math.round(document.querySelector('.lb-app-navbar').getBoundingClientRect().bottom) : 'n/a'],
+                ['outer main pt', cs(document.querySelector('body > main#main-content'), 'padding-top')],
+                ['hero pt', cs(document.querySelector('.hero'), 'padding-top')],
+                ['hero top', top(document.querySelector('.hero'))],
+                ['hero__inner pt', cs(document.querySelector('.hero__inner'), 'padding-top')],
+                ['hero__inner top', top(document.querySelector('.hero__inner'))],
+                ['hero-title mt', cs(document.querySelector('.hero-title'), 'margin-top')],
+                ['hero-title top', top(document.querySelector('.hero-title'))],
+                ['h1 top', top(document.querySelector('.article-title'))],
+              ]
+              var box = document.createElement('pre')
+              box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;margin:0;padding:8px;background:rgba(0,0,0,.85);color:#0f0;font:11px/1.4 monospace;white-space:pre-wrap'
+              box.textContent = rows.map(function (r) { return r[0] + ': ' + r[1] }).join('\n')
+              document.body.appendChild(box)
+            })
+          })()
+        </script>
+      )
+    }
   </head>
   <body>
     <a class="skip-navigation" href="#main-content">Skip to main content</a>
+    <AppNavbar />
     <Header />
     <CatDrawer />
     <SearchModal />

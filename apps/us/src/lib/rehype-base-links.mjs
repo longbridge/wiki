@@ -1,4 +1,4 @@
-const BASE = '/us'
+const BASE = '/us/en/support'
 export function rehypeBaseLinks() {
   const walk = (node) => {
     if (node.type === 'element' && node.tagName === 'a') {

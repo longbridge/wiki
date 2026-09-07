@@ -20,7 +20,12 @@ const results = document.getElementById('lb-search-results') as HTMLElement | nu
   async function ensurePagefind() {
     if (pagefind) return pagefind
     try {
-      pagefind = await import(/* @vite-ignore */ import.meta.env.BASE_URL + 'pagefind/pagefind.js')
+      // trailingSlash:'never' 下 BASE_URL 不带尾斜杠 ('/us/en/support'),必须规范化后再拼路径，
+      // 否则得到 '/us/en/supportpagefind/…' → 404 → 搜索在构建站上也不可用
+      const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+      pagefind = await import(/* @vite-ignore */ base + '/pagefind/pagefind.js')
+      // 索引以 dist 根为基准记 URL(无 base 前缀),让 Pagefind 自动把 base 拼到每条结果 url 上
+      await pagefind.options({ baseUrl: base + '/' })
       await pagefind.init()
     } catch {
       pagefind = null // dev server has no index; gracefully degrade
@@ -143,9 +148,11 @@ const results = document.getElementById('lb-search-results') as HTMLElement | nu
       // Pagefind: a.url, a.meta.title, a.excerpt (already has <mark> tags)
       const title = (a.meta && a.meta.title) || ''
       const snippet = a.excerpt || ''
+      // build.format:'file' 产出 {path}.html，对外 URL 无扩展名 (trailingSlash: never)→ 去掉 .html
+      const url = String(a.url || '').replace(/\/index\.html$/, '/').replace(/\.html$/, '')
       out +=
         '<li>' +
-        '<a class="lb-search-modal__item" href="' + esc(a.url) + '">' +
+        '<a class="lb-search-modal__item" href="' + esc(url) + '">' +
         '<span class="lb-search-modal__title">' + highlight(title, q) + '</span>' +
         '<p class="lb-search-modal__snippet">' + snippet + '</p>' +
         '</a></li>'

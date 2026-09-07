@@ -17,72 +17,53 @@ function normPath(p: string) {
 
 const norm = normPath(currentPath)
 
-const CHEVRON_SVG = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>`
+// Zendesk-parity chevron: 折叠时指右(rotate -90),展开时指下(rotate 0) — 由 CSS 控制
+const CHEVRON_SVG = `<svg class="side-tree__chevron" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path></svg>`
 ---
 
-<ul class="side-tree__list" role="list">
-  {nav.map((cat) => {
-    // Determine which sections contain the current article
-    const openSecs = new Set(
-      cat.sections
-        .filter((sec) => sec.articles.some((a) => normPath(withBase(a.path)) === norm))
-        .map((sec) => sec.slug)
-    )
-    const catIsOpen = openSecs.size > 0
+{nav.map((cat) => {
+  // Which sections contain the current article → auto-open that cat/sec
+  const openSecs = new Set(
+    cat.sections
+      .filter((sec) => sec.articles.some((a) => normPath(withBase(a.path)) === norm))
+      .map((sec) => sec.slug)
+  )
+  const catIsOpen = openSecs.size > 0
 
-    return (
-      <li class:list={['side-tree__cat', catIsOpen && 'is-open']}>
-        <div class="side-tree__cat-head">
-          <a class="side-tree__cat-link" href={withBase(cat.firstArticlePath)}>
-            <span class="side-tree__cat-icon" aria-hidden="true" set:html={CAT_ICONS[iconKeyForSlug(cat.slug)]} />
-            <span class="side-tree__cat-label">{cat.title}</span>
-          </a>
-          <button
-            class="side-tree__chevron-btn"
-            type="button"
-            aria-expanded={catIsOpen ? 'true' : 'false'}
-            aria-label="Toggle category"
-            set:html={CHEVRON_SVG}
-          />
-        </div>
-        <ul class="side-tree__cat-body" role="list">
-          {cat.sections.map((sec) => {
-            const secIsOpen = openSecs.has(sec.slug)
-            return (
-              <li class:list={['side-tree__sec', secIsOpen && 'is-open']}>
-                <div class="side-tree__sec-head">
-                  <a class="side-tree__sec-link" href={withBase(sec.firstArticlePath)}>
-                    <span class="side-tree__sec-label">{sec.title}</span>
-                  </a>
-                  <button
-                    class="side-tree__chevron-btn"
-                    type="button"
-                    aria-expanded={secIsOpen ? 'true' : 'false'}
-                    aria-label="Toggle section"
-                    set:html={CHEVRON_SVG}
-                  />
-                </div>
-                <ul class="side-tree__sec-body" role="list">
-                  {sec.articles.map((article) => {
-                    const isCurrent = normPath(withBase(article.path)) === norm
-                    return (
-                      <li>
-                        <a
-                          href={withBase(article.path)}
-                          class:list={['side-tree__item', isCurrent && 'is-current']}
-                          aria-current={isCurrent ? 'page' : undefined}
-                        >
-                          {article.title}
-                        </a>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </li>
-            )
-          })}
-        </ul>
-      </li>
-    )
-  })}
-</ul>
+  return (
+    <div class:list={['side-tree__cat', catIsOpen && 'is-open']}>
+      <button type="button" class="side-tree__cat-head" aria-expanded={catIsOpen ? 'true' : 'false'}>
+        <span class="side-tree__cat-icon" aria-hidden="true" set:html={CAT_ICONS[iconKeyForSlug(cat.slug)]} />
+        <span class="side-tree__cat-label">{cat.title}</span>
+        <Fragment set:html={CHEVRON_SVG} />
+      </button>
+      <div class="side-tree__cat-body">
+        {cat.sections.map((sec) => {
+          const secIsOpen = openSecs.has(sec.slug)
+          return (
+            <div class:list={['side-tree__sec', secIsOpen && 'is-open']}>
+              <button type="button" class="side-tree__sec-head" aria-expanded={secIsOpen ? 'true' : 'false'}>
+                <span>{sec.title}</span>
+                <Fragment set:html={CHEVRON_SVG} />
+              </button>
+              <div class="side-tree__sec-body">
+                {sec.articles.map((article) => {
+                  const isCurrent = normPath(withBase(article.path)) === norm
+                  return (
+                    <a
+                      href={withBase(article.path)}
+                      class:list={['side-tree__item', isCurrent && 'is-current']}
+                      aria-current={isCurrent ? 'page' : undefined}
+                    >
+                      {article.title}
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+})}

@@ -1,80 +1,14 @@
 /**
  * article.ts — client-side logic for article pages
  *
- * 1. Votes  — persist up/down vote in localStorage per zendesk_article_id
- * 2. Recently viewed — record & render last 6 unique articles
- * 3. Table I9 — strip inline width so CSS max-content wins
+ * 1. Recently viewed — record & render last 6 unique articles
+ * 2. Table I9 — strip inline width so CSS max-content wins
  */
 
-// ── 1. Votes ───────────────────────────────────────────────────────────────
-
-type VoteValue = 'up' | 'down' | null
-
-function getVoteKey(articleId: number): string {
-  return `lb_article_vote_${articleId}`
-}
-
-function loadVote(articleId: number): VoteValue {
-  try {
-    const raw = localStorage.getItem(getVoteKey(articleId))
-    if (raw === 'up' || raw === 'down') return raw
-  } catch (_) {
-    // localStorage may throw in private/sandbox contexts
-  }
-  return null
-}
-
-function saveVote(articleId: number, value: VoteValue): void {
-  try {
-    if (value === null) {
-      localStorage.removeItem(getVoteKey(articleId))
-    } else {
-      localStorage.setItem(getVoteKey(articleId), value)
-    }
-  } catch (_) {
-    // noop
-  }
-}
-
-function initVotes(): void {
-  const container = document.querySelector<HTMLElement>('.article-votes')
-  if (!container) return
-
-  const articleIdRaw = container.dataset.articleId
-  if (!articleIdRaw) return
-  const articleId = parseInt(articleIdRaw, 10)
-  if (isNaN(articleId)) return
-
-  const btnUp = container.querySelector<HTMLButtonElement>('[data-vote="up"]')
-  const btnDown = container.querySelector<HTMLButtonElement>('[data-vote="down"]')
-  if (!btnUp || !btnDown) return
-
-  function applyState(value: VoteValue): void {
-    btnUp!.classList.toggle('is-selected', value === 'up')
-    btnDown!.classList.toggle('is-selected', value === 'down')
-    btnUp!.setAttribute('aria-pressed', String(value === 'up'))
-    btnDown!.setAttribute('aria-pressed', String(value === 'down'))
-  }
-
-  // Restore persisted state
-  applyState(loadVote(articleId))
-
-  function handleClick(clicked: VoteValue): void {
-    const current = loadVote(articleId)
-    // Toggle off if clicking the already-selected button
-    const next: VoteValue = current === clicked ? null : clicked
-    saveVote(articleId, next)
-    applyState(next)
-  }
-
-  btnUp.addEventListener('click', () => handleClick('up'))
-  btnDown.addEventListener('click', () => handleClick('down'))
-}
-
-// ── 2. Recently viewed ─────────────────────────────────────────────────────
+// ── 1. Recently viewed ─────────────────────────────────────────────────────
 
 const RECENT_KEY = 'lb_recent_articles_v1'
-const RECENT_MAX = 6
+const RECENT_MAX = 5
 
 interface RecentArticle {
   path: string
@@ -164,7 +98,7 @@ function initRecentlyViewed(): void {
   recordCurrentArticle()
 }
 
-// ── 3. Table I9 — strip inline width ──────────────────────────────────────
+// ── 2. Table I9 — strip inline width ──────────────────────────────────────
 
 function fixTableWidths(): void {
   document
@@ -179,7 +113,6 @@ function fixTableWidths(): void {
 // ── Init ───────────────────────────────────────────────────────────────────
 
 function init(): void {
-  initVotes()
   initRecentlyViewed()
   fixTableWidths()
 }
@@ -189,3 +122,6 @@ if (document.readyState === 'loading') {
 } else {
   init()
 }
+
+// SPA:正文替换后重跑 (votes 重绑新按钮、recent 记录新页、表格修宽)
+document.addEventListener('lb:content-swapped', init)

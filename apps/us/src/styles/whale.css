@@ -1,16 +1,364 @@
 /*
- * whale.css — Minimal Whale App (is-whale-app) scoping
+ * whale.css — Longbridge App(Whale WebView) 内嵌适配样式。
  *
- * When the page is loaded inside the Longbridge App WebView, theme-mode.js
- * detects "lbcommitid" in the User-Agent and adds `html.is-whale-app`.
- * These rules hide the web header, TOC, and floating TOC elements that the
- * native App shell already provides.
+ * theme-mode.js 在 UA 含 "lbcommitid" 时给 <html> 加 `is-whale-app`;
+ * 非 App 环境下面所有规则不生效，.lb-app-navbar / .lb-fab-menu 保持 display:none。
+ * 移植自 Zendesk 主题 style.css(.lb-app-navbar 7095–7440 / 8519–8564 / 9046–9053,
+ * .lb-fab-menu 8263–8315),按最终生效行为合并了其多轮 REV 覆盖。
+ * 接线见 scripts/whale-bridge.ts,标记见 components/AppNavbar.astro。
  */
 
+/* ── App 内隐藏 web header 与 TOC rail(原生/H5 导航栏接管) ─────────────── */
 html.is-whale-app .lb-header,
 html.is-whale-app .header,
 html.is-whale-app .lb-toc,
-html.is-whale-app .toc-fab,
-html.is-whale-app .toc-drawer {
+html.is-whale-app .lb-footer {
   display: none !important;
+}
+
+/* ── 胶囊按钮底图 (可整体替换资源集) ──────────────────────────────────── */
+:root {
+  --lb-app-navbar-capsule-one-dark: url('https://pub.lbkrs.com/files/202603/kRQcFSo3KdmNsPGm/icon_titlebar_one_capsule_night.png');
+  --lb-app-navbar-capsule-two-dark: url('https://pub.lbkrs.com/files/202603/xp3CSgEreQp8v7Yf/icon_titlebar_two_capsule_night.png');
+  --lb-app-navbar-capsule-one-light: url('https://pub.lbkrs.com/files/202603/UDQLYDR9p9ZnZAZr/icon_titlebar_one_capsule.png');
+  --lb-app-navbar-capsule-two-light: url('https://pub.lbkrs.com/files/202603/PTuzthF2t3yCcXZh/icon_titlebar_two_capsule.png');
+}
+
+/* ── 顶部安全区：唯一取值点。刘海/灵动岛设备 >0，无安全区设备（Android、老机型）为 0；
+   导航栏高度、首页 hero 顶距、文章页顶距全部由它推导，公式在 0 时自动退化。 ── */
+html.is-whale-app {
+  --lb-safe-top: env(safe-area-inset-top, 0px);
+}
+
+/* ── H5 App 导航栏：基础 (默认隐藏，仅 App 内显示) ─────────────────────── */
+.lb-app-navbar {
+  display: none;
+}
+html.is-whale-app .lb-app-navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(var(--lb-safe-top) + 8px) 16px 8px 16px;
+}
+
+.lb-app-navbar__btn {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #0a0e19;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.lb-app-navbar__btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.lb-app-navbar__btn:focus-visible {
+  outline: 2px solid rgba(15, 23, 42, 0.35);
+  outline-offset: 2px;
+}
+
+/* 标题绝对居中，不受左右按钮数量影响 */
+html.is-whale-app .lb-app-navbar__title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: calc(var(--lb-safe-top) / 2);
+  max-width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #0a0e19;
+}
+
+/* 返回按钮 / 右侧动作组：胶囊 PNG 作为 ::before 底图 */
+.lb-app-navbar__back,
+.lb-app-navbar__actions {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+.lb-app-navbar__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+.lb-app-navbar__back::before,
+.lb-app-navbar__actions::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 160px;
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.15s ease;
+}
+.lb-app-navbar__back:active::before,
+.lb-app-navbar__actions:active::before {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+/* 搜索按钮：默认隐藏;首页滚动态 / 非首页显示 */
+.lb-app-navbar__search {
+  display: none !important;
+}
+
+/* ── 首页 (body:has(.hero)):沉浸式 —— 首屏透明浮在 hero 上，滚动后转实底 ─── */
+html.is-whale-app body:has(.hero) .lb-app-navbar {
+  pointer-events: none;
+}
+html.is-whale-app body:has(.hero) .lb-app-navbar__btn {
+  pointer-events: auto;
+}
+/* 首屏永远是浅色胶囊 + 深色图标 (两种主题一致) */
+html.is-whale-app:not(.is-scrolled) body:has(.hero) .lb-app-navbar__back::before,
+html.is-whale-app:not(.is-scrolled) body:has(.hero) .lb-app-navbar__actions::before {
+  background-image: var(--lb-app-navbar-capsule-one-light);
+}
+/* 滚动态：实底跟随主题 token，返回单胶囊、动作组换双胶囊，搜索按钮出现 */
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar {
+  background: var(--background, #ffffff);
+  transition: background 0.2s ease;
+}
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__title,
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__btn {
+  color: var(--foreground, #0a0e19);
+}
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__back::before {
+  background-image: var(--lb-app-navbar-capsule-one-light);
+}
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__actions::before {
+  background-image: var(--lb-app-navbar-capsule-two-light);
+  width: 210px;
+}
+html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__search {
+  display: inline-flex !important;
+}
+/* 首页:hero 盒子从屏幕顶开始 (Zendesk 实际生效值为 padding-top:0!important，
+   插画是 hero 背景、按 hero 高度 60% 缩放，盒子一致插画位置才一致)；
+   内容顶距 = 导航栏底 (safe + 56) + 47 → 有刘海时标题落在 162px，与 Zendesk 一致 */
+html.is-whale-app body:has(.hero) .hero {
+  padding-top: 0;
+  /* App 内 hero 盒子顶在屏幕 0，背景插画默认 top 0 会被固定导航栏压住；
+     纵向下移 30px 让插画从导航栏下方露出（仅 App，不动 web 移动端的 top 0）。
+     横向沿用移动端 right -16px。 */
+  background-position: right -16px top 30px;
+}
+html.is-whale-app body:has(.hero) .hero__inner {
+  padding-top: calc(var(--lb-safe-top) + 103px);
+}
+
+/* 分类抽屉:App 内面板顶在屏幕 0，头部让出安全区，标题不与状态栏重叠。
+   安全区为 0 的设备自动退化为 20px。 */
+html.is-whale-app .lb-cat-drawer__header {
+  padding-top: calc(var(--lb-safe-top) + 20px);
+}
+
+/* Helpful Topics 卡片:App 内更紧凑。web 亮色卡片按 Zendesk 定过 (32/20) 不动，仅 App 覆写。
+   - padding 16 + min-height 归 0(否则 92 的 min-height 吃掉 padding 变化，卡片高度不变)
+   - 标题 15px;icon 与标题 12px 间距已由基础 .catx-card gap 提供，无需覆写
+   - icon 去底：深色模式默认给 .catx-card__icon 加了 teal 半透明底 (home.css)，!important 压过它 */
+html.is-whale-app .catx-card {
+  padding: 16px;
+  min-height: 0;
+}
+html.is-whale-app .catx-card__title {
+  font-size: 15px;
+}
+html.is-whale-app .catx-card__icon {
+  background: transparent !important;
+}
+/* Helpful Topics 区块标题 20px、tab 标题 15px(仅 App;web 亮色沿用 28/20 Zendesk 值)。
+   tab 字号变了会改变 tab 宽度，下划线由 JS 按 load/resize 重算，自动对齐。 */
+html.is-whale-app .catx-title {
+  font-size: 20px;
+}
+html.is-whale-app .catx__tab {
+  font-size: 15px;
+}
+
+/* ── 非首页 (body:not(:has(.hero))):恒实底导航栏 ────────────────────────── */
+html.is-whale-app body:not(:has(.hero)) .lb-app-navbar {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__title {
+  font-size: 17px;
+}
+html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__back::before {
+  background-image: var(--lb-app-navbar-capsule-one-light);
+}
+html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__actions::before {
+  background-image: var(--lb-app-navbar-capsule-two-light);
+  width: 260px;
+}
+html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__search {
+  display: inline-flex !important;
+}
+/* 正文下推让出固定导航栏 (替代 header 高度占位，叠加安全区)。
+   只作用于 body 直系的外层 main：文章页内层 .article-page__main 也带 id=main-content，
+   不加 > 会叠两次；内层顶距对齐 Zendesk App 态 .article-header padding-top:12 */
+html.is-whale-app body:not(:has(.hero)) > main#main-content {
+  padding-top: calc(var(--lb-safe-top) + 56px);
+}
+html.is-whale-app .article-page__main#main-content {
+  padding-top: 12px;
+}
+
+/* App 内文章正文的块间距收紧 (窄栏里全局值显得过大;仅 App，不动 web):
+   标题→正文、段落→标题、标题→标题 的空隙都由这几条 margin 决定 */
+html.is-whale-app .article-body {
+  margin-top: 12px;
+}
+html.is-whale-app .article-body h1,
+html.is-whale-app .article-body h2,
+html.is-whale-app .article-body h3,
+html.is-whale-app .article-body h4 {
+  margin: 8px 0 4px;
+}
+html.is-whale-app .article-body p {
+  margin-bottom: 10px;
+}
+
+/* ── 暗色：导航栏实底 / 图标 / 胶囊切换夜间资源 ───────────────────────── */
+html[theme='dark'].is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__back::before,
+html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__back::before {
+  background-image: var(--lb-app-navbar-capsule-one-dark);
+}
+html[theme='dark'].is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__actions::before,
+html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__actions::before {
+  background-image: var(--lb-app-navbar-capsule-two-dark);
+}
+html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar {
+  background: #0a0e19;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__title,
+html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__btn {
+  color: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  html.is-whale-app:not([theme='light']).is-scrolled body:has(.hero) .lb-app-navbar__back::before,
+  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__back::before {
+    background-image: var(--lb-app-navbar-capsule-one-dark);
+  }
+  html.is-whale-app:not([theme='light']).is-scrolled body:has(.hero) .lb-app-navbar__actions::before,
+  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__actions::before {
+    background-image: var(--lb-app-navbar-capsule-two-dark);
+  }
+  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar {
+    background: #0a0e19;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__title,
+  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__btn {
+    color: #ffffff;
+  }
+}
+
+/* ── 悬浮菜单按钮 (App 内唯一菜单入口):液态玻璃球 ───────────────────────
+   薄白色 tint + 背景模糊，1.5px 亮内圈 + 顶部内发光 + 底部内阴影出体积，大柔阴影。 */
+.lb-fab-menu {
+  --lb-fab-tint: rgba(255, 255, 255, 0.62);
+  --lb-fab-hi: 0.95;
+  --lb-fab-rim: rgba(255, 255, 255, 0.95);
+  --lb-fab-glow: rgba(255, 255, 255, 0.85);
+  --lb-fab-shade: rgba(15, 23, 42, 0.06);
+  --lb-fab-shadow-1: rgba(15, 23, 42, 0.22);
+  --lb-fab-shadow-2: rgba(15, 23, 42, 0.1);
+  position: fixed;
+  left: 16px;
+  bottom: 54px;
+  z-index: 60;
+  width: 52px;
+  height: 52px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--foreground, #0a0e19);
+  cursor: grab;
+  touch-action: none;
+  /* iOS 会把点按高亮画在 touchstart 位置;按钮随手指移动后高亮会残留在原点 —— 关掉 */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, var(--lb-fab-hi)) 0%, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(circle at 50% 112%, var(--lb-fab-shade) 0%, rgba(15, 23, 42, 0) 55%),
+    var(--lb-fab-tint);
+  -webkit-backdrop-filter: blur(10px) saturate(1.6);
+  backdrop-filter: blur(10px) saturate(1.6);
+  box-shadow:
+    0 16px 36px -6px var(--lb-fab-shadow-1),
+    0 6px 14px -4px var(--lb-fab-shadow-2),
+    inset 0 0 0 1.5px var(--lb-fab-rim),
+    inset 0 8px 16px -4px var(--lb-fab-glow),
+    inset 0 -10px 16px -6px var(--lb-fab-shade);
+}
+.lb-fab-menu svg {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.9;
+}
+.lb-fab-menu:active {
+  cursor: grabbing;
+}
+html.is-whale-app .lb-fab-menu {
+  display: flex;
+}
+html[theme='dark'] .lb-fab-menu,
+.theme-dark .lb-fab-menu {
+  --lb-fab-tint: rgba(255, 255, 255, 0.14);
+  --lb-fab-hi: 0.22;
+  --lb-fab-rim: rgba(255, 255, 255, 0.36);
+  --lb-fab-glow: rgba(255, 255, 255, 0.18);
+  --lb-fab-shade: rgba(0, 0, 0, 0.28);
+  --lb-fab-shadow-1: rgba(0, 0, 0, 0.55);
+  --lb-fab-shadow-2: rgba(0, 0, 0, 0.35);
+}
+@media (prefers-color-scheme: dark) {
+  html:not([theme='light']):not(.theme-light) .lb-fab-menu {
+    --lb-fab-tint: rgba(255, 255, 255, 0.14);
+    --lb-fab-hi: 0.22;
+    --lb-fab-rim: rgba(255, 255, 255, 0.36);
+    --lb-fab-glow: rgba(255, 255, 255, 0.18);
+    --lb-fab-shade: rgba(0, 0, 0, 0.28);
+    --lb-fab-shadow-1: rgba(0, 0, 0, 0.55);
+    --lb-fab-shadow-2: rgba(0, 0, 0, 0.35);
+  }
 }

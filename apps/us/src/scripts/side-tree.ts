@@ -7,18 +7,16 @@
  */
 
 export function initSideTree(host: Element): void {
-  // ── Chevron toggle (category + section) ─────────────────────────────────
-  // Chevron buttons are separate from the navigable head links.
-  // Must preventDefault+stopPropagation to fold without triggering the link.
-  host.querySelectorAll<HTMLButtonElement>('.side-tree__chevron-btn').forEach((btn) => {
+  // ── Row toggle (category + section) ─────────────────────────────────────
+  // Whole head row is a <button> (Zendesk parity): clicking it folds/unfolds.
+  host.querySelectorAll<HTMLButtonElement>('.side-tree__cat-head, .side-tree__sec-head').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault()
-      e.stopPropagation()
 
-      const cat = btn.closest<HTMLElement>('.side-tree__cat')
+      // sec-head → closest .side-tree__sec = its own sec;
+      // cat-head → closest .side-tree__sec = null → fall back to cat.
       const sec = btn.closest<HTMLElement>('.side-tree__sec')
-      // sec is always inside cat, so check sec first
-      const target = sec ?? cat
+      const target = sec ?? btn.closest<HTMLElement>('.side-tree__cat')
       if (!target) return
 
       const willOpen = !target.classList.contains('is-open')

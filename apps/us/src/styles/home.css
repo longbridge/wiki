@@ -47,6 +47,15 @@
   opacity: 0.95;
   pointer-events: none;
 }
+/* 小屏:sun 光晕固定成小尺寸，只在左上角一小块 (不随 vw 在较宽小屏放大) */
+@media (max-width: 768px) {
+  .hero.hero--dark::after {
+    width: 140px;
+    height: 140px;
+    top: -50px;
+    left: -50px;
+  }
+}
 
 /* 右侧 3D 插图定位 */
 @media (min-width: 901px) {
@@ -87,7 +96,7 @@
 }
 @media (max-width: 900px) {
   .hero__inner {
-    padding: 88px 20px 32px;
+    padding: 120px 5% 0;
   }
 }
 
@@ -102,6 +111,16 @@
   color: #0a0e19;
 }
 .hero-title-accent { color: #00b8b8; }
+/* 小屏：标题缩到 28px,"Hi," 独占一行，避免压到右侧插图 (对齐线上) */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  .hero-title-accent {
+    display: block;
+  }
+}
 
 /* Subtitle 20px */
 .hero-sub {
@@ -123,7 +142,7 @@
 
 /* Search: 白色胶囊 (radius 66, h72) + teal 圆按钮 */
 .hero-search-wrap {
-  margin-top: 28px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -138,7 +157,7 @@
 }
 @media (max-width: 900px) {
   .hero-search-wrap {
-    height: 56px;
+    height: 52px;
     padding: 4px 4px 4px 20px;
     border-radius: 999px;
   }
@@ -161,7 +180,7 @@
 }
 .hero-search-input::placeholder { color: #afb3b6; font-weight: 400; }
 @media (max-width: 900px) {
-  .hero-search-input { height: 48px; font-size: 17px; }
+  .hero-search-input { height: 44px; font-size: 17px; }
 }
 
 .hero-search-btn {
@@ -179,13 +198,13 @@
 .hero-search-btn:hover { background: #1ac7c7; }
 .hero-search-btn svg { display: block; }
 @media (max-width: 900px) {
-  .hero-search-btn { width: 48px; height: 48px; }
+  .hero-search-btn { width: 44px; height: 44px; }
   .hero-search-btn svg { width: 22px; height: 22px; }
 }
 
 /* Hot tags: 实心 teal 胶囊 */
 .hero-hot-tags {
-  margin-top: 24px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -210,12 +229,12 @@
 .hero-hot-tag:hover { background: #00a5a5; }
 @media (max-width: 900px) {
   .hero-hot-tags { gap: 10px; }
-  .hero-hot-tag { padding: 0 16px; font-size: 14px; }
+  .hero-hot-tag { padding: 0 16px; font-size: 16px; }
 }
 
 /* ── catx – You might want to know ─────────────────────── */
 .catx-section {
-  padding: 60px 0 80px;
+  padding: 60px 0 60px;
 }
 
 @media (max-width: 768px) {
@@ -296,6 +315,13 @@
   white-space: nowrap;
   transition: color 0.2s;
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+/* 点击/聚焦不留背景 (仅换文字色 + 下划线) */
+.catx__tab:hover,
+.catx__tab:focus,
+.catx__tab:active {
+  background: none;
 }
 .catx__tab:hover {
   color: var(--foreground);

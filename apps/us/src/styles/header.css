@@ -1,6 +1,9 @@
 /* Header styles */
 
 :root { --lb-header-h: 56px; }
+@media (max-width: 768px) {
+  :root { --lb-header-h: 71px; }
+}
 
 /* ---- Base header: FIXED, full-bleed bar overlaying content (Zendesk parity) ---- */
 .lb-header {
@@ -441,10 +444,27 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
   .lb-header__mobile-search { display: inline-flex; }
   .lb-hamburger              { display: inline-flex; }
 
-  /* Hide desktop elements */
+  /* Hide desktop elements (线上移动端只保留 search + 汉堡) */
   .lb-topnav      { display: none; }
   .lb-region      { display: none; }
   .lb-header__github { display: none; }
+  .lb-theme-toggle { display: none; }
+
+  /* search / 汉堡:36×36 圆底 (对齐线上移动端) */
+  .lb-header__mobile-search,
+  .lb-hamburger {
+    width: 36px;
+    height: 36px;
+    background: rgba(15, 23, 42, 0.06);
+    border-radius: 50%;
+  }
+  .lb-header__mobile-search:hover,
+  .lb-hamburger:hover {
+    background: rgba(15, 23, 42, 0.1);
+  }
+
+  /* 两个圆钮间距 12(对齐线上) */
+  .lb-header__actions { gap: 12px; }
 
   /* Shrink inner */
   .lb-header__inner { padding: 0 16px; }

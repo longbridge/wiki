@@ -3,14 +3,20 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Page grid ─────────────────────────────────────────────────── */
+/* 对齐 Zendesk .article-container(2026-09-04 实测 @1280/1500/1900/2000 computed):
+   容器 width 90% + max-width 1396 居中，grid 272 | 正文列，gap 32;
+   正文列内 30px 左右 padding → 正文 760，与侧栏 / TOC 的视觉间距各 62(32+30)。
+   TOC(fixed,toc.ts) 落在正文列右侧余量:left = main.right+32,width min(240, space-48),space<210 隐藏。
+   一套规则覆盖所有视口:@1280 → 1152 居中 l64 无 TOC;@1500 → 1350 l75 有 TOC;≥1551 → 1396 居中。 */
 .article-page {
   display: grid;
-  grid-template-columns: 272px 1fr;
+  grid-template-columns: 272px minmax(0, 820px);
   column-gap: 32px;
   align-items: start;
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1396px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 /* ── Aside / side-tree ─────────────────────────────────────────── */
@@ -21,13 +27,57 @@
   align-self: start;
   max-height: calc(100vh - 56px);
   overflow-y: auto;
-  padding: 24px 0;
+  /* 禁止横向滚动 / 触摸横向拖动：只允许竖直滚动 */
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  /* padding-top 0:第一项贴 header 下 (cat-head 自身 16 提供间距);
+     右 20:细滚动条 (6px) + 内容与右侧分割线留距，chevron 不被遮 */
+  padding: 0 20px 24px 0;
+  /* 菜单右侧分割线 (对齐 Developers 站侧栏) */
+  border-right: 1px solid var(--border);
+  /* 细滚动条：替代系统默认的粗滚动条 (Firefox / 标准) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.3) transparent;
+}
+/* 细滚动条:WebKit(Chrome/Safari) */
+.article-page__aside::-webkit-scrollbar {
+  width: 6px;
+}
+.article-page__aside::-webkit-scrollbar-track {
+  background: transparent;
+}
+.article-page__aside::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 3px;
+}
+.article-page__aside::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+html[theme="dark"] .article-page__aside {
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+html[theme="dark"] .article-page__aside::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
 }
 
 /* ── Article main column ───────────────────────────────────────── */
+/* 左右 30:正文列 820 - 60 = 正文 760，对齐 Zendesk article 的内 padding */
 .article-page__main {
   min-width: 0;
-  padding: 32px 0 48px;
+  padding: 32px 30px 48px;
+}
+
+/* 覆盖全局 main#main-content 的 padding-top:56(文章页容器已让出 header 空间)。
+   带 id 的选择器才能压过 main#main-content。内容距顶 24、标题与左侧菜单齐平，对齐 Zendesk。 */
+.article-page__main#main-content {
+  padding-top: 24px;
+}
+
+/* 详情页 footer 位于正文列 (col2 row2):左右 30 margin 让 footer(含顶部分隔线)= 正文 760 宽 */
+.article-page > .lb-footer {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 /* ── Breadcrumb ────────────────────────────────────────────────── */
@@ -80,32 +130,28 @@
   font-size: 40px;
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 32px;
+  margin: 12px 0 4px 0;
   color: var(--foreground);
 }
 
 /* ── Article body typography ───────────────────────────────────── */
 .article-body {
+  margin-top: 30px;
   font-size: 16px;
   line-height: 1.7;
   color: var(--foreground);
   word-break: break-word;
 }
 
-/* Headings */
+/* Headings — h1~h4 统一 margin 12px 0 4px 0(含标题 .article-title) */
+.article-body h1,
 .article-body h2,
 .article-body h3,
 .article-body h4 {
   font-weight: 600;
   line-height: 1.3;
-  margin: 32px 0 12px;
+  margin: 12px 0 4px 0;
   color: var(--foreground);
-}
-
-.article-body h2:first-child,
-.article-body h3:first-child,
-.article-body h4:first-child {
-  margin-top: 0;
 }
 
 .article-body h2 { font-size: 24px; }
@@ -125,6 +171,8 @@
 
 .article-body ul {
   list-style: disc;
+  /* 清掉浏览器对 ul 的默认 padding-left(约 40px);缩进只保留上面共用规则的 margin-left 20px */
+  padding-left: 0;
 }
 
 .article-body ol {
@@ -181,13 +229,13 @@ html[theme='dark'] .article-body img,
   font-size: 0.875em;
 }
 
-/* Blockquote */
+/* Blockquote — 细灰左线 + 无底 + 斜体 (对齐 Zendesk 引用样式) */
 .article-body blockquote {
-  background: var(--muted, #f3f4f6);
-  border-left: 3px solid var(--accent-teal);
+  border-left: 3px solid var(--border);
   margin: 0 0 20px;
-  padding: 12px 16px;
-  border-radius: 0 3px 3px 0;
+  padding: 2px 0 2px 20px;
+  font-style: italic;
+  color: var(--muted-foreground);
 }
 
 .article-body blockquote p:last-child {
@@ -232,6 +280,10 @@ html[theme='dark'] .article-body img,
   padding: 8px 12px;
   text-align: left;
   vertical-align: top;
+  /* 覆盖 .article-body 的 word-break:break-word:单元格按词断行，不再把 "Price" 拆成 "Pric e";
+     仍允许超长词 (如长 URL) 必要时断行 */
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .article-body thead th {
@@ -243,139 +295,56 @@ html[theme='dark'] .article-body img,
   background: var(--muted);
 }
 
-/* ── Tail sections ─────────────────────────────────────────────── */
-
-/* Votes */
-.article-votes {
-  margin: 40px 0 32px;
-  padding: 24px 0;
-  border-top: 1px solid var(--border, #e5e7eb);
-}
-
-.article-votes__question {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 16px;
-  color: var(--foreground);
-}
-
-.article-votes__controls {
+/* ── Tail:最近浏览 / 相关文章 (两列，对齐 Zendesk .article-relatives) ───────
+   flex 两列各 50%(recent 左 / related 右);标题 18/600/muted,链接 15/foreground。 */
+.article-relatives {
   display: flex;
-  gap: 12px;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
-
-.btn-vote {
-  padding: 8px 20px;
-  border: 1px solid var(--border, #e5e7eb);
-  border-radius: 6px;
-  background: transparent;
-  color: var(--foreground);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-}
-
-.btn-vote:hover {
-  border-color: var(--accent-teal);
-  color: var(--accent-teal);
-}
-
-.btn-vote.is-selected {
-  background: var(--accent-teal);
-  border-color: var(--accent-teal);
-  color: #fff;
-}
-
-/* Related articles */
-.article-related {
-  margin: 0 0 32px;
-  padding: 24px 0;
-  border-top: 1px solid var(--border, #e5e7eb);
-}
-
-.article-related__title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 12px;
-  color: var(--foreground);
-}
-
-.article-related ul {
-  list-style: none;
+.article-relatives > section {
+  flex: 1;
+  min-width: 0;
   margin: 0;
   padding: 0;
 }
-
-.article-related li {
-  margin-bottom: 8px;
-}
-
-.article-related a {
-  color: var(--accent-teal);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.article-related a:hover {
-  text-decoration: underline;
-}
-
-/* Recently viewed */
-.article-recent {
-  margin: 0 0 32px;
-  padding: 24px 0;
-  border-top: 1px solid var(--border, #e5e7eb);
-}
-
-.article-recent__title {
-  font-size: 16px;
+.article-relatives__title {
+  margin: 0 0 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin: 0 0 12px;
-  color: var(--foreground);
-}
-
-.article-recent ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.article-recent li {
-  margin-bottom: 8px;
-}
-
-.article-recent a {
-  color: var(--accent-teal);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.article-recent a:hover {
-  text-decoration: underline;
-}
-
-/* GitHub edit link */
-.article-edit {
-  margin: 0 0 32px;
-  font-size: 13px;
   color: var(--muted-foreground);
 }
-
-.article-edit a {
-  color: inherit;
+.article-relatives ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.article-relatives li {
+  margin-bottom: 16px;
+}
+.article-relatives li:last-child {
+  margin-bottom: 0;
+}
+.article-relatives a {
+  color: var(--foreground);
+  font-size: 15px;
+  line-height: 1.4;
   text-decoration: none;
 }
-
-.article-edit a:hover {
+.article-relatives a:hover {
   color: var(--accent-teal);
-  text-decoration: underline;
 }
 
-/* ── Mobile: ≤900px single column ──────────────────────────────── */
-@media (max-width: 900px) {
+/* ── ≤1023px:单列 (侧栏隐藏，菜单走 header 汉堡抽屉)──────────────
+   断点取 1023:原侧栏就是在 ≤1023 隐藏的，单列必须同步切换，否则 900–1023 之间
+   grid 仍是两列而侧栏已消失，正文会掉进 272px 的第一列。
+   width 100% + padding 16 → 正文/footer 左右边距 16，与 header logo 对齐 (不再叠 90% 宽的 5%)。 */
+@media (max-width: 1023px) {
   .article-page {
     grid-template-columns: 1fr;
+    width: 100%;
     padding: 0 16px;
   }
 
@@ -387,7 +356,19 @@ html[theme='dark'] .article-body img,
     padding: 24px 0 40px;
   }
 
+  /* 桌面为对齐 760 正文给 footer 的 30px 左右 margin，小屏清零，与正文同宽 */
+  .article-page > .lb-footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .article-title {
     font-size: 28px;
+  }
+
+  /* 小屏：两列改上下堆叠 */
+  .article-relatives {
+    flex-direction: column;
+    gap: 28px;
   }
 }

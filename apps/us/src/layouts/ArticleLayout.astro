@@ -21,52 +21,40 @@ const nav = await getNav()
 const segs = entry.id.split('/')
 // segs[0] = catSlug, segs[1] = secSlug, segs[2] = articleSlug (for articles)
 const catSlug = segs[0] ?? ''
-const secSlug = segs[1] ?? ''
 
 const cat = nav.find((c) => c.slug === catSlug)
-const sec = cat?.sections.find((s) => s.slug === secSlug)
 
-// ── Related articles (same section, exclude self, max 4) ───────────────────
+// ── Related articles(max 5)— 对齐 Zendesk {{related_articles}} 的候选池与规模。
+//    实测 Zendesk 推荐的每一条都是 promoted 文章,但具体挑哪几条是其服务端 ML 排序,无法本地复现
+//    (渲染页被 Cloudflare 拦非浏览器请求,API 也无 related 接口)。这里用确定性规则逼近:
+//    同 category 其余文章 → 其他 category 的 promoted(按更新时间倒序,与首页 Helpful Topics 同口径)
+//    → 其余文章,依次补足到 5。 ──
 const selfSlug = segs[segs.length - 1] ?? ''
-const related = sec?.articles.filter((a) => a.slug !== selfSlug).slice(0, 4) ?? []
-
-// ── GitHub edit link ───────────────────────────────────────────────────────
-const editHref = `https://github.com/longbridge/docs/edit/main/apps/us/docs/en/${entry.id}.md`
+const byUpdatedDesc = (a: { updatedAt: string }, b: { updatedAt: string }) =>
+  (b.updatedAt || '').localeCompare(a.updatedAt || '')
+const catArticles = (cat?.sections.flatMap((s) => s.articles) ?? []).filter(
+  (a) => a.slug !== selfSlug,
+)
+const otherArticles = nav
+  .filter((c) => c.slug !== catSlug)
+  .flatMap((c) => c.sections.flatMap((s) => s.articles))
+const otherPromoted = otherArticles.filter((a) => a.promoted).sort(byUpdatedDesc)
+const otherRest = otherArticles.filter((a) => !a.promoted)
+const related = [...catArticles, ...otherPromoted, ...otherRest].slice(0, 5)
 
 // ── currentPath for SideTree (needs /us prefix) ───────────────────────────
 const currentPath = withBase('/' + entry.id)
-
-// ── zendesk_article_id — only render votes if set ─────────────────────────
-const zendeskId = entry.data.zendesk_article_id
 ---
 
 <BaseLayout title={entry.data.title} hideFooter={true}>
   <div class="article-page">
     <!-- Col 1: aside / side-tree -->
-    <aside class="article-page__aside" aria-label="Section navigation">
+    <aside class="article-page__aside side-tree" aria-label="Section navigation">
       <SideTree nav={nav} currentPath={currentPath} />
     </aside>
 
     <!-- Col 2 row 1: main article content -->
     <main class="article-page__main" id="main-content">
-      <!-- Breadcrumb -->
-      <nav aria-label="Breadcrumb">
-        <ol class="article-breadcrumb">
-          <li><a href={withBase('/')}>Home</a></li>
-          {cat && (
-            <li>
-              <a href={withBase(cat.firstArticlePath)}>{cat.title}</a>
-            </li>
-          )}
-          {sec && (
-            <li>
-              <a href={withBase(sec.firstArticlePath)}>{sec.title}</a>
-            </li>
-          )}
-          <li aria-current="page">{entry.data.title}</li>
-        </ol>
-      </nav>
-
       <!-- Article heading -->
       <h1 class="article-title">{entry.data.title}</h1>
 
@@ -85,99 +73,38 @@ const zendeskId = entry.data.zendesk_article_id
         hidden
       />
 
-      <!-- Votes (only when zendesk_article_id is set) -->
-      {zendeskId !== undefined && (
-        <div class="article-votes" data-article-id={String(zendeskId)}>
-          <h2 class="article-votes__question" id="article-votes-label">
-            Was this article helpful?
-          </h2>
-          <div class="article-votes__controls" role="group" aria-labelledby="article-votes-label">
-            <button
-              type="button"
-              class="btn-vote"
-              data-vote="up"
-              aria-pressed="false"
-            >
-              Yes
-            </button>
-            <button
-              type="button"
-              class="btn-vote"
-              data-vote="down"
-              aria-pressed="false"
-            >
-              No
-            </button>
-          </div>
-        </div>
-      )}
-
-      <!-- Related articles (build-time) -->
-      {related.length > 0 && (
-        <section class="article-related" aria-label="Related articles">
-          <h2 class="article-related__title">Related Articles</h2>
-          <ul>
-            {related.map((a) => (
-              <li>
-                <a href={withBase(a.path)}>{a.title}</a>
-              </li>
-            ))}
-          </ul>
+      <!-- Tail:两列 = Recently viewed(左) + Related(右),对齐 Zendesk .article-relatives(flex 两列各 50%) -->
+      <div class="article-relatives">
+        <!-- Recently viewed (client-rendered by article.ts; hidden until entries exist) -->
+        <section class="article-recent" data-recent-articles hidden aria-label="Recently viewed articles">
+          <h2 class="article-relatives__title">Recently viewed articles</h2>
+          <ul></ul>
         </section>
-      )}
 
-      <!-- Recently viewed (client-rendered by article.ts; hidden until entries exist) -->
-      <section class="article-recent" data-recent-articles hidden aria-label="Recently viewed">
-        <h2 class="article-recent__title">Recently Viewed</h2>
-        <ul></ul>
-      </section>
-
-      <!-- GitHub edit link -->
-      <p class="article-edit">
-        <a href={editHref} target="_blank" rel="noopener noreferrer">
-          Edit this page on GitHub
-        </a>
-      </p>
+        <!-- Related (build-time, same category) -->
+        {related.length > 0 && (
+          <section class="article-related" aria-label="Related articles">
+            <h2 class="article-relatives__title">Related articles</h2>
+            <ul>
+              {related.map((a) => (
+                <li>
+                  <a href={withBase(a.path)}>{a.title}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
     </main>
 
     <!-- Col 2 row 2: footer auto-placed by grid -->
     <Footer />
   </div>
 
-  <!-- Mobile TOC: floating FAB + drawer listing this section's articles (≤1023px) -->
-  {sec && (
-    <Fragment>
-      <button type="button" class="toc-fab" id="toc-fab" aria-label="Articles in this section">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="21" x2="3" y1="6" y2="6" />
-          <line x1="15" x2="3" y1="12" y2="12" />
-          <line x1="17" x2="3" y1="18" y2="18" />
-        </svg>
-      </button>
-      <div class="toc-drawer" id="toc-drawer" hidden>
-        <div class="toc-drawer__backdrop" data-toc-close></div>
-        <nav class="toc-drawer__panel" aria-label="Articles in this section">
-          {cat && <a class="toc-drawer__cat" href={withBase(cat.firstArticlePath)}>{cat.title}</a>}
-          <h3 class="toc-drawer__section">{sec.title}</h3>
-          <ul class="toc-drawer__list">
-            {sec.articles.map((a) => (
-              <li>
-                <a
-                  href={withBase(a.path)}
-                  class:list={['toc-drawer__item', { 'is-current': a.slug === selfSlug }]}
-                  aria-current={a.slug === selfSlug ? 'page' : undefined}
-                >{a.title}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </Fragment>
-  )}
 </BaseLayout>
 
 <script>
+  import '../scripts/client-router.ts'
   import '../scripts/article.ts'
   import '../scripts/toc.ts'
-  import '../scripts/toc-drawer.ts'
 </script>

@@ -17,14 +17,30 @@
 
   const THRESHOLD = 60
   let ticking = false
+  // App WebView 首帧会有一次自发滚动调整：等 500ms 稳定后再取基线，之后相对基线判定;
+  // 普通浏览器刷新时恢复的 scrollY 就是用户意图，立即以 0 为基线 (对齐 Zendesk script.js:1031-1060)
+  let baselineScrollY = 0
+  let armed = false
 
   function update() {
-    if (window.scrollY > THRESHOLD) {
-      header!.classList.add('is-scrolled')
-    } else {
-      header!.classList.remove('is-scrolled')
-    }
     ticking = false
+    if (!armed) return
+    const delta = Math.max(0, window.scrollY - baselineScrollY)
+    const isScrolled = delta > THRESHOLD
+    header!.classList.toggle('is-scrolled', isScrolled)
+    // App 导航栏 (.lb-app-navbar) 的滚动态样式挂在 html.is-scrolled 上
+    document.documentElement.classList.toggle('is-scrolled', isScrolled)
+  }
+
+  if (document.documentElement.classList.contains('is-whale-app')) {
+    setTimeout(() => {
+      baselineScrollY = window.scrollY
+      armed = true
+      update()
+    }, 500)
+  } else {
+    armed = true
+    update()
   }
 
   window.addEventListener('scroll', () => {
@@ -33,8 +49,6 @@
       ticking = true
     }
   }, { passive: true })
-
-  update()
 })()
 
 

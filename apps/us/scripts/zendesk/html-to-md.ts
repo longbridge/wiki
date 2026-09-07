@@ -44,11 +44,21 @@ function createTurndown(): TurndownService {
   })
   td.use(gfm)
 
-  // 移除 Zendesk 常见的样式属性 / class / id，让 md 干净
-  td.addRule('strip-inline-styles', {
-    filter: node => node.nodeType === 1 && (node as Element).hasAttribute('style'),
-    replacement(content) {
-      return content
+  // 内联样式是内容语义的一部分 (Zendesk 用 color / font-size / font-weight 等做强调):
+  // 带 style 的行内壳 (span / font) 整条原样保留为 `<span style="…">`
+  // (Astro markdown 默认渲染原始 HTML;内部内容仍走 turndown，故内链改写不受影响)。
+  // 只匹配行内壳：块级元素 (p / div / li 等) 带 style 时走各自默认规则 (结构不塌、丢样式),
+  // 避免把整段包成 span 导致块级布局 (text-align / 段落间距) 错乱。
+  // 纯装饰空节点 (无文本) 仍脱壳;双引号转义避免破坏属性。
+  td.addRule('preserve-inline-styles', {
+    filter: node =>
+      node.nodeType === 1 &&
+      (node as Element).hasAttribute('style') &&
+      ['SPAN', 'FONT'].includes((node as Element).tagName),
+    replacement(content, node) {
+      const style = ((node as Element).getAttribute('style') ?? '').trim()
+      if (!style || !content.trim()) return content
+      return `<span style="${style.replace(/"/g, '&quot;')}">${content}</span>`
     },
   })
 
@@ -63,6 +73,17 @@ function createTurndown(): TurndownService {
     },
     replacement() {
       return ''
+    },
+  })
+
+  // 表格:GFM markdown 表格无法表达空表头格 / 行表头 / 合并单元格，turndown 的
+  // gfm 表格规则遇到这类结构会直接把每个单元格拍平成独立段落 (丢掉整张表)。
+  // 整块原样保留为 HTML(Astro markdown 渲染原始 HTML，样式由 .article-body table 接管)。
+  // 后加的规则在 turndown 里优先级更高 (unshift 到队首),会先于 gfm 的 table 规则命中。
+  td.addRule('table-raw', {
+    filter: 'table',
+    replacement(_content, node) {
+      return '\n\n' + (node as Element).outerHTML + '\n\n'
     },
   })
 

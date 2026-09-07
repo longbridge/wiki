@@ -1,16 +1,23 @@
-// Article TOC — right-side sticky rail (desktop only)
-// Port of toc-iife.js: pseudo-heading heuristic, scroll spy, dynamic positioning.
-;(() => {
+// Article TOC — right-side sticky rail (desktop only).
+// SPA-aware: rebuilds on `lb:content-swapped`; window listeners bound once.
+
+type TocApi = { position: () => void; spy: () => void }
+let activeToc: TocApi | null = null
+
+function buildToc(): void {
+  // 清理上一篇的 rail(SPA 重建时)
+  document.querySelectorAll('.lb-toc').forEach((el) => el.remove())
+  document.documentElement.classList.remove('lb-has-toc')
+  activeToc = null
+
   const body = document.querySelector<HTMLElement>('.article-body')
   if (!body) return
   const articleEl = document.querySelector<HTMLElement>('.article-page__main')
   if (!articleEl) return
-  // Non-null-typed alias so the position() closure doesn't re-widen to `| null`.
   const article: HTMLElement = articleEl
 
   // ── ID generation ────────────────────────────────────────────────────────
   const usedIds: Record<string, number> = {}
-
   function slugId(t: string): string {
     let s =
       t
@@ -27,9 +34,7 @@
     return k
   }
 
-  // ── Pseudo-heading heuristic ─────────────────────────────────────────────
-  // A div/p whose entire text is a single bold run inside a large-font span
-  // (Lark-pasted article style).
+  // ── Pseudo-heading heuristic (Lark-pasted large bold run) ─────────────────
   function isPseudoHeading(el: Element): boolean {
     if (el.querySelector('div, p, h1, h2, h3, h4, ul, ol, table, img, a')) return false
     const t = el.textContent?.trim() ?? ''
@@ -54,18 +59,22 @@
 
   if (headings.length < 2) return
 
-  // Assign IDs to headings that don't have one yet
   headings.forEach((h) => {
     if (!h.id) h.id = slugId(h.textContent?.trim() ?? '')
   })
 
-  // ── Depth helpers ─────────────────────────────────────────────────────────
   function absLevel(h: HTMLElement): number {
     const m = h.tagName.match(/^H([1-4])$/)
     return m ? parseInt(m[1], 10) : 2
   }
-
-  const minLevel = Math.min(...headings.map(absLevel))
+  // 只保留最浅的两个层级 (如 h1/h2/h3 → 只留 h1/h2;h2/h3/h4 → 只留 h2/h3)。
+  // rankOf 把这两级映射成 0/1 作为缩进深度，绝对级差再大也只两档。
+  const distinctLevels = [...new Set(headings.map(absLevel))].sort((a, b) => a - b)
+  const rankOf = new Map<number, number>(
+    distinctLevels.slice(0, 2).map((lv, i) => [lv, i]),
+  )
+  const shown = headings.filter((h) => rankOf.has(absLevel(h)))
+  if (shown.length < 2) return
 
   // ── Build nav element ─────────────────────────────────────────────────────
   const toc = document.createElement('nav')
@@ -82,9 +91,9 @@
 
   const links: { a: HTMLAnchorElement; h: HTMLElement }[] = []
 
-  headings.forEach((h) => {
+  shown.forEach((h) => {
     const li = document.createElement('li')
-    const depth = absLevel(h) - minLevel
+    const depth = rankOf.get(absLevel(h)) ?? 0
     li.className = 'lb-toc__item' + (depth > 0 ? ' lb-toc__item--sub' : '')
     li.style.setProperty('--toc-depth', String(depth))
 
@@ -97,8 +106,7 @@
       e.preventDefault()
       const target = document.getElementById(h.id)
       if (target) {
-        // Keep heading clear of the fixed header
-        const hdr = document.querySelector<HTMLElement>('header.header')
+        const hdr = document.querySelector<HTMLElement>('header.header, .lb-header')
         target.style.scrollMarginTop =
           Math.round((hdr ? hdr.getBoundingClientRect().bottom : 56) + 20) + 'px'
         target.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -125,6 +133,7 @@
     }
     toc.style.display = 'block'
     document.documentElement.classList.add('lb-has-toc')
+    // main 自带 30px 右 padding,再 +32 = 正文到 TOC 视觉 62(对齐 Zendesk toc.js)
     toc.style.left = Math.round(r.right + 32) + 'px'
     toc.style.width = Math.min(240, space - 48) + 'px'
   }
@@ -141,10 +150,20 @@
     })
   }
 
+  activeToc = { position, spy }
   position()
   spy()
-  window.addEventListener('resize', position)
-  window.addEventListener('scroll', spy, { passive: true })
-  window.addEventListener('load', position)
-  setTimeout(position, 400)
-})()
+}
+
+// ── Window listeners: bound ONCE, always drive the current rail ─────────────
+window.addEventListener('resize', () => activeToc?.position())
+window.addEventListener('scroll', () => activeToc?.spy(), { passive: true })
+window.addEventListener('load', () => activeToc?.position())
+
+// ── First build + SPA rebuild ───────────────────────────────────────────────
+buildToc()
+document.addEventListener('lb:content-swapped', () => {
+  buildToc()
+  setTimeout(() => activeToc?.position(), 50)
+})
+setTimeout(() => activeToc?.position(), 400)
