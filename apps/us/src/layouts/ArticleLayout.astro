@@ -1,0 +1,110 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import SideTree from '../components/SideTree.astro'
+import Footer from '../components/Footer.astro'
+import { getNav } from '../lib/nav'
+import { withBase } from '../lib/paths'
+import type { CollectionEntry } from 'astro:content'
+import '../styles/article.css'
+import '../styles/toc.css'
+
+interface Props {
+  entry: CollectionEntry<'docs'>
+  headings?: { depth: number; slug: string; text: string }[]
+}
+
+const { entry } = Astro.props
+
+const nav = await getNav()
+
+// ── Breadcrumb resolution ──────────────────────────────────────────────────
+const segs = entry.id.split('/')
+// segs[0] = catSlug, segs[1] = secSlug, segs[2] = articleSlug (for articles)
+const catSlug = segs[0] ?? ''
+
+const cat = nav.find((c) => c.slug === catSlug)
+
+// ── Related articles(max 5)— 对齐 Zendesk {{related_articles}} 的候选池与规模。
+//    实测 Zendesk 推荐的每一条都是 promoted 文章,但具体挑哪几条是其服务端 ML 排序,无法本地复现
+//    (渲染页被 Cloudflare 拦非浏览器请求,API 也无 related 接口)。这里用确定性规则逼近:
+//    同 category 其余文章 → 其他 category 的 promoted(按更新时间倒序,与首页 Helpful Topics 同口径)
+//    → 其余文章,依次补足到 5。 ──
+const selfSlug = segs[segs.length - 1] ?? ''
+const byUpdatedDesc = (a: { updatedAt: string }, b: { updatedAt: string }) =>
+  (b.updatedAt || '').localeCompare(a.updatedAt || '')
+const catArticles = (cat?.sections.flatMap((s) => s.articles) ?? []).filter(
+  (a) => a.slug !== selfSlug,
+)
+const otherArticles = nav
+  .filter((c) => c.slug !== catSlug)
+  .flatMap((c) => c.sections.flatMap((s) => s.articles))
+const otherPromoted = otherArticles.filter((a) => a.promoted).sort(byUpdatedDesc)
+const otherRest = otherArticles.filter((a) => !a.promoted)
+const related = [...catArticles, ...otherPromoted, ...otherRest].slice(0, 5)
+
+// ── currentPath for SideTree (needs /us prefix) ───────────────────────────
+const currentPath = withBase('/' + entry.id)
+---
+
+<BaseLayout title={entry.data.title} hideFooter={true}>
+  <div class="article-page">
+    <!-- Col 1: aside / side-tree -->
+    <aside class="article-page__aside side-tree" aria-label="Section navigation">
+      <SideTree nav={nav} currentPath={currentPath} />
+    </aside>
+
+    <!-- Col 2 row 1: main article content -->
+    <main class="article-page__main" id="main-content">
+      <!-- Article heading -->
+      <h1 class="article-title">{entry.data.title}</h1>
+
+      <!-- Article body (rendered markdown). data-pagefind-body scopes the
+           Pagefind index to article content only — without it Pagefind indexes
+           every page's full <body> (incl. the mega-menu nav), which pollutes
+           search. Marking article bodies makes overview/home/404 auto-excluded. -->
+      <div class="article-body" data-pagefind-body>
+        <slot />
+      </div>
+
+      <!-- Hidden metadata for article.ts to read -->
+      <div
+        data-article-path={currentPath}
+        data-article-title={entry.data.title}
+        hidden
+      />
+
+      <!-- Tail:两列 = Recently viewed(左) + Related(右),对齐 Zendesk .article-relatives(flex 两列各 50%) -->
+      <div class="article-relatives">
+        <!-- Recently viewed (client-rendered by article.ts; hidden until entries exist) -->
+        <section class="article-recent" data-recent-articles hidden aria-label="Recently viewed articles">
+          <h2 class="article-relatives__title">Recently viewed articles</h2>
+          <ul></ul>
+        </section>
+
+        <!-- Related (build-time, same category) -->
+        {related.length > 0 && (
+          <section class="article-related" aria-label="Related articles">
+            <h2 class="article-relatives__title">Related articles</h2>
+            <ul>
+              {related.map((a) => (
+                <li>
+                  <a href={withBase(a.path)}>{a.title}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+    </main>
+
+    <!-- Col 2 row 2: footer auto-placed by grid -->
+    <Footer />
+  </div>
+
+</BaseLayout>
+
+<script>
+  import '../scripts/client-router.ts'
+  import '../scripts/article.ts'
+  import '../scripts/toc.ts'
+</script>

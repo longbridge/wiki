@@ -32,24 +32,24 @@ import type { Article, Category, Section } from './zendesk/types'
 
 dotenv.config({ path: '.env.local' })
 
-const REQUIRED_ENVS = ['ZENDESK_SUBDOMAIN', 'ZENDESK_EMAIL', 'ZENDESK_API_TOKEN'] as const
-
-function requireEnv(): { subdomain: string; email: string; token: string } {
-  const missing = REQUIRED_ENVS.filter(k => !process.env[k])
-  if (missing.length) {
-    console.error(`❌ Missing env: ${missing.join(', ')}. 请在 .env.local 或 CI Secret 里配置。`)
+// 只有 subdomain(Zendesk 实例 host) 必填;email/token 可选——齐全则带 Basic Auth,
+// 缺省则匿名读取已发布内容 (见 client.ts)。CI 默认走匿名，凭据作为逃生通道。
+function resolveEnv(): { subdomain: string; email?: string; token?: string } {
+  const subdomain = process.env.ZENDESK_SUBDOMAIN
+  if (!subdomain) {
+    console.error('❌ Missing env: ZENDESK_SUBDOMAIN. 请在 .env.local 或 CI Secret 里配置。')
     process.exit(2)
   }
   return {
-    subdomain: process.env.ZENDESK_SUBDOMAIN!,
-    email: process.env.ZENDESK_EMAIL!,
-    token: process.env.ZENDESK_API_TOKEN!,
+    subdomain,
+    email: process.env.ZENDESK_EMAIL,
+    token: process.env.ZENDESK_API_TOKEN,
   }
 }
 
 async function main() {
   const started = Date.now()
-  const { subdomain, email, token } = requireEnv()
+  const { subdomain, email, token } = resolveEnv()
   const client = new ZendeskClient({ subdomain, email, token })
 
   console.log(`▶ Sync from ${subdomain}.zendesk.com → ${CONTENT_ROOT}/{en,zh-HK}/...`)

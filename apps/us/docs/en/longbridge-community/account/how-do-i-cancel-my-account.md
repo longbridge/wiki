@@ -2,10 +2,10 @@
 title: How do I cancel my account？
 zendesk_article_id: 14925796090767
 zendesk_section_id: 14925844023183
-zendesk_updated_at: '2026-06-22T07:10:24Z'
+zendesk_updated_at: '2026-08-11T03:34:47Z'
 zendesk_edited_at: '2026-06-22T07:10:24Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/14925796090767-How-do-I-cancel-my-account'
-promoted: false
+promoted: true
 position: 0
 ---
 The following is the operation guide for canceling an account.

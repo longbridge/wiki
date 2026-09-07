@@ -4,9 +4,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Zendesk webhook fires this via GitHub API repository_dispatch (event_type: zendesk-sync)
+  repository_dispatch:
+    types: [zendesk-sync]
+  # Fallback if a webhook is missed: sync every 6h (off-hour minute to spread API load)
+  schedule:
+    - cron: '17 */6 * * *'
 
 permissions:
-  contents: read
+  contents: write # sync job commits refreshed content back to main
   pages: write
   id-token: write
 
@@ -24,6 +30,25 @@ jobs:
 
       - run: bun install
 
+      # Auto-sync: only on webhook (repository_dispatch) or scheduled fallback.
+      # Only ZENDESK_SUBDOMAIN is required (the instance host); email/token are
+      # optional — omitted here, so sync runs anonymously (published content is
+      # readable without auth, see scripts/zendesk/client.ts). If anonymous is
+      # ever blocked by Cloudflare, add ZENDESK_EMAIL/ZENDESK_API_TOKEN repo
+      # secrets to the env block below.
+      - name: Sync US content from Zendesk
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        env:
+          ZENDESK_SUBDOMAIN: longbridgeus
+        run: bun run sync:us
+      - name: Commit synced content
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        run: |
+          git config user.name "zendesk-sync[bot]"
+          git config user.email "zendesk-sync[bot]@users.noreply.github.com"
+          git add apps/us/docs/en
+          git diff --cached --quiet || { git commit -m "chore(us): sync zendesk content"; git push; }
+
       # 三个 region app 各自独立构建(monorepo:apps/hk apps/sg apps/us,
       # 共享层在 packages/shared)。每个 app base=/{region}/,产物合并后
       # 对外 URL 与拆分前的单实例时代完全一致。
@@ -35,7 +60,8 @@ jobs:
           mkdir -p dist
           cp -r apps/hk/docs/.vitepress/dist dist/hk
           cp -r apps/sg/docs/.vitepress/dist dist/sg
-          cp -r apps/us/docs/.vitepress/dist dist/us
+          # us migrated to Astro (outDir apps/us/dist); hk/sg remain VitePress
+          cp -r apps/us/dist dist/us
           # 根 404 兜底(GitHub Pages 只认根 /404.html);hk 产物的 404 引用
           # /hk/assets/* 绝对路径,放到根也能正常工作
           cp apps/hk/docs/.vitepress/dist/404.html dist/404.html

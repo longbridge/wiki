@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getNav, getCatxCards } from '../lib/nav'
+import { withBase } from '../lib/paths'
+import { iconFor } from '../lib/catx-icons'
+import { CATEGORY_ORDER } from '../lib/nav-core'
+import '../styles/home.css'
+
+const HOT_TAGS = ['Crypto', 'Options', 'Fees', 'Login', 'Buying Power'] as const
+
+const [nav, catxCards] = await Promise.all([getNav(), getCatxCards()])
+
+// category slug → display title
+const catTitles = new Map(nav.map((c) => [c.slug, c.title]))
+
+// Ordered list of categories that have catx cards (fallback ensures all 6 appear)
+const activeCats = CATEGORY_ORDER.filter((slug) => (catxCards.get(slug)?.length ?? 0) > 0)
+
+// Pre-compute all card data in the frontmatter to avoid TypeScript generic
+// angle-bracket syntax issues inside JSX expressions.
+interface CardData {
+  href: string
+  icon: string
+  title: string
+  sectionTitle: string
+}
+
+interface TabData {
+  slug: string
+  title: string
+  cards: CardData[]
+  isFirst: boolean
+}
+
+const ARROW_SVG =
+  '<svg class="catx__card-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'
+
+const tabData: TabData[] = activeCats.map((slug, i) => {
+  const rawCards = catxCards.get(slug) ?? []
+  const used: Record<string, boolean> = {}
+  const catTitle = catTitles.get(slug) ?? slug
+
+  const cards: CardData[] = rawCards.map((card) => {
+    const icon = iconFor(card.sectionTitle, catTitle, used)
+    return {
+      href: withBase(card.path),
+      icon,
+      title: card.title,
+      sectionTitle: card.sectionTitle,
+    }
+  })
+
+  return { slug, title: catTitle, cards, isFirst: i === 0 }
+})
+---
+
+<BaseLayout title="Home" isHome={true}>
+  <!-- ── Hero ──────────────────────────────────────────── -->
+  <section class="section hero hero--dark" aria-label="Help center search">
+    <div class="hero__inner">
+      <h1 class="hero-title"><span class="hero-title-line"><span class="hero-title-accent">Hi,</span> how can we help?</span></h1>
+      <p class="hero-sub">
+        Got a question? From account setup to placing a trade, we've got you covered.
+      </p>
+
+      <div class="hero-search-wrap">
+        <input
+          class="hero-search-input"
+          id="hero-search"
+          type="search"
+          placeholder="Find your answer"
+          aria-label="Search help articles"
+          readonly
+        />
+        <button class="hero-search-btn" type="button" aria-label="Search" data-lb-hero-search>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#001612" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="hero-hot-tags" role="group" aria-label="Popular search topics">
+        {
+          HOT_TAGS.map((tag) => (
+            <button class="hero-hot-tag" type="button" data-tag={tag}>
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── catx: You might want to know ─────────────────── -->
+  {
+    tabData.length > 0 && (
+      <section class="catx-section" aria-label="Helpful Topics">
+        <div class="catx-container">
+          <h2 class="catx-title">Helpful Topics</h2>
+
+          {/* Tab strip */}
+          <div class="catx-tabs" role="tablist" aria-label="Help categories">
+            <div class="catx__underline" hidden></div>
+            {tabData.map((tab) => (
+              <button
+                class={`catx__tab${tab.isFirst ? ' is-active' : ''}`}
+                role="tab"
+                aria-selected={tab.isFirst ? 'true' : 'false'}
+                data-key={tab.slug}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Card grids — one per category, rendered at SSG time */}
+          {tabData.map((tab) => (
+            <div
+              class="catx__grid"
+              role="tabpanel"
+              data-tab={tab.slug}
+              hidden={tab.isFirst ? undefined : true}
+            >
+              {tab.cards.map((card) => (
+                <a class="catx-card" href={card.href}>
+                  <span
+                    class="catx-card__icon"
+                    set:html={card.icon}
+                    aria-hidden="true"
+                  />
+                  <span class="catx-card__body">
+                    <span class="catx-card__title">{card.title}</span>
+                    {card.sectionTitle !== card.title && <span class="catx-card__sub">{card.sectionTitle}</span>}
+                  </span>
+                  <span set:html={ARROW_SVG} />
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Client-side catx: tabs, accordion, fade mask -->
+  <script>
+    import '../scripts/catx'
+  </script>
+
+  <!-- Hero search: focus → open search modal, hot-tag click → search -->
+  <script>
+    declare global {
+      interface Window {
+        lbOpenSearch?: (query: string) => void
+      }
+    }
+
+    const heroInput = document.getElementById('hero-search') as HTMLInputElement | null
+    if (heroInput) {
+      heroInput.addEventListener('focus', () => {
+        const q = heroInput.value
+        heroInput.blur()
+        window.lbOpenSearch?.(q)
+      })
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.hero-hot-tag').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag ?? btn.textContent?.trim() ?? ''
+        window.lbOpenSearch?.(tag)
+      })
+    })
+
+    document.querySelector<HTMLButtonElement>('[data-lb-hero-search]')?.addEventListener('click', () => {
+      window.lbOpenSearch?.(heroInput?.value ?? '')
+    })
+  </script>
+</BaseLayout>

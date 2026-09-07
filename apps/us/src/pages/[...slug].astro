@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content'
+import ArticleLayout from '../layouts/ArticleLayout.astro'
+import CategoryOverview from '../layouts/CategoryOverview.astro'
+import SectionOverview from '../layouts/SectionOverview.astro'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs')
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+
+// ── Dispatch by entry.id shape ─────────────────────────────────────────────
+// Category overview:  cat/overview           (2 segments, last = 'overview')
+// Section overview:   cat/sec/overview       (3 segments, last = 'overview')
+// Article:            cat/sec/article        (3+ segments, last ≠ 'overview')
+const segs = entry.id.split('/')
+const lastSeg = segs[segs.length - 1]
+const isCategoryOverview = lastSeg === 'overview' && segs.length === 2
+const isSectionOverview  = lastSeg === 'overview' && segs.length === 3 // {cat}/{sec}/overview — exactly 3 segments
+---
+
+{isCategoryOverview ? (
+  <CategoryOverview entry={entry}>
+    <Content />
+  </CategoryOverview>
+) : isSectionOverview ? (
+  <SectionOverview entry={entry}>
+    <Content />
+  </SectionOverview>
+) : (
+  <ArticleLayout entry={entry} headings={headings}>
+    <Content />
+  </ArticleLayout>
+)}

@@ -1,0 +1,151 @@
+/* Footer — 一比一复刻线上 Zendesk footer(2026-09-03 核对线上 computed)。
+   宽度用 max-width 1200 + width 90%(与 hero__inner / catx-container 对齐),
+   无 border-top，颜色走 token(明暗主题自适应)。 */
+
+.lb-footer {
+  background: transparent;
+  padding: 32px 0 40px;
+  color: var(--muted-foreground);
+}
+
+/* 详情页 footer(非首页):无背景卡片，顶部分隔线，内容对齐正文列边缘 (去 5% 缩进) */
+.lb-footer:not(.lb-footer--home) {
+  border-top: 1px solid var(--border);
+}
+.lb-footer:not(.lb-footer--home) .lb-footer__main,
+.lb-footer:not(.lb-footer--home) .lb-footer__divider,
+.lb-footer:not(.lb-footer--home) .lb-footer__disclaimer {
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  /* 同时压掉首页 footer 在 <1160px 给 divider 的 5% 左右 margin，详情页三段全部对齐正文 */
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* 主区：品牌 (标语 + meta) 左，logo 右 */
+.lb-footer__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+@media (min-width: 1160px) {
+  .lb-footer__main {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.lb-footer__brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.lb-footer__tagline {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--foreground);
+}
+.lb-footer__meta {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+.lb-footer__logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.lb-footer__logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.lb-footer__logo--dark {
+  display: none;
+}
+html[theme="dark"] .lb-footer__logo--light,
+.theme-dark .lb-footer__logo--light {
+  display: none;
+}
+html[theme="dark"] .lb-footer__logo--dark,
+.theme-dark .lb-footer__logo--dark {
+  display: block;
+}
+
+/* 分隔线 */
+.lb-footer__divider {
+  height: 1px;
+  background: var(--border);
+  max-width: 1200px;
+  margin: 24px auto;
+  box-sizing: border-box;
+}
+@media (min-width: 1160px) {
+  .lb-footer__divider {
+    width: 90%;
+  }
+}
+@media (max-width: 1160px) {
+  .lb-footer__divider {
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: none;
+  }
+}
+
+/* 免责声明 */
+.lb-footer__disclaimer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+@media (min-width: 1160px) {
+  .lb-footer__disclaimer {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.lb-footer__disclaimer--affiliate {
+  margin-top: 14px;
+}
+.lb-footer__disclaimer a {
+  color: var(--muted-foreground);
+  text-decoration: underline;
+}
+.lb-footer__disclaimer a:hover {
+  color: var(--accent-teal);
+}
+
+@media (max-width: 640px) {
+  .lb-footer__main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .lb-footer__disclaimer {
+    font-size: 12px;
+  }
+}
+
+.lb-footer--home {
+  background: var(--lb-footer-bg);
+}

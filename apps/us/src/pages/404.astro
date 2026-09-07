@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { withBase } from '../lib/paths'
+---
+
+<BaseLayout title="Page not found">
+  <div class="error-page">
+    <div class="error-page__inner">
+      <p class="error-page__code">404</p>
+      <h1 class="error-page__heading">Page Not Found</h1>
+      <p class="error-page__msg">
+        The page you're looking for doesn't exist or may have been moved.
+      </p>
+      <a href={withBase('/')} class="error-page__link">
+        Back to Help Center
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .error-page__inner {
+    max-width: 480px;
+  }
+
+  .error-page__code {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+    color: var(--muted-foreground);
+  }
+
+  .error-page__heading {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--foreground);
+  }
+
+  .error-page__msg {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    margin: 0 0 2rem;
+  }
+
+  .error-page__link {
+    display: inline-block;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--accent-teal);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .error-page__link:hover {
+    opacity: 0.85;
+  }
+</style>

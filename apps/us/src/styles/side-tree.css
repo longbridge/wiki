@@ -1,0 +1,323 @@
+/* ── Side Tree ──────────────────────────────────────────────────────────────
+   三级手风琴 (分类 → section → 文章)。整行为 <button>:点击折叠/展开，
+   chevron 内嵌右侧 (折叠指右、展开指下)。桌面侧栏 + 移动 drawer 共用。 */
+
+/* nav.side-tree 直接包 .side-tree__cat(无 ul 包裹) */
+
+.side-tree__cat {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+}
+.side-tree__cat:last-child {
+  border-bottom: 0;
+}
+
+/* 一级：整行 button */
+.side-tree__cat-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 2px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.side-tree__cat-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #0a0e19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-tree__cat-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.side-tree__cat-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #0a0e19;
+}
+
+/* Chevron(一级/二级共用) */
+.side-tree__chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: #94a3b8;
+  transform: rotate(-90deg); /* 折叠 → 指右 */
+  transition: transform 0.2s ease;
+}
+.side-tree__cat.is-open > .side-tree__cat-head .side-tree__chevron,
+.side-tree__sec.is-open > .side-tree__sec-head .side-tree__chevron {
+  transform: rotate(0deg); /* 展开 → 指下 */
+}
+
+/* 一级 body(sections 容器) */
+.side-tree__cat-body {
+  display: none;
+  padding-bottom: 6px;
+}
+.side-tree__cat.is-open > .side-tree__cat-body {
+  display: block;
+}
+
+/* 二级：整行 button，缩进对齐一级 label(icon 22 + gap 14 = 36) */
+.side-tree__sec-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 9px 2px 9px 36px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.side-tree__sec-head > span {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #334155;
+}
+
+/* 二级 body(文章容器)— 左侧竖线 tree line */
+.side-tree__sec-body {
+  display: none;
+  margin-left: 36px;
+  padding: 2px 0 6px 14px;
+  border-left: 1px solid rgba(15, 23, 42, 0.12);
+}
+.side-tree__sec.is-open > .side-tree__sec-body {
+  display: block;
+}
+
+/* 三级：文章链接 */
+.side-tree__item {
+  display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #64748b;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.12s, color 0.12s;
+}
+.side-tree__item:hover {
+  background: rgba(15, 23, 42, 0.04);
+  color: #334155;
+}
+.side-tree__item.is-current {
+  color: #00b8b8 !important;
+  background: rgba(0, 184, 184, 0.12) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Cat Drawer ─────────────────────────────────────────────────────────── */
+
+.lb-cat-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.lb-cat-drawer:not([hidden]) {
+  pointer-events: auto;
+}
+
+.lb-cat-drawer[hidden] {
+  display: none !important;
+}
+
+.lb-cat-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 25, 0.5);
+  animation: lb-cat-drawer-fade 0.2s ease forwards;
+}
+
+.lb-cat-drawer__panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 88%;
+  max-width: 420px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  animation: lb-cat-drawer-slide 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.lb-cat-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  flex-shrink: 0;
+}
+
+.lb-cat-drawer__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0a0e19;
+}
+
+.lb-cat-drawer__close {
+  background: transparent;
+  border: 0;
+  padding: 4px;
+  margin: -4px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, color 0.12s;
+}
+.lb-cat-drawer__close:hover {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0a0e19;
+}
+
+.lb-cat-drawer__panel .side-tree {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: 0 24px 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Scroll lock ─────────────────────────────────────────────────────────── */
+
+html.lb-drawer-open,
+html.lb-drawer-open body {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────────────── */
+
+@keyframes lb-cat-drawer-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lb-cat-drawer-slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────────── */
+
+html[theme="dark"] .side-tree__cat,
+.theme-dark .side-tree__cat {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+html[theme="dark"] .side-tree__cat-icon,
+html[theme="dark"] .side-tree__cat-label,
+.theme-dark .side-tree__cat-icon,
+.theme-dark .side-tree__cat-label {
+  color: #e2e8f0;
+}
+html[theme="dark"] .side-tree__sec-body,
+.theme-dark .side-tree__sec-body {
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+html[theme="dark"] .side-tree__sec-head > span,
+.theme-dark .side-tree__sec-head > span {
+  color: #cbd5e1;
+}
+html[theme="dark"] .side-tree__item,
+.theme-dark .side-tree__item {
+  color: #94a3b8;
+}
+html[theme="dark"] .side-tree__item:hover,
+.theme-dark .side-tree__item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+}
+html[theme="dark"] .side-tree__item.is-current,
+.theme-dark .side-tree__item.is-current {
+  color: #22e5cf !important;
+  background: rgba(34, 229, 207, 0.16) !important;
+}
+
+html[theme="dark"] .lb-cat-drawer__panel,
+.theme-dark .lb-cat-drawer__panel {
+  background: #0a0e19;
+}
+html[theme="dark"] .lb-cat-drawer__title,
+.theme-dark .lb-cat-drawer__title {
+  color: #e2e8f0;
+}
+html[theme="dark"] .lb-cat-drawer__close,
+.theme-dark .lb-cat-drawer__close {
+  color: #cbd5e1;
+}
+html[theme="dark"] .lb-cat-drawer__close:hover,
+.theme-dark .lb-cat-drawer__close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+}
+
+/* System dark (no explicit theme attribute) */
+@media (prefers-color-scheme: dark) {
+  :root:not([theme="light"]):not(.theme-light) .side-tree__cat {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__cat-icon,
+  :root:not([theme="light"]):not(.theme-light) .side-tree__cat-label {
+    color: #e2e8f0;
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__sec-body {
+    border-left-color: rgba(255, 255, 255, 0.12);
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__sec-head > span {
+    color: #cbd5e1;
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__item {
+    color: #94a3b8;
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #e2e8f0;
+  }
+  :root:not([theme="light"]):not(.theme-light) .side-tree__item.is-current {
+    color: #22e5cf !important;
+    background: rgba(34, 229, 207, 0.16) !important;
+  }
+  :root:not([theme="light"]):not(.theme-light) .lb-cat-drawer__panel {
+    background: #0a0e19;
+  }
+  :root:not([theme="light"]):not(.theme-light) .lb-cat-drawer__title {
+    color: #e2e8f0;
+  }
+  :root:not([theme="light"]):not(.theme-light) .lb-cat-drawer__close {
+    color: #cbd5e1;
+  }
+  :root:not([theme="light"]):not(.theme-light) .lb-cat-drawer__close:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #e2e8f0;
+  }
+}

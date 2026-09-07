@@ -1,10 +1,10 @@
 ---
-title: IMPORTANT INFORMATION ON PENNY STOCKS
+title: Important Information on Penny Stocks
 zendesk_article_id: 15051240646927
 zendesk_section_id: 15003355967247
-zendesk_updated_at: '2026-05-29T10:39:52Z'
-zendesk_edited_at: '2026-05-29T10:39:52Z'
-source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/15051240646927-IMPORTANT-INFORMATION-ON-PENNY-STOCKS'
+zendesk_updated_at: '2026-08-25T08:39:35Z'
+zendesk_edited_at: '2026-08-25T08:39:35Z'
+source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/15051240646927-Important-Information-on-Penny-Stocks'
 promoted: false
 position: 0
 ---

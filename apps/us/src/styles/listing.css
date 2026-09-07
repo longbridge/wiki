@@ -1,0 +1,226 @@
+/* listing.css — Category & Section overview page styles
+   Adapted from Zendesk Copenhagen theme (category_page, section_page, listing snippets).
+   Replaces $text_color → var(--foreground), $brand_color → var(--accent-teal).
+*/
+
+/* ── Breadcrumb ─────────────────────────────────────────────────── */
+.sub-nav {
+  padding: 16px 0;
+  font-size: 14px;
+}
+.breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  color: var(--muted-foreground);
+}
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb-item:not(:first-child)::before {
+  content: '›';
+  color: var(--muted-foreground);
+}
+.breadcrumb-item a {
+  color: var(--accent-teal);
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  color: var(--accent-teal-hover);
+  text-decoration: underline;
+}
+.breadcrumb-item[aria-current="page"] {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+/* ── Page header ────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+@media (min-width: 768px) {
+  .page-header {
+    align-items: baseline;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+  }
+}
+.page-header h1 {
+  flex-grow: 1;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--foreground);
+}
+.page-header-description {
+  font-style: italic;
+  margin: 0 0 30px 0;
+  word-break: break-word;
+  color: var(--muted-foreground);
+}
+@media (min-width: 1024px) {
+  .page-header-description {
+    flex-basis: 100%;
+  }
+}
+
+/* ── Category container / content ──────────────────────────────── */
+.category-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.category-content {
+  flex: 1;
+  max-width: 100%;
+}
+@media (min-width: 1024px) {
+  .category-content {
+    flex: 1;
+    max-width: 100%;
+  }
+}
+
+/* ── Section tree (2-col on tablet+) ───────────────────────────── */
+.section-tree {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  .section-tree {
+    flex-direction: row;
+  }
+}
+.section-tree .section {
+  flex: initial;
+  max-width: 100%;
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  .section-tree .section {
+    flex: 0 0 45%; /* Two columns; ~5% gap between */
+  }
+}
+.section-tree-title {
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.section-tree-title a {
+  color: var(--foreground);
+  text-decoration: none;
+}
+.section-tree-title a:hover {
+  color: var(--accent-teal);
+}
+.section-tree .see-all-articles {
+  display: block;
+  padding: 15px 0;
+  color: var(--accent-teal);
+  text-decoration: none;
+  font-size: 14px;
+}
+.section-tree .see-all-articles:hover {
+  color: var(--accent-teal-hover);
+}
+
+/* ── Article list ───────────────────────────────────────────────── */
+.article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.article-list-item {
+  font-size: 16px;
+  padding: 15px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.article-list-item:first-child {
+  border-top: 1px solid var(--border);
+}
+.article-list-link {
+  color: var(--foreground);
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.article-list-link:hover {
+  color: var(--accent-teal);
+}
+
+/* ── Promoted star icon ─────────────────────────────────────────── */
+.icon-star {
+  color: var(--accent-teal);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Section container / content (section overview) ────────────── */
+.section-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.section-content {
+  flex: 1;
+  max-width: 100%;
+}
+@media (min-width: 1024px) {
+  .section-content {
+    flex: 1;
+    max-width: 100%;
+  }
+}
+
+/* ── Sub-section list (section overview) ───────────────────────── */
+.section-list {
+  margin: 40px 0;
+  list-style: none;
+  padding: 0;
+}
+.section-list-item {
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+  padding: 15px 0;
+}
+.section-list-item:first-child {
+  border-top: 1px solid var(--border);
+}
+.section-list-item a {
+  align-items: center;
+  color: var(--foreground);
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+.section-list-item a:hover {
+  color: var(--accent-teal);
+}
+
+/* ── Divider above breadcrumb area ─────────────────────────────── */
+.container-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}

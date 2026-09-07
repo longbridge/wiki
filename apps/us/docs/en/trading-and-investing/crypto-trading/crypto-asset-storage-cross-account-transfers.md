@@ -2,10 +2,10 @@
 title: 'Crypto Asset Storage & Cross-Account Transfers'
 zendesk_article_id: 15330342024975
 zendesk_section_id: 15003348738319
-zendesk_updated_at: '2026-06-22T07:07:50Z'
-zendesk_edited_at: '2026-06-22T07:07:49Z'
+zendesk_updated_at: '2026-08-21T02:20:51Z'
+zendesk_edited_at: '2026-08-21T02:20:51Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/15330342024975-Crypto-Asset-Storage-Cross-Account-Transfers'
-promoted: false
+promoted: true
 position: 5
 labels:
   - key_lbus_trading_investing_crypto_trading_006
@@ -22,7 +22,8 @@ Crypto assets are segregated and held in trust for Bakkt’s customers (“Your 
 
 **Reminders:**
 
-Your Bakkt crypto account is separate from your Longbridge Securities LLC brokerage account, which holds your investments in US-listed stocks and ETFs.Cryptocurrencies, overall, are not securities and are not insured by SIPC or the FDIC.
+1.  Your Bakkt crypto account is separate from your Longbridge Securities LLC brokerage account, which holds your investments in US-listed stocks and ETFs.
+2.  Cryptocurrencies, overall, are not securities and are not insured by SIPC or the FDIC.
 
 **Can I transfer coins in and out of my Bakkt crypto account?**
 
@@ -40,7 +41,9 @@ Currently, Bakkt does not support any coin transfers for residents of New York.
 
 **For coin-out**:
 
-Single transfer amount: $10 to less than $3,000.Daily transfer Amount limit: Up to $5,000 for all cryptocurrencies combined. (Note: The daily 24-hour cycle is from 5:40PM ET.)Daily number of transfers: No limit.
+1.  Single transfer amount: $10 to less than $3,000.
+2.  Daily transfer Amount limit: Up to $5,000 for all cryptocurrencies combined. (Note: The daily 24-hour cycle is from 5:40PM ET.)
+3.  Daily number of transfers: No limit.
 
 **Are there fees to transfer my crypto?**
 

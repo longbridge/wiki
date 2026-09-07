@@ -1,0 +1,42 @@
+---
+import { withBase } from '../lib/paths'
+
+interface Props {
+  isHome?: boolean
+}
+const { isHome = false } = Astro.props
+---
+
+<footer class:list={["lb-footer", { "lb-footer--home": isHome }]}>
+  <div class="lb-footer__main">
+    <div class="lb-footer__brand">
+      <p class="lb-footer__tagline">Explore. Inspire. Trade.</p>
+      <p class="lb-footer__meta">Member FINRA / SIPC · © 2026 Long Bridge Securities LLC.</p>
+    </div>
+    <a href={withBase('/')} class="lb-footer__logo-link" aria-label="Longbridge Home">
+      <!-- 与 header / 线上 footer 同款 logo:浅色主题深墨,深色主题浅墨 -->
+      <img
+        src="https://assets.lbkrs.com/uploads/f6e3a8fd-c43b-471a-99b2-650ae061e2e8/logo_light.png"
+        alt="Longbridge"
+        class="lb-footer__logo lb-footer__logo--light"
+        height="32"
+      />
+      <img
+        src="https://assets.lbkrs.com/uploads/8d92f710-23cf-4c62-a800-d2928c216c75/logo_dark.png"
+        alt="Longbridge"
+        class="lb-footer__logo lb-footer__logo--dark"
+        height="32"
+      />
+    </a>
+  </div>
+
+  <div class="lb-footer__divider" role="presentation"></div>
+
+  <p class="lb-footer__disclaimer">
+    This communication is for informational purposes only and is not investment advice, a recommendation, or an offer or solicitation to buy or sell any security or crypto asset. Investing involves risk, including possible loss of principal. AI-generated content may be incomplete or inaccurate and should not be relied upon as the sole basis for any investment decision. Cryptocurrency is not protected by SIPC. Promotional offers are subject to eligibility requirements, deposit requirements, limitations, and terms and conditions. Additional information about Long Bridge Securities available through FINRA BrokerCheck at{' '}
+    <a href="https://brokercheck.finra.org" target="_blank" rel="noopener noreferrer">brokercheck.finra.org</a>.
+  </p>
+  <p class="lb-footer__disclaimer lb-footer__disclaimer--affiliate">
+    Longbridge AI Technologies LLC is an affiliated technology company of Long Bridge Securities LLC and provides software, platform, and technology services that support the Longbridge investing experience. It is not a broker-dealer and does not provide securities brokerage services.
+  </p>
+</footer>

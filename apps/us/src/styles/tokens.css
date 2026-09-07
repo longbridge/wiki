@@ -1,0 +1,66 @@
+/* Design tokens — light/dark theme variables
+   Source: specs/us-astro-migration/design.md §5 */
+
+/* ── Light theme (default) ─────────────────────────────────────── */
+:root {
+  --background: #fff;
+  --foreground: #0a0e19;
+  --foreground-rgb: 10, 14, 25;
+  --card: #fff;
+  --muted: #f3f5f6;
+  --muted-foreground: #6c6e75;
+  --secondary: #f3f5f6;
+  --secondary-foreground: #0a0e19;
+  --border: #ddddDF;
+  --input: #e6e7e8;
+  --destructive: #f7415f;
+  --accent-teal: #00b8b8;
+  --accent-teal-hover: #00a5a5;
+  --lb-footer-bg: #f8f9fa;
+  --lb-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* 全局统一系统无衬线栈 (用户要求 2026-09-02);display 别名指向同一栈，
+     全站不再使用 SF Pro Display，标题与正文字体一致。 */
+  --lb-font-display: var(--lb-font-sans);
+  color-scheme: light;
+}
+
+/* ── Dark theme — explicit toggle ──────────────────────────────── */
+html[theme="dark"],
+.theme-dark {
+  --background: #0a0e19;
+  --foreground: #fff;
+  --foreground-rgb: 255, 255, 255;
+  --card: #232630;
+  --muted: #1a1e28;
+  --muted-foreground: #9d9fa3;
+  --secondary: #1a1e28;
+  --secondary-foreground: #fff;
+  --border: #3b3e47;
+  --input: #3b3e47;
+  --destructive: #f7415f;
+  --accent-teal: #00f0c4;
+  --accent-teal-hover: #22e5cf;
+  --lb-footer-bg: #14181f;
+  color-scheme: dark;
+}
+
+/* ── Dark theme — system preference (no explicit override) ─────── */
+@media (prefers-color-scheme: dark) {
+  html:not([theme="light"]):not(.theme-light) {
+    --background: #0a0e19;
+    --foreground: #fff;
+    --foreground-rgb: 255, 255, 255;
+    --card: #232630;
+    --muted: #1a1e28;
+    --muted-foreground: #9d9fa3;
+    --secondary: #1a1e28;
+    --secondary-foreground: #fff;
+    --border: #3b3e47;
+    --input: #3b3e47;
+    --destructive: #f7415f;
+    --accent-teal: #00f0c4;
+    --accent-teal-hover: #22e5cf;
+    --lb-footer-bg: #14181f;
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,496 @@
+/* Header styles */
+
+:root { --lb-header-h: 56px; }
+@media (max-width: 768px) {
+  :root { --lb-header-h: 71px; }
+}
+
+/* ---- Base header: FIXED, full-bleed bar overlaying content (Zendesk parity) ---- */
+.lb-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 200;
+  min-height: var(--lb-header-h);
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fixed header offset: content clears the bar; home hero fills up under it. */
+main#main-content { padding-top: var(--lb-header-h); }
+main#main-content:has(.hero) { padding-top: 0; }
+
+/* Home transparent state — JS adds .header--transparent when a .hero is present */
+.lb-header.header--transparent:not(.is-scrolled) {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+/* Scrolled state */
+.lb-header.is-scrolled {
+  background: var(--background);
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+}
+
+.lb-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 30px;
+  height: var(--lb-header-h);
+}
+@media (max-width: 1023px) { .lb-header__inner { padding: 0 24px; } }
+@media (max-width: 640px)  { .lb-header__inner { padding: 0 16px; } }
+
+/* ---- Logo (far left; margin-right:auto pushes nav + actions to the right) ---- */
+.lb-header__logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+/* Logo 显隐：主题驱动 (仿 HK 双 logo 模型 + Zendesk 最终意图)。
+   - --light(深色墨) 在浅色主题恒显:mint hero 与滚动后白底都能读，无需按滚动切换
+   - --dark(浅色墨) 仅深色主题显 */
+.lb-logo { height: 30px; width: auto; object-fit: contain; display: block; }
+.lb-logo--dark { display: none; }
+
+html[theme="dark"] .lb-logo--light,
+.theme-dark .lb-logo--light { display: none; }
+html[theme="dark"] .lb-logo--dark,
+.theme-dark .lb-logo--dark  { display: block; }
+
+/* 深色模式 + 透明 hero(home 顶部，mint 浅底):仍用深墨 logo(--light)。
+   mint 是浅色，浅墨看不清;只有深色底 (非 home / 滚动后) 才用浅墨。特异性高于上面
+   的 dark 规则，故覆盖之。 */
+html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light,
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--light { display: block; }
+html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark,
+.theme-dark .lb-header.header--transparent:not(.is-scrolled) .lb-logo--dark { display: none; }
+
+/* ---- Desktop nav (sits in the right cluster, not stretched) ---- */
+.lb-topnav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.lb-topnav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.lb-topnav__link:hover {
+  background: var(--muted);
+}
+
+/* Transparent header: keep dark text (hero is light-coloured) */
+.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link {
+  color: #0a0e19;
+}
+.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link:hover {
+  background: var(--muted);
+}
+
+.lb-topnav__chevron {
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+[data-lb-dropdown-trigger][aria-expanded="true"] .lb-topnav__chevron {
+  transform: rotate(180deg);
+}
+
+/* Zendesk header search is an icon-only CIRCLE affordance (36×36, radius 50%).
+   Override the inherited .lb-topnav__link rectangle styling. */
+.lb-topnav__search-label { display: none; }
+
+/* ---- Unified right-side icon button (search / region / theme / github) ----
+   透明底方格 + 轻 hover。颜色用 --foreground(浅色=#0a0e19，与 mint hero 上已认可
+   的图标色及导航文字一致),避免滚动到白底后变成 muted 灰而显得「变淡」。
+   注：本行是 4 个无文字图标的簇，与 Zendesk 单个带标签的搜索图标 (muted) 语境不同，
+   故此处不套用 Zendesk 的 muted 搜索色。 */
+.lb-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.lb-icon-btn:hover { color: var(--foreground); background: var(--muted); }
+.lb-icon-btn svg { display: block; }
+/* Transparent (mint hero) state: dark icons + subtle tinted hover */
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn { color: #0a0e19; }
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn:hover { background: rgba(15, 23, 42, 0.06); }
+
+/* ---- Dropdown container ---- */
+.lb-topnav__dropdown {
+  position: relative;
+}
+
+/* ---- Mega menu panel (Zendesk parity) ----
+   fixed + 右对齐到 header 内容右缘 → 永不溢出视口 (触发器偏左时旧的 left:-16px
+   会把 780px 面板推出右边)。宽度、两栏、内部样式 1:1 复刻 Zendesk，配色走本仓
+   token;淡色叠加用 rgba(var(--foreground-rgb), x) 以自动跟随明暗主题。 */
+.lb-mega {
+  position: fixed;
+  top: calc(var(--lb-header-h) + 8px);
+  right: 30px;
+  width: min(780px, calc(100vw - 48px));
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px 6px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  z-index: 300;
+}
+@media (max-width: 1023px) { .lb-mega { right: 24px; } }
+.lb-mega[hidden] { display: none; }
+
+/* Left: category tab rail */
+.lb-mega__left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-right: 1px solid var(--border);
+  list-style: none;
+  margin: 0;
+}
+.lb-mega__cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(var(--foreground-rgb), 0.7);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.lb-mega__cat:hover,
+.lb-mega__cat.is-active {
+  background: rgba(var(--foreground-rgb), 0.07);
+  color: var(--foreground);
+}
+.lb-mega__cat-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: rgba(var(--foreground-rgb), 0.5);
+}
+.lb-mega__cat:hover .lb-mega__cat-icon,
+.lb-mega__cat.is-active .lb-mega__cat-icon { color: var(--accent-teal); }
+.lb-mega__cat-icon svg { width: 18px; height: 18px; display: block; }
+.lb-mega__cat-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.lb-mega__cat-badge {
+  flex: none;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: rgba(0, 184, 184, 0.16);
+  color: var(--accent-teal);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.lb-mega__cat-count {
+  flex: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11.5px;
+  color: rgba(var(--foreground-rgb), 0.4);
+}
+.lb-mega__cat:hover .lb-mega__cat-count,
+.lb-mega__cat.is-active .lb-mega__cat-count { color: rgba(var(--foreground-rgb), 0.6); }
+
+/* Right: category panels */
+.lb-mega__right {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 24px;
+  background: rgba(var(--foreground-rgb), 0.02);
+  position: relative;
+  min-width: 0;
+}
+.lb-mega__panel { display: none; flex-direction: column; flex: 1; min-height: 0; min-width: 0; }
+.lb-mega__panel.is-active { display: flex; }
+.lb-mega__head { display: flex; align-items: center; gap: 14px; }
+.lb-mega__head-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0, 184, 184, 0.14);
+  color: var(--accent-teal);
+}
+.lb-mega__head-icon svg { width: 18px; height: 18px; }
+.lb-mega__head-name { font-size: 17px; font-weight: 700; color: var(--foreground); letter-spacing: -0.01em; }
+.lb-mega__desc {
+  margin: 14px 0 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.lb-mega__arts {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.lb-mega__arts li { margin: 0; padding: 0; min-width: 0; }
+.lb-mega__arts a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgba(var(--foreground-rgb), 0.85);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+  min-width: 0;
+}
+.lb-mega__arts a::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+}
+.lb-mega__arts a:hover {
+  background: rgba(var(--foreground-rgb), 0.06);
+  color: var(--foreground);
+}
+.lb-mega__art-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-mega__view-all {
+  /* 无 margin-top:auto —— 由 .lb-mega__arts 的 flex:1 撑满把它顶到底部。
+     两者同用会争抢剩余空间，导致 arts 不满高、fitArts 少算一条。 */
+  padding-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-teal);
+  text-decoration: none;
+  flex: none;
+}
+.lb-mega__view-all svg { width: 16px; height: 16px; }
+.lb-mega__view-all:hover { filter: brightness(1.15); }
+
+/* ---- Right action bar ---- */
+.lb-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* no margin-left:auto — logo's margin-right:auto already pushes nav+actions
+     together to the right (Zendesk clusters everything but the logo on the right) */
+  flex-shrink: 0;
+}
+
+/* ---- Region switch (globe .lb-icon-btn + popover) ---- */
+.lb-region { position: relative; }
+[data-lb-region-trigger][aria-expanded="true"] { color: var(--foreground); background: var(--muted); }
+.lb-header.header--transparent:not(.is-scrolled) [data-lb-region-trigger][aria-expanded="true"] {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+/* Region popover — mirrors the hk/sg region/language panel (single card, section title, rows) */
+.lb-region__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 264px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  padding: 14px 12px;
+  z-index: 300;
+}
+.lb-region__menu[hidden] { display: none; }
+.lb-region__section-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  padding: 4px 12px 8px;
+  white-space: nowrap;
+}
+.lb-region__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: var(--foreground);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+.lb-region__option:hover { background: var(--muted); }
+.lb-region__option.is-active { background: var(--muted); font-weight: 500; }
+.lb-region__check { color: var(--accent-teal); flex-shrink: 0; }
+
+/* ---- Theme toggle icons: sun (dark mode) / moon (light mode) ----
+   Scoped to .lb-theme-toggle (0,2,0) so these beat the blanket
+   `.lb-icon-btn svg { display:block }` rule (0,1,1); otherwise the sun is
+   force-shown and both icons stack. */
+.lb-theme-toggle .lb-theme-icon--sun  { display: none; }
+.lb-theme-toggle .lb-theme-icon--moon { display: block; }
+html[theme="dark"] .lb-theme-toggle .lb-theme-icon--sun,
+.theme-dark .lb-theme-toggle .lb-theme-icon--sun  { display: block; }
+html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
+.theme-dark .lb-theme-toggle .lb-theme-icon--moon { display: none; }
+
+/* ---- Mobile search ---- */
+.lb-header__mobile-search {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lb-header__mobile-search:hover { background: var(--muted); }
+
+/* ---- Hamburger ---- */
+.lb-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lb-hamburger:hover { background: var(--muted); }
+
+.lb-header.header--transparent:not(.is-scrolled) .lb-hamburger,
+.lb-header.header--transparent:not(.is-scrolled) .lb-header__mobile-search {
+  color: #0a0e19;
+}
+
+/* ---- Responsive breakpoints ---- */
+@media (max-width: 768px) {
+  /* Show mobile elements */
+  .lb-header__mobile-search { display: inline-flex; }
+  .lb-hamburger              { display: inline-flex; }
+
+  /* Hide desktop elements (线上移动端只保留 search + 汉堡) */
+  .lb-topnav      { display: none; }
+  .lb-region      { display: none; }
+  .lb-header__github { display: none; }
+  .lb-theme-toggle { display: none; }
+
+  /* search / 汉堡:36×36 圆底 (对齐线上移动端) */
+  .lb-header__mobile-search,
+  .lb-hamburger {
+    width: 36px;
+    height: 36px;
+    background: rgba(15, 23, 42, 0.06);
+    border-radius: 50%;
+  }
+  .lb-header__mobile-search:hover,
+  .lb-hamburger:hover {
+    background: rgba(15, 23, 42, 0.1);
+  }
+
+  /* 两个圆钮间距 12(对齐线上) */
+  .lb-header__actions { gap: 12px; }
+
+  /* Shrink inner */
+  .lb-header__inner { padding: 0 16px; }
+}
+
+@media (min-width: 769px) {
+  /* Ensure mobile UI is always hidden on desktop */
+  .lb-header__mobile-search { display: none !important; }
+  .lb-hamburger { display: none !important; }
+}
+
+/* ---- Skip navigation ---- */
+.skip-navigation {
+  position: absolute;
+  top: -9999px;
+  left: 16px;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--accent-teal);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.skip-navigation:focus { top: 0; }
+
+.is-hidden { display: none !important; }
+

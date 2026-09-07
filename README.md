@@ -8,17 +8,19 @@
 
 ```
 apps/
-├── hk/          # 香港站(/hk/*):内容主源 zh-CN,人工维护 markdown
-├── sg/          # 新加坡站(/sg/*):内容主源 zh-CN,人工维护 markdown
-└── us/          # 美国站(/us/*):内容主源 en,由 Zendesk 同步生成
-    └── scripts/ # Zendesk 同步器(bun run sync:us)
+├── hk/          # 香港站(/hk/*):VitePress,内容主源 zh-CN,人工维护 markdown
+├── sg/          # 新加坡站(/sg/*):VitePress,内容主源 zh-CN,人工维护 markdown
+└── us/          # 美国站(/us/*):Astro,内容主源 en,由 Zendesk 同步生成
+    ├── scripts/ # Zendesk 同步器(bun run sync:us)
+    └── src/     # Astro 站(布局/组件/脚本/样式),视觉对齐 Zendesk 帮助中心主题
 packages/
-└── shared/      # 共享层:theme 组件 / composables / i18n / VitePress 配置工厂 / UnoCSS
+└── shared/      # 共享层:theme 组件 / composables / i18n / VitePress 配置工厂 / UnoCSS(仅 hk/sg)
 ```
 
-三个 region 是互相独立的 VitePress 应用：独立 dev、独立构建。URL 上的
-`/hk/ /sg/ /us/` 前缀由各 app 的 `base` 提供，部署时 CI 把三份产物合并到同一
-个域名下，对外 URL 与历史完全一致。
+三个 region 是互相独立的应用 (hk/sg 为 VitePress,us 为 Astro):独立 dev、独立
+构建。URL 上的 `/hk/ /sg/ /us/` 前缀由各 app 的 `base` 提供，部署时 CI 把三份
+产物合并到同一域名下，对外 URL 与历史完全一致。US 站的站内搜索由 Pagefind 在
+构建时 (`astro build && pagefind`) 生成索引。
 
 ## 常用命令（仓库根目录）
 

@@ -12,26 +12,26 @@ labels:
 ---
 _Crypto services on the Longbridge Platform are provided by Bakkt Crypto Solutions_
 
-**Who is Bakkt?**
+<span style="color: #2F3941;">**Who is Bakkt?**</span>
 
-When you invest in cryptocurrency via the Longbridge Platform, you’re opening and maintaining an account with Bakkt Crypto Solutions, LLC (“Bakkt”), NMLS ID 1890144. Bakkt is a licensed virtual currency business by the New York State Department of Financial Services and a licensed money transmitter. Bakkt is not a registered broker-dealer or a FINRA member.
+<span style="color: #2F3941;">When you invest in cryptocurrency via the Longbridge Platform, you’re opening and maintaining an account with Bakkt Crypto Solutions, LLC (“Bakkt”), NMLS ID 1890144. Bakkt is a licensed virtual currency business by the New York State Department of Financial Services and a licensed money transmitter. Bakkt is not a registered broker-dealer or a FINRA member.</span>
 
-Note that your Bakkt crypto account is separate from your brokerage account with Longbridge Securities LLC, which holds your investments in US-listed stocks and ETFs. Longbride Securities LLC is a registered broker-dealer and FINRA member. Crypto assets held at Bakkt are held away from Longbridge Securities LLC and are not protected by SIPC or the FDIC.
+<span style="color: #2F3941;">Note that your Bakkt crypto account is separate from your brokerage account with Longbridge Securities LLC, which holds your investments in US-listed stocks and ETFs. Longbride Securities LLC is a registered broker-dealer and FINRA member. Crypto assets held at Bakkt are held away from Longbridge Securities LLC and are not protected by SIPC or the FDIC.</span>
 
-**How do I get started with crypto at Bakkt?**
+<span style="color: #2F3941;">**How do I get started with crypto at Bakkt?**</span>
 
-Through the Longbridge Platform, you will first need to open a cryptocurrency account directly with Bakkt. You will then be able to submit trades to Bakkt for execution and view your crypto assets held in your Bakkt crypto account, via the Longbridge Platform.
+<span style="color: #2F3941;">Through the Longbridge Platform, you will first need to open a cryptocurrency account directly with Bakkt. You will then be able to submit trades to Bakkt for execution and view your crypto assets held in your Bakkt crypto account, via the Longbridge Platform.</span>
 
-**Where can I find learn more about Bakkt, including my Bakkt crypto account’s legal documentation?**
+<span style="color: #2F3941;">**Where can I find learn more about Bakkt, including my Bakkt crypto account’s legal documentation?**</span>
 
-[https://bakkt.com/](https://bakkt.com/)
+[<span style="color: #2F3941;">https://bakkt.com/</span>](https://bakkt.com/)
 
-[https://bakkt.com/user-agreement-longbridge](https://bakkt.com/user-agreement-longbridge) (Not published until 11/11 the earliest.)
+[<span style="color: #2F3941;">https://bakkt.com/user-agreement-longbridge</span>](https://bakkt.com/user-agreement-longbridge) <span style="color: #2F3941;">(Not published until 11/11 the earliest.)</span>
 
-[https://bakkt.com/disclosures](https://bakkt.com/disclosures)
+[<span style="color: #2F3941;">https://bakkt.com/disclosures</span>](https://bakkt.com/disclosures)
 
-[https://bakkt.com/privacy-policy](https://bakkt.com/privacy-policy)
+[<span style="color: #2F3941;">https://bakkt.com/privacy-policy</span>](https://bakkt.com/privacy-policy)
 
-**Can I access my Bakkt crypto account or place crypto trades directly with Bakkt on their website?**
+<span style="color: #2F3941;">**Can I access my Bakkt crypto account or place crypto trades directly with Bakkt on their website?**</span>
 
-No, Longbridge Crypto LLC (the “Longbridge Platform”) has collaborated with Bakkt to provide you convenient access to Bakkt’s cryptocurrency services. All your Bakkt crypto account transactions and account details are accessed through the Longbridge Platform.
+<span style="color: #2F3941;">No, Longbridge Crypto LLC (the “Longbridge Platform”) has collaborated with Bakkt to provide you convenient access to Bakkt’s cryptocurrency services. All your Bakkt crypto account transactions and account details are accessed through the Longbridge Platform.</span>

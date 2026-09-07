@@ -1,10 +1,10 @@
 [
-  "bakkt-account-basics",
+  "supported-cryptocurrencies",
   "available-cryptocurrencies-for-trading",
-  "crypto-trading-operation-rules",
   "trading-fees-fund-management",
   "trade-settlement-special-trading-restrictions",
   "crypto-asset-storage-cross-account-transfers",
   "account-statements-information-inquiries",
-  "tax-reporting-requirements"
+  "tax-reporting-requirements",
+  "bakkt-account-basics"
 ]

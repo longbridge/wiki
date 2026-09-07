@@ -1,0 +1,52 @@
+/* Article TOC — desktop right rail (.lb-toc, JS-positioned) + mobile FAB/drawer.
+   Ported from Zendesk style.css (.lb-toc ~8318).
+   Accent uses #00b8b8 (--accent-teal) directly, NOT var(--primary) (spec §5.3 trap). */
+
+/* ── Desktop rail (position/width set by toc.ts; hidden until positioned) ── */
+.lb-toc {
+  position: fixed;
+  top: 96px;
+  z-index: 40;
+  display: none;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding: 2px 0;
+}
+.lb-toc__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  margin: 0 0 12px;
+  padding-left: 15px;
+}
+.lb-toc__list { list-style: none; margin: 0; padding: 0; }
+.lb-toc__item { margin: 0; }
+.lb-toc__item > a {
+  display: block;
+  padding: 6px 15px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.lb-toc__item > a:hover { color: var(--foreground); }
+.lb-toc__item--sub > a { padding-left: 29px; font-size: 12.5px; }
+.lb-toc__item.is-active > a {
+  color: #00b8b8;
+  border-left-color: #00b8b8;
+  font-weight: 600;
+}
+
+/* TOC rail 用 fixed 定位、不占文档流;article-page 宽度保持恒定 (不随 rail 有无变化),
+   避免 SPA 切换「有 TOC ↔ 无 TOC」的文章时容器宽度跳动。rail 缺席时右侧空间天然占位。 */
+
+/* Dark: current-item accent uses the dark teal */
+html[theme="dark"] .lb-toc__item.is-active > a,
+.theme-dark .lb-toc__item.is-active > a {
+  color: #22e5cf;
+  border-left-color: #22e5cf;
+}

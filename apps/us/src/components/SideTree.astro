@@ -1,0 +1,69 @@
+---
+import type { NavCategory } from '../lib/nav-core'
+import { withBase } from '../lib/paths'
+import { CAT_ICONS, iconKeyForSlug } from '../lib/cat-icons'
+
+interface Props {
+  nav: NavCategory[]
+  currentPath: string
+}
+
+const { nav, currentPath } = Astro.props
+
+// Normalize for comparison: strip trailing slash (keep bare '/')
+function normPath(p: string) {
+  return p.length > 1 ? p.replace(/\/$/, '') : p
+}
+
+const norm = normPath(currentPath)
+
+// Zendesk-parity chevron: 折叠时指右(rotate -90),展开时指下(rotate 0) — 由 CSS 控制
+const CHEVRON_SVG = `<svg class="side-tree__chevron" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path></svg>`
+---
+
+{nav.map((cat) => {
+  // Which sections contain the current article → auto-open that cat/sec
+  const openSecs = new Set(
+    cat.sections
+      .filter((sec) => sec.articles.some((a) => normPath(withBase(a.path)) === norm))
+      .map((sec) => sec.slug)
+  )
+  const catIsOpen = openSecs.size > 0
+
+  return (
+    <div class:list={['side-tree__cat', catIsOpen && 'is-open']}>
+      <button type="button" class="side-tree__cat-head" aria-expanded={catIsOpen ? 'true' : 'false'}>
+        <span class="side-tree__cat-icon" aria-hidden="true" set:html={CAT_ICONS[iconKeyForSlug(cat.slug)]} />
+        <span class="side-tree__cat-label">{cat.title}</span>
+        <Fragment set:html={CHEVRON_SVG} />
+      </button>
+      <div class="side-tree__cat-body">
+        {cat.sections.map((sec) => {
+          const secIsOpen = openSecs.has(sec.slug)
+          return (
+            <div class:list={['side-tree__sec', secIsOpen && 'is-open']}>
+              <button type="button" class="side-tree__sec-head" aria-expanded={secIsOpen ? 'true' : 'false'}>
+                <span>{sec.title}</span>
+                <Fragment set:html={CHEVRON_SVG} />
+              </button>
+              <div class="side-tree__sec-body">
+                {sec.articles.map((article) => {
+                  const isCurrent = normPath(withBase(article.path)) === norm
+                  return (
+                    <a
+                      href={withBase(article.path)}
+                      class:list={['side-tree__item', isCurrent && 'is-current']}
+                      aria-current={isCurrent ? 'page' : undefined}
+                    >
+                      {article.title}
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+})}

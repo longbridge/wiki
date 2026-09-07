@@ -1,0 +1,35 @@
+---
+import { getNav } from '../lib/nav'
+import SideTree from './SideTree.astro'
+
+const nav = await getNav()
+---
+
+<div class="lb-cat-drawer" id="lb-cat-drawer" hidden aria-hidden="true">
+  <div class="lb-cat-drawer__backdrop" data-lb-cat-drawer-close></div>
+  <div class="lb-cat-drawer__panel" role="dialog" aria-modal="true" aria-label="Help center navigation">
+    <div class="lb-cat-drawer__header">
+      <span class="lb-cat-drawer__title">Help Center</span>
+      <button
+        type="button"
+        class="lb-cat-drawer__close"
+        data-lb-cat-drawer-close
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="side-tree" aria-label="Help center categories">
+      <SideTree nav={nav} currentPath={Astro.url.pathname} />
+    </nav>
+  </div>
+</div>
+
+<script>
+  import '../scripts/drawer.ts'
+</script>
+<script>
+  import '../scripts/side-tree.ts'
+</script>
