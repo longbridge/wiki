@@ -85,7 +85,6 @@ html[theme="dark"] .article-page__aside::-webkit-scrollbar-thumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
   font-size: 13px;
   color: var(--muted-foreground);
   margin-bottom: 20px;
@@ -299,7 +298,6 @@ html[theme='dark'] .article-body img,
    flex 两列各 50%(recent 左 / related 右);标题 18/600/muted,链接 15/foreground。 */
 .article-relatives {
   display: flex;
-  gap: 40px;
   margin-top: 40px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
@@ -369,6 +367,10 @@ html[theme='dark'] .article-body img,
   /* 小屏：两列改上下堆叠 */
   .article-relatives {
     flex-direction: column;
-    gap: 28px;
   }
+  .article-relatives.article-relatives > * + * { margin-left: 0; margin-top: 28px; }
 }
+
+/* gap→margin(Chrome 80 无 flex gap):用 section+section 提高特异性，压过
+   `.article-relatives > section { margin:0 }`(0,1,1),否则 40 会被顶成 0 */
+.article-relatives > section + section { margin-left: 40px; }

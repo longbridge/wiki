@@ -21,7 +21,7 @@
 
 /* Fixed header offset: content clears the bar; home hero fills up under it. */
 main#main-content { padding-top: var(--lb-header-h); }
-main#main-content:has(.hero) { padding-top: 0; }
+body.lb-has-hero main#main-content { padding-top: 0; }
 
 /* Home transparent state — JS adds .header--transparent when a .hero is present */
 .lb-header.header--transparent:not(.is-scrolled) {
@@ -39,7 +39,6 @@ main#main-content:has(.hero) { padding-top: 0; }
 .lb-header__inner {
   display: flex;
   align-items: center;
-  gap: 8px;
   width: 100%;
   padding: 0 30px;
   height: var(--lb-header-h);
@@ -79,14 +78,12 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-topnav {
   display: flex;
   align-items: center;
-  gap: 4px;
   flex: none;
 }
 
 .lb-topnav__link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   padding: 6px 10px;
   font-size: 14px;
   font-weight: 500;
@@ -180,7 +177,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-mega__left {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   padding: 12px;
   border-right: 1px solid var(--border);
   list-style: none;
@@ -189,7 +185,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-mega__cat {
   display: flex;
   align-items: center;
-  gap: 12px;
   padding: 9px 12px;
   border-radius: 12px;
   cursor: pointer;
@@ -252,7 +247,7 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 }
 .lb-mega__panel { display: none; flex-direction: column; flex: 1; min-height: 0; min-width: 0; }
 .lb-mega__panel.is-active { display: flex; }
-.lb-mega__head { display: flex; align-items: center; gap: 14px; }
+.lb-mega__head { display: flex; align-items: center; }
 .lb-mega__head-icon {
   display: inline-flex;
   align-items: center;
@@ -277,7 +272,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
   flex: 1 1 0;
   min-height: 0;
   overflow: hidden;
@@ -286,7 +280,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-mega__arts a {
   display: flex;
   align-items: center;
-  gap: 12px;
   padding: 10px 12px;
   margin: 0 -12px;
   border-radius: 10px;
@@ -316,7 +309,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   padding-top: 24px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   font-size: 13px;
   font-weight: 700;
   color: var(--accent-teal);
@@ -330,7 +322,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-header__actions {
   display: flex;
   align-items: center;
-  gap: 4px;
   /* no margin-left:auto — logo's margin-right:auto already pushes nav+actions
      together to the right (Zendesk clusters everything but the logo on the right) */
   flex-shrink: 0;
@@ -370,7 +361,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   width: 100%;
   padding: 10px 12px;
   font-size: 15px;
@@ -464,7 +454,7 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
   }
 
   /* 两个圆钮间距 12(对齐线上) */
-  .lb-header__actions { gap: 12px; }
+  .lb-header__actions.lb-header__actions > * + * { margin-left: 12px; }
 
   /* Shrink inner */
   .lb-header__inner { padding: 0 16px; }
@@ -494,3 +484,19 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
 
 .is-hidden { display: none !important; }
 
+
+/* gap→margin(Chrome 80 无 flex gap):等价原容器 gap，仅 margin-left/top */
+.lb-header__inner > * + * { margin-left: 8px; }
+.lb-topnav > * + * { margin-left: 4px; }
+.lb-topnav__link > * + * { margin-left: 4px; }
+.lb-mega__left > * + * { margin-top: 4px; }
+.lb-mega__cat > * + * { margin-left: 12px; }
+.lb-mega__head > * + * { margin-left: 14px; }
+/* mega arts:列表项间距 2(li+li 提权压过 `.lb-mega__arts li{margin:0}`) */
+.lb-mega__arts li + li { margin-top: 2px; }
+/* 文章行：圆点 ::before 与标题间距 12(a 内只有 ::before + 单个 title,> * + * 够不着) */
+.lb-mega__arts a::before { margin-right: 12px; }
+/* view-all:文字与箭头 svg 间距 8(子为文本节点 + 单 svg) */
+.lb-mega__view-all svg { margin-left: 8px; }
+.lb-header__actions > * + * { margin-left: 4px; }
+.lb-region__option > * + * { margin-left: 12px; }

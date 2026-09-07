@@ -87,7 +87,7 @@ const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge H
       )
     }
   </head>
-  <body>
+  <body class={isHome ? 'lb-has-hero' : undefined}>
     <a class="skip-navigation" href="#main-content">Skip to main content</a>
     <AppNavbar />
     <Header />

@@ -43,7 +43,6 @@ html.is-whale-app .lb-app-navbar {
   z-index: 100;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   padding: calc(var(--lb-safe-top) + 8px) 16px 8px 16px;
 }
 
@@ -104,7 +103,6 @@ html.is-whale-app .lb-app-navbar__title {
 .lb-app-navbar__actions {
   display: inline-flex;
   align-items: center;
-  gap: 0;
 }
 .lb-app-navbar__back::before,
 .lb-app-navbar__actions::before {
@@ -132,48 +130,48 @@ html.is-whale-app .lb-app-navbar__title {
   display: none !important;
 }
 
-/* ── 首页 (body:has(.hero)):沉浸式 —— 首屏透明浮在 hero 上，滚动后转实底 ─── */
-html.is-whale-app body:has(.hero) .lb-app-navbar {
+/* ── 首页 (body.lb-has-hero):沉浸式 —— 首屏透明浮在 hero 上，滚动后转实底 ─── */
+html.is-whale-app body.lb-has-hero .lb-app-navbar {
   pointer-events: none;
 }
-html.is-whale-app body:has(.hero) .lb-app-navbar__btn {
+html.is-whale-app body.lb-has-hero .lb-app-navbar__btn {
   pointer-events: auto;
 }
 /* 首屏永远是浅色胶囊 + 深色图标 (两种主题一致) */
-html.is-whale-app:not(.is-scrolled) body:has(.hero) .lb-app-navbar__back::before,
-html.is-whale-app:not(.is-scrolled) body:has(.hero) .lb-app-navbar__actions::before {
+html.is-whale-app:not(.is-scrolled) body.lb-has-hero .lb-app-navbar__back::before,
+html.is-whale-app:not(.is-scrolled) body.lb-has-hero .lb-app-navbar__actions::before {
   background-image: var(--lb-app-navbar-capsule-one-light);
 }
 /* 滚动态：实底跟随主题 token，返回单胶囊、动作组换双胶囊，搜索按钮出现 */
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar {
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar {
   background: var(--background, #ffffff);
   transition: background 0.2s ease;
 }
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__title,
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__btn {
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__title,
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__btn {
   color: var(--foreground, #0a0e19);
 }
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__back::before {
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__back::before {
   background-image: var(--lb-app-navbar-capsule-one-light);
 }
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__actions::before {
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__actions::before {
   background-image: var(--lb-app-navbar-capsule-two-light);
   width: 210px;
 }
-html.is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__search {
+html.is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__search {
   display: inline-flex !important;
 }
 /* 首页:hero 盒子从屏幕顶开始 (Zendesk 实际生效值为 padding-top:0!important，
    插画是 hero 背景、按 hero 高度 60% 缩放，盒子一致插画位置才一致)；
    内容顶距 = 导航栏底 (safe + 56) + 47 → 有刘海时标题落在 162px，与 Zendesk 一致 */
-html.is-whale-app body:has(.hero) .hero {
+html.is-whale-app body.lb-has-hero .hero {
   padding-top: 0;
   /* App 内 hero 盒子顶在屏幕 0，背景插画默认 top 0 会被固定导航栏压住；
      纵向下移 30px 让插画从导航栏下方露出（仅 App，不动 web 移动端的 top 0）。
      横向沿用移动端 right -16px。 */
   background-position: right -16px top 30px;
 }
-html.is-whale-app body:has(.hero) .hero__inner {
+html.is-whale-app body.lb-has-hero .hero__inner {
   padding-top: calc(var(--lb-safe-top) + 103px);
 }
 
@@ -206,28 +204,28 @@ html.is-whale-app .catx__tab {
   font-size: 15px;
 }
 
-/* ── 非首页 (body:not(:has(.hero))):恒实底导航栏 ────────────────────────── */
-html.is-whale-app body:not(:has(.hero)) .lb-app-navbar {
+/* ── 非首页 (body:not(.lb-has-hero)):恒实底导航栏 ────────────────────────── */
+html.is-whale-app body:not(.lb-has-hero) .lb-app-navbar {
   background: #ffffff;
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
 }
-html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__title {
+html.is-whale-app body:not(.lb-has-hero) .lb-app-navbar__title {
   font-size: 17px;
 }
-html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__back::before {
+html.is-whale-app body:not(.lb-has-hero) .lb-app-navbar__back::before {
   background-image: var(--lb-app-navbar-capsule-one-light);
 }
-html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__actions::before {
+html.is-whale-app body:not(.lb-has-hero) .lb-app-navbar__actions::before {
   background-image: var(--lb-app-navbar-capsule-two-light);
   width: 260px;
 }
-html.is-whale-app body:not(:has(.hero)) .lb-app-navbar__search {
+html.is-whale-app body:not(.lb-has-hero) .lb-app-navbar__search {
   display: inline-flex !important;
 }
 /* 正文下推让出固定导航栏 (替代 header 高度占位，叠加安全区)。
    只作用于 body 直系的外层 main：文章页内层 .article-page__main 也带 id=main-content，
    不加 > 会叠两次；内层顶距对齐 Zendesk App 态 .article-header padding-top:12 */
-html.is-whale-app body:not(:has(.hero)) > main#main-content {
+html.is-whale-app body:not(.lb-has-hero) > main#main-content {
   padding-top: calc(var(--lb-safe-top) + 56px);
 }
 html.is-whale-app .article-page__main#main-content {
@@ -250,37 +248,37 @@ html.is-whale-app .article-body p {
 }
 
 /* ── 暗色：导航栏实底 / 图标 / 胶囊切换夜间资源 ───────────────────────── */
-html[theme='dark'].is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__back::before,
-html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__back::before {
+html[theme='dark'].is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__back::before,
+html[theme='dark'].is-whale-app body:not(.lb-has-hero) .lb-app-navbar__back::before {
   background-image: var(--lb-app-navbar-capsule-one-dark);
 }
-html[theme='dark'].is-whale-app.is-scrolled body:has(.hero) .lb-app-navbar__actions::before,
-html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__actions::before {
+html[theme='dark'].is-whale-app.is-scrolled body.lb-has-hero .lb-app-navbar__actions::before,
+html[theme='dark'].is-whale-app body:not(.lb-has-hero) .lb-app-navbar__actions::before {
   background-image: var(--lb-app-navbar-capsule-two-dark);
 }
-html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar {
+html[theme='dark'].is-whale-app body:not(.lb-has-hero) .lb-app-navbar {
   background: #0a0e19;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
 }
-html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__title,
-html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__btn {
+html[theme='dark'].is-whale-app body:not(.lb-has-hero) .lb-app-navbar__title,
+html[theme='dark'].is-whale-app body:not(.lb-has-hero) .lb-app-navbar__btn {
   color: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
-  html.is-whale-app:not([theme='light']).is-scrolled body:has(.hero) .lb-app-navbar__back::before,
-  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__back::before {
+  html.is-whale-app:not([theme='light']).is-scrolled body.lb-has-hero .lb-app-navbar__back::before,
+  html.is-whale-app:not([theme='light']) body:not(.lb-has-hero) .lb-app-navbar__back::before {
     background-image: var(--lb-app-navbar-capsule-one-dark);
   }
-  html.is-whale-app:not([theme='light']).is-scrolled body:has(.hero) .lb-app-navbar__actions::before,
-  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__actions::before {
+  html.is-whale-app:not([theme='light']).is-scrolled body.lb-has-hero .lb-app-navbar__actions::before,
+  html.is-whale-app:not([theme='light']) body:not(.lb-has-hero) .lb-app-navbar__actions::before {
     background-image: var(--lb-app-navbar-capsule-two-dark);
   }
-  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar {
+  html.is-whale-app:not([theme='light']) body:not(.lb-has-hero) .lb-app-navbar {
     background: #0a0e19;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
   }
-  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__title,
-  html.is-whale-app:not([theme='light']) body:not(:has(.hero)) .lb-app-navbar__btn {
+  html.is-whale-app:not([theme='light']) body:not(.lb-has-hero) .lb-app-navbar__title,
+  html.is-whale-app:not([theme='light']) body:not(.lb-has-hero) .lb-app-navbar__btn {
     color: #ffffff;
   }
 }
@@ -319,7 +317,6 @@ html[theme='dark'].is-whale-app body:not(:has(.hero)) .lb-app-navbar__btn {
     radial-gradient(circle at 30% 22%, rgba(255, 255, 255, var(--lb-fab-hi)) 0%, rgba(255, 255, 255, 0) 55%),
     radial-gradient(circle at 50% 112%, var(--lb-fab-shade) 0%, rgba(15, 23, 42, 0) 55%),
     var(--lb-fab-tint);
-  -webkit-backdrop-filter: blur(10px) saturate(1.6);
   backdrop-filter: blur(10px) saturate(1.6);
   box-shadow:
     0 16px 36px -6px var(--lb-fab-shadow-1),
@@ -362,3 +359,7 @@ html[theme='dark'] .lb-fab-menu,
     --lb-fab-shadow-2: rgba(0, 0, 0, 0.35);
   }
 }
+
+/* 注:.lb-app-navbar 原 gap:12 已移除。导航栏为 justify-content:space-between,
+   back 在左、actions 在右、title 绝对居中 (不在流内),项间距由 space-between 决定，
+   无需 margin;若加 > * + * 反而会把绝对定位的 title 顶偏。 */
