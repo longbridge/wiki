@@ -2,8 +2,8 @@
 title: Tax Documents
 zendesk_article_id: 17445724650639
 zendesk_section_id: 15003351858319
-zendesk_updated_at: '2026-09-01T03:34:33Z'
-zendesk_edited_at: '2026-09-01T03:34:33Z'
+zendesk_updated_at: '2026-09-02T09:37:20Z'
+zendesk_edited_at: '2026-09-02T09:37:20Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/17445724650639-Tax-Documents'
 promoted: false
 position: 0
@@ -13,7 +13,6 @@ Tax documents summarize the information you may need for annual tax filing, such
 ## Where to find tax documents
 
 1.  From your account's home page, open the _Docs & statements_ menu.
-
 2.  Tap _Tax documents_.
 
 You'll see a list of tax documents for your account, sorted with the most recent year at the top. Each entry shows the tax year (for example, _2025_) along with the date the document became, or will become, available (for example, _Available Feb 15, 2025_).

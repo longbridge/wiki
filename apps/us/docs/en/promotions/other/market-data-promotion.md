@@ -16,7 +16,7 @@ This promotion is intended to enhance the trading experience of new and existing
 
 # **1.Promotion Period**
 
-This promotion is valid from **TBD, 2026, 12:00 AM ET – TBD**, 2026, 11:59 PM ET (the "Promotion Period").
+This promotion is valid from <span style="background-color: #F9E3F5;">**TBD, 2026, 12:00 AM ET – TBD**</span>, 2026, 11:59 PM ET (the "Promotion Period").
 
 # **2.Eligibility**
 

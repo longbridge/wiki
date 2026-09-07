@@ -16,53 +16,7 @@ In a cash account, you must pay for every purchase in full with your own funds, 
 
 ## Key Differences
 
-Feature
-
-Margin Account
-
-Cash Account
-
-Borrowing
-
-Allowed, with collateral
-
-Not allowed
-
-Buying power
-
-Cash and borrowed funds
-
-Limited to available cash
-
-Short selling
-
-Currently not available at LB
-
-Not permitted
-
-Interest charges
-
-Charged on borrowed funds
-
-None
-
-Margin requirements
-
-Initial and maintenance margins apply
-
-None
-
-Risk level
-
-Higher, as losses can exceed deposit
-
-Lower
-
-Settlement rules
-
-Can reinvest immediately with margin buying power
-
-Must wait for trades to settle
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="192;284;262"><colgroup><col style="width: 26.22%;"> <col style="width: 40.51%;"> <col style="width: 33.27%;"></colgroup><thead><tr style="height: 39px;"><th style="background-color: rgb(242, 243, 245); border-color: rgb(222, 224, 227); padding: 8px; text-align: left; vertical-align: top;" colspan="1" rowspan="1"><div>Feature</div></th><th style="background-color: rgb(242, 243, 245); border-color: rgb(222, 224, 227); padding: 8px; text-align: left; vertical-align: top;" colspan="1" rowspan="1"><div>Margin Account</div></th><th style="background-color: rgb(242, 243, 245); border-color: rgb(222, 224, 227); padding: 8px; text-align: left; vertical-align: top;" colspan="1" rowspan="1"><div>Cash Account</div></th></tr></thead><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Borrowing</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Allowed, with collateral</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Not allowed</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Buying power</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Cash and borrowed funds</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Limited to available cash</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Short selling</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Currently not available at LB</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Not permitted</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Interest charges</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Charged on borrowed funds</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>None</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Margin requirements</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Initial and maintenance margins apply</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>None</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Risk level</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Higher, as losses can exceed deposit</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Lower</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Settlement rules</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Can reinvest immediately with margin buying power</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Must wait for trades to settle</div></td></tr></tbody></table>
 
 ## Key Takeaways
 

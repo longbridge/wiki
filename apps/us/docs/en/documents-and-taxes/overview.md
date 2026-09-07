@@ -9,4 +9,5 @@ zendesk_category_id: 15003349549967
 
 ## Sections
 
+- [Disclosures](/documents-and-taxes/disclosures/overview)
 - [Tax Documentation](/documents-and-taxes/tax-documentation/overview)

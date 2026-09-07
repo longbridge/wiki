@@ -12,35 +12,9 @@ position: 0
 
 Longbridge AI offers four subscription plans with different AI features, capabilities, and usage limits:
 
-Starter
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="110;110;138;168;159"><colgroup><col style="width: 12.02%;"> <col style="width: 14.37%;"> <col style="width: 19.91%;"> <col style="width: 20.65%;"> <col style="width: 33.05%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>&nbsp;</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Starter</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Plus</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Pro</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Max</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Price</strong></div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Free</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>USD 19.99/month</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>USD 49.99/month</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>USD 99.99/month</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Best for</strong></div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Exploring AI features</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Expanded AI analysis features</div><div>&nbsp;</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Advanced analysis &amp; strategies</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Customers who require the highest AI usage limits and access to advanced AI features</div></td></tr></tbody></table>
 
-Plus
-
-Pro
-
-Max
-
-**Price**
-
-Free
-
-USD 19.99/month
-
-USD 49.99/month
-
-USD 99.99/month
-
-**Best for**
-
-Exploring AI features
-
-Expanded AI analysis features
-
-Advanced analysis & strategies
-
-Customers who require the highest AI usage limits and access to advanced AI features
-
-### **Starter (Free)**
+### <span style="color: #096ECC;">**Starter (Free)**</span>
 
 Get started with Longbridge AI's core AI capabilities at no cost.
 
@@ -60,7 +34,7 @@ Get started with Longbridge AI's core AI capabilities at no cost.
 
 -   Custom strategies not supported
 
-### **Plus**
+### <span style="color: #096ECC;">**Plus**</span>
 
 The plan for investors who rely on AI insights in their day-to-day investing
 
@@ -76,7 +50,7 @@ The plan for investors who rely on AI insights in their day-to-day investing
 
 -   **Custom Strategies**: Up to 20 personalized investment strategies
 
-### **Pro**
+### <span style="color: #096ECC;">**Pro**</span>
 
 The plan for active investors who need more advanced analysis tools and greater flexibility.
 
@@ -88,7 +62,7 @@ The plan for active investors who need more advanced analysis tools and greater 
 
 -   **Third-Party Tools**: Access to third-party Connector tools for extended capabilities
 
-### **Max**
+### <span style="color: #096ECC;">**Max**</span>
 
 The ultimate plan for professional investors and power users who demand the highest quotas and priority
 
@@ -102,65 +76,7 @@ The ultimate plan for professional investors and power users who demand the high
 
 ## **Feature Comparison**
 
-Feature
-
-Starter
-
-Plus
-
-Pro
-
-Max
-
-AI chat
-
-✅
-
-✅
-
-✅
-
-✅
-
-AI recommendations
-
-❌
-
-✅
-
-✅
-
-✅
-
-Custom strategies
-
-0
-
-20
-
-50
-
-100
-
-AI trade plans
-
-❌
-
-✅
-
-✅
-
-✅
-
-AI portfolio P&L analysis
-
-❌
-
-✅
-
-✅
-
-✅
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="160;99;110;110;110"><colgroup><col style="width: 35.81%;"> <col style="width: 16.25%;"> <col style="width: 14.84%;"> <col style="width: 15.04%;"> <col style="width: 18.06%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Feature</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Starter</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Plus</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Pro</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Max</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI chat</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI recommendations</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>❌</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Custom strategies</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>0</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>20</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>50</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>100</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI trade plans</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>❌</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI portfolio P&amp;L analysis</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>❌</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>✅</div></td></tr></tbody></table>
 
 ## **Usage Limits**
 
@@ -172,45 +88,13 @@ AI portfolio P&L analysis
 
 ## **When your weekly quota is used up:**
 
-Feature
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="234;354"><colgroup><col style="width: 40%;"> <col style="width: 60%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Feature</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Impact</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI chat</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>You cannot send new messages until your quota refreshes or you upgrade your plan.</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>AI recommendations/trade plans/portfolio P&amp;L analysis</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Longbridge AI cannot generate new analysis.</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Tool calls</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Agents cannot call tools to retrieve data</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Custom strategies</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Strategies that require AI inference cannot be executed.</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Chat history</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Not affected. Existing conversations remain available for viewing.</div></td></tr></tbody></table>
 
-Impact
-
-AI chat
-
-You cannot send new messages until your quota refreshes or you upgrade your plan.
-
-AI recommendations/trade plans/portfolio P&L analysis
-
-Longbridge AI cannot generate new analysis.
-
-Tool calls
-
-Agents cannot call tools to retrieve data
-
-Custom strategies
-
-Strategies that require AI inference cannot be executed.
-
-Chat history
-
-Not affected. Existing conversations remain available for viewing.
-
-When your weekly quota has been used up, the system will display "Weekly usage has been used up." You can either wait for your quota to refresh automatically next week or upgrade to a higher-level subscription plan for additional quotas immediately.
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="659"><colgroup><col style="width: 100%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>When your weekly quota has been used up, the system will display "Weekly usage has been used up." You can either wait for your quota to refresh automatically next week or upgrade to a higher-level subscription plan for additional quotas immediately.</div></td></tr></tbody></table>
 
 ### **Payment Methods**
 
-Platform
-
-Payment Method
-
-iOS (LBUS App)
-
-Apple in-app purchase
-
-Android / Web
-
-Stripe (credit/debit card)
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="200;200"><colgroup><col style="width: 50%;"> <col style="width: 50%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Platform</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Payment Method</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>iOS (LBUS App)</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Apple in-app purchase</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Android / Web</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>Stripe (credit/debit card)</div></td></tr></tbody></table>
 
 -   Subscriptions renew automatically monthly and can be canceled anytime
 

@@ -56,9 +56,6 @@ By default, margin investing is **enabled** on new accounts.
 
 To disable margin investing, you must first repay any outstanding margin loan in full and resolve any open short positions. The toggle will be grayed out and unavailable if:
 
-SituationWhat you'll see
-| You have an outstanding debit balance | "You cannot disable margin investing due to an outstanding debit. Please settle the balance first and try again later." |
-| You have open short positions or pending orders | "You cannot Disable margin investing with open short positions or pending orders. Please resolve these first to avoid a potential account deficit upon settlement." |
-| You have both an outstanding debit balance and open short positions | "You cannot disable margin until your debit balance, open shorts, or pending orders are resolved. Please address these first and try again later." |
+<table class="wysiwyg-table-resized" style="border-collapse: collapse;"><colgroup><col style="width: 36.82%;"> <col style="width: 63.18%;"></colgroup><tbody><tr><td style="text-align: center;">Situation</td><td style="text-align: center;">What you'll see</td></tr><tr><td>You have an outstanding debit balance</td><td>"You cannot disable margin investing due to an outstanding debit. Please settle the balance first and try again later."</td></tr><tr><td>You have open short positions or pending orders</td><td>"You cannot Disable margin investing with open short positions or pending orders. Please resolve these first to avoid a potential account deficit upon settlement."</td></tr><tr><td>You have both an outstanding debit balance and open short positions</td><td>"You cannot disable margin until your debit balance, open shorts, or pending orders are resolved. Please address these first and try again later."</td></tr></tbody></table>
 
 If you attempt to confirm disabling margin investing and one of these conditions is detected, you'll see an error message (debit balance issues take priority over open short positions) and will need to resolve the issue before trying again.

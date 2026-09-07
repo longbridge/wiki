@@ -16,7 +16,7 @@ This promotion is intended to encourage new account funding and is not intended 
 
 ## **1\. Promotion Period**
 
-This promotion is valid from TBD, 2026, 12:00 AM ET – TBD, 2026, 11:59 PM ET (the “Promotion Period”).
+This promotion is valid from <span style="background-color: #F5D5D8;">TBD, 2026, 12:00 AM ET – TBD, 2026, 11:59 PM ET</span> (the “Promotion Period”).
 
 ## **2\. Eligibility**
 
@@ -62,41 +62,7 @@ Please note, deposits must both be initiated and fully settled during the Promot
 
 ### **5.1 Stock Rewards**
 
-**Qualified Funding Amount**
-
-**Reward Value**
-
-**Holding Period**
-
-$100
-
-$10 stock
-
-60 days
-
-$2,000
-
-$120 stock
-
-60 days
-
-$5,000
-
-$200 stock
-
-60 days
-
-$10,000
-
-$350 stock
-
-60 days
-
-$50,000
-
-$1,500 stock
-
-60 days
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="118;177;142"><colgroup><col style="width: 27%;"> <col style="width: 41%;"> <col style="width: 32%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Qualified Funding Amount</strong></div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Reward Value</strong></div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Holding Period</strong></div><div>&nbsp;</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$100</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$10 stock</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>60 days</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$2,000</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$120 stock</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>60 days</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$5,000</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$200 stock</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>60 days</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$10,000</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$350 stock</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>60 days</div></td></tr><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$50,000</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>$1,500 stock</div></td><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div>60 days</div></td></tr></tbody></table>
 
 -   Rewards are delivered as **fractional shares of stock**.
 

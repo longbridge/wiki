@@ -10,13 +10,9 @@ position: 0
 ---
 The _Transfer Assets Out_ feature allows you to move eligible positions from your Longbridge account to an account at another brokerage firm. Because this is a brokerage-to-brokerage transfer, your cost basis is preserved.
 
-**Important**
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="787"><colgroup><col style="width: 100%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Important</strong></div><div>A USD 75 fee is charged upon a successful transfer-out. Please ensure you have sufficient cash in your Longbridge account to cover this fee before submitting.</div></td></tr></tbody></table>
 
-A USD 75 fee is charged upon a successful transfer-out. Please ensure you have sufficient cash in your Longbridge account to cover this fee before submitting.
-
-**Note**
-
-To transfer assets out of Longbridge, you need to initiate the request from your receiving brokerage firm — not from the Longbridge app. Once the receiving brokerage submits the transfer request through the DTCC system, Longbridge will process the request accordingly.
+<table class="wysiwyg-table-resized" style="border-collapse: collapse; border-style: none;" data-ace-table-col-widths="794"><colgroup><col style="width: 100%;"></colgroup><tbody><tr style="height: 39px;"><td style="border-color: rgb(222, 224, 227); padding: 8px; vertical-align: top;" colspan="1" rowspan="1"><div><strong>Note</strong></div><div>To transfer assets out of Longbridge, you need to initiate the request from your receiving brokerage firm — not from the Longbridge app. Once the receiving brokerage submits the transfer request through the DTCC system, Longbridge will process the request accordingly.</div></td></tr></tbody></table>
 
 **Before You Begin**
 

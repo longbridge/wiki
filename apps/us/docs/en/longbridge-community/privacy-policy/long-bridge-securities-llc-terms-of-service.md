@@ -2,13 +2,13 @@
 title: Long Bridge Securities LLC Terms of Service
 zendesk_article_id: 14864594652431
 zendesk_section_id: 14864612550159
-zendesk_updated_at: '2026-06-22T07:13:05Z'
-zendesk_edited_at: '2026-06-22T07:13:05Z'
+zendesk_updated_at: '2026-09-04T08:35:44Z'
+zendesk_edited_at: '2026-09-04T08:35:44Z'
 source_url: 'https://longbridgeus.zendesk.com/hc/en-us/articles/14864594652431-Long-Bridge-Securities-LLC-Terms-of-Service'
 promoted: false
 position: 4
 ---
-Contents
+## Contents
 
 1\. Data Access and Registration
 
@@ -70,7 +70,7 @@ Before you start using our Services, please read these terms of service (“Term
 
 If you have any questions, comments or suggestions regarding the content of these Terms, you may contact us by email at [support@Longbridge.com](mailto:support@Longbridge.com).
 
-**1.** **Data Access and Registration**
+## **1.** **Data Access and Registration**
 
 i. Longbridge provides software products to you through the Internet. You are responsible for:
 
@@ -96,13 +96,13 @@ iv. Limitations.
 
 The software license does not represent a sale, transfer, or assignment of the original or any copy of the software. As agreed upon between you and Longbridge, Longbridge is the exclusive owner of the software and the Documentation including all rights, title and interest, copyrights, trade secrets and other proprietary intellectual property rights. In accordance with this Agreement, the software and the Documentation, and all updates, bug fixes, enhancements and other modifications thereof, remain the sole property of Longbridge, including all patents, copyrights, trademarks and other intellectual property rights.
 
-**2.** **Longbridge Account**
+## **2.** **Longbridge Account**
 
 Users will become a registered user of Longbridge after successfully registering over the Longbridge software and will obtain a Longbridge account containing a username and password and two-factor authentication information (“Logon Credentials”). Proprietary rights for the account will be owned by Longbridge, and Longbridge reserves its right to reclaim the account and temporarily or permanently suspend the account at any time and in its absolute discretion. Users may use and modify their account information as necessary. Users are responsible for securing the Logon Credentials for their account and bear all liability for the actions taken on or using their account. Longbridge is not liable for unauthorized access resulting from the loss or compromise of your device. Users must promptly notify Longbridge of any unauthorized or illegal use of your account, or if the user becomes aware of any security bug or incident, or if account security is in any way compromised. Longbridge will make all reasonable efforts to provide adequate security of your information.
 
 A Longbridge brokerage account can only be used by registered users. Access to and use of password-protected and/or secure areas of the Longbridge software are restricted to registered users only. You may not obtain or attempt to obtain unauthorized access to such parts of the Longbridge platform, or to any other protected information, through any means not intentionally made available by Longbridge for your specific use. Users agree not to provide or transfer their Logon Credentials to any third-party for use. In case of any breach thereof, Longbridge, in its sole discretion, can terminate the registered account, and has the right to take all measures that it deems necessary to prevent the unauthorized use or transfer of the Logon Credentials or account. Longbridge retains the right to take legal action against anyone that attempts to provide or otherwise transfer their account or Logon Credentials in violation of these Terms.
 
-**3.** **Terms of Use**
+## **3.** **Terms of Use**
 
 i. You agree to be legally bound by all relevant laws, regulations and other requirements and applicable provisions while using the Products, including:
 
@@ -130,7 +130,7 @@ v. In addition to complying with these Terms, you agree to use the market data i
 
 vi. If you maintain a joint accounts, each joint account holder agrees that each joint holder has authority, without notice to the other, to: (i) buy or sell securities, futures and other derivatives, or other products (including on margin); (ii) receive account confirmations and correspondence; (iii) receive and dispose of money, securities or other assets; (iv) enter, terminate, or agree to modify this Agreement; (v) waive any part of this Agreement; and (vi) deal with Longbridge as if each joint holder was the sole holder. Notice to any joint holder constitutes notice to all joint holders. Each joint account holder is jointly and severally liable to Longbridge for all account matters. Longbridge may follow instructions of any joint holder and make delivery of any account property to any joint account holder individually. Upon the death of any joint holder, the surviving holder shall provide immediate written Notice to Longbridge and Longbridge may, before or after receipt of Notice, initiate proceedings, require documents, retain or liquidate assets or restrict transactions as it deems advisable in its sole discretion to protect itself against any liability or loss. The estate of any deceased joint account holder and each surviving joint account holder will be liable, jointly and severally, to Longbridge for any debt or loss in the account or upon liquidation of the account. Unless you indicate otherwise, Longbridge may presume that joint account holders are joint tenants with rights of survivorship, and upon the death of any such joint tenant, the account shall be vested in the surviving holders, without in any manner releasing the deceased joint tenant's estate from liability.
 
-**4.** **Confidentiality**
+## **4.** **Confidentiality**
 
 A. Longbridge respects the individual and personal privacy of the user and will keep all personal information strictly confidential in accordance with the Longbridge Privacy Policy. Longbridge promises not to disclose any personal or other information provided to Longbridge in confidence, including information provided during the account registration process or collected by Longbridge while the user was using the Products, except for the following situations:
 
@@ -154,11 +154,11 @@ C. Subject to the limitations and protections in the Longbridge Privacy Policy a
 
 D. You authorize Longbridge, directly or through third parties, to make any inquiries that Longbridge considers necessary to conduct business with you. This may include ordering a credit report, performing other credit checks, and performing an investigation in the event of any default or breach of the obligations herein by you, or verifying the information you provide against third-party databases. Any information obtained is maintained in accordance with the Longbridge Privacy Policy.
 
-**5.** **Intellectual Property Rights**
+## **5.** **Intellectual Property Rights**
 
 The intellectual property rights (“IPR”) associated with the Products, including, trademarks, patents, copyrights, trade secrets, proprietary technology from supporting hardware and software, and contents of Longbridge (including any pictures, archives, information materials, system architectures and product designs), are the exclusive proprietary rights of Longbridge or any other legal owner. No person may use, modify, copy, broadcast and transmit in public, recompose, disseminate, distribute, publish, reverse engineer, decompile or disassemble without authorization. If a user intends to cite or reprint the above-mentioned software, procedures or product contents, he/she must obtain in advance written consent of Longbridge or other legal right owners. You understand that IPRs are critical to the success of Longbridge, and if the provisions of this section are violated, you will be liable to Longbridge or the appropriate affiliate for compensatory damages, including court costs and attorneys’ fees.
 
-**6.** **Warranty Disclosures**
+## **6.** **Warranty Disclosures**
 
 THE SOFTWARE AND THE DOCUMENTATION ARE PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND, EXPRESS, STATUTORY, OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR USE, PURPOSE OR APPLICATION; NON-INFRINGEMENT; TIMELINESS; FREEDOM FROM INTERRUPTION; OR ANY IMPLIED WARRANTIES ARISING FROM TRADE USAGE, COURSE OF DEALING OR COURSE OF PERFORMANCE. UNDER NO CIRCUMSTANCES SHALL LONGBRIDGE (OR ANY AGENT, OFFICER, DIRECTOR, OR AFFILIATE OF LONGBRIDGE) BE LIABLE FOR ANY PUNITIVE, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL LOSS OR DAMAGES, INCLUDING LOSS OF BUSINESS, PROFITS OR GOODWILL.  LONGBRIDGE SHALL NOT BE LIABLE TO YOU BY REASON OF DELAYS OR INTERRUPTIONS OF SERVICE OR TRANSMISSIONS, OR FAILURES OF PERFORMANCE OF THE SOFTWARE, REGARDLESS OF CAUSE, INCLUDING, BUT NOT LIMITED TO:  THOSE CAUSED BY HARDWARE OR SOFTWARE MALFUNCTION; GOVERNMENTAL, EXCHANGE OR OTHER REGULATORY ACTION; ACTS OF GOD; WAR, TERRORISM, PUBLIC HEALTH EVENTS (INCLUDING ANY PANDEMIC); ANY OTHER CIRCUMSTANCES NOT WITHIN LONGBRIDGE’S REASONABLE CONTROL WHETHER OR NOT IT COULD HAVE BEEN ANTICIPATED OR FORESEEN; LONGBRIDGE INTENTIONAL ACTS; OR LONGBRIDGE FAILURE TO ACT TO PREVENT SERVICE DISRUPTION OR SYSTEM FAILURE. YOU RECOGNIZE THAT THERE MAY BE DELAYS OR INTERRUPTIONS IN THE USE OF THE SOFTWARE, INCLUDING, FOR EXAMPLE, THOSE CAUSED INTENTIONALLY BY LONGBRIDGE FOR PURPOSES OF SERVICING OR UPDATING THE SOFTWARE. NOTHING IN THIS AGREEMENT REPRESENTS A CONTRACTUAL PROMISE OF WARRANTY TO YOU REGARDING LONGBRIDGE'S COMPLIANCE WITH APPLICABLE LAWS, RULES, OR REGULATIONS. NOR IS ANYTHING IN THIS AGREEMENT INTENDED TO CREATE A CONTRACTUAL OR PRIVATE CAUSE OF ACTION FOR ANY NON-COMPLIANCE WITH APPLICABLE LAWS, RULES (INCLUDING, BUT NOT LIMITED TO RULES OF ANY EXCHANGE, MARKET CENTER, OR CLEARINGHOUSE) OR REGULATIONS. LONGBRIDGE SPECIFICALLY DISCLAIMS ANY SUCH WARRANTY OR OBLIGATION.
 
@@ -166,15 +166,15 @@ THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE AND THE DOCUME
 
 Notwithstanding the above, you may have certain warranty rights which vary from state to state, and which cannot be disclaimed by contract. Any warranties that, by law, survive the foregoing disclaimers shall terminate ninety (90) days from the date you initiated use of the software as shown by records maintained by Longbridge. Some states do not allow limitations on how long an implied warranty lasts, so the foregoing limitation may not apply to you, if prohibited by law.
 
-**7.** **Limitation of Liability.**
+## **7.** **Limitation of Liability.**
 
 YOUR SOLE REMEDIES AND LONGBRIDGE’S ENTIRE LIABILITY ARE SET FORTH IN THIS AGREEMENT. TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE LAWS, IN NO EVENT WILL COMPANY BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES UNDER THIS AGREEMENT, INCLUDING WITHOUT LIMITATION ANY SUCH DAMAGES RESULTING FROM THE USE OF THE SOFTWARE OR THE DOCUMENTATION, THE INABILITY BY YOU TO USE THE SOFTWARE OR THE DOCUMENTATION, OR ANY DEFECT IN THE SOFTWARE OR ERROR IN THE DOCUMENTATION, INCLUDING ANY LOST PROFITS, EVEN IF LONGBRIDGE HAS BEEN ADVISED OF OR COULD REASONABLY HAVE FORESEEN THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT WILL LONGBRIDGE’S TOTAL LIABILITY TO YOU FOR ANY DAMAGES, LOSSES, AND CAUSES OF ACTION (WHETHER IN CONTRACT, TORT, INCLUDING NEGLIGENCE, OR OTHERWISE) EXCEED THE AMOUNT YOU PAID TO LONGBRIDGE DURING YOUR USE OF THE SOFTWARE LICENSE AND DOCUMENTATION. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF RELIEF, INCIDENTAL, CONSEQUENTIAL OR OTHER TYPES OF DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU. YOU AGREE THAT LONGBRIDGE WILL NOT BE LIABLE FOR THE DEFENSE OR INDEMNITY WITH RESPECT TO ANY CLAIM AGAINST YOU BY ANY THIRD PARTY ARISING FROM YOUR POSSESSION OR USE OF THE SOFTWARE OR THE DOCUMENTATION.
 
-**8.** **Indemnification**
+## **8.** **Indemnification**
 
 You agree to indemnify, hold harmless and defend Longbridge, its affiliates, and their respective officers, directors, employees, agents, and representatives from and against any and all liabilities, losses, costs, judgments, penalties, claims, actions, damages, or expenses (collectively, “Losses”) arising from or relating to: (i) any action taken in reliance on any representation, information or instruction received from you; (ii) Your breach of this Agreement; (iii) any action taken by Longbridge to enforce its rights under this Agreement; (iv) any inquiry, information request, exchange or regulatory investigation, or other action by a third party related to your trading or your use of the Services, including your assets, liabilities, transactions, instructions, actions, or inactions; (v) Your infringement or other violation of any intellectual property or other proprietary right held by Longbridge or its affiliates; in each instance with respect to clauses (i) through (v), except to the extent that such Losses directly result from gross negligence, fraud, or willful misconduct on the part of Longbridge.
 
-**9.** **Trading Arrangements**
+## **9.** **Trading Arrangements**
 
 i.  Acknowledgment of Alternative Trading Arrangements
 
@@ -230,11 +230,11 @@ xii. Quotes, Market Information, Research and Internet Links
 
 Quotes, news, research, and information accessible through Longbridge tools and services (including through links to outside websites) ("Information") may be prepared and/or provided by third parties ("Providers"). The Information is the property of the Provider or their licensors, who are solely responsible for its content, and is protected by law. You agree not to reproduce, distribute, sell or commercially exploit the Information in any manner without written consent of the Provider. Longbridge reserves the right to terminate access to the Information. None of the Information constitutes a recommendation by Longbridge or a solicitation to buy or sell. Longbridge, its affiliates, and the Providers do not guarantee accuracy, timeliness, or completeness of the Information, and you should consult an advisor before making investment decisions. Reliance on quotes, data or other information is at your own risk. Longbridge THERE IS NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, REGARDING THE INFORMATION, INCLUDING WARRANTY OF MERCHANTABILITY, WARRANTY OF FITNESS FOR A PARTICULAR USE OR WARRANTY OF NON-INFRINGEMENT.
 
-**10.** **Proprietary Trading - Display of Customer Orders**
+## **10.** **Proprietary Trading - Display of Customer Orders**
 
 You authorize Longbridge to execute proprietary trades for itself and its affiliates, even though Longbridge may simultaneously hold unexecuted client orders for the same products at the same price. You further agree that Longbridge may trade with you for its own account or for a Longbridge affiliate or another client and may earn a profit on those trades.
 
-**11.** **Compliance with Rules and Laws**
+## **11.** **Compliance with Rules and Laws**
 
 Without limiting any other provision of this Agreement, you agree to comply with all laws, rules, and regulations applicable to the export of the software or the Documentation. Specifically, you shall not export, re-export or trans-ship the software or the Documentation thereof in violation of any United States laws and regulations which may from time to time be applicable. No part of the software or underlying information or technology may be downloaded or otherwise exported or re-exported:
 
@@ -242,15 +242,15 @@ i.  into any country to which the U.S. has embargoed goods; or
 
 ii. to anyone on the U.S. Commerce Department's List of Persons Denied US Export Privileges in compliance with the Export Administration Regulations including the Unverified List (BIS), Entity List (GPO), Specially Designated Nationals List (Treasury), Debarred List (State) and Nonproliferation Sanctions List (State). By using the Services, you are agreeing to the foregoing and you are representing and warranting that you are not located in, under the control of, or a national or resident of any country or named on any such list.
 
-**12.** **Compliance with Professional Trading and Large Trader Regulations**
+## **12.** **Compliance with Professional Trading and Large Trader Regulations**
 
 If you currently, or potentially, would qualify to be considered a professional trader or large trader by the U.S. Securities and Exchange Commission (SEC), the Financial Industry Regulatory Authority (FINRA), the Commodity Futures Trading Commission (CFTC), or any officially recognized regulatory or self-regulatory organization in the United States or abroad, you hereby understand and agree to adhere to the regulations and requirements set forth regarding operating in accordance with the applicable rules and regulations.
 
-**13.** **Regulated Persons and Entities; Control Persons and Insiders:**
+## **13.** **Regulated Persons and Entities; Control Persons and Insiders:**
 
 Unless you provide written Notice to Longbridge otherwise, you represent that you are not: a broker-dealer; futures commission merchant; regulated investment professional; or affiliate, associated person or employee thereof. You agree to submit a written Notice to Longbridge immediately if you become employed or associated with a broker-dealer, futures commission merchant or other type of regulated investment professional. You will provide Longbridge with immediate written Notice if you, or any person or entity affiliated with you or acting on your behalf, is or becomes an insider or control person with respect to any security listed on any exchange.
 
-**14.** **Data Disclosure**
+## **14.** **Data Disclosure**
 
 Longbridge data, including (i) market data from different securities exchanges and licensed third-party vendors; (ii) fundamental data such as financial reports, analysis data, and corporate actions; (iii) general news and information; (iv) educational material and information; and (v) other data, is available on the Longbridge application, Longbridge website, and any other Longbridge products and services. All proprietary market data is owned by the respective exchanges and their licensors. Longbridge data is not intended to provide financial, legal, tax, or investment advice or recommendations. Longbridge and its third-party data service providers do not guarantee the accuracy, completeness, timeliness, or availability of any information that they provide. Market data and other information may be subject to delays, omissions, interruptions, system failures, or other inaccuracies. Displayed prices may not represent the current National Best Bid or Offer (NBBO) or executable prices available in the market. Longbridge does not bear any legal responsibility to you for any loss or damage arising from any delay, error, omission, or inaccuracy in such market data or other data.
 
@@ -270,39 +270,39 @@ vii. Using a device that has been rooted or jailbroken decreases the security of
 
 viii. Hong Kong Stock Exchanges and Clearing Limited (“HKEx”) requires the following disclosure: HKEx Information Services Limited, its holding companies, and/or any subsidiaries of such holding companies endeavor to ensure the accuracy and reliability of the Information provided but do not guarantee its accuracy or reliability and accept no liability (whether in tort or contract or otherwise) for any loss or damage arising from any inaccuracies or omissions.
 
-**15.** **Confirmations and Trade Reporting Errors**
+## **15.** **Confirmations and Trade Reporting Errors**
 
 i.  Longbridge has no responsibility for your transmission of orders that are inaccurate or not received by Longbridge’s Clearing Broker and Clearing Broker may execute any order or trade on the terms actually received. You are bound by its trades as executed, if execution is consistent with your order as entered. Longbridge may, in its sole discretion, adjust your account to correct any error. You agree to promptly return to Longbridge any erroneous payment, transfer or distribution.
 
 ii. You will monitor each order until Longbridge confirms execution or cancellation. Confirmations of executions or cancellations may be delayed or erroneous reporting (e.g., due to computer system issues or other inaccuracies), or may be cancelled or adjusted by an exchange, market or dealer. You will submit Notice to Longbridge immediately (but in no event within more than one (1) business day) if: (i) you fail to receive an accurate confirmation; (ii) You receive a confirmation that is different than your order; or (iii) You receive a confirmation for an order that you did not place. If you fail to provide such Notice, Longbridge reserves the right to remove the trade from your account or require you to accept the trade, at Longbridge's sole discretion. You shall provide Longbridge with immediate Notice upon receipt of erroneous information in any account statement or other form not addressed in (i) - (iii) above.
 
-**16.** **External Links**
+## **16.** **External Links**
 
 Longbridge and/or the third-party providers may provide links to other websites or resources. Because neither Longbridge or the third-party providers have any control over such sites and resources, you acknowledge and agree that neither Longbridge nor the third-party providers are responsible for the availability or content of such external sites or resources. Longbridge and the third-party providers do not endorse and are not responsible for any content, advertising, products, or other materials on or available through such sites or resources, and you agree that your access to or use of such websites, content or services is entirely at your own risk. You further acknowledge and agree that neither Longbridge nor the third-party providers are responsible, directly or indirectly, for any damage or loss caused, or alleged to be caused, by or in connection with use of or reliance on, any such content, goods or services available on or through any such other site or resource.
 
-**17.** **Dispute Resolution**
+## **17.** **Dispute Resolution**
 
 i.  Any controversy or dispute arising from the software or the provision of Longbridge Services will be referred to and finally resolved by appropriate legal means in accordance with local laws and regulations.
 
 ii. In any dispute between you and Longbridge, both parties agree to settle the dispute through friendly negotiation or binding arbitration in accordance with the Customer Agreement.
 
-**18.** **Rights of Third Parties**
+## **18.** **Rights of Third Parties**
 
 No person or entity who is not a party to this Agreement shall have any right to enforce any of these Terms, regardless of whether such person or entity has been identified by name, as a member of a class or as answering a particular description. For the avoidance of doubt, this shall not affect the rights of any permitted assignee or transferee in accordance with the provisions of these Terms.
 
-**19.** **Amendments**
+## **19.** **Amendments**
 
 Longbridge, in its sole discretion, may amend, modify, or supplement this Agreement from time to time (each an “Amendment”). Company will post the updated Agreement on its website and notify you of such Amendment. Continued use of the Services will signify your acceptance and agreement to any such Amendment. A failure by Longbridge to enforce any provision of this Agreement will not constitute a present or future waiver of such provision nor limit the right for Longbridge to enforce such provision at a later time. Any waivers granted by Longbridge must be in writing to be effective. In the event of any question regarding the rights and obligations between you and Longbridge, the revised Terms shall govern.
 
-**20.** **Severability**
+## **20.** **Severability**
 
 If any term or provision of this Agreement is invalid, illegal, or unenforceable in any jurisdiction, such invalidity, illegality, or unenforceability shall not affect any other term or provision of this Agreement or invalidate or render unenforceable such term or provision in any other jurisdiction.
 
-**21.** **Titles/Headings**
+## **21.** **Titles/Headings**
 
 The titles and headings contained in this Agreement are included for convenience only and form no part of the Agreement between the Parties.
 
-**22.** **No Investment Advice**
+## **22.** **No Investment Advice**
 
 LONGBRIDGE AND ITS AFFILIATES ARE NOT FINANCIAL ADVISORS AND DO NOT OFFER ANY FINANCIAL ADVICE. ALL INVESTING INCURS RISK INCLUDING, BUT NOT LIMITED TO, THE LOSS OF PRINCIPAL AND YOU COULD LOSE MORE THAN YOUR INITIAL INVESTMENT.
 
@@ -312,19 +312,19 @@ ANY INFORMATION PROVIDED BY LONGBRIDGE REGARDING SPECIFIC INVESTMENTS OR TRADING
 
 INFORMATION PROVIDE BY LONGBRIDGE DOES NOT AND IS NOT INTENDED TO CONSIDER THE PARTICULAR FINANCIAL CONDITIONS, INVESTMENT OBJECTIVES, OR REQUIREMENTS OF INDIVIDUAL CUSTOMERS. BEFORE MAKING INVESTMENT DECISIONS, YOU SHOULD CONSIDER WHETHER IT IS SUITABLE FOR YOUR PARTICULAR CIRCUMSTANCES AND, AS NECESSARY, SEEK PROFESSIONAL ADVICE.
 
-**23.** **Service of Process**
+## **23.** **Service of Process**
 
 You agree that Longbridge may effect service of process for any legal proceeding, including but not limited to arbitration actions, by email and either first-class US mail or overnight mail delivery to the email address and mailing address you have most recently provided to Longbridge in connection with your Longbridge account.
 
-**24.** **Entire Agreement/Choice of Law**
+## **24.** **Entire Agreement/Choice of Law**
 
 This Agreement is governed by and construed in accordance with the substantive laws of New York, without giving effect to conflict-of-laws principles. The Agreement describes and encompasses the entire agreement between you and the Company, and supersedes all prior or contemporaneous agreements, representations, warranties and understandings with respect to the Services and the Documentation, and the subject matter of this Agreement.
 
-**25.** **Attorney's Fees**
+## **25.** **Attorney's Fees**
 
 With the exception of Longbridge's right to recover, from you, the cost of Longbridge's attorneys' fees under paragraph 9 hereunder, in all other instances, including but not limited to arbitration, mediation, litigation, inquiry, or any other matter or proceeding between or regarding you and Longbridge, Longbridge and you agree: (i) to bear their own legal costs, including attorney's fees; and (ii) waive rights to recover from the other party any such costs or fees incurred to the extent permissible under applicable law. Each party agrees to indemnify the other party for any costs or fees, including attorney's fees, incurred defending itself against any attempt by the other party to recover attorney's fees in violation of this provision.
 
-**26.** **Mandatory Arbitration**
+## **26.** **Mandatory Arbitration**
 
 i. This agreement contains a pre-dispute arbitration clause. By signing an arbitration agreement, the parties agree as follows:
 
