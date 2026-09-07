@@ -29,7 +29,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -141,6 +140,12 @@ html[theme="dark"] .lb-footer__logo--dark,
     flex-direction: column;
     align-items: flex-start;
   }
+  /* 竖排时 gap→margin 改纵向 (双类名提权，压过文件末尾的 base margin-left:24;
+     否则 column 下 margin-left 会把 logo 右推、左侧空出一块) */
+  .lb-footer__main.lb-footer__main > * + * {
+    margin-top: 24px;
+    margin-left: 0;
+  }
   .lb-footer__disclaimer {
     font-size: 12px;
   }
@@ -149,3 +154,6 @@ html[theme="dark"] .lb-footer__logo--dark,
 .lb-footer--home {
   background: var(--lb-footer-bg);
 }
+
+/* gap→margin(Chrome 80 无 flex gap) */
+.lb-footer__main > * + * { margin-left: 24px; }

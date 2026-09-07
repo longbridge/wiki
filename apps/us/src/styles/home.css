@@ -145,7 +145,6 @@
   margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
   width: 100%;
   max-width: 820px;
   height: 72px;
@@ -155,6 +154,8 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   box-sizing: border-box;
 }
+/* gap→margin(Chrome 80 无 flex gap):输入框与按钮间距 8 */
+.hero-search-wrap > * + * { margin-left: 8px; }
 @media (max-width: 900px) {
   .hero-search-wrap {
     height: 52px;
@@ -203,13 +204,16 @@
 }
 
 /* Hot tags: 实心 teal 胶囊 */
+/* gap→margin(Chrome 80 无 flex gap;换行容器用负 margin 抵消首行/首列偏移):
+   项间行列均 14;容器 margin-top 16-14=2、margin-left -14 抵回，视觉等价原 gap:14 + margin-top:16 */
 .hero-hot-tags {
-  margin-top: 16px;
+  margin-top: 2px;
+  margin-left: -14px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
 }
+.hero-hot-tags > * { margin-top: 14px; margin-left: 14px; }
 .hero-hot-tag {
   display: inline-flex;
   align-items: center;
@@ -228,7 +232,8 @@
 }
 .hero-hot-tag:hover { background: #00a5a5; }
 @media (max-width: 900px) {
-  .hero-hot-tags { gap: 10px; }
+  .hero-hot-tags { margin-top: 6px; margin-left: -10px; }
+  .hero-hot-tags > * { margin-top: 10px; margin-left: 10px; }
   .hero-hot-tag { padding: 0 16px; font-size: 16px; }
 }
 
@@ -281,7 +286,6 @@
 .catx-tabs {
   position: relative;
   display: flex;
-  gap: 40px;
   border-bottom: 1px solid transparent;
   margin-bottom: 24px;
   overflow-x: auto;
@@ -294,17 +298,17 @@
   /* 横向滚动两侧渐隐 (JS 设 --fade-l/r,Zendesk 8909) */
   --fade-l: 0px;
   --fade-r: 0px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
 }
 .catx-tabs::-webkit-scrollbar {
   display: none;
 }
+/* gap→margin(Chrome 80 无 flex gap):tab 之间 40;只作用于 tab，跳过绝对定位的 .catx__underline */
+.catx-tabs > .catx__tab + .catx__tab { margin-left: 40px; }
 
 .catx__tab {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
   padding: 10px 0;
   border: 0;
   background: none;
@@ -317,6 +321,8 @@
   flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
 }
+/* gap→margin(Chrome 80 无 flex gap):tab 内 icon 与文字间距 5 */
+.catx__tab > * + * { margin-left: 5px; }
 /* 点击/聚焦不留背景 (仅换文字色 + 下划线) */
 .catx__tab:hover,
 .catx__tab:focus,
@@ -380,7 +386,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
   min-height: 92px;
   box-sizing: border-box;
   padding: 32px 20px;
@@ -391,6 +396,8 @@
   text-decoration: none;
   transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
 }
+/* gap→margin(Chrome 80 无 flex gap):icon / body / arrow 间距 12 */
+.catx-card > * + * { margin-left: 12px; }
 .catx-card:hover {
   box-shadow: 0 6px 24px rgba(43, 62, 92, 0.14);
   border-color: var(--accent-teal);

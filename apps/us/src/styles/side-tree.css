@@ -15,7 +15,6 @@
 .side-tree__cat-head {
   display: flex;
   align-items: center;
-  gap: 14px;
   width: 100%;
   padding: 16px 2px;
   background: transparent;
@@ -77,7 +76,6 @@
 .side-tree__sec-head {
   display: flex;
   align-items: center;
-  gap: 14px;
   width: 100%;
   padding: 9px 2px 9px 36px;
   background: transparent;
@@ -321,3 +319,7 @@ html[theme="dark"] .lb-cat-drawer__close:hover,
     color: #e2e8f0;
   }
 }
+
+/* gap→margin(Chrome 80 无 flex gap) */
+.side-tree__cat-head > * + * { margin-left: 14px; }
+.side-tree__sec-head > * + * { margin-left: 14px; }

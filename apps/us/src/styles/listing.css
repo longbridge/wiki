@@ -14,14 +14,12 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
   align-items: center;
   color: var(--muted-foreground);
 }
 .breadcrumb-item {
   display: flex;
   align-items: center;
-  gap: 4px;
 }
 .breadcrumb-item:not(:first-child)::before {
   content: '›';
@@ -53,9 +51,9 @@
     align-items: baseline;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 16px;
     margin: 0;
   }
+  .page-header > * + * { margin-left: 16px; }
 }
 .page-header h1 {
   flex-grow: 1;
@@ -152,7 +150,6 @@
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
-  gap: 6px;
 }
 .article-list-item:first-child {
   border-top: 1px solid var(--border);
@@ -224,3 +221,9 @@
   background: var(--border);
   margin: 0;
 }
+
+/* gap→margin(Chrome 80 无 flex gap) */
+.breadcrumb > * + * { margin-left: 4px; }
+/* breadcrumb-item 内只有 ::before(›)+ 单链接，> * + * 够不着;给分隔符右距 4 */
+.breadcrumb-item:not(:first-child)::before { margin-right: 4px; }
+.article-list-item > * + * { margin-left: 6px; }
