@@ -23,9 +23,12 @@
 .article-page__aside {
   grid-row: 1 / 3;
   position: sticky;
-  top: 56px;
+  /* 黏在 header 正下方：用 --lb-header-h(80px，与 fixed header 同高) 而非旧的 56px。
+     header 早先由 56 改到 80 时这里没跟着改，导致侧栏黏得比 header 低 24px、顶部几行滑到
+     固定 header 底下被遮，看着像跟随滚动。绑定变量后永不漂移。 */
+  top: var(--lb-header-h);
   align-self: start;
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - var(--lb-header-h));
   overflow-y: auto;
   /* 禁止横向滚动 / 触摸横向拖动：只允许竖直滚动 */
   overflow-x: hidden;
@@ -176,6 +179,8 @@ html[theme="dark"] .article-page__aside::-webkit-scrollbar-thumb {
 
 .article-body ol {
   list-style: decimal;
+  /* 同 ul:清掉浏览器默认 padding-left，缩进只保留共用规则的 margin-left 20px */
+  padding-left: 0;
 }
 
 .article-body li {
@@ -279,6 +284,9 @@ html[theme='dark'] .article-body img,
   padding: 8px 12px;
   text-align: left;
   vertical-align: top;
+  /* 每格最小宽度 150:窄列 (Zendesk col-widths 常见 110~168) 不再把 "Best for" 挤成两行;
+     整表超出正文宽时由外层 figure/table 的 overflow-x:auto 横向滚动 (#118) */
+  min-width: 150px;
   /* 覆盖 .article-body 的 word-break:break-word:单元格按词断行，不再把 "Price" 拆成 "Pric e";
      仍允许超长词 (如长 URL) 必要时断行 */
   word-break: normal;
