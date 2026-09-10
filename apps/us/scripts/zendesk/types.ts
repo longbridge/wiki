@@ -6,6 +6,7 @@ export interface Category {
   id: number
   name: string
   position: number
+  created_at: string
   description: string
   html_url: string
   source_locale: string
@@ -16,6 +17,7 @@ export interface Section {
   name: string
   category_id: number
   position: number
+  created_at: string
   description: string
   html_url: string
   source_locale: string

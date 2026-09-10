@@ -201,11 +201,8 @@
       const code = btn.dataset.regionCode
       if (!code) return
 
-      // Set cookie: 1 year via max-age (clock-skew-robust), path=/, SameSite=Lax
-      document.cookie = 'region=' + code + ';path=/;max-age=31536000;SameSite=Lax'
-
-      // Navigate to region root
-      window.location.assign('/' + code + '/')
+      // 切地区 → 跳转到对应地区官网首页 (longbridge.com/us|sg|hk...)
+      window.location.assign('https://longbridge.com/' + code)
     })
   })
 })()

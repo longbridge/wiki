@@ -9,9 +9,9 @@ export interface NavArticle { slug: string; title: string; path: string; promote
 export interface NavSection { slug: string; title: string; overviewPath: string; firstArticlePath: string; articles: NavArticle[] }
 export interface NavCategory { slug: string; title: string; overviewPath: string; firstArticlePath: string; sections: NavSection[] }
 
-// 顶级分类顺序：同旧 NAV_TABS_US(packages/shared/src/config/tabs.config.ts:69-106),写死。
-// Verified against tabs.config.ts: categories match exactly in this order.
-// 分类展示顺序，对齐 Zendesk 线上 category.position(mega / sidebar 共用)。
+// 分类展示顺序的 fallback:正常由 sync 生成的根 docs/en/_order.json(按 Zendesk category.position)
+// 驱动，nav.ts 读它传给 buildNavFromRaw;仅当该文件缺失时用下面写死顺序兜底。无当前 position 的老分类
+// (如 opening-an-account) 由 orderedMerge 追加到末尾。
 export const CATEGORY_ORDER = [
   'ai-related',
   'trading-and-investing',
@@ -75,55 +75,21 @@ export function buildNavFromRaw(docs: RawDoc[], orders: Record<string, string[]>
   return cats
 }
 
-/** Pure: filter promoted articles per category, sorted by updatedAt DESC (empty string sorts last). */
-export function selectPromotedByCategory(nav: NavCategory[]): Map<string, NavArticle[]> {
-  const out = new Map<string, NavArticle[]>()
-  for (const cat of nav) {
-    const promoted = cat.sections
-      .flatMap((s) => s.articles)
-      .filter((a) => a.promoted)
-      .sort((a, b) => {
-        if (!a.updatedAt && !b.updatedAt) return 0
-        if (!a.updatedAt) return 1  // empty string sorts last
-        if (!b.updatedAt) return -1
-        return b.updatedAt.localeCompare(a.updatedAt) // DESC
-      })
-    if (promoted.length) out.set(cat.slug, promoted)
-  }
-  return out
-}
-
 export interface CatxCard { title: string; path: string; sectionTitle: string }
 
 const CATX_CARD_LIMIT = 12
 
 /**
- * Promoted-preferred card selection per category.
- * Falls back to the first up-to-CATX_CARD_LIMIT articles (in _order.json order
- * as built by buildNavFromRaw) when a category has NO promoted articles — this
- * ensures all 6 categories appear even when zero articles are promoted.
+ * 每个分类取前 CATX_CARD_LIMIT 篇文章的卡片，顺序 = nav 顺序 (section 拉平，已按
+ * Zendesk position + created_at DESC 排好，见 _order.json)。所有分类都出，promoted
+ * 不参与 (对齐 Zendesk 原生 mega / 分类展示)。
  */
 export function selectCatxCards(nav: NavCategory[]): Map<string, CatxCard[]> {
   const out = new Map<string, CatxCard[]>()
   for (const cat of nav) {
-    const withSection = cat.sections.flatMap((s) =>
-      s.articles.map((a) => ({ article: a, sectionTitle: s.title }))
-    )
-    const promoted = withSection.filter(({ article }) => article.promoted)
-    // Zendesk catx 只显示含 promoted 文章的分类 (promoted-only，无 fallback)。
-    // 无 promoted 的分类不出现在 Helpful Topics(仍存在于 mega / 侧栏)。
-    if (promoted.length === 0) continue
-    const source = promoted.sort((a, b) => {
-      if (!a.article.updatedAt && !b.article.updatedAt) return 0
-      if (!a.article.updatedAt) return 1
-      if (!b.article.updatedAt) return -1
-      return b.article.updatedAt.localeCompare(a.article.updatedAt)
-    })
-    const cards: CatxCard[] = source.slice(0, CATX_CARD_LIMIT).map(({ article, sectionTitle }) => ({
-      title: article.title,
-      path: article.path,
-      sectionTitle,
-    }))
+    const cards: CatxCard[] = cat.sections
+      .flatMap((s) => s.articles.map((a) => ({ title: a.title, path: a.path, sectionTitle: s.title })))
+      .slice(0, CATX_CARD_LIMIT)
     if (cards.length > 0) out.set(cat.slug, cards)
   }
   return out

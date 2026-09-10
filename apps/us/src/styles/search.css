@@ -194,11 +194,20 @@
   display: flex;
   align-items: center;
   padding: 10px 14px;
-  color: #333;
+  color: #111;
   text-decoration: none;
   min-width: 0;
+  /* 重置 <button> 的 UA 默认灰底 + outset 边框 (#113 丑方块根因)→ 扁平行 */
+  background: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
 }
-.lb-search-modal__history-item:hover { text-decoration: none; color: #111; }
+/* hover:整行浅灰 (见 .history-row:hover)+ 标题变 teal(对齐 Zendesk #114);
+   用 --accent-teal 对齐面包屑 / 相关文章链接的 hover 口径 */
+.lb-search-modal__history-row:hover .lb-search-modal__history-title { color: var(--accent-teal); }
 
 .lb-search-modal__history-icon { color: #aaa; flex-shrink: 0; }
 

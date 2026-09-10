@@ -1,6 +1,6 @@
 /* Header styles */
 
-:root { --lb-header-h: 56px; }
+:root { --lb-header-h: 80px; }
 @media (max-width: 768px) {
   :root { --lb-header-h: 71px; }
 }
@@ -14,10 +14,18 @@
   width: 100%;
   z-index: 200;
   min-height: var(--lb-header-h);
-  background: var(--background);
-  border-bottom: 1px solid var(--border);
+  /* 毛玻璃：半透明 + backdrop-blur(复刻营销站 nav-frosted)。只写无前缀，
+     -webkit- 由 lightningcss 按 safari13 目标补。滚动/非首页态用此底，不再实心白。 */
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: none;
+  /* 阴影常驻：去边框后靠它把导航与正文分隔 (文章页/非首页顶部也可见);
+     仅 home 透明 over-hero 态关掉 (见下方 header--transparent 规则)。 */
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
+html[theme="dark"] .lb-header,
+.theme-dark .lb-header { background: rgba(20, 22, 28, 0.72); }
 
 /* Fixed header offset: content clears the bar; home hero fills up under it. */
 main#main-content { padding-top: var(--lb-header-h); }
@@ -26,15 +34,18 @@ body.lb-has-hero main#main-content { padding-top: 0; }
 /* Home transparent state — JS adds .header--transparent when a .hero is present */
 .lb-header.header--transparent:not(.is-scrolled) {
   background: transparent;
+  backdrop-filter: none;
   border-bottom-color: transparent;
+  box-shadow: none;
 }
 
-/* Scrolled state */
+/* Scrolled state — 毛玻璃 (半透明 + base 的 backdrop-blur),不再实心白底 */
 .lb-header.is-scrolled {
-  background: var(--background);
-  border-bottom-color: var(--border);
+  background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
 }
+html[theme="dark"] .lb-header.is-scrolled,
+.theme-dark .lb-header.is-scrolled { background: rgba(20, 22, 28, 0.72); }
 
 .lb-header__inner {
   display: flex;
@@ -84,29 +95,43 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 .lb-topnav__link {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
-  font-size: 14px;
-  font-weight: 500;
+  height: 40px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   color: var(--foreground);
   text-decoration: none;
-  border-radius: 6px;
-  border: none;
+  border-radius: 9999px;
+  /* 常驻透明 0.5px 边：选中态换成可见色时不产生宽度跳动 (对齐参考 border border-transparent 基线) */
+  border: 0.5px solid transparent;
   background: none;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, backdrop-filter 0.15s, transform 0.15s;
 }
 
+/* hover:仅淡底胶囊 (对齐参考 hoverPillBg，不叠边框/阴影) */
 .lb-topnav__link:hover {
-  background: var(--muted);
+  background: rgba(var(--foreground-rgb), 0.06);
+}
+/* 按下微缩 (对齐参考非选中项 active:scale-95) */
+.lb-topnav__link:active {
+  transform: scale(0.97);
+}
+/* 选中态:All Topics 下拉展开 = 参考选中项胶囊 (淡底 + 0.5px 细边 + 投影 + 毛玻璃)。
+   用户明确要求「选中态 = 背景色 + border」，优先于「默认不加 border」的通用审美。 */
+[data-lb-dropdown-trigger][aria-expanded="true"] {
+  background: rgba(var(--foreground-rgb), 0.1);
+  border-color: rgba(var(--foreground-rgb), 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
 }
 
-/* Transparent header: keep dark text (hero is light-coloured) */
+/* Transparent header: keep dark text (hero is light-coloured);hover 底色沿用 base 的
+   rgba(fg,.06)，在 mint hero 上同样可读，故不再单独覆盖 */
 .lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link {
   color: #0a0e19;
-}
-.lb-header.header--transparent:not(.is-scrolled) .lb-topnav__link:hover {
-  background: var(--muted);
 }
 
 .lb-topnav__chevron {
@@ -121,30 +146,36 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
    Override the inherited .lb-topnav__link rectangle styling. */
 .lb-topnav__search-label { display: none; }
 
-/* ---- Unified right-side icon button (search / region / theme / github) ----
-   透明底方格 + 轻 hover。颜色用 --foreground(浅色=#0a0e19，与 mint hero 上已认可
-   的图标色及导航文字一致),避免滚动到白底后变成 muted 灰而显得「变淡」。
-   注：本行是 4 个无文字图标的簇，与 Zendesk 单个带标签的搜索图标 (muted) 语境不同，
-   故此处不套用 Zendesk 的 muted 搜索色。 */
+/* 圆形玻璃图标钮 (复刻 Longbridge 营销站 nav 右侧图标的浅色/frosted 变体):
+   40px 圆 + 玻璃底 + 细边 + 阴影 + active 缩放;底/边用 rgba(var(--foreground-rgb),x)
+   自动跟随明暗主题。深色图标在 mint hero(#C2FFF7) 与滚动后白底上都可读，故不做白色版
+   (hero 太浅，白字/白钮不可读)。用户显式要复刻参考的圆形玻璃质感，细边为其质感一部分，
+   优先于「默认不加 border」的通用审美。 */
 .lb-icon-btn {
   display: inline-grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: transparent;
+  border: 0.5px solid rgba(var(--foreground-rgb), 0.1);
+  border-radius: 50%;
+  background: rgba(var(--foreground-rgb), 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   color: var(--foreground);
   cursor: pointer;
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
 }
-.lb-icon-btn:hover { color: var(--foreground); background: var(--muted); }
+.lb-icon-btn:hover { color: var(--foreground); background: rgba(var(--foreground-rgb), 0.1); }
+.lb-icon-btn:active { transform: scale(0.95); }
 .lb-icon-btn svg { display: block; }
-/* Transparent (mint hero) state: dark icons + subtle tinted hover */
-.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn { color: #0a0e19; }
-.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn:hover { background: rgba(15, 23, 42, 0.06); }
+/* Transparent (mint hero，恒浅) 上：强制深色图标 + 深色微玻璃圆，保证在 #C2FFF7 上可读 */
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn {
+  color: #0a0e19;
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+.lb-header.header--transparent:not(.is-scrolled) .lb-icon-btn:hover { background: rgba(15, 23, 42, 0.1); }
 
 /* ---- Dropdown container ---- */
 .lb-topnav__dropdown {
@@ -216,16 +247,6 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
-}
-.lb-mega__cat-badge {
-  flex: none;
-  padding: 2px 7px;
-  border-radius: 9999px;
-  background: rgba(0, 184, 184, 0.16);
-  color: var(--accent-teal);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
 }
 .lb-mega__cat-count {
   flex: none;
@@ -329,9 +350,9 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 
 /* ---- Region switch (globe .lb-icon-btn + popover) ---- */
 .lb-region { position: relative; }
-[data-lb-region-trigger][aria-expanded="true"] { color: var(--foreground); background: var(--muted); }
+[data-lb-region-trigger][aria-expanded="true"] { color: var(--foreground); background: rgba(var(--foreground-rgb), 0.1); }
 .lb-header.header--transparent:not(.is-scrolled) [data-lb-region-trigger][aria-expanded="true"] {
-  background: rgba(15, 23, 42, 0.06);
+  background: rgba(15, 23, 42, 0.1);
 }
 
 /* Region popover — mirrors the hk/sg region/language panel (single card, section title, rows) */
@@ -374,18 +395,12 @@ html[theme="dark"] .lb-header.header--transparent:not(.is-scrolled) .lb-logo--da
 }
 .lb-region__option:hover { background: var(--muted); }
 .lb-region__option.is-active { background: var(--muted); font-weight: 500; }
+/* 相邻项留 4px，避免 hover/active 底色贴到一起 */
+.lb-region__option + .lb-region__option { margin-top: 4px; }
 .lb-region__check { color: var(--accent-teal); flex-shrink: 0; }
+.lb-region__flag { width: 22px; height: 22px; border-radius: 50%; flex: none; display: block; }
+.lb-region__text { flex: 1; }
 
-/* ---- Theme toggle icons: sun (dark mode) / moon (light mode) ----
-   Scoped to .lb-theme-toggle (0,2,0) so these beat the blanket
-   `.lb-icon-btn svg { display:block }` rule (0,1,1); otherwise the sun is
-   force-shown and both icons stack. */
-.lb-theme-toggle .lb-theme-icon--sun  { display: none; }
-.lb-theme-toggle .lb-theme-icon--moon { display: block; }
-html[theme="dark"] .lb-theme-toggle .lb-theme-icon--sun,
-.theme-dark .lb-theme-toggle .lb-theme-icon--sun  { display: block; }
-html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
-.theme-dark .lb-theme-toggle .lb-theme-icon--moon { display: none; }
 
 /* ---- Mobile search ---- */
 .lb-header__mobile-search {
@@ -437,8 +452,6 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
   /* Hide desktop elements (线上移动端只保留 search + 汉堡) */
   .lb-topnav      { display: none; }
   .lb-region      { display: none; }
-  .lb-header__github { display: none; }
-  .lb-theme-toggle { display: none; }
 
   /* search / 汉堡:36×36 圆底 (对齐线上移动端) */
   .lb-header__mobile-search,
@@ -486,7 +499,9 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
 
 
 /* gap→margin(Chrome 80 无 flex gap):等价原容器 gap，仅 margin-left/top */
-.lb-header__inner > * + * { margin-left: 8px; }
+/* topnav↔actions = 搜索图标↔地球图标 12px (#117);logo↔topnav 那侧由 logo 的
+   margin-right:auto 主导，此 12 被 auto 吸收，不影响 logo 间距 */
+.lb-header__inner > * + * { margin-left: 12px; }
 .lb-topnav > * + * { margin-left: 4px; }
 .lb-topnav__link > * + * { margin-left: 4px; }
 .lb-mega__left > * + * { margin-top: 4px; }
@@ -498,5 +513,5 @@ html[theme="dark"] .lb-theme-toggle .lb-theme-icon--moon,
 .lb-mega__arts a::before { margin-right: 12px; }
 /* view-all:文字与箭头 svg 间距 8(子为文本节点 + 单 svg) */
 .lb-mega__view-all svg { margin-left: 8px; }
-.lb-header__actions > * + * { margin-left: 4px; }
+.lb-header__actions > * + * { margin-left: 8px; }
 .lb-region__option > * + * { margin-left: 12px; }

@@ -61,7 +61,8 @@
 @media (min-width: 901px) {
   .hero.hero--dark {
     background-size: 815px auto;
-    background-position: calc(50% + 235px) -104px;
+    /* y 从 -104 下移 50 到 -54:上 padding 由 159 调到 208(+49) 后内容下移，插图 (背景图) 顶部锚定需同步跟下 */
+    background-position: calc(50% + 235px) -54px;
   }
 }
 @media (max-width: 900px) {
@@ -81,7 +82,8 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 159px 5% 256px;
+  /* 上下 padding 对称，均 208 */
+  padding: 208px 5% 208px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -355,6 +357,7 @@
 /* Card grid */
 .catx__grid {
   display: grid;
+  /* 恒 2 列 (≤480 再降 1 列);中间宽度不再掉成 3 列——按要求永不展示 3 个/行 */
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
@@ -365,17 +368,7 @@
   display: none !important;
 }
 
-@media (max-width: 1024px) {
-  .catx__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .catx__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
+@media (max-width: 780px) {
   .catx__grid {
     grid-template-columns: 1fr;
   }
@@ -441,6 +434,23 @@
 /* 二级标题隐藏 (对齐 Zendesk 卡片) */
 .catx-card__sub {
   display: none;
+}
+
+/* ≤450px:卡片 + tab 都切成 App 的紧凑样式 (卡片 padding 16 + min-height 0 + 标题 15;tab 15)。
+   值同 whale.css 的 html.is-whale-app 覆写——两处若调整需一起改。
+   min-height 必须归 0，否则 base 的 92px 会吃掉 padding 变化、卡片高度不变。
+   tab 字号变会改 tab 宽度，下划线由 JS 按 resize 重算自动对齐，无需手动改。 */
+@media (max-width: 450px) {
+  .catx-card {
+    padding: 16px;
+    min-height: 0;
+  }
+  .catx-card__title {
+    font-size: 15px;
+  }
+  .catx__tab {
+    font-size: 15px;
+  }
 }
 
 /* Tab 切换淡入动画 (Zendesk catx-fade) */
