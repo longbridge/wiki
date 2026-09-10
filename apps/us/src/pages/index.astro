@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { getNav, getCatxCards } from '../lib/nav'
 import { withBase } from '../lib/paths'
 import { iconFor } from '../lib/catx-icons'
-import { CATEGORY_ORDER } from '../lib/nav-core'
 import '../styles/home.css'
 
 const HOT_TAGS = ['Crypto', 'Options', 'Fees', 'Login', 'Buying Power'] as const
@@ -13,8 +12,8 @@ const [nav, catxCards] = await Promise.all([getNav(), getCatxCards()])
 // category slug → display title
 const catTitles = new Map(nav.map((c) => [c.slug, c.title]))
 
-// Ordered list of categories that have catx cards (fallback ensures all 6 appear)
-const activeCats = CATEGORY_ORDER.filter((slug) => (catxCards.get(slug)?.length ?? 0) > 0)
+// 分类顺序取自 nav(已按 Zendesk category.position 排好);有卡片的分类都出
+const activeCats = nav.map((c) => c.slug).filter((slug) => (catxCards.get(slug)?.length ?? 0) > 0)
 
 // Pre-compute all card data in the frontmatter to avoid TypeScript generic
 // angle-bracket syntax issues inside JSX expressions.

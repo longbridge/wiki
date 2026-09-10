@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { orderedMerge, buildNavFromRaw, selectPromotedByCategory, selectCatxCards, CATEGORY_ORDER } from '../src/lib/nav-core'
+import { orderedMerge, buildNavFromRaw, selectCatxCards } from '../src/lib/nav-core'
 import type { NavCategory } from '../src/lib/nav-core'
 
 // 'ghost' 在 order 中但不在 actual 中 → 被跳过（不出现在输出）; extras 按字母序追加
@@ -51,34 +51,9 @@ const makeNav = (articles: { slug: string; promoted: boolean; updatedAt: string 
   },
 ]
 
-test('selectPromotedByCategory: 只含 promoted 文章，按 updatedAt DESC 排序', () => {
-  const nav = makeNav([
-    { slug: 'old', promoted: true, updatedAt: '2026-01-01' },
-    { slug: 'new', promoted: true, updatedAt: '2026-06-01' },
-    { slug: 'skip', promoted: false, updatedAt: '2026-09-01' },
-  ])
-  const result = selectPromotedByCategory(nav)
-  expect(result.has('cat-a')).toBe(true)
-  expect(result.get('cat-a')!.map((a) => a.slug)).toEqual(['new', 'old'])
-})
-
-test('selectPromotedByCategory: 空 updatedAt 排最后', () => {
-  const nav = makeNav([
-    { slug: 'dated', promoted: true, updatedAt: '2026-01-01' },
-    { slug: 'empty', promoted: true, updatedAt: '' },
-  ])
-  const result = selectPromotedByCategory(nav)
-  expect(result.get('cat-a')!.map((a) => a.slug)).toEqual(['dated', 'empty'])
-})
-
-test('selectPromotedByCategory: 无 promoted 文章时该分类不出现在 Map 中', () => {
-  const nav = makeNav([{ slug: 'art', promoted: false, updatedAt: '2026-01-01' }])
-  expect(selectPromotedByCategory(nav).has('cat-a')).toBe(false)
-})
-
 // ── selectCatxCards ──────────────────────────────────────────────────────────
 
-test('selectCatxCards: promoted-preferred — returns only promoted, sorted updatedAt DESC', () => {
+test('selectCatxCards: 全部文章按 nav 顺序返回，promoted 不置顶也不过滤', () => {
   const nav = makeNav([
     { slug: 'old-p', promoted: true, updatedAt: '2026-01-01' },
     { slug: 'new-p', promoted: true, updatedAt: '2026-06-01' },
@@ -87,7 +62,12 @@ test('selectCatxCards: promoted-preferred — returns only promoted, sorted upda
   const result = selectCatxCards(nav)
   expect(result.has('cat-a')).toBe(true)
   const cards = result.get('cat-a')!
-  expect(cards.map((c) => c.path)).toEqual(['/cat-a/sec-1/new-p', '/cat-a/sec-1/old-p'])
+  // nav 顺序即 makeNav 数组顺序;promoted 既不置顶也不过滤 (noprm 照常出现)
+  expect(cards.map((c) => c.path)).toEqual([
+    '/cat-a/sec-1/old-p',
+    '/cat-a/sec-1/new-p',
+    '/cat-a/sec-1/noprm',
+  ])
 })
 
 test('selectCatxCards: fallback — returns all articles in _order.json order when none promoted', () => {

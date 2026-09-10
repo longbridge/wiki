@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content'
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
-import { buildNavFromRaw, selectPromotedByCategory, selectCatxCards, type NavCategory, type NavArticle, type CatxCard, type RawDoc } from './nav-core'
+import { buildNavFromRaw, selectCatxCards, type NavCategory, type CatxCard, type RawDoc } from './nav-core'
 
 const DOCS_DIR = join(process.cwd(), 'docs/en')
 let cache: NavCategory[] | null = null
@@ -19,6 +19,12 @@ function loadOrders(): Record<string, string[]> {
   return orders
 }
 
+// 根 docs/en/_order.json:分类 slug 按 Zendesk category.position(sync 生成)。缺失则回退 nav-core 写死顺序。
+function loadCategoryOrder(): string[] {
+  const root = join(DOCS_DIR, '_order.json')
+  return existsSync(root) ? JSON.parse(readFileSync(root, 'utf8')) : []
+}
+
 export async function getNav(): Promise<NavCategory[]> {
   if (cache) return cache
   const entries = await getCollection('docs')
@@ -26,12 +32,9 @@ export async function getNav(): Promise<NavCategory[]> {
     id: e.id, title: e.data.title, promoted: e.data.promoted,
     position: e.data.position, updatedAt: e.data.zendesk_updated_at,
   }))
-  cache = buildNavFromRaw(raw, loadOrders())
+  const catOrder = loadCategoryOrder()
+  cache = buildNavFromRaw(raw, loadOrders(), catOrder.length ? catOrder : undefined)
   return cache
-}
-
-export async function getPromotedCards(): Promise<Map<string, NavArticle[]>> {
-  return selectPromotedByCategory(await getNav())
 }
 
 export async function getCatxCards(): Promise<Map<string, CatxCard[]>> {

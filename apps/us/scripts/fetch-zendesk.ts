@@ -202,8 +202,16 @@ async function syncLocale(client: ZendeskClient, zdLocale: string, fsLocale: str
   }
 
   // ── 生成 _order.json ─────────────────────────────────────
-  //   category 目录里:section slug 按 section.position ASC(合并去重)
-  //   section 目录里:article slug 按 (promoted DESC, position ASC)
+  //   根 en/ 目录里:category slug 按 category.position ASC
+  //   category 目录里:section slug 按 section.position ASC
+  //   section 目录里:article slug 按 article.position ASC
+  //   三级统一:position 升序;并列 (本站 position 多为 0) 时按 created_at 倒序
+  //   (新建在前),对齐 Zendesk 主题实际渲染序。promoted 不参与排序 (仅作徽标)。
+  const byPositionThenCreatedDesc = (
+    a: { position: number; created_at: string },
+    b: { position: number; created_at: string },
+  ) => a.position - b.position || (a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0)
+
   const catToSecOrder = new Map<string, Section[]>()
   for (const sec of sections) {
     const catSlug = catSlugById.get(sec.category_id)
@@ -213,12 +221,24 @@ async function syncLocale(client: ZendeskClient, zdLocale: string, fsLocale: str
   }
   for (const [catSlug, secs] of catToSecOrder) {
     const orderedSlugs = Array.from(new Set(
-      secs.sort((a, b) => a.position - b.position).map(s => secSlugById.get(s.id)!),
+      secs.sort(byPositionThenCreatedDesc).map(s => secSlugById.get(s.id)!),
     ))
     // 只在该 category 目录真的存在时写 (避免创建空目录)
     const catDir = path.join(localeRoot, catSlug)
     if (fs.existsSync(catDir)) writeOrderJson(catDir, orderedSlugs)
   }
+
+  // 根 _order.json:分类 slug 按 category.position ASC(供渲染端分类排序)。
+  // 无当前 position 的老分类 (如 opening-an-account,cid 不在 categories API) 不会
+  // 出现在这里，渲染端 orderedMerge 会把它们追加到末尾。
+  const orderedCatSlugs = Array.from(new Set(
+    categories
+      .slice()
+      .sort(byPositionThenCreatedDesc)
+      .map(c => catSlugById.get(c.id))
+      .filter((s): s is string => !!s && fs.existsSync(path.join(localeRoot, s))),
+  ))
+  writeOrderJson(localeRoot, orderedCatSlugs)
 
   const secToArtOrder = new Map<string, Article[]>()
   for (const a of publishedArticles) {
@@ -230,10 +250,7 @@ async function syncLocale(client: ZendeskClient, zdLocale: string, fsLocale: str
   }
   const secArtsOrdered = new Map<string, Article[]>() // 排序后的 articles(同 key)
   for (const [key, arts] of secToArtOrder) {
-    const sorted = arts.slice().sort((a, b) => {
-      if (a.promoted !== b.promoted) return a.promoted ? -1 : 1
-      return a.position - b.position
-    })
+    const sorted = arts.slice().sort(byPositionThenCreatedDesc)
     secArtsOrdered.set(key, sorted)
     const orderedSlugs = sorted.map(a => articleSlug(a))
     // 去重 (老 + 新 slug 撞到一起后)
@@ -252,10 +269,10 @@ async function syncLocale(client: ZendeskClient, zdLocale: string, fsLocale: str
     if (!fs.existsSync(catDir)) continue
     const cat = categories.find(c => catSlugById.get(c.id) === catSlug)
     if (!cat) continue
-    // 同名老 / 新 category 合并;section 层合并 by slug，按 position ASC
+    // 同名老 / 新 category 合并;section 层合并 by slug，按 position ASC + created_at DESC
     const orderedSecs = secs
       .slice()
-      .sort((a, b) => a.position - b.position)
+      .sort(byPositionThenCreatedDesc)
     const seen = new Set<string>()
     const secList: Array<{ slug: string; name: string; description?: string; articleCount: number }> = []
     for (const sec of orderedSecs) {
