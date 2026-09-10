@@ -12,6 +12,7 @@ import Footer from '../components/Footer.astro'
 import CatDrawer from '../components/CatDrawer.astro'
 import SearchModal from '../components/SearchModal.astro'
 import themeMode from '../scripts/theme-mode.js?raw'
+import { SITE_ORIGIN, OG_IMAGE } from '../lib/seo'
 
 interface Props {
   title: string
@@ -22,6 +23,11 @@ interface Props {
 
 const { title, description, isHome = false, hideFooter = false } = Astro.props
 const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge Help Center`
+
+// SEO / 社交分享 unfurl(Slack / Facebook / Twitter)。SITE_ORIGIN / OG_IMAGE 单一来源见 lib/seo。
+// canonical 指向生产域,staging(xyz)也归一到它做 SEO 去重;og:image 须绝对且公网可访问(Slackbot 无登录态)。
+const pageUrl = SITE_ORIGIN + Astro.url.pathname
+const shareDesc = description ?? "Got a question? From account setup to placing a trade, we've got you covered."
 ---
 
 <!doctype html>
@@ -31,7 +37,20 @@ const pageTitle = isHome ? 'Longbridge Help Center' : `${title} – Longbridge H
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="icon" href="https://assets.wbrks.com/assets/logo/logo1.png" type="image/png" />
     <title>{pageTitle}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={shareDesc} />
+    <link rel="canonical" href={pageUrl} />
+    <!-- Open Graph（Slack / Facebook 等 unfurl 读这套显示标题/简介/图）-->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Longbridge Help Center" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={shareDesc} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={OG_IMAGE} />
+    <!-- Twitter card（summary_large_image = 1200×630 整卡大图）-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={shareDesc} />
+    <meta name="twitter:image" content={OG_IMAGE} />
     <!-- Anti-FOUC: theme applied before first paint(内含 UA lbcommitid → html.is-whale-app) -->
     <script is:inline set:html={themeMode} />
     <!-- App WebView 内禁用双指/双击缩放(对齐 Zendesk document_head.hbs:2) -->

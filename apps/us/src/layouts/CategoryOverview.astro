@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro'
 import { getNav } from '../lib/nav'
 import { withBase } from '../lib/paths'
+import { deriveDescription } from '../lib/seo'
 import type { CollectionEntry } from 'astro:content'
 import '../styles/listing.css'
 
@@ -20,7 +21,7 @@ const catSlug = segs[0] ?? ''
 const cat = nav.find((c) => c.slug === catSlug)
 ---
 
-<BaseLayout title={cat?.title ?? entry.data.title}>
+<BaseLayout title={cat?.title ?? entry.data.title} description={deriveDescription(entry.body)}>
   <div class="container-divider"></div>
   <div class="container">
     <!-- Breadcrumb -->
